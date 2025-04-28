@@ -1,27 +1,27 @@
 
 import React from 'react';
-import { Football, Rugby, Hockey, Basketball } from 'lucide-react';
+import { Ball, Activity, Target, BarChart3 } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 const sports = [
   {
     name: 'Football',
-    icon: Football,
+    icon: Ball,
     description: 'Advanced analytics and streaming solutions for football clubs and leagues.',
   },
   {
     name: 'Rugby',
-    icon: Rugby,
+    icon: Activity,
     description: 'Complete performance tracking and analysis tools for rugby teams.',
   },
   {
     name: 'Hockey',
-    icon: Hockey,
+    icon: Target,
     description: 'Real-time stats and video analysis for hockey organizations.',
   },
   {
     name: 'Basketball',
-    icon: Basketball,
+    icon: BarChart3,
     description: 'Comprehensive basketball analytics and streaming platform.',
   },
 ];
