@@ -5,37 +5,29 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const matches = [
   {
-    team1: { name: "Aston Villa FC", logo: "/lovable-uploads/3217f48a-1102-4f9b-8cce-ff4984fd5e4d.png" },
+    team1: { name: "Shamrock Rovers FC", logo: "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png" },
     team2: { name: "AC Milan", logo: "/lovable-uploads/8f4bbea6-85fc-451e-93da-15416813d362.png" },
     category: "Boys U12 Football",
-    location: "Birmingham, ENG",
+    location: "Dublin, IRL",
     time: "8:57 PM",
     date: "Apr 27"
   },
   {
-    team1: { name: "Burnley FC", logo: "/lovable-uploads/1dc0acaf-a439-4151-aa5b-d1c6062e4728.png" },
-    team2: { name: "Newcastle FC", logo: "/lovable-uploads/b8a51730-da8b-48f6-8992-94d2997a5c6a.png" },
+    team1: { name: "Newcastle FC", logo: "/lovable-uploads/b8a51730-da8b-48f6-8992-94d2997a5c6a.png" },
+    team2: { name: "Aston Villa FC", logo: "/lovable-uploads/3217f48a-1102-4f9b-8cce-ff4984fd5e4d.png" },
     category: "Boys U12 Football",
-    location: "Burnley, ENG",
+    location: "Newcastle, ENG",
     time: "1:02 PM",
     date: "Apr 27"
   },
   {
-    team1: { name: "AC Milan", logo: "/lovable-uploads/8f4bbea6-85fc-451e-93da-15416813d362.png" },
+    team1: { name: "Burnley FC", logo: "/lovable-uploads/1dc0acaf-a439-4151-aa5b-d1c6062e4728.png" },
     team2: { name: "Wolverhampton Wanderers FC", logo: "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png" },
     category: "Boys U12 Football",
-    location: "Dublin, IRL",
+    location: "Burnley, ENG",
     time: "8:59 PM",
     date: "Apr 26"
-  },
-  {
-    team1: { name: "Shamrock Rovers FC", logo: "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png" },
-    team2: { name: "Newcastle FC", logo: "/lovable-uploads/b8a51730-da8b-48f6-8992-94d2997a5c6a.png" },
-    category: "Boys U12 Football",
-    location: "Dublin, IRL",
-    time: "8:19 PM",
-    date: "Apr 26"
-  },
+  }
 ];
 
 const LiveMatches: React.FC = () => {
@@ -75,9 +67,9 @@ const LiveMatches: React.FC = () => {
                 <div className="h-full">
                   <div className="bg-black rounded-lg overflow-hidden border border-staydia-lightgray h-full">
                     <div className="relative">
-                      <div className="w-full h-48 bg-[#1a202c] flex items-center justify-center relative">
+                      <div className="w-full h-64 bg-[#1a202c] flex items-center justify-center relative">
                         <div className="flex items-center justify-between w-full px-8">
-                          <div className="w-20 h-20">
+                          <div className="w-28 h-28">
                             <img 
                               src={match.team1.logo} 
                               alt={match.team1.name}
@@ -85,7 +77,7 @@ const LiveMatches: React.FC = () => {
                             />
                           </div>
                           <div className="text-2xl font-bold text-white">VS</div>
-                          <div className="w-20 h-20">
+                          <div className="w-28 h-28">
                             <img 
                               src={match.team2.logo} 
                               alt={match.team2.name}
