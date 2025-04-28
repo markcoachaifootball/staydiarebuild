@@ -22,7 +22,7 @@ const NewsArticlePage: React.FC = () => {
         });
 
         if (response.items.length > 0) {
-          setArticle(response.items[0] as NewsArticle);
+          setArticle(response.items[0] as unknown as NewsArticle);
           setError(null);
         } else {
           setError('Article not found');
@@ -98,9 +98,7 @@ const NewsArticlePage: React.FC = () => {
         )}
 
         <div className="prose prose-invert prose-lg max-w-none">
-          {/* In a real implementation, you would use a Contentful rich text renderer here */}
           <p>{article.fields.summary}</p>
-          {/* Placeholder for rich text content */}
           <p>Full article content would be rendered here using Contentful's rich text renderer.</p>
         </div>
       </article>

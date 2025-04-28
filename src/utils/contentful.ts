@@ -1,6 +1,5 @@
-
 import { createClient } from 'contentful';
-import { Entry, EntryCollection } from 'contentful';
+import { ContentTypeProps, EntryCollection } from 'contentful';
 
 // Define the interface for the fields in our NewsArticle content type
 export interface NewsArticleFields {
@@ -20,8 +19,14 @@ export interface NewsArticleFields {
   bodyContent: any; // Rich text content
 }
 
-// Define our NewsArticle as an Entry with our fields
-export interface NewsArticle extends Entry<NewsArticleFields> {}
+// Define our NewsArticle type
+export interface NewsArticle {
+  sys: {
+    id: string;
+    // other sys properties that might be used
+  };
+  fields: NewsArticleFields;
+}
 
 // Contentful client setup with proper error handling for missing environment variables
 const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
@@ -46,13 +51,13 @@ export async function fetchNewsArticles(limit: number = 4): Promise<NewsArticle[
       return [];
     }
     
-    const response: EntryCollection<NewsArticleFields> = await contentfulClient.getEntries({
+    const response = await contentfulClient.getEntries({
       content_type: 'newsArticle',
-      order: '-fields.date',
+      order: ['-fields.date'],
       limit,
     });
     
-    return response.items as NewsArticle[];
+    return response.items as unknown as NewsArticle[];
   } catch (error) {
     console.error('Error fetching news articles from Contentful:', error);
     return [];
