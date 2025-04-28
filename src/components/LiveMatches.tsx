@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,43 @@ const LiveMatches: React.FC = () => {
             Our platform hosts hundreds of matches across multiple sports and age groups
           </p>
         </div>
+
+        <Carousel className="w-full mb-16">
+          <CarouselContent>
+            <CarouselItem>
+              <img 
+                src="/lovable-uploads/6fc52893-fca3-47e1-b26d-64bca2a37a8b.png" 
+                alt="Staydia Sports Platform Preview" 
+                className="w-full h-auto rounded-lg"
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <img 
+                src="/lovable-uploads/6b3c9981-9edc-4128-aff8-2a80a160e1c9.png" 
+                alt="Staydia Live Matches" 
+                className="w-full h-auto rounded-lg"
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <img 
+                src="/lovable-uploads/614fcc4f-71d4-4d2d-9531-10ca1ee73b5d.png" 
+                alt="Staydia Match Schedule" 
+                className="w-full h-auto rounded-lg"
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <img 
+                src="/lovable-uploads/014baab3-fa51-4ef8-abe4-28b2ede5217b.png" 
+                alt="Staydia Sports Coverage" 
+                className="w-full h-auto rounded-lg"
+              />
+            </CarouselItem>
+          </CarouselContent>
+          <div className="flex justify-center mt-4">
+            <CarouselPrevious className="relative static translate-y-0 mx-2" />
+            <CarouselNext className="relative static translate-y-0 mx-2" />
+          </div>
+        </Carousel>
         
         <Carousel className="w-full">
           <CarouselContent>
