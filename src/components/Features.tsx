@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -61,7 +60,7 @@ export const Features: React.FC = () => {
                 Give your fans a professional viewing experience with your club's branding, colors, and logo.
               </p>
               <ul className="space-y-3">
-                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Clipping tactical tool", "Clipping tool for Social media Highlights"].map((item, i) => (
+                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Clipping tactical tool", "Clipping tool for Social media highlights"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-staydia-gold rounded-full"></span>
                     <span className="text-gray-300">{item}</span>
