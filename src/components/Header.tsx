@@ -20,6 +20,7 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/features" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Features</Link>
           <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Technology</Link>
+          <Link to="/sports" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Sports</Link>
           <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Solutions</Link>
           <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Contact</Link>
         </nav>
