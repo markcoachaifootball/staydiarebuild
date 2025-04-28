@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import Footer from '@/components/Footer';
-import LiveMatches from '@/components/LiveMatches';
 import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
 
@@ -14,7 +13,6 @@ const Index = () => {
       <Header />
       <Hero />
       <Features />
-      <LiveMatches />
       <Technology />
       <HowItWorks />
       <Footer />
@@ -23,3 +21,4 @@ const Index = () => {
 };
 
 export default Index;
+
