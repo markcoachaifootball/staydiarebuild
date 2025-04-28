@@ -1,5 +1,7 @@
+
 import React from 'react';
-import { Camera, Banknote, Users, Play } from "lucide-react";
+import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export const Features: React.FC = () => {
   const features = [
@@ -59,7 +61,7 @@ export const Features: React.FC = () => {
                 Give your fans a professional viewing experience with your club's branding, colors, and logo.
               </p>
               <ul className="space-y-3">
-                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Clipping tactical tool"].map((item, i) => (
+                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Clipping tactical tool", "Clipping tool for Social media Highlights"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-staydia-gold rounded-full"></span>
                     <span className="text-gray-300">{item}</span>
@@ -68,11 +70,28 @@ export const Features: React.FC = () => {
               </ul>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg border border-staydia-lightgray">
-              <img 
-                src="/lovable-uploads/afbf084c-fa36-4c9b-bce5-cff061e453c3.png" 
-                alt="Staydia streaming platform" 
-                className="w-full h-auto"
-              />
+              <Carousel className="w-full">
+                <CarouselContent>
+                  <CarouselItem>
+                    <img 
+                      src="/lovable-uploads/afbf084c-fa36-4c9b-bce5-cff061e453c3.png" 
+                      alt="Staydia streaming platform" 
+                      className="w-full h-auto"
+                    />
+                  </CarouselItem>
+                  <CarouselItem>
+                    <img 
+                      src="/lovable-uploads/902d2d1a-be94-49ac-96ae-86a3752ffbfd.png" 
+                      alt="Staydia streaming platform match listing" 
+                      className="w-full h-auto"
+                    />
+                  </CarouselItem>
+                </CarouselContent>
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                  <CarouselPrevious className="h-8 w-8 rounded-full bg-black/50 border border-white/20 p-1.5 relative static translate-y-0" />
+                  <CarouselNext className="h-8 w-8 rounded-full bg-black/50 border border-white/20 p-1.5 relative static translate-y-0" />
+                </div>
+              </Carousel>
               <div className="bg-staydia-black/80 p-4">
                 <p className="text-center text-sm text-gray-400">Staydia's club-branded streaming interface</p>
               </div>
