@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Calendar, Play, Tv } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,19 +22,32 @@ const LiveMatches: React.FC = () => {
               <div 
                 className="p-8 h-[60%] flex flex-col justify-center relative"
                 style={{
-                  background: 'linear-gradient(135deg, #1a1f2c 0%, #2C3545 50%, #364153 100%)',
-                  boxShadow: 'inset 0 0 60px rgba(240, 190, 90, 0.1)'
+                  background: 'linear-gradient(125deg, #1E1E2E 0%, #2A2A3F 100%)',
                 }}
               >
-                <div className="absolute top-0 left-0 w-full h-full opacity-10"
-                     style={{
-                       backgroundImage: 'radial-gradient(circle at 50% 50%, #F0BE5A 0%, transparent 60%)'
-                     }}
-                />
+                <div className="absolute inset-0">
+                  <div className="absolute top-0 left-0 w-full h-full"
+                    style={{
+                      background: 'radial-gradient(circle at 10% 0%, rgba(240, 190, 90, 0.15), transparent 40%), radial-gradient(circle at 90% 90%, rgba(240, 190, 90, 0.1), transparent 40%)',
+                    }}
+                  />
+                  <div className="absolute top-0 right-0 w-64 h-64 opacity-20"
+                    style={{
+                      background: 'conic-gradient(from 90deg at 50% 50%, #F0BE5A, #2A2A3F)',
+                      filter: 'blur(60px)',
+                      transform: 'translate(20%, -30%)',
+                    }}
+                  />
+                </div>
                 <div className="relative z-10">
-                  <h3 className="text-3xl font-bold mb-4 text-gradient">Featured Matches</h3>
-                  <p className="text-xl mb-4">Get full access to Staydia Sports</p>
-                  <p className="text-gray-300 mb-6">Stream every match live and on demand from clubs across EU and UK.</p>
+                  <div className="inline-block px-4 py-1 rounded-full bg-staydia-gold/10 border border-staydia-gold/20 text-staydia-gold text-sm mb-6">
+                    Premium Access
+                  </div>
+                  <h3 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                    Featured Matches
+                  </h3>
+                  <p className="text-xl mb-4 text-gray-200">Get full access to Staydia Sports</p>
+                  <p className="text-gray-400 mb-6">Stream every match live and on demand from clubs across EU and UK.</p>
                   <Button 
                     className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 w-fit"
                     onClick={() => window.open('https://staydiasports.com/', '_blank')}
