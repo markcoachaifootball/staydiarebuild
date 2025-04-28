@@ -13,8 +13,8 @@ const HowItWorks: React.FC = () => {
     },
     {
       number: "02",
-      title: "Custom Solution",
-      description: "Receive a tailored proposal designed to meet your venue and budget requirements."
+      title: "Partner With Us",
+      description: "Partner With Us"
     },
     {
       number: "03",
