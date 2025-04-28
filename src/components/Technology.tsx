@@ -13,6 +13,37 @@ export const Technology: React.FC = () => {
   return (
     <section id="technology" className="py-24">
       <div className="staydia-container">
+        {/* Video Section (moved from HowItWorks) */}
+        <div className="mb-16">
+          <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
+            {isPlaying ? (
+              <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1" 
+                title="How Staydia Works"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <div 
+                className="absolute inset-0 cursor-pointer group"
+                onClick={() => setIsPlaying(true)}
+              >
+                <img 
+                  src="https://img.youtube.com/vi/LlAfWzJP3co/maxresdefault.jpg" 
+                  alt="How Staydia Works Video Thumbnail" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
+                  <div className="w-20 h-20 bg-staydia-gold rounded-full flex items-center justify-center">
+                    <Play className="h-10 w-10 text-staydia-black" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 space-y-6">
             <h2 className="section-title text-left">Innovative Broadcasting Technology</h2>
@@ -46,33 +77,15 @@ export const Technology: React.FC = () => {
             <div className="relative">
               <div className="bg-gradient-to-tr from-staydia-gold/20 to-transparent absolute inset-0 rounded-2xl filter blur-xl"></div>
               
-              {isPlaying ? (
-                <div className="relative z-10 rounded-lg overflow-hidden aspect-video shadow-xl">
-                  <iframe 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
-                    title="Staydia Broadcasting Platform Demo"
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
+              <div className="relative z-10 rounded-lg overflow-hidden aspect-video shadow-xl">
+                <img 
+                  src="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" 
+                  alt="Staydia Broadcasting Platform" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-4 left-4 bg-black bg-opacity-80 p-3 rounded-lg border border-staydia-gold text-sm">
+                  Smart Broadcasting Platform
                 </div>
-              ) : (
-                <div className="relative z-10 rounded-lg overflow-hidden aspect-video shadow-xl cursor-pointer" onClick={handlePlayVideo}>
-                  <img 
-                    src="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" 
-                    alt="Staydia Broadcasting Platform" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-30 transition-all">
-                    <div className="w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center rounded-full bg-staydia-gold text-staydia-black">
-                      <Play className="h-8 w-8 lg:h-10 lg:w-10" />
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              <div className="absolute bottom-4 left-4 bg-black bg-opacity-80 p-3 rounded-lg border border-staydia-gold text-sm">
-                Smart Broadcasting Platform
               </div>
             </div>
           </div>

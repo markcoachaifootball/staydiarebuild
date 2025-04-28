@@ -1,10 +1,7 @@
 
-import React, { useState } from 'react';
-import { Play } from "lucide-react";
+import React from 'react';
 
 const HowItWorks: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  
   const steps = [
     {
       number: "01",
@@ -36,36 +33,6 @@ const HowItWorks: React.FC = () => {
           <p className="section-subtitle">
             A streamlined approach to elevating your organisation's broadcasting capabilities.
           </p>
-        </div>
-        
-        <div className="mb-16">
-          <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
-            {isPlaying ? (
-              <iframe 
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1" 
-                title="How Staydia Works"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
-            ) : (
-              <div 
-                className="absolute inset-0 cursor-pointer group"
-                onClick={() => setIsPlaying(true)}
-              >
-                <img 
-                  src="https://img.youtube.com/vi/LlAfWzJP3co/maxresdefault.jpg" 
-                  alt="How Staydia Works Video Thumbnail" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-                  <div className="w-20 h-20 bg-staydia-gold rounded-full flex items-center justify-center">
-                    <Play className="h-10 w-10 text-staydia-black" />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
