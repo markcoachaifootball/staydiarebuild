@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -9,74 +10,65 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">About Staydia</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Story</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Technology</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Team</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Press</a></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Our Story</Link></li>
+              <li><Link to="/technology" className="text-gray-400 hover:text-white transition-colors">Technology</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Team</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Careers</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Press</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-staydia-gold font-bold text-lg mb-6">Products</h3>
+            <h3 className="text-staydia-gold font-bold text-lg mb-6">Club Solutions</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Streaming Platform</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">AI Camera Technology</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Club Solutions</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">League Integration</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Analytics</a></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Free Camera Installation</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Revenue Sharing Model</Link></li>
+              <li><Link to="/sports" className="text-gray-400 hover:text-white transition-colors">Sports We Cover</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Fan Engagement</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Performance Analysis</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-staydia-gold font-bold text-lg mb-6">Resources</h3>
+            <h3 className="text-staydia-gold font-bold text-lg mb-6">Fan Experience</h3>
             <ul className="space-y-3">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Watch Live</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">On-Demand Library</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Subscription Info</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">App Download</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Installation Guides</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">API Documentation</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Community</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Support</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Sales</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Club Inquiries</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Partnerships</a></li>
+              <li><div className="flex space-x-3 mt-2">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                </a>
+              </div></li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-staydia-lightgray pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <svg width="120" height="30" viewBox="0 0 200 50">
-              <path 
-                d="M20,10 C30,5 50,5 60,10 C80,20 80,30 60,40 C50,45 30,45 20,40 C0,30 0,20 20,10 Z" 
-                fill="none" 
-                stroke="#F0BE5A" 
-                strokeWidth="2"
-              />
-              <text 
-                x="70" 
-                y="30" 
-                fill="white" 
-                fontSize="20" 
-                fontWeight="bold"
-              >
-                STAYDIA
-              </text>
-              <text 
-                x="150" 
-                y="42" 
-                fill="white" 
-                fontSize="14"
-              >
-                SPORTS
-              </text>
-            </svg>
+            <img 
+              src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
+              alt="Staydia Sports Logo" 
+              className="h-8 w-auto"
+            />
           </div>
           
           <div className="text-sm text-gray-400">

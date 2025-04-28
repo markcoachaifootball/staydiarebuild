@@ -21,16 +21,16 @@ const Header: React.FC = () => {
           <Link to="/features" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Features</Link>
           <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Technology</Link>
           <Link to="/sports" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Sports</Link>
-          <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Solutions</Link>
+          <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">For Clubs</Link>
           <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Contact</Link>
         </nav>
         
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="text-gray-300 hover:text-staydia-gold hover:bg-transparent">
-            Login
-          </Button>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-staydia-gold text-sm font-medium hidden md:block">
+            Watch Matches
+          </a>
           <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium">
-            Book Demo
+            Book Club Demo
           </Button>
         </div>
       </div>
