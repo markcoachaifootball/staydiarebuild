@@ -91,16 +91,12 @@ const Solutions = () => {
             <h2 className="text-2xl font-bold mb-4">For Leagues</h2>
             <ul className="space-y-4 text-gray-300">
               <li className="flex items-start gap-3">
-                <Clock className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
-                <span>Evolve to 21st century with comprehensive match archives</span>
+                <Camera className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
+                <span>AI-automated cameras installed at every club across your league</span>
               </li>
               <li className="flex items-start gap-3">
                 <Database className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
                 <span>Complete match library across all competition levels</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Camera className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
-                <span>AI-automated cameras installed at every club across your league</span>
               </li>
               <li className="flex items-start gap-3">
                 <ZapIcon className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
