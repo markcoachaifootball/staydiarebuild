@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,8 +21,8 @@ export const Technology: React.FC = () => {
                 "Broadcast-quality live streaming capabilities",
                 "Customizable branded viewing experience",
                 "Advanced analytics and engagement metrics",
-                "Dedicated technical support and maintenance",
-                "Seamless integration with existing systems"
+                "Clipping tactical tool",
+                "Clipping tool for Social media Highlights"
               ].map((item, i) => (
                 <div key={i} className="flex items-start">
                   <Check className="text-staydia-gold mr-2 mt-1 h-5 w-5 flex-shrink-0" />
