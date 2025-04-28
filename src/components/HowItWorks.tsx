@@ -68,7 +68,7 @@ const HowItWorks: React.FC = () => {
             {isPlaying ? (
               <iframe 
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1" 
+                src="https://www.youtube.com/embed/AANBHlCBxPo?autoplay=1" 
                 title="Getting setup with Staydia Sports"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
@@ -79,7 +79,7 @@ const HowItWorks: React.FC = () => {
                 onClick={() => setIsPlaying(true)}
               >
                 <img 
-                  src="https://img.youtube.com/vi/LlAfWzJP3co/maxresdefault.jpg" 
+                  src="https://img.youtube.com/vi/AANBHlCBxPo/maxresdefault.jpg" 
                   alt="Getting setup with Staydia Sports Video Thumbnail" 
                   className="w-full h-full object-cover"
                 />
@@ -106,3 +106,4 @@ const HowItWorks: React.FC = () => {
 };
 
 export default HowItWorks;
+
