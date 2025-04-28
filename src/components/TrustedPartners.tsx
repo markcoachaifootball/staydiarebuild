@@ -28,9 +28,9 @@ const TrustedPartners = () => {
         </h2>
         
         <p className="text-gray-300 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
-          Staydia Sports harnesses cutting-edge AI technology to revolutionise sports video and media production. 
+          Staydia Sports harnesses cutting-edge AI technology to revolutionise sports video and streaming production. 
           Our fully automated platform brings live sporting events to life, focusing on elevating lower-tier leagues 
-          and youth divisions with futuristic, professional-grade coverage and next-generation media solutions.
+          and youth divisions with futuristic, professional-grade coverage and next-generation streaming solutions.
         </p>
       </div>
     </section>
