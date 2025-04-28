@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -61,7 +60,10 @@ const LiveMatches: React.FC = () => {
                 <div className="flex-1 bg-staydia-black rounded-lg p-6 border border-staydia-lightgray">
                   <h3 className="text-lg font-medium mb-4">Get full access to Staydia Sports</h3>
                   <p className="text-gray-400 mb-6">Stream every match live and on demand from clubs across Ireland, Wales, and England.</p>
-                  <Button className="w-full bg-staydia-gold text-staydia-black hover:bg-opacity-90">
+                  <Button 
+                    className="w-full bg-staydia-gold text-staydia-black hover:bg-opacity-90"
+                    onClick={() => window.open('https://staydiasports.com/', '_blank')}
+                  >
                     Start Free Trial
                   </Button>
                 </div>
