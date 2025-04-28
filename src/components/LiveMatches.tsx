@@ -1,26 +1,7 @@
 import React from 'react';
-import { Calendar } from "lucide-react";
+import { Calendar, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
-const matches = [
-  {
-    team1: { name: "Shamrock Rovers FC", logo: "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png" },
-    team2: { name: "UCD AFC", logo: "/lovable-uploads/6fc52893-fca3-47e1-b26d-64bca2a37a8b.png" },
-    category: "Boys U12 Football",
-    location: "Dublin, IRL",
-    time: "8:57 PM",
-    date: "Apr 27"
-  },
-  {
-    team1: { name: "Cork City FC", logo: "/lovable-uploads/75c4e662-1f6d-40da-b80e-d03748c43719.png" },
-    team2: { name: "Bohemians FC", logo: "/lovable-uploads/e38d2084-9160-4367-bcc0-77530ccc1a81.png" },
-    category: "Boys U12 Football",
-    location: "Cork, IRL",
-    time: "1:02 PM",
-    date: "Apr 27"
-  }
-];
 
 const LiveMatches: React.FC = () => {
   return (
@@ -35,67 +16,67 @@ const LiveMatches: React.FC = () => {
         
         <Carousel className="w-full">
           <CarouselContent>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-              <div className="relative flex flex-col h-full">
-                <div className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Calendar className="text-staydia-gold" />
-                  <span>Featured Matches</span>
-                </div>
-                <div className="flex-1 bg-staydia-black rounded-lg p-6 border border-staydia-lightgray">
-                  <h3 className="text-lg font-medium mb-4">Get full access to Staydia Sports</h3>
-                  <p className="text-gray-400 mb-6">Stream every match live and on demand from clubs across EU and UK.</p>
-                  <Button 
-                    className="w-full bg-staydia-gold text-staydia-black hover:bg-opacity-90"
-                    onClick={() => window.open('https://staydiasports.com/', '_blank')}
-                  >
-                    Start Free Trial
-                  </Button>
+            <CarouselItem className="md:basis-1/2">
+              <div className="relative h-[600px] rounded-xl overflow-hidden">
+                <img 
+                  src="/lovable-uploads/afbf084c-fa36-4c9b-bce5-cff061e453c3.png"
+                  alt="Staydia streaming platform"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-8">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold">Featured Matches</h3>
+                    <p className="text-lg">Get full access to Staydia Sports</p>
+                    <p className="text-gray-300">Stream every match live and on demand from clubs across EU and UK.</p>
+                    <Button 
+                      className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 mt-4"
+                      onClick={() => window.open('https://staydiasports.com/', '_blank')}
+                    >
+                      <Play className="w-4 h-4 mr-2" />
+                      Start Free Trial
+                    </Button>
+                  </div>
                 </div>
               </div>
             </CarouselItem>
             
-            {matches.map((match, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="h-full">
-                  <div className="bg-black rounded-lg overflow-hidden border border-staydia-lightgray h-full">
-                    <div className="relative">
-                      <div className="w-full h-96 bg-[#1a202c] flex items-center justify-center relative">
-                        <div className="flex items-center justify-between w-full px-8">
-                          <div className="w-40 h-40">
-                            <img 
-                              src={match.team1.logo} 
-                              alt={match.team1.name}
-                              className="w-full h-full object-contain"
-                            />
-                          </div>
-                          <div className="text-2xl font-bold text-white">VS</div>
-                          <div className="w-40 h-40">
-                            <img 
-                              src={match.team2.logo} 
-                              alt={match.team2.name}
-                              className="w-full h-full object-contain"
-                            />
-                          </div>
-                        </div>
+            <CarouselItem className="md:basis-1/2">
+              <div className="relative h-[600px] rounded-xl overflow-hidden bg-staydia-black border border-staydia-lightgray">
+                <div className="absolute top-0 left-0 w-full p-4 bg-gradient-to-b from-black/70 to-transparent">
+                  <span className="text-sm bg-black/50 px-3 py-1 rounded-full">Live Now</span>
+                </div>
+                <div className="h-full flex items-center justify-center p-8">
+                  <div className="text-center space-y-8">
+                    <div className="flex items-center justify-between gap-8">
+                      <div className="flex-1">
+                        <img 
+                          src="/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png"
+                          alt="Shamrock Rovers FC"
+                          className="w-48 h-48 mx-auto object-contain"
+                        />
+                        <h4 className="mt-4 text-xl font-bold">Shamrock Rovers FC</h4>
                       </div>
-                      <div className="absolute top-3 left-3 bg-black/70 text-white text-xs py-1 px-3 rounded-full">
-                        {match.category}
-                      </div>
-                      <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/70 text-white text-xs py-1 px-3 rounded-full">
-                        {match.date} | {match.time}
+                      <div className="text-3xl font-bold">VS</div>
+                      <div className="flex-1">
+                        <img 
+                          src="/lovable-uploads/6fc52893-fca3-47e1-b26d-64bca2a37a8b.png"
+                          alt="UCD AFC"
+                          className="w-48 h-48 mx-auto object-contain"
+                        />
+                        <h4 className="mt-4 text-xl font-bold">UCD AFC</h4>
                       </div>
                     </div>
-                    <div className="p-4">
-                      <div className="font-medium text-white mb-1">{match.team1.name}</div>
-                      <div className="font-medium text-white mb-3">{match.team2.name}</div>
-                      <div className="flex items-center text-xs text-gray-400">
-                        <span>{match.location}</span>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-center gap-2 text-staydia-gold">
+                        <Calendar className="w-4 h-4" />
+                        <span>Today at 8:57 PM</span>
                       </div>
+                      <p className="text-gray-400">Boys U12 Football • Dublin, IRL</p>
                     </div>
                   </div>
                 </div>
-              </CarouselItem>
-            ))}
+              </div>
+            </CarouselItem>
           </CarouselContent>
           <div className="flex justify-center mt-8">
             <CarouselPrevious className="relative static translate-y-0 mx-2" />
