@@ -26,10 +26,7 @@ const Header: React.FC = () => {
           <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Contact</Link>
         </nav>
         
-        <div className="flex items-center gap-4">
-          <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-staydia-gold text-sm font-medium hidden md:block">
-            Watch Matches
-          </a>
+        <div className="flex items-center">
           <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium">
             Book Club Demo
           </Button>

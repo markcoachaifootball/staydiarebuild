@@ -75,10 +75,10 @@ const Hero: React.FC = () => {
             </Dialog>
 
             <Button 
-              className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8"
-              onClick={() => window.open('https://staydiasports.com/', '_blank')}
+              className="bg-transparent border border-staydia-gold text-staydia-gold hover:bg-staydia-gold/10 text-lg h-14 px-8"
+              onClick={() => window.location.href = '/solutions'}
             >
-              Watch Events
+              Club Solutions
             </Button>
           </div>
         </div>
