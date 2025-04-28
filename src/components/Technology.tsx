@@ -43,9 +43,12 @@ export const Technology: React.FC = () => {
           </div>
         </div>
 
-        {/* Video Section with heading */}
-        <div className="mt-8">
-          <h3 className="text-2xl font-bold mb-6 text-white">See How It Works</h3>
+        {/* Video Section with more seamless heading */}
+        <div className="mt-12 border-t border-staydia-lightgray pt-12">
+          <h3 className="text-2xl font-semibold text-staydia-gold mb-6 inline-flex items-center">
+            <Play className="mr-2 h-5 w-5" />
+            See How It Works
+          </h3>
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
             {isPlaying ? (
               <iframe 
