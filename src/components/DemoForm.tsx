@@ -39,21 +39,43 @@ const DemoForm = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      await fetch("mailto:info@staydiasports.com", {
+      // Create a formatted email body
+      const emailBody = `
+        Club/League Name: ${data.clubName}
+        Contact Name: ${data.contactName}
+        Email: ${data.email}
+        Phone: ${data.phone}
+        Message: ${data.message || 'No additional information provided'}
+      `;
+
+      // Send form data to a service that will email info@staydiasports.com
+      // This is a mock implementation - in production, this would connect to a backend API
+      const response = await fetch("https://formsubmit.co/ajax/info@staydiasports.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.contactName,
+          email: data.email,
+          message: emailBody,
+          _subject: `Demo Request from ${data.clubName}`,
+        }),
       });
       
-      toast({
-        title: "Success!",
-        description: "Your demo request has been sent. We'll be in touch soon.",
-      });
-      
-      form.reset();
+      if (response.ok) {
+        toast({
+          title: "Success!",
+          description: "Your demo request has been sent. We'll be in touch soon.",
+        });
+        
+        form.reset();
+      } else {
+        throw new Error("Server responded with an error");
+      }
     } catch (error) {
+      console.error("Form submission error:", error);
       toast({
         title: "Error",
         description: "There was a problem sending your request. Please try again.",
