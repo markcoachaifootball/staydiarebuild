@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
@@ -75,7 +76,7 @@ const Hero: React.FC = () => {
 
             <Button 
               variant="outline" 
-              className="border-2 border-white text-white hover:bg-white/10 text-lg h-14 px-8"
+              className="border-2 border-staydia-gold text-staydia-gold hover:bg-staydia-gold/10 text-lg h-14 px-8"
               onClick={() => window.open('https://staydiasports.com/', '_blank')}
             >
               Watch Events
