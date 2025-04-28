@@ -1,5 +1,6 @@
+
 import { createClient } from 'contentful';
-import { ContentTypeProps, EntryCollection } from 'contentful';
+import { ContentType, EntryCollection } from 'contentful';
 
 // Define the interface for the fields in our NewsArticle content type
 export interface NewsArticleFields {
