@@ -64,15 +64,23 @@ const DemoForm = () => {
 
   return (
     <Form {...form}>
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-black mb-2">Book Demo</h2>
+        <p className="text-gray-600">Fill in your details below to request a demo</p>
+      </div>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="clubName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Club/League Name</FormLabel>
+              <FormLabel className="text-gray-700">Club/League Name</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your club or league name" {...field} />
+                <Input 
+                  placeholder="Enter your club or league name" 
+                  {...field}
+                  className="text-black placeholder:text-gray-400" 
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -84,9 +92,13 @@ const DemoForm = () => {
           name="contactName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Contact Name</FormLabel>
+              <FormLabel className="text-gray-700">Contact Name</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input 
+                  placeholder="Your name" 
+                  {...field} 
+                  className="text-black placeholder:text-gray-400"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -98,9 +110,14 @@ const DemoForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="text-gray-700">Email</FormLabel>
               <FormControl>
-                <Input placeholder="your@email.com" type="email" {...field} />
+                <Input 
+                  placeholder="your@email.com" 
+                  type="email" 
+                  {...field}
+                  className="text-black placeholder:text-gray-400"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -112,9 +129,14 @@ const DemoForm = () => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number</FormLabel>
+              <FormLabel className="text-gray-700">Phone Number</FormLabel>
               <FormControl>
-                <Input placeholder="Your phone number" type="tel" {...field} />
+                <Input 
+                  placeholder="Your phone number" 
+                  type="tel" 
+                  {...field}
+                  className="text-black placeholder:text-gray-400"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -126,11 +148,12 @@ const DemoForm = () => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Additional Information</FormLabel>
+              <FormLabel className="text-gray-700">Additional Information</FormLabel>
               <FormControl>
                 <Textarea 
                   placeholder="Tell us more about your club/league..." 
-                  {...field} 
+                  {...field}
+                  className="text-black placeholder:text-gray-400"
                 />
               </FormControl>
               <FormMessage />
