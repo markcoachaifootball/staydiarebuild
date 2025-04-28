@@ -43,8 +43,9 @@ export const Technology: React.FC = () => {
           </div>
         </div>
 
-        {/* Video Section (moved below the text content) */}
+        {/* Video Section with heading */}
         <div className="mt-8">
+          <h3 className="text-2xl font-bold mb-6 text-white">See How It Works</h3>
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
             {isPlaying ? (
               <iframe 
