@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { Clock, Database, Link, ZapIcon } from "lucide-react";
+import { Clock, Database, Link, ZapIcon, Camera } from "lucide-react";
 
 const Solutions = () => {
   return (
@@ -31,6 +31,10 @@ const Solutions = () => {
               <li className="flex items-start gap-3">
                 <Database className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
                 <span>Complete match library across all competition levels</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Camera className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
+                <span>AI-automated cameras installed at every club across your league</span>
               </li>
               <li className="flex items-start gap-3">
                 <ZapIcon className="h-5 w-5 text-staydia-gold shrink-0 mt-0.5" />
