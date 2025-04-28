@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { Ball, Activity, Target, BarChart3 } from 'lucide-react';
+import { Activity, BarChart3, Target } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 const sports = [
   {
     name: 'Football',
-    icon: Ball,
+    icon: Activity,
     description: 'Advanced analytics and streaming solutions for football clubs and leagues.',
   },
   {
