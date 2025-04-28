@@ -1,8 +1,19 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
+import DemoForm from './DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Hero: React.FC = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -52,11 +63,26 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-4">
-            <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8">
-              Book Free Club Demo
-            </Button>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 text-lg h-14 px-8">
-              View Club Solutions
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8">
+                  Book Demo
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[500px]">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+                </DialogHeader>
+                <DemoForm />
+              </DialogContent>
+            </Dialog>
+
+            <Button 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white/10 text-lg h-14 px-8"
+              onClick={() => window.open('https://staydiasports.com/', '_blank')}
+            >
+              Watch Events
             </Button>
           </div>
         </div>
