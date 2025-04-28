@@ -6,6 +6,7 @@ import Features from '@/components/Features';
 import Footer from '@/components/Footer';
 import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
+import LiveMatches from '@/components/LiveMatches';
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <Header />
       <Hero />
       <Features />
+      <LiveMatches />
       <Technology />
       <HowItWorks />
       <Footer />
@@ -21,4 +23,3 @@ const Index = () => {
 };
 
 export default Index;
-
