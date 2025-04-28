@@ -5,32 +5,32 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const matches = [
   {
-    team1: "Aston Villa FC",
-    team2: "AC Milan",
+    team1: { name: "Aston Villa FC", logo: "/lovable-uploads/3217f48a-1102-4f9b-8cce-ff4984fd5e4d.png" },
+    team2: { name: "AC Milan", logo: "/lovable-uploads/8f4bbea6-85fc-451e-93da-15416813d362.png" },
     category: "Boys U12 Football",
     location: "Birmingham, ENG",
     time: "8:57 PM",
     date: "Apr 27"
   },
   {
-    team1: "Burnley FC",
-    team2: "Newcastle FC",
+    team1: { name: "Burnley FC", logo: "/lovable-uploads/1dc0acaf-a439-4151-aa5b-d1c6062e4728.png" },
+    team2: { name: "Newcastle FC", logo: "/lovable-uploads/b8a51730-da8b-48f6-8992-94d2997a5c6a.png" },
     category: "Boys U12 Football",
     location: "Burnley, ENG",
     time: "1:02 PM",
     date: "Apr 27"
   },
   {
-    team1: "AC Milan",
-    team2: "Wolverhampton Wanderers FC",
+    team1: { name: "AC Milan", logo: "/lovable-uploads/8f4bbea6-85fc-451e-93da-15416813d362.png" },
+    team2: { name: "Wolverhampton Wanderers FC", logo: "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png" },
     category: "Boys U12 Football",
     location: "Dublin, IRL",
     time: "8:59 PM",
     date: "Apr 26"
   },
   {
-    team1: "Shamrock Rovers FC",
-    team2: "Newcastle FC",
+    team1: { name: "Shamrock Rovers FC", logo: "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png" },
+    team2: { name: "Newcastle FC", logo: "/lovable-uploads/b8a51730-da8b-48f6-8992-94d2997a5c6a.png" },
     category: "Boys U12 Football",
     location: "Dublin, IRL",
     time: "8:19 PM",
@@ -59,7 +59,7 @@ const LiveMatches: React.FC = () => {
                 </div>
                 <div className="flex-1 bg-staydia-black rounded-lg p-6 border border-staydia-lightgray">
                   <h3 className="text-lg font-medium mb-4">Get full access to Staydia Sports</h3>
-                  <p className="text-gray-400 mb-6">Stream every match live and on demand from clubs across Ireland, Wales, and England.</p>
+                  <p className="text-gray-400 mb-6">Stream every match live and on demand from clubs across EU and UK.</p>
                   <Button 
                     className="w-full bg-staydia-gold text-staydia-black hover:bg-opacity-90"
                     onClick={() => window.open('https://staydiasports.com/', '_blank')}
@@ -75,11 +75,25 @@ const LiveMatches: React.FC = () => {
                 <div className="h-full">
                   <div className="bg-black rounded-lg overflow-hidden border border-staydia-lightgray h-full">
                     <div className="relative">
-                      <img 
-                        src={index === 0 ? "/lovable-uploads/e05d29b7-a543-4295-acfb-6e514a6edd53.png" : "/lovable-uploads/9b492957-6b80-4fda-88a3-906ca42d553a.png"} 
-                        alt={`${match.team1} vs ${match.team2}`}
-                        className="w-full h-48 object-cover"
-                      />
+                      <div className="w-full h-48 bg-[#1a202c] flex items-center justify-center relative">
+                        <div className="flex items-center justify-between w-full px-8">
+                          <div className="w-20 h-20">
+                            <img 
+                              src={match.team1.logo} 
+                              alt={match.team1.name}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <div className="text-2xl font-bold text-white">VS</div>
+                          <div className="w-20 h-20">
+                            <img 
+                              src={match.team2.logo} 
+                              alt={match.team2.name}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        </div>
+                      </div>
                       <div className="absolute top-3 left-3 bg-black/70 text-white text-xs py-1 px-3 rounded-full">
                         {match.category}
                       </div>
@@ -88,8 +102,8 @@ const LiveMatches: React.FC = () => {
                       </div>
                     </div>
                     <div className="p-4">
-                      <div className="font-medium text-white mb-1">{match.team1}</div>
-                      <div className="font-medium text-white mb-3">{match.team2}</div>
+                      <div className="font-medium text-white mb-1">{match.team1.name}</div>
+                      <div className="font-medium text-white mb-3">{match.team2.name}</div>
                       <div className="flex items-center text-xs text-gray-400">
                         <span>{match.location}</span>
                       </div>
