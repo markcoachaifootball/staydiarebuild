@@ -27,6 +27,14 @@ export const Features: React.FC = () => {
     }
   ];
 
+  const sports = [
+    { name: "Football", icon: "⚽" },
+    { name: "Rugby", icon: "🏉" },
+    { name: "Basketball", icon: "🏀" },
+    { name: "Hockey", icon: "🏑" },
+    { name: "Volleyball", icon: "🏐" }
+  ];
+
   return (
     <section id="features" className="py-24 bg-staydia-darkgray">
       <div className="staydia-container">
@@ -35,6 +43,20 @@ export const Features: React.FC = () => {
           <p className="section-subtitle">
             Join many other amateur and grassroots clubs already benefiting from our technology across EU & UK.
           </p>
+          
+          {/* Sports we work with */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+            {sports.map((sport, index) => (
+              <div 
+                key={index} 
+                className="flex items-center gap-2 bg-staydia-black px-4 py-2 rounded-full animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <span className="text-2xl">{sport.icon}</span>
+                <span className="text-white font-medium">{sport.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
