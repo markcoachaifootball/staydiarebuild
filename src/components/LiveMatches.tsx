@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Calendar, Play, Tv } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,17 +18,30 @@ const LiveMatches: React.FC = () => {
           {/* Featured Matches Card */}
           <Card className="bg-staydia-black border border-staydia-lightgray overflow-hidden h-[500px]">
             <div className="h-full flex flex-col">
-              <div className="bg-gradient-to-r from-[#1A1F2C] to-[#2C3545] p-8 h-[60%] flex flex-col justify-center">
-                <h3 className="text-3xl font-bold mb-4">Featured Matches</h3>
-                <p className="text-xl mb-4">Get full access to Staydia Sports</p>
-                <p className="text-gray-300 mb-6">Stream every match live and on demand from clubs across EU and UK.</p>
-                <Button 
-                  className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 w-fit"
-                  onClick={() => window.open('https://staydiasports.com/', '_blank')}
-                >
-                  <Play className="w-4 h-4 mr-2" />
-                  Start Free Trial
-                </Button>
+              <div 
+                className="p-8 h-[60%] flex flex-col justify-center relative"
+                style={{
+                  background: 'linear-gradient(135deg, #1a1f2c 0%, #2C3545 50%, #364153 100%)',
+                  boxShadow: 'inset 0 0 60px rgba(240, 190, 90, 0.1)'
+                }}
+              >
+                <div className="absolute top-0 left-0 w-full h-full opacity-10"
+                     style={{
+                       backgroundImage: 'radial-gradient(circle at 50% 50%, #F0BE5A 0%, transparent 60%)'
+                     }}
+                />
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-bold mb-4 text-gradient">Featured Matches</h3>
+                  <p className="text-xl mb-4">Get full access to Staydia Sports</p>
+                  <p className="text-gray-300 mb-6">Stream every match live and on demand from clubs across EU and UK.</p>
+                  <Button 
+                    className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 w-fit"
+                    onClick={() => window.open('https://staydiasports.com/', '_blank')}
+                  >
+                    <Play className="w-4 h-4 mr-2" />
+                    Start Free Trial
+                  </Button>
+                </div>
               </div>
               <div className="bg-[#111520] p-8 flex-grow flex items-center justify-center">
                 <img 
