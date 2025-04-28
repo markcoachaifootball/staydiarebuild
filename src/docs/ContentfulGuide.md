@@ -41,12 +41,23 @@ This guide will help you manage news articles on the Staydia Sports website usin
 3. When ready, click "Publish" to make it live on the website
 4. Your article will appear in the Newsroom section on the homepage and on the News page
 
-## Editing Existing Articles
+## Best Practices for News Articles
 
-1. Navigate to "Content" and find your article in the list
-2. Click on the article to open it
-3. Make your changes
-4. Click "Save" and then "Publish" to update the live version
+### SEO Optimization
+- Include relevant keywords in your title and summary
+- Use descriptive, keyword-rich slugs
+- Add alt text to all images
+
+### Content Categories
+- **NEWS**: Company announcements, partnerships, product releases
+- **FEATURE**: In-depth articles, case studies, thought leadership
+- **ANNOUNCEMENT**: Events, webinars, important updates
+
+### Formatting Tips
+- Use the rich text editor to format your content
+- Add headings, bullet points, and quotes for better readability
+- Include relevant links to other pages on our website
+- Keep paragraphs short (3-5 sentences maximum)
 
 ## Need Help?
 

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { contentfulClient, NewsArticle } from '@/utils/contentful';
+import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
 import { CalendarIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -15,14 +15,15 @@ const NewsArticlePage: React.FC = () => {
     const getArticle = async () => {
       try {
         setIsLoading(true);
-        const response = await contentfulClient.getEntries({
-          content_type: 'newsArticle',
-          'fields.slug': slug,
-          limit: 1,
-        });
-
-        if (response.items.length > 0) {
-          setArticle(response.items[0] as unknown as NewsArticle);
+        if (!slug) {
+          setError('Article not found');
+          return;
+        }
+        
+        const fetchedArticle = await fetchArticleBySlug(slug);
+        
+        if (fetchedArticle) {
+          setArticle(fetchedArticle);
           setError(null);
         } else {
           setError('Article not found');
