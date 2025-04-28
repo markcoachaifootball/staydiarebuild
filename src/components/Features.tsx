@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -31,8 +30,7 @@ export const Features: React.FC = () => {
     { name: "Football", icon: "⚽" },
     { name: "Rugby", icon: "🏉" },
     { name: "Basketball", icon: "🏀" },
-    { name: "Hockey", icon: "🏑" },
-    { name: "Volleyball", icon: "🏐" }
+    { name: "Hockey", icon: "🏑" }
   ];
 
   return (
