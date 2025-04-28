@@ -8,21 +8,45 @@ const sports = [
     name: 'Football',
     icon: Activity,
     description: 'Advanced analytics and streaming solutions for football clubs and leagues.',
+    features: [
+      'Automatic player tracking',
+      'Live match streaming',
+      'Highlight generation',
+      'Performance analytics'
+    ]
   },
   {
     name: 'Rugby',
     icon: Activity,
     description: 'Complete performance tracking and analysis tools for rugby teams.',
+    features: [
+      'Wide-angle coverage',
+      'Tackle analysis',
+      'Set piece review',
+      'Team statistics'
+    ]
   },
   {
     name: 'Hockey',
     icon: Target,
     description: 'Real-time stats and video analysis for hockey organizations.',
+    features: [
+      'High-speed tracking',
+      'Multiple camera angles',
+      'Play breakdown',
+      'Team reports'
+    ]
   },
   {
     name: 'Basketball',
     icon: BarChart3,
     description: 'Comprehensive basketball analytics and streaming platform.',
+    features: [
+      'Shot tracking',
+      'Player movement analysis',
+      'Game statistics',
+      'Highlight clips'
+    ]
   },
 ];
 
@@ -30,7 +54,7 @@ export const SportsGrid = () => {
   return (
     <section className="py-16 px-4 md:px-6 lg:px-8">
       <div className="staydia-container">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Sports We Work With</h1>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Sports We Work With</h2>
         <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Delivering cutting-edge sports technology solutions across multiple disciplines
         </p>
@@ -43,7 +67,15 @@ export const SportsGrid = () => {
                 <h3 className="text-xl font-semibold text-white">{sport.name}</h3>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400 text-center">{sport.description}</p>
+                <p className="text-gray-400 text-center mb-4">{sport.description}</p>
+                <ul className="space-y-2">
+                  {sport.features.map((feature) => (
+                    <li key={feature} className="text-gray-300 text-sm flex items-center">
+                      <span className="w-1.5 h-1.5 bg-staydia-gold rounded-full mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           ))}
