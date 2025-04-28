@@ -70,7 +70,7 @@ export const Features: React.FC = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg border border-staydia-lightgray">
               <img 
-                src="/lovable-uploads/d56a6b0f-8cc8-4fd8-98c8-e075077b775a.png" 
+                src="/lovable-uploads/afbf084c-fa36-4c9b-bce5-cff061e453c3.png" 
                 alt="Staydia streaming platform" 
                 className="w-full h-auto"
               />
