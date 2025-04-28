@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Football, Camera, Users } from "lucide-react";
+import { Camera, Users, Ball } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
-                <Football className="h-5 w-5 text-staydia-gold" />
+                <Ball className="h-5 w-5 text-staydia-gold" />
               </div>
               <p className="text-gray-300">All Sports Coverage</p>
             </div>
