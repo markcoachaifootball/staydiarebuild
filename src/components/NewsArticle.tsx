@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { contentfulClient, NewsArticle } from '@/utils/contentful';
@@ -15,7 +14,7 @@ const NewsArticlePage: React.FC = () => {
     const getArticle = async () => {
       try {
         setIsLoading(true);
-        const response = await contentfulClient.getEntries({
+        const response = await contentfulClient.getEntries<NewsArticle['fields']>({
           content_type: 'newsArticle',
           'fields.slug': slug,
           limit: 1,
