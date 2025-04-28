@@ -24,9 +24,9 @@ const Hero: React.FC = () => {
           muted
           playsInline
           className="w-full h-full object-cover opacity-50"
-          poster="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png"
+          poster="/lovable-uploads/3b03d28f-4820-40ea-8550-7ce9ffeb7ee7.png"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-excited-crowd-in-stadium-4839-large.mp4" type="video/mp4" />
+          <source src="/lovable-uploads/3b03d28f-4820-40ea-8550-7ce9ffeb7ee7.png" type="video/mp4" />
         </video>
       </div>
 
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
             <span className="text-staydia-gold">Sports Broadcasting</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Zero investment, automated camera systems with revenue sharing for amateur and grassroots clubs across Ireland and the UK.
+            Zero investment, automated camera systems with revenue sharing for amateur and grassroots clubs across EU and UK.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
