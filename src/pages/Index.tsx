@@ -6,7 +6,7 @@ import Features from '@/components/Features';
 import Footer from '@/components/Footer';
 import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
-import LiveMatches from '@/components/LiveMatches';
+import TrustedPartners from '@/components/TrustedPartners';
 
 const Index = () => {
   return (
@@ -14,7 +14,7 @@ const Index = () => {
       <Header />
       <Hero />
       <Features />
-      <LiveMatches />
+      <TrustedPartners />
       <Technology />
       <HowItWorks />
       <Footer />
