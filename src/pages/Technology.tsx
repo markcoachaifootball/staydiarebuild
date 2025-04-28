@@ -1,19 +1,19 @@
 
 import React from 'react';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Features from '@/components/Features';
+import { Technology as TechnologySection } from '@/components/Technology';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+const Technology = () => {
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
-      <Hero />
-      <Features />
+      <div className="pt-20">
+        <TechnologySection />
+      </div>
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Technology;

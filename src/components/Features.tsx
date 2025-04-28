@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Building, Users, ChartBar } from "lucide-react";
 
-const Features: React.FC = () => {
+export const Features: React.FC = () => {
   const features = [
     {
       title: "Enterprise-Grade Infrastructure",

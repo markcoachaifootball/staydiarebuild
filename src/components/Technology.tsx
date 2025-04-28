@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Technology: React.FC = () => {
+export const Technology: React.FC = () => {
   return (
     <section id="technology" className="py-24">
       <div className="staydia-container">

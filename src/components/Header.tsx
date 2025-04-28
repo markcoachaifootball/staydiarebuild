@@ -1,25 +1,27 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-staydia-black/80 backdrop-blur-lg border-b border-staydia-lightgray">
       <div className="staydia-container flex items-center justify-between h-20">
         <div className="flex items-center">
-          <img 
-            src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
-            alt="Staydia Sports Logo" 
-            className="h-8 w-auto"
-          />
+          <Link to="/">
+            <img 
+              src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
+              alt="Staydia Sports Logo" 
+              className="h-8 w-auto"
+            />
+          </Link>
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Features</a>
-          <a href="#technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Technology</a>
-          <a href="#how-it-works" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">How It Works</a>
-          <a href="#community" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Community</a>
+          <Link to="/features" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Features</Link>
+          <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Technology</Link>
+          <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Solutions</Link>
+          <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Contact</Link>
         </nav>
         
         <div className="flex items-center gap-4">
