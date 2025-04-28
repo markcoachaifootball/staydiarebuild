@@ -44,8 +44,8 @@ export const Technology: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 space-y-6">
+        <div>
+          <div className="space-y-6">
             <h2 className="section-title text-left">Innovative Broadcasting Technology</h2>
             <p className="text-gray-300 text-lg mb-8">
               Our smart camera systems and streaming platform make professional-quality sports coverage 
@@ -71,23 +71,6 @@ export const Technology: React.FC = () => {
             <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90">
               Book a Demo
             </Button>
-          </div>
-          
-          <div className="order-1 lg:order-2 animate-fade-in">
-            <div className="relative">
-              <div className="bg-gradient-to-tr from-staydia-gold/20 to-transparent absolute inset-0 rounded-2xl filter blur-xl"></div>
-              
-              <div className="relative z-10 rounded-lg overflow-hidden aspect-video shadow-xl">
-                <img 
-                  src="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" 
-                  alt="Staydia Broadcasting Platform" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-4 left-4 bg-black bg-opacity-80 p-3 rounded-lg border border-staydia-gold text-sm">
-                  Smart Broadcasting Platform
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
