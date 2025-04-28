@@ -16,7 +16,7 @@ const Contact = () => {
           </p>
           <form className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-2">Organization Name</label>
+              <label className="block text-sm font-medium mb-2">Organisation Name</label>
               <input 
                 type="text"
                 className="w-full p-3 bg-staydia-darkgray border border-staydia-lightgray rounded-lg focus:ring-2 focus:ring-staydia-gold"
