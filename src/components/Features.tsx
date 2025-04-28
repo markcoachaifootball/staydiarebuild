@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Camera, Banknote, Users, Play } from "lucide-react";
 
@@ -60,7 +59,7 @@ export const Features: React.FC = () => {
                 Give your fans a professional viewing experience with your club's branding, colors, and logo.
               </p>
               <ul className="space-y-3">
-                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Team and player stats"].map((item, i) => (
+                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Clipping tactical tool"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-staydia-gold rounded-full"></span>
                     <span className="text-gray-300">{item}</span>
