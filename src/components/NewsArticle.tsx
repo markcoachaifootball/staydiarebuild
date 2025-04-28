@@ -15,7 +15,7 @@ const NewsArticlePage: React.FC = () => {
     const getArticle = async () => {
       try {
         setIsLoading(true);
-        const response = await contentfulClient.getEntries<NewsArticle>({
+        const response = await contentfulClient.getEntries({
           content_type: 'newsArticle',
           'fields.slug': slug,
           limit: 1,
