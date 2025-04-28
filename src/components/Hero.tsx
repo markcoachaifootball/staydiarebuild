@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
@@ -18,16 +17,13 @@ const Hero: React.FC = () => {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-staydia-black via-staydia-black/95 to-transparent z-10"></div>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-50"
-          poster="/lovable-uploads/3b03d28f-4820-40ea-8550-7ce9ffeb7ee7.png"
-        >
-          <source src="/lovable-uploads/3b03d28f-4820-40ea-8550-7ce9ffeb7ee7.png" type="video/mp4" />
-        </video>
+        <div className="w-full h-full">
+          <img
+            src="/lovable-uploads/3b03d28f-4820-40ea-8550-7ce9ffeb7ee7.png"
+            alt="Background"
+            className="w-full h-full object-cover opacity-50"
+          />
+        </div>
       </div>
 
       <div className="staydia-container relative z-10">
