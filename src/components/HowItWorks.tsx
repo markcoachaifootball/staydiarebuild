@@ -1,7 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Check, Play } from "lucide-react";
 
 const HowItWorks: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayVideo = () => {
+    setIsPlaying(true);
+  };
+
   const steps = [
     {
       number: "01",
@@ -49,6 +56,41 @@ const HowItWorks: React.FC = () => {
               <p className="text-gray-400">{step.description}</p>
             </div>
           ))}
+        </div>
+        
+        {/* Video Section */}
+        <div className="mt-16 pt-16 border-t border-staydia-lightgray">
+          <h3 className="text-2xl font-semibold text-staydia-gold mb-6 inline-flex items-center">
+            <Play className="mr-2 h-5 w-5" />
+            Getting setup with Staydia Sports
+          </h3>
+          <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
+            {isPlaying ? (
+              <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1" 
+                title="Getting setup with Staydia Sports"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <div 
+                className="absolute inset-0 cursor-pointer group"
+                onClick={() => setIsPlaying(true)}
+              >
+                <img 
+                  src="https://img.youtube.com/vi/LlAfWzJP3co/maxresdefault.jpg" 
+                  alt="Getting setup with Staydia Sports Video Thumbnail" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
+                  <div className="w-20 h-20 bg-staydia-gold rounded-full flex items-center justify-center">
+                    <Play className="h-10 w-10 text-staydia-black" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         
         <div className="mt-20 bg-black/50 border border-staydia-lightgray p-8 md:p-12 rounded-xl text-center">
