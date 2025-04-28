@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Check, Play } from "lucide-react";
+import Newsroom from './Newsroom';
 
 const HowItWorks: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -92,6 +93,9 @@ const HowItWorks: React.FC = () => {
             )}
           </div>
         </div>
+        
+        {/* Newsroom Section */}
+        <Newsroom />
         
         <div className="mt-20 bg-black/50 border border-staydia-lightgray p-8 md:p-12 rounded-xl text-center">
           <h3 className="text-2xl md:text-3xl font-bold mb-6">Ready to elevate your sports broadcasting?</h3>

@@ -11,6 +11,8 @@ import Solutions from "./pages/Solutions";
 import Contact from "./pages/Contact";
 import Sports from "./pages/Sports";
 import AboutUs from "./pages/AboutUs";
+import News from "./pages/News";
+import NewsArticlePage from "./components/NewsArticle";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/sports" element={<Sports />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/news/:slug" element={<NewsArticlePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
