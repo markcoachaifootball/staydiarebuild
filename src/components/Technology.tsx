@@ -1,9 +1,15 @@
 
-import React from 'react';
-import { Check } from "lucide-react";
+import React, { useState } from 'react';
+import { Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Technology: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayVideo = () => {
+    setIsPlaying(true);
+  };
+
   return (
     <section id="technology" className="py-24">
       <div className="staydia-container">
@@ -39,11 +45,32 @@ export const Technology: React.FC = () => {
           <div className="order-1 lg:order-2 animate-fade-in">
             <div className="relative">
               <div className="bg-gradient-to-tr from-staydia-gold/20 to-transparent absolute inset-0 rounded-2xl filter blur-xl"></div>
-              <img 
-                src="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" 
-                alt="Staydia Broadcasting Platform" 
-                className="relative z-10 rounded-lg shadow-xl w-full object-cover"
-              />
+              
+              {isPlaying ? (
+                <div className="relative z-10 rounded-lg overflow-hidden aspect-video shadow-xl">
+                  <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
+                    title="Staydia Broadcasting Platform Demo"
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="relative z-10 rounded-lg overflow-hidden aspect-video shadow-xl cursor-pointer" onClick={handlePlayVideo}>
+                  <img 
+                    src="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" 
+                    alt="Staydia Broadcasting Platform" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-30 transition-all">
+                    <div className="w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center rounded-full bg-staydia-gold text-staydia-black">
+                      <Play className="h-8 w-8 lg:h-10 lg:w-10" />
+                    </div>
+                  </div>
+                </div>
+              )}
+              
               <div className="absolute bottom-4 left-4 bg-black bg-opacity-80 p-3 rounded-lg border border-staydia-gold text-sm">
                 Smart Broadcasting Platform
               </div>
