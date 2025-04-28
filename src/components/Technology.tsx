@@ -9,19 +9,20 @@ const Technology: React.FC = () => {
       <div className="staydia-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 space-y-6">
-            <h2 className="section-title text-left">AI-Powered Camera Technology</h2>
+            <h2 className="section-title text-left">Enterprise-Grade Broadcasting</h2>
             <p className="text-gray-300 text-lg mb-8">
-              Our innovative camera systems use advanced artificial intelligence to autonomously track the action, 
-              providing professional-quality broadcasts without the need for camera operators.
+              Our professional camera systems and streaming platform are designed for sports organizations 
+              that demand reliability, quality, and scalability.
             </p>
             
             <div className="space-y-4 mb-8">
               {[
-                "Automatically follows the ball and key action",
-                "Multiple angle capture for comprehensive coverage",
-                "Weatherproof design for any playing conditions",
-                "Simple installation at any sports venue",
-                "Seamless integration with our streaming platform"
+                "Automated multi-camera production system",
+                "Broadcast-quality live streaming capabilities",
+                "Customizable branded viewing experience",
+                "Advanced analytics and engagement metrics",
+                "Dedicated technical support and maintenance",
+                "Seamless integration with existing systems"
               ].map((item, i) => (
                 <div key={i} className="flex items-start">
                   <Check className="text-staydia-gold mr-2 mt-1 h-5 w-5 flex-shrink-0" />
@@ -31,7 +32,7 @@ const Technology: React.FC = () => {
             </div>
             
             <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90">
-              Schedule a Demo
+              Request Enterprise Demo
             </Button>
           </div>
           
@@ -39,12 +40,12 @@ const Technology: React.FC = () => {
             <div className="relative">
               <div className="bg-gradient-to-tr from-staydia-gold/20 to-transparent absolute inset-0 rounded-2xl filter blur-xl"></div>
               <img 
-                src="/lovable-uploads/75c4e662-1f6d-40da-b80e-d03748c43719.png" 
-                alt="Staydia AI Camera" 
+                src="/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" 
+                alt="Staydia Enterprise Platform" 
                 className="relative z-10 rounded-lg shadow-xl w-full object-cover"
               />
               <div className="absolute bottom-4 left-4 bg-black bg-opacity-80 p-3 rounded-lg border border-staydia-gold text-sm">
-                AI-powered tracking technology
+                Professional Broadcasting Platform
               </div>
             </div>
           </div>

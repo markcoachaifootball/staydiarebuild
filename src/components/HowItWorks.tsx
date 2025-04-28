@@ -5,23 +5,23 @@ const HowItWorks: React.FC = () => {
   const steps = [
     {
       number: "01",
-      title: "Sign Up",
-      description: "Create your Staydia account and choose a subscription plan that fits your needs."
+      title: "Consultation",
+      description: "Meet with our team to discuss your organization's specific broadcasting needs."
     },
     {
       number: "02",
-      title: "Select Your Teams",
-      description: "Follow your favorite teams and leagues to personalize your viewing experience."
+      title: "Custom Solution",
+      description: "Receive a tailored proposal designed to meet your venue and budget requirements."
     },
     {
       number: "03",
-      title: "Watch Anywhere",
-      description: "Stream games live or on-demand from any device, anytime, anywhere."
+      title: "Installation",
+      description: "Our technical team handles the complete setup and integration of all systems."
     },
     {
       number: "04",
-      title: "Share & Connect",
-      description: "Join the community to discuss games, share highlights and connect with other fans."
+      title: "Support",
+      description: "Ongoing dedicated support and maintenance to ensure optimal performance."
     }
   ];
 
@@ -29,9 +29,9 @@ const HowItWorks: React.FC = () => {
     <section id="how-it-works" className="py-24 bg-staydia-darkgray">
       <div className="staydia-container">
         <div className="text-center mb-16">
-          <h2 className="section-title">How It Works</h2>
+          <h2 className="section-title">Implementation Process</h2>
           <p className="section-subtitle">
-            Get started with Staydia in just a few simple steps and never miss another game.
+            A streamlined approach to elevating your organization's broadcasting capabilities.
           </p>
         </div>
         
@@ -52,11 +52,11 @@ const HowItWorks: React.FC = () => {
         </div>
         
         <div className="mt-20 bg-black/50 border border-staydia-lightgray p-8 md:p-12 rounded-xl text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-6">Ready to transform your sports viewing experience?</h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-6">Ready to elevate your sports broadcasting?</h3>
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of sports fans who are already enjoying unlimited access to their favorite games.
+            Join leading sports organizations already leveraging Staydia's enterprise solutions.
           </p>
-          <button className="btn-primary">Start Your Free Trial</button>
+          <button className="btn-primary">Schedule Consultation</button>
         </div>
       </div>
     </section>
