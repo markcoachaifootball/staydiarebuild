@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
@@ -19,8 +20,8 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-staydia-black via-staydia-black/95 to-transparent z-10"></div>
         <div className="w-full h-full">
           <img
-            src="/lovable-uploads/3b03d28f-4820-40ea-8550-7ce9ffeb7ee7.png"
-            alt="Background"
+            src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
+            alt="Can't make the game? Stay connected with Staydia Sports"
             className="w-full h-full object-cover opacity-50"
           />
         </div>
