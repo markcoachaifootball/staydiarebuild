@@ -32,7 +32,7 @@ export const Features: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="section-title">Why Clubs Choose Staydia</h2>
           <p className="section-subtitle">
-            Join hundreds of amateur and grassroots clubs already benefiting from our technology.
+            Join many other amateur and grassroots clubs already benefiting from our technology across EU & UK.
           </p>
         </div>
         
