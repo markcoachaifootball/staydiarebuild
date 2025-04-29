@@ -80,25 +80,6 @@ const Community: React.FC = () => {
             </a>
           ))}
         </div>
-
-        <div className="mt-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Share Your Moments</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Use <span className="text-staydia-gold">#StaydiaSports</span> on social media to share your game day experiences and get featured.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="aspect-square bg-staydia-lightgray rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-staydia-darkgray to-staydia-black flex items-center justify-center">
-                  <span className="text-xs text-gray-500">User Image {i + 1}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
       <Footer />
     </div>

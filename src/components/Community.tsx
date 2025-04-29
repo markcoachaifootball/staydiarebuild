@@ -46,21 +46,6 @@ const Community: React.FC = () => {
             Visit our Community Page
           </Link>
         </div>
-        
-        <div className="mt-24 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-8 max-w-2xl mx-auto">
-            Share your game day moments with 
-            <span className="text-staydia-gold"> #StaydiaSports</span>
-          </h3>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="aspect-square bg-staydia-lightgray rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-staydia-lightgray to-staydia-black"></div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
