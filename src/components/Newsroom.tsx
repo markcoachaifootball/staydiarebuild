@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarIcon, ArrowRightIcon, RefreshCw } from 'lucide-react';
+import { CalendarIcon, ArrowRightIcon } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -14,13 +13,13 @@ const Newsroom: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const getArticles = async (forceRefresh: boolean = false) => {
+  const getArticles = async () => {
     try {
       setIsLoading(true);
       console.log('Fetching news articles from Contentful...');
       
       // Pass preview mode to force latest content if needed
-      const newsArticles = await fetchNewsArticles(4, forceRefresh);
+      const newsArticles = await fetchNewsArticles(4);
       setArticles(newsArticles);
       setError(null);
       
@@ -31,9 +30,6 @@ const Newsroom: React.FC = () => {
           console.log('Loaded real Contentful articles', newsArticles);
         } else {
           console.log('Loaded example articles (no Contentful data found)');
-          if (forceRefresh) {
-            toast.warning("Could not find Contentful articles, showing examples");
-          }
         }
       }
     } catch (err) {
@@ -68,24 +64,11 @@ const Newsroom: React.FC = () => {
     }
   };
 
-  const handleRefresh = () => {
-    getArticles(true); // Force refresh with preview mode
-  };
-
   return (
     <div className="mt-16 pt-16 border-t border-staydia-lightgray" id="newsroom">
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-2xl font-bold text-staydia-gold">Latest News</h2>
         <div className="flex items-center gap-4">
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={handleRefresh}
-            className="flex items-center gap-2"
-          >
-            <RefreshCw className="h-4 w-4" />
-            Refresh
-          </Button>
           <Link to="/news">
             <Button variant="ghost" className="text-staydia-gold hover:text-white">
               View All <ArrowRightIcon className="ml-2 h-4 w-4" />
@@ -114,7 +97,7 @@ const Newsroom: React.FC = () => {
         <div className="text-center py-10 bg-staydia-black border border-staydia-lightgray rounded-xl">
           <p className="text-red-400">{error}</p>
           <Button 
-            onClick={handleRefresh} 
+            onClick={() => window.location.reload()} 
             className="mt-4 bg-staydia-gold text-staydia-black hover:bg-opacity-90"
           >
             Retry
