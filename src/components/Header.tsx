@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
-import { Linkedin, Youtube, Slack, Github } from 'lucide-react';
+import { Linkedin, Youtube, Slack, Github, Facebook, Instagram, Twitter } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -84,25 +83,25 @@ const Header: React.FC = () => {
                     </li>
                     <li className="row-span-1">
                       <div className="grid grid-cols-2 gap-2 mt-2">
-                        <a href="https://linkedin.com/company/staydia" target="_blank" rel="noopener noreferrer" 
+                        <a href="https://www.linkedin.com/company/staydiasports/people/" target="_blank" rel="noopener noreferrer" 
                           className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
                           <Linkedin className="h-4 w-4 text-staydia-gold" />
                           <span className="text-xs">LinkedIn</span>
                         </a>
-                        <a href="https://youtube.com/staydia" target="_blank" rel="noopener noreferrer" 
+                        <a href="https://youtube.com/@staydiasports-uy7rd?feature=shared" target="_blank" rel="noopener noreferrer" 
                           className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
                           <Youtube className="h-4 w-4 text-staydia-gold" />
                           <span className="text-xs">YouTube</span>
                         </a>
-                        <a href="https://github.com/staydia" target="_blank" rel="noopener noreferrer" 
+                        <a href="https://www.instagram.com/staydiasports/" target="_blank" rel="noopener noreferrer" 
                           className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
-                          <Github className="h-4 w-4 text-staydia-gold" />
-                          <span className="text-xs">GitHub</span>
+                          <Instagram className="h-4 w-4 text-staydia-gold" />
+                          <span className="text-xs">Instagram</span>
                         </a>
-                        <a href="https://staydia.slack.com" target="_blank" rel="noopener noreferrer" 
+                        <a href="https://www.facebook.com/share/161h1JreRk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" 
                           className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
-                          <Slack className="h-4 w-4 text-staydia-gold" />
-                          <span className="text-xs">Slack</span>
+                          <Facebook className="h-4 w-4 text-staydia-gold" />
+                          <span className="text-xs">Facebook</span>
                         </a>
                       </div>
                     </li>

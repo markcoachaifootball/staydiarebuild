@@ -2,19 +2,19 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Linkedin, Youtube, Github, Slack } from 'lucide-react';
+import { Linkedin, Youtube, Github, Slack, Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Community: React.FC = () => {
   const socialLinks = [
     { 
       name: "LinkedIn", 
-      url: "https://linkedin.com/company/staydia", 
+      url: "https://www.linkedin.com/company/staydiasports/people/", 
       icon: <Linkedin className="h-6 w-6" />,
       description: "Follow our company updates and job opportunities"
     },
     { 
       name: "YouTube", 
-      url: "https://youtube.com/staydia", 
+      url: "https://youtube.com/@staydiasports-uy7rd?feature=shared", 
       icon: <Youtube className="h-6 w-6" />,
       description: "Watch our tutorials, demos and event highlights"
     },
@@ -32,15 +32,21 @@ const Community: React.FC = () => {
     },
     { 
       name: "Twitter", 
-      url: "https://twitter.com/staydia", 
-      icon: <span className="text-xl font-bold">X</span>,
+      url: "https://x.com/staydiasports?s=21&t=Vfehwxe3dkb4DvSbxUA3Vg", 
+      icon: <Twitter className="h-6 w-6" />,
       description: "Get the latest news and updates"
     },
     { 
       name: "Instagram", 
-      url: "https://instagram.com/staydia", 
-      icon: <span className="text-xl font-bold">IG</span>,
+      url: "https://www.instagram.com/staydiasports/", 
+      icon: <Instagram className="h-6 w-6" />,
       description: "See our latest photos and stories"
+    },
+    { 
+      name: "Facebook", 
+      url: "https://www.facebook.com/share/161h1JreRk/?mibextid=wwXIfr", 
+      icon: <Facebook className="h-6 w-6" />,
+      description: "Join our Facebook community"
     }
   ];
 

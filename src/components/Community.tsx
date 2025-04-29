@@ -1,14 +1,15 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Linkedin, Youtube, Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Community: React.FC = () => {
   const socialLinks = [
-    { name: "Instagram", url: "https://instagram.com/staydia" },
-    { name: "Twitter", url: "https://twitter.com/staydia" },
-    { name: "Facebook", url: "https://facebook.com/staydiasports" },
-    { name: "YouTube", url: "https://youtube.com/staydia" },
-    { name: "LinkedIn", url: "https://linkedin.com/company/staydia" },
-    { name: "TikTok", url: "https://tiktok.com/@staydia" }
+    { name: "Instagram", icon: <Instagram className="h-6 w-6" />, url: "https://www.instagram.com/staydiasports/" },
+    { name: "Twitter", icon: <Twitter className="h-6 w-6" />, url: "https://x.com/staydiasports?s=21&t=Vfehwxe3dkb4DvSbxUA3Vg" },
+    { name: "Facebook", icon: <Facebook className="h-6 w-6" />, url: "https://www.facebook.com/share/161h1JreRk/?mibextid=wwXIfr" },
+    { name: "YouTube", icon: <Youtube className="h-6 w-6" />, url: "https://youtube.com/@staydiasports-uy7rd?feature=shared" },
+    { name: "LinkedIn", icon: <Linkedin className="h-6 w-6" />, url: "https://www.linkedin.com/company/staydiasports/people/" }
   ];
 
   return (
@@ -21,7 +22,7 @@ const Community: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {socialLinks.map((social, index) => (
             <a 
               key={index}
@@ -31,11 +32,19 @@ const Community: React.FC = () => {
               className="bg-staydia-darkgray hover:bg-staydia-lightgray border border-staydia-lightgray rounded-xl p-6 text-center transition-all duration-200 card-hover"
             >
               <div className="w-12 h-12 mx-auto mb-4 bg-staydia-gold rounded-full flex items-center justify-center">
-                <SocialIcon name={social.name} />
+                <div className="text-staydia-black">
+                  {social.icon}
+                </div>
               </div>
               <h3 className="font-medium">{social.name}</h3>
             </a>
           ))}
+        </div>
+        
+        <div className="mt-12 text-center">
+          <Link to="/community" className="inline-block px-8 py-3 bg-staydia-gold text-staydia-black rounded-full font-medium hover:bg-opacity-90 transition-colors">
+            Visit our Community Page
+          </Link>
         </div>
         
         <div className="mt-24 text-center">
@@ -54,16 +63,6 @@ const Community: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const SocialIcon: React.FC<{ name: string }> = ({ name }) => {
-  // This is a simple placeholder for social icons
-  // In a real implementation, you would import specific icons for each platform
-  return (
-    <div className="text-staydia-black font-bold text-sm">
-      {name.charAt(0)}
-    </div>
   );
 };
 
