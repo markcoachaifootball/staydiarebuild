@@ -1,7 +1,7 @@
 
 import React from 'react';
 import SportIcon from './SportIcon';
-import { Rugby, Dumbbell } from 'lucide-react';
+import { Dumbbell } from 'lucide-react';
 
 export const FootballIcon = () => (
   <SportIcon 
@@ -19,7 +19,18 @@ export const FootballIcon = () => (
 
 export const RugbyIcon = () => (
   <SportIcon 
-    icon={<Rugby className="h-4 w-4 text-staydia-gold" />}
+    icon={
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 text-staydia-gold">
+        <ellipse cx="12" cy="12" rx="9" ry="6" />
+        <path d="M7 10c-.7 0-1.5.1-2.3.3a4.3 4.3 0 0 0-2.4 1.9c-.3.5-.3 1.1-.3 1.8 0 .7 0 1.3.3 1.8.3.9 1 1.4 1.7 1.7.7.3 1.7.5 2.7.5" />
+        <path d="M7 14h1" />
+        <path d="M17 10c.7 0 1.5.1 2.3.3.7.2 1.4.6 1.9 1.2.3.5.8 1.3.8 2.5 0 .7 0 1.3-.3 1.8-.3.9-1 1.4-1.7 1.7-.7.3-1.7.5-2.7.5" />
+        <path d="M17 14h-1" />
+        <path d="M12 6v12" />
+        <path d="M8 9h8" />
+        <path d="M8 15h8" />
+      </svg>
+    }
   />
 );
 
