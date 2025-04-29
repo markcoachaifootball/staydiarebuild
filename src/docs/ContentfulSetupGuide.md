@@ -24,14 +24,32 @@ This guide will help you set up and manage the Contentful CMS for the Staydia Sp
 4. Set the slug field to be unique
 5. Set categories as a dropdown with predefined options (e.g., NEWS, FEATURE, ANNOUNCEMENT)
 
-## API Keys
+## API Keys & Environment Variables Setup
 
 1. Go to Settings > API keys
 2. Create a new API key pair
 3. Copy the "Space ID" and "Content Delivery API - access token"
-4. Add these values to your project's environment variables:
-   - VITE_CONTENTFUL_SPACE_ID
-   - VITE_CONTENTFUL_ACCESS_TOKEN
+4. Add these values to your project using one of these methods:
+
+   **For Local Development in Lovable:**
+   - Create a `.env` file in the root directory with:
+     ```
+     VITE_CONTENTFUL_SPACE_ID=your_space_id_here
+     VITE_CONTENTFUL_ACCESS_TOKEN=your_access_token_here
+     ```
+   - Note: The `.env` file is ignored by git and should not be committed
+
+   **For Testing in the Lovable Editor:**
+   - You can temporarily add the values directly in the `src/utils/contentful.ts` file:
+     ```typescript
+     // Temporary for development only - remove before production
+     const spaceId = 'your_space_id_here'; 
+     const accessToken = 'your_access_token_here';
+     ```
+   
+   **For Production Deployment:**
+   - When deploying your application, you'll need to set these environment variables in your hosting platform
+   - For Lovable's hosting, contact support to add these variables to your deployment
 
 ## Managing User Permissions
 
