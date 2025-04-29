@@ -70,7 +70,7 @@ const ClubTestimonials: React.FC = () => {
 
   return (
     <div className="py-12 border-t border-staydia-lightgray">
-      <h3 className="text-2xl font-semibold text-staydia-gold mb-8">Trusted by Clubs Across Europe</h3>
+      <h3 className="text-2xl font-semibold text-staydia-gold mb-8">Trusted Partners</h3>
       
       <Carousel 
         className="w-full"
