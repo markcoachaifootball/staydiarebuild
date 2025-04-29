@@ -30,8 +30,9 @@ export interface NewsArticle {
 }
 
 // Contentful client setup with credentials
+// Updated from the provided code sample
 const spaceId = 'qo4q4xk8vua7';
-const accessToken = 'UgwiWiX1rnUpxqbjMdTqUgJPj6wl4aRqzlUYaBjI958';
+const accessToken = '9r0ya2DRB2KRdn8Jqr2xQpu8n8mBC56Mz0Dn7Q-1TzU';
 const previewAccessToken = 'kJwRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU';
 
 // Check if environment variables are available (for future flexibility)
@@ -42,19 +43,25 @@ const envAccessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
 export const contentfulClient = createClient({
   space: envSpaceId || spaceId,
   accessToken: envAccessToken || accessToken,
+  environment: 'master', // Explicitly set the environment as specified in the sample
 });
 
 // Create preview client for draft content
 export const previewClient = createClient({
   space: envSpaceId || spaceId,
   accessToken: previewAccessToken,
-  host: 'preview.contentful.com'
+  host: 'preview.contentful.com',
+  environment: 'master', // Explicitly set the environment
 });
 
 // Function to fetch news articles
 export async function fetchNewsArticles(limit: number = 4, preview: boolean = false): Promise<NewsArticle[]> {
   try {
     const client = preview ? previewClient : contentfulClient;
+    
+    console.log('Fetching news articles from Contentful...');
+    console.log('Using space ID:', envSpaceId || spaceId);
+    console.log('Using access token:', accessToken.substring(0, 5) + '...');
     
     // First, let's try to list all available content types to debug
     const contentTypes = await client.getContentTypes();
@@ -65,6 +72,14 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
       limit: 10,
     });
     console.log('All available entries:', allEntries);
+    
+    // Try to get a specific entry mentioned in the code sample
+    try {
+      const specificEntry = await client.getEntry('wYpXUJAU5yTq06YiqA95o');
+      console.log('Specific entry from code sample:', specificEntry);
+    } catch (err) {
+      console.log('Could not find the specific entry mentioned in the code sample:', err);
+    }
     
     // If we found entries, extract the content type from the first one
     let contentTypeName = 'article'; // Default fallback
