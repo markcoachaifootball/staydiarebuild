@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ClubTestimonials from './ClubTestimonials';
 
 export const Technology: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -45,6 +46,9 @@ export const Technology: React.FC = () => {
             </Button>
           </div>
         </div>
+
+        {/* Club Testimonials Slider */}
+        <ClubTestimonials />
 
         {/* Video Section with more seamless heading */}
         <div className="mt-12 border-t border-staydia-lightgray pt-12">
