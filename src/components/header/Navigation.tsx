@@ -14,12 +14,16 @@ import SocialLinksMenu from './SocialLinks';
 
 const Navigation: React.FC = () => {
   return (
-    <nav className="hidden md:flex items-center justify-between w-full">
-      <div className="flex items-center space-x-12">
-        <NavigationMenu className="z-50">
+    <nav className="hidden md:flex items-center">
+      <div className="flex items-center space-x-8">
+        <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
+          Solutions
+        </Link>
+        
+        <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0">Resources</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium px-0 py-1">Resources</NavigationMenuTrigger>
               <NavigationMenuContent className="w-[320px]">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
                   <ResourceLinksMenu />
@@ -29,10 +33,10 @@ const Navigation: React.FC = () => {
           </NavigationMenuList>
         </NavigationMenu>
         
-        <NavigationMenu className="z-50">
+        <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0">Community</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium px-0 py-1">Community</NavigationMenuTrigger>
               <NavigationMenuContent className="w-[320px]">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
                   <li className="row-span-1">
@@ -57,11 +61,14 @@ const Navigation: React.FC = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-      </div>
-      
-      <div className="flex items-center space-x-12">
-        <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">About Us</Link>
-        <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">Contact</Link>
+        
+        <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
+          About Us
+        </Link>
+        
+        <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
+          Contact
+        </Link>
       </div>
     </nav>
   );
