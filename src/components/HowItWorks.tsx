@@ -102,7 +102,7 @@ const HowItWorks: React.FC = () => {
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
             Join leading sports organisations already leveraging Staydia Sports Innovative AI solutions.
           </p>
-          <button className="btn-primary">Schedule Consultation</button>
+          <button className="btn-primary">Book Demo</button>
         </div>
       </div>
     </section>
