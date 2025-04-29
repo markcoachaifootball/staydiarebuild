@@ -7,7 +7,7 @@ const sports = [
   {
     name: 'Football',
     icon: Activity,
-    description: 'Advanced analytics and streaming solutions for football clubs and leagues.',
+    description: 'Staydia Sports for Football',
     features: [
       'Automatic player tracking',
       'Live match streaming',
@@ -18,7 +18,7 @@ const sports = [
   {
     name: 'Rugby',
     icon: Activity,
-    description: 'Complete performance tracking and analysis tools for rugby teams.',
+    description: 'Staydia Sports for Rugby',
     features: [
       'Wide-angle coverage',
       'Tackle analysis',
@@ -29,7 +29,7 @@ const sports = [
   {
     name: 'Hockey',
     icon: Target,
-    description: 'Real-time stats and video analysis for hockey organizations.',
+    description: 'Staydia Sports for Hockey',
     features: [
       'High-speed tracking',
       'Multiple camera angles',
@@ -40,7 +40,7 @@ const sports = [
   {
     name: 'Basketball',
     icon: BarChart3,
-    description: 'Comprehensive basketball analytics and streaming platform.',
+    description: 'Staydia Sports for Basketball',
     features: [
       'Shot tracking',
       'Player movement analysis',
