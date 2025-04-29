@@ -9,10 +9,10 @@ import { FootballIcon, RugbyIcon, HockeyIcon, BasketballIcon } from './SportsIco
 export const resourceLinks = [
   { name: "For Clubs", description: "Solutions for sports clubs", path: "/solutions" },
   { name: "For Leagues", description: "Products for leagues and competitions", path: "/leagues" },
-  { name: "Football", description: "Football analytics and data", path: "/sports/football", icon: <FootballIcon /> },
-  { name: "Rugby", description: "Rugby performance tracking", path: "/sports/rugby", icon: <RugbyIcon /> },
-  { name: "Hockey", description: "Hockey analysis solutions", path: "/sports/hockey", icon: <HockeyIcon /> },
-  { name: "Basketball", description: "Basketball statistics and tracking", path: "/sports/basketball", icon: <BasketballIcon /> }
+  { name: "Football", description: "Staydia Sports for Football", path: "/sports/football", icon: <FootballIcon /> },
+  { name: "Rugby", description: "Staydia Sports for Rugby", path: "/sports/rugby", icon: <RugbyIcon /> },
+  { name: "Hockey", description: "Staydia Sports for Hockey", path: "/sports/hockey", icon: <HockeyIcon /> },
+  { name: "Basketball", description: "Staydia Sports for Basketball", path: "/sports/basketball", icon: <BasketballIcon /> }
 ];
 
 interface ResourceLinkItemProps {
