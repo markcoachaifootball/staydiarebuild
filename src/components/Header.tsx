@@ -1,8 +1,9 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
-import { Linkedin, Youtube, Slack, Github, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Linkedin, Youtube, Facebook, Instagram, Twitter } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,6 +22,14 @@ import {
 
 const Header: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
+  const socialLinks = [
+    { name: "Instagram", icon: <Instagram className="h-4 w-4 text-staydia-gold" />, url: "https://www.instagram.com/staydiasports/" },
+    { name: "Twitter", icon: <Twitter className="h-4 w-4 text-staydia-gold" />, url: "https://x.com/staydiasports?s=21&t=Vfehwxe3dkb4DvSbxUA3Vg" },
+    { name: "Facebook", icon: <Facebook className="h-4 w-4 text-staydia-gold" />, url: "https://www.facebook.com/share/161h1JreRk/?mibextid=wwXIfr" },
+    { name: "YouTube", icon: <Youtube className="h-4 w-4 text-staydia-gold" />, url: "https://youtube.com/@staydiasports-uy7rd?feature=shared" },
+    { name: "LinkedIn", icon: <Linkedin className="h-4 w-4 text-staydia-gold" />, url: "https://www.linkedin.com/company/staydiasports/people/" }
+  ];
   
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-staydia-black/80 backdrop-blur-lg border-b border-staydia-lightgray">
@@ -65,46 +74,26 @@ const Header: React.FC = () => {
                         </Link>
                       </NavigationMenuLink>
                     </li>
-                    <li className="row-span-1">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          to="/community"
-                          className="flex items-center p-3 space-x-3 rounded-md hover:bg-staydia-darkgray group"
-                        >
-                          <div className="flex-shrink-0 w-8 h-8 bg-staydia-gold flex items-center justify-center rounded-full">
-                            <span className="text-staydia-black font-bold">C</span>
-                          </div>
-                          <div>
-                            <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">Social Media</h4>
-                            <p className="text-xs text-gray-400">Join our online community</p>
-                          </div>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="row-span-1">
-                      <div className="grid grid-cols-2 gap-2 mt-2">
-                        <a href="https://www.linkedin.com/company/staydiasports/people/" target="_blank" rel="noopener noreferrer" 
-                          className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
-                          <Linkedin className="h-4 w-4 text-staydia-gold" />
-                          <span className="text-xs">LinkedIn</span>
-                        </a>
-                        <a href="https://youtube.com/@staydiasports-uy7rd?feature=shared" target="_blank" rel="noopener noreferrer" 
-                          className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
-                          <Youtube className="h-4 w-4 text-staydia-gold" />
-                          <span className="text-xs">YouTube</span>
-                        </a>
-                        <a href="https://www.instagram.com/staydiasports/" target="_blank" rel="noopener noreferrer" 
-                          className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
-                          <Instagram className="h-4 w-4 text-staydia-gold" />
-                          <span className="text-xs">Instagram</span>
-                        </a>
-                        <a href="https://www.facebook.com/share/161h1JreRk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" 
-                          className="flex items-center p-2 space-x-2 rounded-md hover:bg-staydia-darkgray">
-                          <Facebook className="h-4 w-4 text-staydia-gold" />
-                          <span className="text-xs">Facebook</span>
-                        </a>
-                      </div>
-                    </li>
+                    {socialLinks.map((social, index) => (
+                      <li className="row-span-1" key={index}>
+                        <NavigationMenuLink asChild>
+                          <a
+                            href={social.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center p-3 space-x-3 rounded-md hover:bg-staydia-darkgray group"
+                          >
+                            <div className="flex items-center justify-center">
+                              {social.icon}
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">{social.name}</h4>
+                              <p className="text-xs text-gray-400">Follow us on {social.name}</p>
+                            </div>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
