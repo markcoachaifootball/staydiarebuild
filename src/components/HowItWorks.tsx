@@ -24,7 +24,7 @@ const HowItWorks: React.FC = () => {
     {
       number: "03",
       title: "Installation",
-      description: "Our technical team handles the complete setup and integration of all systems."
+      description: "Our technical team handles the complete setup and integration of our AI cameras for clubs."
     },
     {
       number: "04",
