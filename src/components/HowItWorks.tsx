@@ -2,9 +2,18 @@
 import React, { useState } from 'react';
 import { Check, Play } from "lucide-react";
 import Newsroom from './Newsroom';
+import DemoForm from './DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const HowItWorks: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handlePlayVideo = () => {
     setIsPlaying(true);
@@ -102,7 +111,17 @@ const HowItWorks: React.FC = () => {
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
             Join leading sports organisations already leveraging Staydia Sports Innovative AI solutions.
           </p>
-          <button className="btn-primary">Book Demo</button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <button className="btn-primary">Book Demo</button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[500px]">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+              </DialogHeader>
+              <DemoForm />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>
