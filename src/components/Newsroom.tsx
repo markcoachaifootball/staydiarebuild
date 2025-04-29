@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarIcon, ArrowRightIcon } from 'lucide-react';
+import { CalendarIcon, ArrowRightIcon, FileText } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { toast } from '@/components/ui/sonner';
 
 const Newsroom: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -20,9 +21,15 @@ const Newsroom: React.FC = () => {
         const newsArticles = await fetchNewsArticles();
         setArticles(newsArticles);
         setError(null);
+        
+        // Show toast if articles are fetched from Contentful
+        if (newsArticles.length > 0 && !newsArticles[0].sys.id.startsWith('example')) {
+          toast.success("Latest articles loaded from Contentful");
+        }
       } catch (err) {
         setError('Failed to load news articles. Please try again later.');
         console.error('Error loading news articles:', err);
+        toast.error("Failed to load news articles");
       } finally {
         setIsLoading(false);
       }
@@ -42,10 +49,16 @@ const Newsroom: React.FC = () => {
 
   const getImageUrl = (article: NewsArticle) => {
     try {
-      return `https:${article.fields.featuredImage.fields.file.url}`;
+      return article.fields.featuredImage?.fields.file?.url
+        ? `https:${article.fields.featuredImage.fields.file.url}`
+        : 'https://via.placeholder.com/600x400?text=Staydia+News';
     } catch (err) {
       return 'https://via.placeholder.com/600x400?text=Staydia+News';
     }
+  };
+
+  const isContentfulArticle = (article: NewsArticle) => {
+    return !article.sys.id.startsWith('example');
   };
 
   return (
@@ -101,6 +114,12 @@ const Newsroom: React.FC = () => {
                   <div className="absolute top-0 left-0 bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold">
                     {article.fields.category}
                   </div>
+                  {isContentfulArticle(article) && (
+                    <div className="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold flex items-center">
+                      <FileText className="h-3 w-3 mr-1" />
+                      Contentful
+                    </div>
+                  )}
                 </div>
                 <CardHeader className="pb-2">
                   <div className="flex items-center text-gray-400 text-xs mb-2">
