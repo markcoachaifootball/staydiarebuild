@@ -29,30 +29,35 @@ export interface NewsArticle {
   fields: NewsArticleFields;
 }
 
-// Contentful client setup with proper error handling for missing environment variables
-const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
-const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
+// Contentful client setup with credentials
+// Using the values provided by the user
+const spaceId = 'qo4q4xk8vua7';
+const accessToken = 'UgwiWiX1rnUpxqbjMdTqUgJPj6wl4aRqzlUYaBjI958';
+const previewAccessToken = 'kJwRInLWzRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU';
 
-// Validate environment variables
-if (!spaceId || !accessToken) {
-  console.error('Missing Contentful environment variables. Please set VITE_CONTENTFUL_SPACE_ID and VITE_CONTENTFUL_ACCESS_TOKEN.');
-}
+// Check if environment variables are available (for future flexibility)
+const envSpaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
+const envAccessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
 
-// Create client with default values to prevent runtime errors
+// Create client with the provided values or fallback to environment variables if available
 export const contentfulClient = createClient({
-  space: spaceId || 'placeholder-space-id',
-  accessToken: accessToken || 'placeholder-access-token',
+  space: envSpaceId || spaceId,
+  accessToken: envAccessToken || accessToken,
+});
+
+// Create preview client for draft content
+export const previewClient = createClient({
+  space: envSpaceId || spaceId,
+  accessToken: previewAccessToken,
+  host: 'preview.contentful.com'
 });
 
 // Function to fetch news articles
-export async function fetchNewsArticles(limit: number = 4): Promise<NewsArticle[]> {
+export async function fetchNewsArticles(limit: number = 4, preview: boolean = false): Promise<NewsArticle[]> {
   try {
-    if (!spaceId || !accessToken) {
-      console.error('Contentful credentials are not set properly.');
-      return getExampleArticles(limit); // Use example articles when credentials are missing
-    }
+    const client = preview ? previewClient : contentfulClient;
     
-    const response = await contentfulClient.getEntries({
+    const response = await client.getEntries({
       content_type: 'newsArticle',
       order: ['-fields.date'],
       limit,
@@ -127,14 +132,11 @@ function getExampleArticles(limit: number): NewsArticle[] {
 }
 
 // Function to fetch a specific news article by slug
-export async function fetchArticleBySlug(slug: string): Promise<NewsArticle | null> {
+export async function fetchArticleBySlug(slug: string, preview: boolean = false): Promise<NewsArticle | null> {
   try {
-    if (!spaceId || !accessToken) {
-      console.error('Contentful credentials are not set properly.');
-      return getExampleArticleBySlug(slug); // Use example articles when credentials are missing
-    }
+    const client = preview ? previewClient : contentfulClient;
     
-    const response = await contentfulClient.getEntries({
+    const response = await client.getEntries({
       content_type: 'newsArticle',
       'fields.slug': slug,
       limit: 1,

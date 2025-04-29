@@ -29,27 +29,21 @@ This guide will help you set up and manage the Contentful CMS for the Staydia Sp
 1. Go to Settings > API keys
 2. Create a new API key pair
 3. Copy the "Space ID" and "Content Delivery API - access token"
-4. Add these values to your project using one of these methods:
 
-   **For Local Development in Lovable:**
-   - Create a `.env` file in the root directory with:
-     ```
-     VITE_CONTENTFUL_SPACE_ID=your_space_id_here
-     VITE_CONTENTFUL_ACCESS_TOKEN=your_access_token_here
-     ```
-   - Note: The `.env` file is ignored by git and should not be committed
+**Note:** This project has been configured with the following Contentful credentials:
+- Space ID: qo4q4xk8vua7
+- Content Delivery API access token: UgwiWiX1rnUpxqbjMdTqUgJPj6wl4aRqzlUYaBjI958
+- Content Preview API access token: kJwRInLWzRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU
 
-   **For Testing in the Lovable Editor:**
-   - You can temporarily add the values directly in the `src/utils/contentful.ts` file:
-     ```typescript
-     // Temporary for development only - remove before production
-     const spaceId = 'your_space_id_here'; 
-     const accessToken = 'your_access_token_here';
-     ```
-   
-   **For Production Deployment:**
-   - When deploying your application, you'll need to set these environment variables in your hosting platform
-   - For Lovable's hosting, contact support to add these variables to your deployment
+These credentials are stored directly in the `src/utils/contentful.ts` file for demonstration purposes. In a production environment, you should use environment variables instead.
+
+For adding your own credentials:
+1. If you need to use different credentials, update the values in `src/utils/contentful.ts`.
+2. For local development outside of Lovable, you can create a `.env` file with:
+   ```
+   VITE_CONTENTFUL_SPACE_ID=your_space_id_here
+   VITE_CONTENTFUL_ACCESS_TOKEN=your_access_token_here
+   ```
 
 ## Managing User Permissions
 
