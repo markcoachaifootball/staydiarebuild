@@ -15,20 +15,19 @@ export const Technology: React.FC = () => {
       <div className="staydia-container">
         <div className="mb-16">
           <div className="space-y-6">
-            <h2 className="section-title text-left">Innovative Broadcasting Technology</h2>
+            <h2 className="section-title text-left">Revolutionising Sports Streaming with AI</h2>
             <p className="text-gray-300 text-lg mb-8">
-              Our smart camera systems and streaming platform make professional-quality sports coverage 
-              accessible to teams and leagues at every level.
+              Staydia Sports brings professional-quality broadcasting to clubs and leagues of all levels-effortlessly and at no cost.
             </p>
             
             <div className="space-y-4 mb-8">
               {[
-                "Smart multi-camera production system",
-                "High-quality live streaming platform",
-                "Custom branded viewing experience",
-                "Real-time analytics dashboard",
-                "Intelligent match highlights",
-                "Social media content automation"
+                "AI-Powered Smart Camera System – Fully automated, fixed cameras that capture every game without a cameraman.",
+                "High-Quality Livestreaming Platform – Stream matches live or on-demand to fans anywhere.",
+                "Custom Club-Branded Experience – Your club's colors, logos, and identity front and center for fans.",
+                "Revenue Generation – Create new income streams through fan subscriptions and in-stream sponsorship opportunities.",
+                "Highlights & Tactical Clipping – Tactical & highlight clips created with easy to use tool.",
+                "Seamless Social Media Integration – Instantly create and share video content across your club's channels."
               ].map((item, i) => (
                 <div key={i} className="flex items-start">
                   <Check className="text-staydia-gold mr-2 mt-1 h-5 w-5 flex-shrink-0" />
@@ -36,6 +35,10 @@ export const Technology: React.FC = () => {
                 </div>
               ))}
             </div>
+            
+            <p className="text-staydia-gold text-lg font-medium mb-8">
+              Staydia Sports: Where technology powers your club's growth.
+            </p>
             
             <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 mb-12">
               Book a Demo
