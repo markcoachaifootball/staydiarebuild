@@ -1,9 +1,19 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
+import DemoForm from './DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Header: React.FC = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-staydia-black/80 backdrop-blur-lg border-b border-staydia-lightgray">
       <div className="staydia-container flex items-center justify-between h-20">
@@ -32,9 +42,19 @@ const Header: React.FC = () => {
         </nav>
         
         <div className="flex items-center">
-          <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium">
-            Book Club Demo
-          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium">
+                Book Demo
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[500px]">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+              </DialogHeader>
+              <DemoForm />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </header>
