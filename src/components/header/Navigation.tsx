@@ -60,8 +60,8 @@ const Navigation: React.FC = () => {
       </div>
       
       <div className="flex items-center space-x-8">
-        <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">About Us</Link>
-        <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Contact</Link>
+        <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-sm">About Us</Link>
+        <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-sm">Contact</Link>
       </div>
     </nav>
   );
