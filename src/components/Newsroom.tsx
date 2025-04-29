@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
@@ -6,7 +7,6 @@ import { CalendarIcon, ArrowRightIcon } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { toast } from '@/components/ui/sonner';
 
 const Newsroom: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -23,10 +23,8 @@ const Newsroom: React.FC = () => {
       setArticles(newsArticles);
       setError(null);
       
-      // Show toast if articles are fetched from Contentful
       if (newsArticles.length > 0) {
         if (!newsArticles[0].sys.id.startsWith('example')) {
-          toast.success("Latest articles loaded from Contentful");
           console.log('Loaded real Contentful articles', newsArticles);
         } else {
           console.log('Loaded example articles (no Contentful data found)');
@@ -35,7 +33,6 @@ const Newsroom: React.FC = () => {
     } catch (err) {
       setError('Failed to load news articles. Please try again later.');
       console.error('Error loading news articles:', err);
-      toast.error("Failed to load news articles");
     } finally {
       setIsLoading(false);
     }

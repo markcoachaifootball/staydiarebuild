@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { toast } from '@/components/ui/sonner';
 
 const ContentfulTest: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -15,13 +14,13 @@ const ContentfulTest: React.FC = () => {
     try {
       setIsLoading(true);
       setError(null);
+      setIsPreview(preview);
       const data = await fetchNewsArticles(3, preview);
       setArticles(data);
-      toast.success(`Successfully fetched ${preview ? 'preview' : 'published'} content from Contentful`);
+      console.log(`Successfully fetched ${preview ? 'preview' : 'published'} content from Contentful`);
     } catch (err) {
       console.error('Error fetching Contentful data:', err);
       setError('Failed to fetch data from Contentful');
-      toast.error('Failed to fetch data from Contentful');
     } finally {
       setIsLoading(false);
     }

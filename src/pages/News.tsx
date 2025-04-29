@@ -9,7 +9,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { CalendarIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { toast } from '@/components/ui/sonner';
 
 const News: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -23,15 +22,9 @@ const News: React.FC = () => {
         const newsArticles = await fetchNewsArticles(12); // Get more articles for the full page
         setArticles(newsArticles);
         setError(null);
-        
-        // Show toast if articles are fetched from Contentful
-        if (newsArticles.length > 0 && !newsArticles[0].sys.id.startsWith('example')) {
-          toast.success("Articles loaded from Contentful");
-        }
       } catch (err) {
         setError('Failed to load news articles. Please try again later.');
         console.error('Error loading news articles:', err);
-        toast.error("Failed to load news articles");
       } finally {
         setIsLoading(false);
       }
