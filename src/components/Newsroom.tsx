@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarIcon, ArrowRightIcon } from 'lucide-react';
+import { CalendarIcon, ArrowRightIcon, NewspaperIcon } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -18,8 +18,8 @@ const Newsroom: React.FC = () => {
       setIsLoading(true);
       console.log('Fetching news articles from Contentful...');
       
-      // Pass preview mode to force latest content if needed
-      const newsArticles = await fetchNewsArticles(4);
+      // We'll fetch 8 articles to show more on the homepage
+      const newsArticles = await fetchNewsArticles(8);
       setArticles(newsArticles);
       setError(null);
       
@@ -64,7 +64,10 @@ const Newsroom: React.FC = () => {
   return (
     <div className="mt-16 pt-16 border-t border-staydia-lightgray" id="newsroom">
       <div className="flex justify-between items-center mb-10">
-        <h2 className="text-2xl font-bold text-staydia-gold">Latest News</h2>
+        <div className="flex items-center">
+          <NewspaperIcon className="h-6 w-6 text-staydia-gold mr-2" />
+          <h2 className="text-2xl font-bold text-staydia-gold">Latest News</h2>
+        </div>
         <div className="flex items-center gap-4">
           <Link to="/news">
             <Button variant="ghost" className="text-staydia-gold hover:text-white">
@@ -76,7 +79,7 @@ const Newsroom: React.FC = () => {
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[...Array(4)].map((_, index) => (
+          {[...Array(8)].map((_, index) => (
             <Card key={index} className="bg-staydia-black border border-staydia-lightgray overflow-hidden">
               <Skeleton className="h-48 w-full" />
               <CardHeader>
