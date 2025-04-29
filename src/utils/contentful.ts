@@ -1,3 +1,4 @@
+
 import { createClient } from 'contentful';
 import { ContentType, EntryCollection } from 'contentful';
 
@@ -29,7 +30,6 @@ export interface NewsArticle {
 }
 
 // Contentful client setup with credentials
-// Using the values provided by the user
 const spaceId = 'qo4q4xk8vua7';
 const accessToken = 'UgwiWiX1rnUpxqbjMdTqUgJPj6wl4aRqzlUYaBjI958';
 const previewAccessToken = 'kJwRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU';
@@ -56,40 +56,61 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
   try {
     const client = preview ? previewClient : contentfulClient;
     
-    // Try both common content type naming conventions since we don't know exactly what's in your space
-    // "article" is a common content type name in Contentful
+    // First, let's try to list all available content types to debug
+    const contentTypes = await client.getContentTypes();
+    console.log('Available content types in Contentful space:', contentTypes.items.map(type => type.sys.id));
+    
+    // Now try to get entries without specifying content type to see what's available
+    const allEntries = await client.getEntries({
+      limit: 10,
+    });
+    console.log('All available entries:', allEntries);
+    
+    // If we found entries, extract the content type from the first one
+    let contentTypeName = 'article'; // Default fallback
+    if (allEntries.items.length > 0 && allEntries.items[0].sys.contentType) {
+      contentTypeName = allEntries.items[0].sys.contentType.sys.id;
+      console.log('Detected content type from entries:', contentTypeName);
+    }
+    
+    // Now try to fetch with the detected content type
     const response = await client.getEntries({
-      content_type: 'article', // Changed from 'newsArticle' to 'article'
+      content_type: contentTypeName,
       order: ['-fields.date'],
       limit,
     });
     
-    console.log('Contentful response:', response);
+    console.log('Contentful response with detected content type:', response);
     
-    return response.items.length > 0
-      ? response.items as unknown as NewsArticle[]
-      : getExampleArticles(limit); // Fallback to example articles if no content
+    if (response.items.length > 0) {
+      return response.items as unknown as NewsArticle[];
+    }
+    
+    // If still no results, try both common fallback content types
+    const commonContentTypes = ['article', 'blogPost', 'post', 'news'];
+    for (const type of commonContentTypes) {
+      try {
+        console.log(`Trying content type: ${type}`);
+        const fallbackResponse = await client.getEntries({
+          content_type: type,
+          order: ['-fields.date'],
+          limit,
+        });
+        
+        if (fallbackResponse.items.length > 0) {
+          console.log(`Found entries with content type: ${type}`, fallbackResponse);
+          return fallbackResponse.items as unknown as NewsArticle[];
+        }
+      } catch (err) {
+        console.log(`No entries found with content type: ${type}`);
+      }
+    }
+    
+    // If all else fails, return example articles
+    return getExampleArticles(limit);
   } catch (error) {
     console.error('Error fetching news articles from Contentful:', error);
-    
-    // Try an alternative content type name if the first one fails
-    try {
-      const client = preview ? previewClient : contentfulClient;
-      const response = await client.getEntries({
-        content_type: 'blogPost', // Another common content type name
-        order: ['-fields.date'],
-        limit,
-      });
-      
-      console.log('Contentful response with alternative content type:', response);
-      
-      return response.items.length > 0
-        ? response.items as unknown as NewsArticle[]
-        : getExampleArticles(limit);
-    } catch (secondError) {
-      console.error('Error fetching news articles with alternative content type:', secondError);
-      return getExampleArticles(limit); // Fallback to example articles on error
-    }
+    return getExampleArticles(limit); // Fallback to example articles on error
   }
 }
 
@@ -157,35 +178,35 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
   try {
     const client = preview ? previewClient : contentfulClient;
     
-    // Try both common content type names
-    const response = await client.getEntries({
-      content_type: 'article', // Changed from 'newsArticle' to 'article'
-      'fields.slug': slug,
-      limit: 1,
-    });
+    // Try to detect content type first
+    const contentTypes = await client.getContentTypes();
+    console.log('Available content types for article lookup:', contentTypes.items.map(type => type.sys.id));
     
-    return response.items.length > 0
-      ? response.items[0] as unknown as NewsArticle
-      : getExampleArticleBySlug(slug); // Fallback to example article if not found
+    // Try common content types for articles
+    const commonContentTypes = ['article', 'blogPost', 'post', 'news'];
+    
+    for (const type of commonContentTypes) {
+      try {
+        const response = await client.getEntries({
+          content_type: type,
+          'fields.slug': slug,
+          limit: 1,
+        });
+        
+        if (response.items.length > 0) {
+          console.log(`Found article with slug ${slug} in content type ${type}`);
+          return response.items[0] as unknown as NewsArticle;
+        }
+      } catch (err) {
+        // Continue to next type
+      }
+    }
+    
+    // If not found in any content type, return example
+    return getExampleArticleBySlug(slug);
   } catch (error) {
     console.error('Error fetching article from Contentful:', error);
-    
-    // Try an alternative content type name
-    try {
-      const client = preview ? previewClient : contentfulClient;
-      const response = await client.getEntries({
-        content_type: 'blogPost', 
-        'fields.slug': slug,
-        limit: 1,
-      });
-      
-      return response.items.length > 0
-        ? response.items[0] as unknown as NewsArticle
-        : getExampleArticleBySlug(slug);
-    } catch (secondError) {
-      console.error('Error fetching article with alternative content type:', secondError);
-      return getExampleArticleBySlug(slug); // Fallback to example article on error
-    }
+    return getExampleArticleBySlug(slug);
   }
 }
 
