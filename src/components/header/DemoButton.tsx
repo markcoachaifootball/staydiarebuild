@@ -14,10 +14,7 @@ const DemoButton: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   return (
-    <div className="flex items-center space-x-4">
-      <a href="#" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
-        Sign In
-      </a>
+    <div className="flex items-center">
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
           <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium">
