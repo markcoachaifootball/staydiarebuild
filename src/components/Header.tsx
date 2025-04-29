@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Home, Newspaper } from "lucide-react";
 
 const Header: React.FC = () => {
   return (
@@ -19,15 +18,13 @@ const Header: React.FC = () => {
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium flex items-center gap-1">
-            <Home size={18} />
+          <Link to="/" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
             Home
           </Link>
           <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Technology</Link>
           <Link to="/sports" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Sports</Link>
           <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">For Clubs</Link>
-          <Link to="/news" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium flex items-center gap-1">
-            <Newspaper size={18} />
+          <Link to="/news" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
             Newsroom
           </Link>
           <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">About Us</Link>
