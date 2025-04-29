@@ -1,13 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { SportsGrid } from '@/components/SportsGrid';
 import { SportsBenefits } from '@/components/SportsBenefits';
 import { SportsTestimonials } from '@/components/SportsTestimonials';
 import { Button } from '@/components/ui/button';
+import DemoForm from '@/components/DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Sports = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -22,9 +32,19 @@ const Sports = () => {
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               Join our growing network of clubs and become a showcase partner as Staydia expands
             </p>
-            <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-6 text-lg">
-              Book a Demo
-            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-6 text-lg">
+                  Book a Demo
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[500px]">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+                </DialogHeader>
+                <DemoForm />
+              </DialogContent>
+            </Dialog>
           </div>
         </section>
       </div>

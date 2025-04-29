@@ -3,9 +3,18 @@ import React, { useState } from 'react';
 import { Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ClubTestimonials from './ClubTestimonials';
+import DemoForm from './DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export const Technology: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handlePlayVideo = () => {
     setIsPlaying(true);
@@ -41,9 +50,19 @@ export const Technology: React.FC = () => {
               Staydia Sports: Where technology powers your club's growth.
             </p>
             
-            <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 mb-12">
-              Book a Demo
-            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 mb-12">
+                  Book a Demo
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[500px]">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+                </DialogHeader>
+                <DemoForm />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
 

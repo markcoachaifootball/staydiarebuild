@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Check, Play } from "lucide-react";
 import DemoForm from './DemoForm';
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -109,7 +110,7 @@ const HowItWorks: React.FC = () => {
           </p>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <button className="btn-primary">Book Demo</button>
+              <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90">Book Demo</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px]">
               <DialogHeader>
