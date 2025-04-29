@@ -63,6 +63,8 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
       limit,
     });
     
+    console.log('Contentful response:', response);
+    
     return response.items.length > 0
       ? response.items as unknown as NewsArticle[]
       : getExampleArticles(limit); // Fallback to example articles if no content
