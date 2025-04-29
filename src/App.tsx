@@ -14,6 +14,7 @@ import AboutUs from "./pages/AboutUs";
 import News from "./pages/News";
 import NewsArticlePage from "./components/NewsArticle";
 import NotFound from "./pages/NotFound";
+import Community from "./pages/Community";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/about" element={<AboutUs />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:slug" element={<NewsArticlePage />} />
+          <Route path="/community" element={<Community />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
