@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
-import { Linkedin, Youtube, Facebook, Instagram, Twitter, Football, Users } from 'lucide-react';
+import { Linkedin, Youtube, Facebook, Instagram, Twitter, Users, Activity, Dumbbell, BadgePlus, Cricket } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -34,10 +33,10 @@ const Header: React.FC = () => {
   const resourceLinks = [
     { name: "For Clubs", description: "Solutions for sports clubs", path: "/solutions", icon: <Users className="h-4 w-4 text-staydia-gold" /> },
     { name: "For Leagues", description: "Products for leagues and competitions", path: "/leagues", icon: <Users className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Football", description: "Football analytics and data", path: "/sports/football", icon: <Football className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Rugby", description: "Rugby performance tracking", path: "/sports/rugby", icon: <Football className="h-4 w-4 text-staydia-gold" rotate={90} /> },
-    { name: "Hockey", description: "Hockey analysis solutions", path: "/sports/hockey", icon: <Football className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Basketball", description: "Basketball statistics and tracking", path: "/sports/basketball", icon: <Football className="h-4 w-4 text-staydia-gold" /> }
+    { name: "Football", description: "Football analytics and data", path: "/sports/football", icon: <Activity className="h-4 w-4 text-staydia-gold" /> },
+    { name: "Rugby", description: "Rugby performance tracking", path: "/sports/rugby", icon: <Dumbbell className="h-4 w-4 text-staydia-gold" /> },
+    { name: "Hockey", description: "Hockey analysis solutions", path: "/sports/hockey", icon: <BadgePlus className="h-4 w-4 text-staydia-gold" /> },
+    { name: "Basketball", description: "Basketball statistics and tracking", path: "/sports/basketball", icon: <Cricket className="h-4 w-4 text-staydia-gold" /> }
   ];
   
   return (
