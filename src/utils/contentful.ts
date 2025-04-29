@@ -1,4 +1,3 @@
-
 import { createClient } from 'contentful';
 import { ContentType, EntryCollection } from 'contentful';
 
@@ -6,18 +5,18 @@ import { ContentType, EntryCollection } from 'contentful';
 export interface NewsArticleFields {
   title: string;
   slug: string;
-  category: string;
-  date: string;
-  featuredImage: {
+  category?: string; // Made optional since it might be missing
+  date?: string;     // Made optional since it might be missing
+  featuredImage?: {  // Made optional since it might be missing
     fields: {
       file: {
         url: string;
       };
-      title: string;
+      title?: string;
     };
   };
-  summary: string;
-  bodyContent: any; // Rich text content
+  summary?: string;  // Made optional since it might be missing
+  bodyContent?: any; // Rich text content, optional
 }
 
 // Define our NewsArticle type
@@ -29,8 +28,7 @@ export interface NewsArticle {
   fields: NewsArticleFields;
 }
 
-// Contentful client setup with credentials
-// Updated from the provided code sample
+// Contentful client setup with credentials from the code sample
 const spaceId = 'qo4q4xk8vua7';
 const accessToken = '9r0ya2DRB2KRdn8Jqr2xQpu8n8mBC56Mz0Dn7Q-1TzU';
 const previewAccessToken = 'kJwRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU';
