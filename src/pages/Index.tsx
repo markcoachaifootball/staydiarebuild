@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
 import Newsroom from '@/components/Newsroom';
+import ContentfulTest from '@/components/ContentfulTest';
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <Technology />
       <HowItWorks />
       <Newsroom />
+      <ContentfulTest />
       <Footer />
     </div>
   );
