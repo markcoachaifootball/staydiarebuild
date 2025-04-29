@@ -1,0 +1,26 @@
+// Define the interface for the fields in our NewsArticle content type
+export interface NewsArticleFields {
+  title: string;
+  slug: string;
+  category?: string; 
+  date?: string;
+  featuredImage?: {
+    fields: {
+      file: {
+        url: string;
+      };
+      title?: string;
+    };
+  };
+  summary?: string;
+  bodyContent?: any; // Rich text content
+}
+
+// Define our NewsArticle type
+export interface NewsArticle {
+  sys: {
+    id: string;
+    // other sys properties that might be used
+  };
+  fields: NewsArticleFields;
+}
