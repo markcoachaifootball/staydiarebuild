@@ -62,3 +62,7 @@ This guide will help you manage news articles on the Staydia Sports website usin
 ## Need Help?
 
 Contact the technical team at [tech-support@staydia.com](mailto:tech-support@staydia.com) if you encounter any issues or have questions.
+
+---
+
+*© 2025 Staydia Sports. All rights reserved.*

@@ -53,3 +53,7 @@ This guide will help you set up and manage the Contentful CMS for the Staydia Sp
 ## Need Help?
 
 Contact the technical team at [tech-support@staydia.com](mailto:tech-support@staydia.com) if you encounter any issues with the Contentful setup.
+
+---
+
+*© 2025 Staydia Sports. All rights reserved.*
