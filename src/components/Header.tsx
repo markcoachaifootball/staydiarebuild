@@ -31,6 +31,12 @@ const Header: React.FC = () => {
     { name: "LinkedIn", icon: <Linkedin className="h-4 w-4 text-staydia-gold" />, url: "https://www.linkedin.com/company/staydiasports/people/" }
   ];
   
+  const resourceLinks = [
+    { name: "Technology", description: "Our cutting-edge technology", path: "/technology" },
+    { name: "Sports", description: "Supported sports and data", path: "/sports" },
+    { name: "For Clubs", description: "Solutions for sports clubs", path: "/solutions" }
+  ];
+  
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-staydia-black/80 backdrop-blur-lg border-b border-staydia-lightgray">
       <div className="staydia-container flex items-center justify-between h-20">
@@ -48,9 +54,36 @@ const Header: React.FC = () => {
           <Link to="/" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">
             Home
           </Link>
-          <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Technology</Link>
-          <Link to="/sports" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">Sports</Link>
-          <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium">For Clubs</Link>
+          
+          <NavigationMenu className="z-50">
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium">Resources</NavigationMenuTrigger>
+                <NavigationMenuContent className="w-[320px]">
+                  <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
+                    {resourceLinks.map((resource, index) => (
+                      <li className="row-span-1" key={index}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            to={resource.path}
+                            className="flex items-center p-3 space-x-3 rounded-md hover:bg-staydia-darkgray group"
+                          >
+                            <div className="flex-shrink-0 w-8 h-8 bg-staydia-gold flex items-center justify-center rounded-full">
+                              <span className="text-staydia-black font-bold">{resource.name.charAt(0)}</span>
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">{resource.name}</h4>
+                              <p className="text-xs text-gray-400">{resource.description}</p>
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
           
           <NavigationMenu className="z-50">
             <NavigationMenuList>
