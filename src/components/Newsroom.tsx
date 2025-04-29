@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarIcon, ArrowRightIcon, FileText, RefreshCw } from 'lucide-react';
+import { CalendarIcon, ArrowRightIcon, RefreshCw } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -66,10 +66,6 @@ const Newsroom: React.FC = () => {
     } catch (err) {
       return 'https://via.placeholder.com/600x400?text=Staydia+News';
     }
-  };
-
-  const isContentfulArticle = (article: NewsArticle) => {
-    return !article.sys.id.startsWith('example');
   };
 
   const handleRefresh = () => {
@@ -140,12 +136,6 @@ const Newsroom: React.FC = () => {
                   <div className="absolute top-0 left-0 bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold">
                     {article.fields.category}
                   </div>
-                  {isContentfulArticle(article) && (
-                    <div className="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold flex items-center">
-                      <FileText className="h-3 w-3 mr-1" />
-                      Contentful
-                    </div>
-                  )}
                 </div>
                 <CardHeader className="pb-2">
                   <div className="flex items-center text-gray-400 text-xs mb-2">

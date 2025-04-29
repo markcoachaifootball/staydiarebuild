@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CalendarIcon, FileText } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { toast } from '@/components/ui/sonner';
@@ -64,11 +64,6 @@ const News: React.FC = () => {
     }
   };
 
-  // Check if it's a real contentful article or example one
-  const isContentfulArticle = (article: NewsArticle) => {
-    return !article.sys.id.startsWith('example');
-  };
-
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -120,12 +115,6 @@ const News: React.FC = () => {
                     <div className="absolute top-0 left-0 bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold">
                       {article.fields.category}
                     </div>
-                    {isContentfulArticle(article) && (
-                      <div className="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold flex items-center">
-                        <FileText className="h-3 w-3 mr-1" />
-                        Contentful
-                      </div>
-                    )}
                   </div>
                   <CardHeader className="pb-2">
                     <div className="flex items-center text-gray-400 text-xs mb-2">
