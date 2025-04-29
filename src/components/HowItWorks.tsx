@@ -19,7 +19,7 @@ const HowItWorks: React.FC = () => {
     {
       number: "02",
       title: "Partner With Us",
-      description: "Partner With Us"
+      description: "League wide adoption of our AI cameras or club by club."
     },
     {
       number: "03",
