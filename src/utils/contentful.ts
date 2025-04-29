@@ -1,4 +1,3 @@
-
 import { createClient } from 'contentful';
 import { ContentType, EntryCollection } from 'contentful';
 
@@ -33,7 +32,7 @@ export interface NewsArticle {
 // Using the values provided by the user
 const spaceId = 'qo4q4xk8vua7';
 const accessToken = 'UgwiWiX1rnUpxqbjMdTqUgJPj6wl4aRqzlUYaBjI958';
-const previewAccessToken = 'kJwRInLWzRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU';
+const previewAccessToken = 'kJwRZ_fMX_lF4oq7TVmE8dg4MevbU026TocqU';
 
 // Check if environment variables are available (for future flexibility)
 const envSpaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
@@ -57,8 +56,10 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
   try {
     const client = preview ? previewClient : contentfulClient;
     
+    // Try both common content type naming conventions since we don't know exactly what's in your space
+    // "article" is a common content type name in Contentful
     const response = await client.getEntries({
-      content_type: 'newsArticle',
+      content_type: 'article', // Changed from 'newsArticle' to 'article'
       order: ['-fields.date'],
       limit,
     });
@@ -70,7 +71,25 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
       : getExampleArticles(limit); // Fallback to example articles if no content
   } catch (error) {
     console.error('Error fetching news articles from Contentful:', error);
-    return getExampleArticles(limit); // Fallback to example articles on error
+    
+    // Try an alternative content type name if the first one fails
+    try {
+      const client = preview ? previewClient : contentfulClient;
+      const response = await client.getEntries({
+        content_type: 'blogPost', // Another common content type name
+        order: ['-fields.date'],
+        limit,
+      });
+      
+      console.log('Contentful response with alternative content type:', response);
+      
+      return response.items.length > 0
+        ? response.items as unknown as NewsArticle[]
+        : getExampleArticles(limit);
+    } catch (secondError) {
+      console.error('Error fetching news articles with alternative content type:', secondError);
+      return getExampleArticles(limit); // Fallback to example articles on error
+    }
   }
 }
 
@@ -138,8 +157,9 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
   try {
     const client = preview ? previewClient : contentfulClient;
     
+    // Try both common content type names
     const response = await client.getEntries({
-      content_type: 'newsArticle',
+      content_type: 'article', // Changed from 'newsArticle' to 'article'
       'fields.slug': slug,
       limit: 1,
     });
@@ -149,7 +169,23 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
       : getExampleArticleBySlug(slug); // Fallback to example article if not found
   } catch (error) {
     console.error('Error fetching article from Contentful:', error);
-    return getExampleArticleBySlug(slug); // Fallback to example article on error
+    
+    // Try an alternative content type name
+    try {
+      const client = preview ? previewClient : contentfulClient;
+      const response = await client.getEntries({
+        content_type: 'blogPost', 
+        'fields.slug': slug,
+        limit: 1,
+      });
+      
+      return response.items.length > 0
+        ? response.items[0] as unknown as NewsArticle
+        : getExampleArticleBySlug(slug);
+    } catch (secondError) {
+      console.error('Error fetching article with alternative content type:', secondError);
+      return getExampleArticleBySlug(slug); // Fallback to example article on error
+    }
   }
 }
 
