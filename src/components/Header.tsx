@@ -1,8 +1,9 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
-import { Linkedin, Youtube, Facebook, Instagram, Twitter, Users, Activity, Dumbbell, BadgePlus, Cricket } from 'lucide-react';
+import { Linkedin, Youtube, Facebook, Instagram, Twitter } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -31,12 +32,12 @@ const Header: React.FC = () => {
   ];
   
   const resourceLinks = [
-    { name: "For Clubs", description: "Solutions for sports clubs", path: "/solutions", icon: <Users className="h-4 w-4 text-staydia-gold" /> },
-    { name: "For Leagues", description: "Products for leagues and competitions", path: "/leagues", icon: <Users className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Football", description: "Football analytics and data", path: "/sports/football", icon: <Activity className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Rugby", description: "Rugby performance tracking", path: "/sports/rugby", icon: <Dumbbell className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Hockey", description: "Hockey analysis solutions", path: "/sports/hockey", icon: <BadgePlus className="h-4 w-4 text-staydia-gold" /> },
-    { name: "Basketball", description: "Basketball statistics and tracking", path: "/sports/basketball", icon: <Cricket className="h-4 w-4 text-staydia-gold" /> }
+    { name: "For Clubs", description: "Solutions for sports clubs", path: "/solutions" },
+    { name: "For Leagues", description: "Products for leagues and competitions", path: "/leagues" },
+    { name: "Football", description: "Football analytics and data", path: "/sports/football" },
+    { name: "Rugby", description: "Rugby performance tracking", path: "/sports/rugby" },
+    { name: "Hockey", description: "Hockey analysis solutions", path: "/sports/hockey" },
+    { name: "Basketball", description: "Basketball statistics and tracking", path: "/sports/basketball" }
   ];
   
   return (
@@ -71,7 +72,7 @@ const Header: React.FC = () => {
                             className="flex items-center p-3 space-x-3 rounded-md hover:bg-staydia-darkgray group"
                           >
                             <div className="flex-shrink-0 w-8 h-8 bg-staydia-gold flex items-center justify-center rounded-full">
-                              {resource.icon || <span className="text-staydia-black font-bold">{resource.name.charAt(0)}</span>}
+                              <span className="text-staydia-black font-bold">{resource.name.charAt(0)}</span>
                             </div>
                             <div>
                               <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">{resource.name}</h4>
