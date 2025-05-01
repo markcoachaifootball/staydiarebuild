@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
                 <Camera className="h-5 w-5 text-staydia-gold" />
               </div>
-              <p className="text-gray-300">Free Camera Installation</p>
+              <p className="text-gray-300">No Cost Installation</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
                 <Users className="h-5 w-5 text-staydia-gold" />
               </div>
-              <p className="text-gray-300">Revenue Sharing Model</p>
+              <p className="text-gray-300">Revenue Generation Model</p>
             </div>
           </div>
           
