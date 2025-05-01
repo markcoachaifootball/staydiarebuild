@@ -29,9 +29,22 @@ const MobileNav: React.FC = () => {
     navigate('/contact');
   };
   
+  // Prevent body scroll when menu is open
+  React.useEffect(() => {
+    return () => {
+      // Re-enable scrolling when component unmounts
+      document.body.style.overflow = '';
+    };
+  }, []);
+  
+  const handleOpenChange = (open: boolean) => {
+    // Disable or enable scrolling based on menu state
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  
   const MobileMenuContent = () => (
     <div className="flex flex-col h-full">
-      <div className="px-6 pt-12 pb-6 space-y-8">
+      <div className="px-6 pt-4 pb-6 space-y-6 overflow-y-auto flex-1">
         <div>
           <Link to="/" className="mb-10">
             <img 
@@ -91,12 +104,6 @@ const MobileNav: React.FC = () => {
             <CollapsibleContent className="pt-2 pb-3">
               <ul className="space-y-3">
                 <li>
-                  <Link to="/about" className="block text-gray-300 hover:text-staydia-gold py-2">About Us</Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="block text-gray-300 hover:text-staydia-gold py-2">Contact</Link>
-                </li>
-                <li>
                   <Link to="/news" className="block text-gray-300 hover:text-staydia-gold py-2">Newsroom</Link>
                 </li>
                 <li>
@@ -139,7 +146,7 @@ const MobileNav: React.FC = () => {
         </div>
       </div>
       
-      <div className="mt-auto px-4 pb-8">
+      <div className="mt-auto px-4 pb-4">
         <div className="space-y-3">
           <Button 
             className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg"
@@ -162,7 +169,7 @@ const MobileNav: React.FC = () => {
               <span className="sr-only">Menu</span>
             </button>
           </DrawerTrigger>
-          <DrawerContent className="bg-staydia-black min-h-[100dvh] rounded-none border-none">
+          <DrawerContent className="bg-staydia-black max-h-[90vh] rounded-t-xl border-none">
             <div className="absolute right-4 top-4">
               <DrawerClose className="text-white hover:text-staydia-gold">
                 <X size={24} />
@@ -172,14 +179,14 @@ const MobileNav: React.FC = () => {
           </DrawerContent>
         </Drawer>
       ) : (
-        <Sheet>
+        <Sheet onOpenChange={handleOpenChange}>
           <SheetTrigger asChild>
             <button className="text-gray-300 hover:text-staydia-gold p-2">
               <Menu size={24} />
               <span className="sr-only">Menu</span>
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-full max-w-[400px]">
+          <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-full max-w-[400px] overflow-y-auto">
             <MobileMenuContent />
           </SheetContent>
         </Sheet>
