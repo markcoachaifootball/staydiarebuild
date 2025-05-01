@@ -109,6 +109,19 @@ const MobileNav: React.FC = () => {
                 <li>
                   <Link to="/fan-engagement" className="block text-gray-300 hover:text-staydia-gold py-2">Fan Engagement</Link>
                 </li>
+                {socialLinks.map((social, index) => (
+                  <li key={index}>
+                    <a 
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold py-2"
+                    >
+                      <span className="text-staydia-gold">{social.icon}</span>
+                      <span>{social.name}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </CollapsibleContent>
           </Collapsible>
@@ -123,25 +136,6 @@ const MobileNav: React.FC = () => {
             <Link to="/contact" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
               Contact Us
             </Link>
-          </div>
-          
-          <div className="mt-8 pt-8 border-t border-staydia-lightgray">
-            <h3 className="text-lg font-medium text-staydia-gold mb-3">Connect</h3>
-            <ul className="space-y-3">
-              {socialLinks.map((social, index) => (
-                <li key={index}>
-                  <a 
-                    href={social.url} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold py-1"
-                  >
-                    <span className="text-staydia-gold">{social.icon}</span>
-                    <span>{social.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
