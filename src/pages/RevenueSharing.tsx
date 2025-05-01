@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -200,22 +199,12 @@ const RevenueSharing = () => {
             Your club is already putting in the work on the pitch. Let's help you get rewarded off it.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button 
-              className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-6 text-lg"
-              onClick={() => setIsDialogOpen(true)}
-            >
-              Book a Call
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              className="border-staydia-gold text-staydia-gold hover:bg-staydia-gold/10 font-medium px-8 py-6 text-lg"
-              asChild
-            >
-              <Link to="/for-clubs">Apply Now</Link>
-            </Button>
-          </div>
+          <Button 
+            className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-6 text-lg"
+            onClick={() => setIsDialogOpen(true)}
+          >
+            Book a Call
+          </Button>
         </section>
 
       </main>
