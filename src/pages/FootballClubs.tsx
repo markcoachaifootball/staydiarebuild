@@ -39,7 +39,7 @@ const FootballClubs: React.FC = () => {
     {
       icon: <Users className="h-8 w-8 text-staydia-gold" />,
       title: "No Tech Skills Required",
-      description: "Our cameras are "set and forget." We handle the install, onboarding, and ongoing support — your club focuses on football."
+      description: "Our cameras are \"set and forget.\" We handle the install, onboarding, and ongoing support — your club focuses on football."
     }
   ];
 
