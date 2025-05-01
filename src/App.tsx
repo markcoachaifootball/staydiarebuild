@@ -24,6 +24,7 @@ import BasketballClubs from "./pages/BasketballClubs";
 import FAQ from "./pages/FAQ";
 import Partnerships from "./pages/Partnerships";
 import RevenueSharing from "./pages/RevenueSharing";
+import FanEngagement from "./pages/FanEngagement";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/partnerships" element={<Partnerships />} />
           <Route path="/revenue-sharing" element={<RevenueSharing />} />
+          <Route path="/fan-engagement" element={<FanEngagement />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
