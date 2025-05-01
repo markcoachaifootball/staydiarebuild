@@ -1,12 +1,21 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { Handshake, Building, Briefcase, Globe, Link as LinkIcon, Users, Component } from "lucide-react";
 import { Link } from 'react-router-dom';
+import DemoForm from '@/components/DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Partnerships = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -169,7 +178,10 @@ const Partnerships = () => {
               <h3 className="text-xl font-bold mb-4">📩 Interested in partnering?</h3>
               <p className="mb-6 text-gray-300">Drop us a line: <a href="mailto:info@staydiasports.com" className="text-staydia-gold hover:underline">info@staydiasports.com</a></p>
               
-              <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 w-full">
+              <Button 
+                className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 w-full"
+                onClick={() => setIsDialogOpen(true)}
+              >
                 Book a Call
               </Button>
             </div>
@@ -177,6 +189,16 @@ const Partnerships = () => {
         </section>
       </main>
       <Footer />
+
+      {/* Demo Form Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold mb-4">Book a Call</DialogTitle>
+          </DialogHeader>
+          <DemoForm />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
