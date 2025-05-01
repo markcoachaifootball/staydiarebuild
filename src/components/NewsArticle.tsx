@@ -94,6 +94,9 @@ const NewsArticlePage: React.FC = () => {
               src={`https:${article.fields.featuredImage.fields.file.url}`}
               alt={article.fields.featuredImage.fields.title || article.fields.title}
               className="w-full h-auto rounded-xl"
+              loading="lazy"
+              width={article.fields.featuredImage.fields.file.details?.image?.width || 800}
+              height={article.fields.featuredImage.fields.file.details?.image?.height || 600}
             />
           </div>
         )}

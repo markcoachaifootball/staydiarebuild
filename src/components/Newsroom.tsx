@@ -53,9 +53,14 @@ const Newsroom: React.FC = () => {
 
   const getImageUrl = (article: NewsArticle) => {
     try {
-      return article.fields.featuredImage?.fields.file?.url
-        ? `https:${article.fields.featuredImage.fields.file.url}`
-        : 'https://via.placeholder.com/600x400?text=Staydia+News';
+      if (!article.fields.featuredImage?.fields.file?.url) {
+        return 'https://via.placeholder.com/600x400?text=Staydia+News';
+      }
+      
+      // Add image optimization parameters to Contentful URL
+      const baseUrl = `https:${article.fields.featuredImage.fields.file.url}`;
+      // Apply quality and format optimizations for thumbnails
+      return `${baseUrl}?fm=webp&q=80&w=600&fit=fill`;
     } catch (err) {
       return 'https://via.placeholder.com/600x400?text=Staydia+News';
     }
@@ -115,6 +120,9 @@ const Newsroom: React.FC = () => {
                     src={getImageUrl(article)} 
                     alt={article.fields.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                    width="300"
+                    height="200"
                   />
                   <div className="absolute top-0 left-0 bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold">
                     {article.fields.category}
