@@ -18,6 +18,7 @@ import {
   DrawerContent,
   DrawerTrigger
 } from '@/components/ui/drawer';
+import { ScrollArea } from '../ui/scroll-area';
 
 const MobileNav: React.FC = () => {
   const isMobile = useIsMobile();
@@ -44,18 +45,20 @@ const MobileNav: React.FC = () => {
   
   const MobileMenuContent = () => (
     <div className="flex flex-col h-full">
-      <div className="px-6 pt-4 pb-6 space-y-6 overflow-y-auto flex-1">
-        <div>
-          <Link to="/" className="mb-10">
+      <div className="p-4 border-b border-staydia-lightgray">
+        <div className="flex items-center justify-between">
+          <Link to="/">
             <img 
               src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
               alt="Staydia Sports Logo" 
-              className="h-8 w-auto mb-8"
+              className="h-8 w-auto"
             />
           </Link>
         </div>
-        
-        <div className="space-y-4">
+      </div>
+      
+      <ScrollArea className="flex-1 overflow-y-auto max-h-[calc(85vh-4rem)]">
+        <div className="px-4 py-2 space-y-4">
           <Collapsible
             open={resourcesOpen}
             onOpenChange={setResourcesOpen}
@@ -138,17 +141,15 @@ const MobileNav: React.FC = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </ScrollArea>
       
-      <div className="mt-auto px-4 pb-4">
-        <div className="space-y-3">
-          <Button 
-            className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg"
-            onClick={handleGetStarted}
-          >
-            GET STARTED
-          </Button>
-        </div>
+      <div className="p-4 mt-auto">
+        <Button 
+          className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg"
+          onClick={handleGetStarted}
+        >
+          GET STARTED
+        </Button>
       </div>
     </div>
   );
@@ -180,7 +181,7 @@ const MobileNav: React.FC = () => {
               <span className="sr-only">Menu</span>
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-full max-w-[400px] overflow-y-auto">
+          <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-full max-w-[400px] h-full overflow-hidden">
             <MobileMenuContent />
           </SheetContent>
         </Sheet>
