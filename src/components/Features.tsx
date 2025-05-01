@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -16,7 +17,7 @@ export const Features: React.FC = () => {
     },
     {
       title: "Enhanced Fan Engagement",
-      description: "Allow supporters to watch matches live or on demand, from anywhere, keeping your community connected.",
+      description: "Build a global fanbase with accessible matches - stream live or on-demand to connect supporters anywhere.",
       icon: Users
     },
     {
