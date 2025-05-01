@@ -22,6 +22,7 @@ import RugbyClubs from "./pages/RugbyClubs";
 import HockeyClubs from "./pages/HockeyClubs";
 import BasketballClubs from "./pages/BasketballClubs";
 import FAQ from "./pages/FAQ";
+import Partnerships from "./pages/Partnerships";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/sports/hockey" element={<HockeyClubs />} />
           <Route path="/sports/basketball" element={<BasketballClubs />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/partnerships" element={<Partnerships />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

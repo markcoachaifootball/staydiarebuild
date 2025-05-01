@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Club Inquiries</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Partnerships</a></li>
+              <li><Link to="/partnerships" className="text-gray-400 hover:text-white transition-colors">Partnerships</Link></li>
               <li><div className="flex space-x-3 mt-2">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
