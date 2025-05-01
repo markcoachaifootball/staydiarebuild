@@ -22,7 +22,7 @@ export const Features: React.FC = () => {
     },
     {
       title: "Professional Livestreaming",
-      description: "Automated high-quality broadcasting with custom branding and highlights creation tools.",
+      description: "Automated high-quality broadcasting with custom branding and highlight creation tools.",
       icon: Play
     }
   ];
