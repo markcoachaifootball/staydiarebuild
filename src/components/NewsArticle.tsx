@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
@@ -71,6 +70,23 @@ const NewsArticlePage: React.FC = () => {
     );
   }
 
+  // Get image dimensions safely with fallbacks
+  const getImageWidth = () => {
+    try {
+      return article?.fields.featuredImage?.fields.file?.details?.image?.width || 800;
+    } catch {
+      return 800;
+    }
+  };
+
+  const getImageHeight = () => {
+    try {
+      return article?.fields.featuredImage?.fields.file?.details?.image?.height || 600;
+    } catch {
+      return 600;
+    }
+  };
+
   return (
     <div className="staydia-container py-16">
       <article>
@@ -95,8 +111,8 @@ const NewsArticlePage: React.FC = () => {
               alt={article.fields.featuredImage.fields.title || article.fields.title}
               className="w-full h-auto rounded-xl"
               loading="lazy"
-              width={article.fields.featuredImage.fields.file.details?.image?.width || 800}
-              height={article.fields.featuredImage.fields.file.details?.image?.height || 600}
+              width={getImageWidth()}
+              height={getImageHeight()}
             />
           </div>
         )}

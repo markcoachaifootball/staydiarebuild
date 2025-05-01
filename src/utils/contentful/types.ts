@@ -1,3 +1,4 @@
+
 // Define the interface for the fields in our NewsArticle content type
 export interface NewsArticleFields {
   title: string;
@@ -8,6 +9,12 @@ export interface NewsArticleFields {
     fields: {
       file: {
         url: string;
+        details?: {
+          image?: {
+            width?: number;
+            height?: number;
+          };
+        };
       };
       title?: string;
     };
