@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
             <h3 className="text-staydia-gold font-bold text-lg mb-6">Club Solutions</h3>
             <ul className="space-y-3">
               <li><Link to="/for-clubs" className="text-gray-400 hover:text-white transition-colors">Free Camera Installation</Link></li>
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Revenue Sharing Model</Link></li>
+              <li><Link to="/revenue-sharing" className="text-gray-400 hover:text-white transition-colors">Revenue Sharing Model</Link></li>
               <li><Link to="/sports" className="text-gray-400 hover:text-white transition-colors">Sports We Cover</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Fan Engagement</Link></li>
             </ul>
