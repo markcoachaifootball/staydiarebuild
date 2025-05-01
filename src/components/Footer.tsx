@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
               <li><a href="https://staydiasports.com/videos" className="text-gray-400 hover:text-white transition-colors">On-Demand Library</a></li>
               <li><a href="https://staydiasports.com/dashboard/subscription" className="text-gray-400 hover:text-white transition-colors">Subscription Info</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">App Download</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+              <li><Link to="/faq" className="text-gray-400 hover:text-white transition-colors">FAQ</Link></li>
             </ul>
           </div>
           
@@ -43,7 +43,6 @@ const Footer: React.FC = () => {
             <h3 className="text-staydia-gold font-bold text-lg mb-6">Contact</h3>
             <ul className="space-y-3">
               <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Support</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Club Inquiries</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Partnerships</a></li>
               <li><div className="flex space-x-3 mt-2">
