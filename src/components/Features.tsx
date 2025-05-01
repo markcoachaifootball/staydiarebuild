@@ -79,10 +79,10 @@ export const Features: React.FC = () => {
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Club-Branded Streaming Platform</h3>
               <p className="text-gray-300 mb-6">
-                Give your fans a professional viewing experience with your club's branding, colors, and logo.
+                Give your fans a professional viewing experience featuring your club's branding.
               </p>
               <ul className="space-y-3">
-                {["Live match streaming", "On-demand replays", "Highlight clips creation", "Clipping tactical tool", "Clipping tool for social media highlights"].map((item, i) => (
+                {["Live and upcoming matches", "On-demand replays", "Club highlights", "Clipping tool", "Sponsorship integration"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-staydia-gold rounded-full"></span>
                     <span className="text-gray-300">{item}</span>
