@@ -31,9 +31,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">Fan Experience</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Watch Live</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">On-Demand Library</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Subscription Info</a></li>
+              <li><a href="https://staydiasports.com" className="text-gray-400 hover:text-white transition-colors">Watch Live</a></li>
+              <li><a href="https://staydiasports.com/videos" className="text-gray-400 hover:text-white transition-colors">On-Demand Library</a></li>
+              <li><a href="https://staydiasports.com/dashboard/subscription" className="text-gray-400 hover:text-white transition-colors">Subscription Info</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">App Download</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
             </ul>
