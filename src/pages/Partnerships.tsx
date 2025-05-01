@@ -167,7 +167,7 @@ const Partnerships = () => {
             
             <div className="max-w-md mx-auto bg-staydia-black p-8 rounded-lg border border-staydia-lightgray">
               <h3 className="text-xl font-bold mb-4">📩 Interested in partnering?</h3>
-              <p className="mb-6 text-gray-300">Drop us a line: <a href="mailto:partnerships@staydiasports.com" className="text-staydia-gold hover:underline">partnerships@staydiasports.com</a></p>
+              <p className="mb-6 text-gray-300">Drop us a line: <a href="mailto:info@staydiasports.com" className="text-staydia-gold hover:underline">info@staydiasports.com</a></p>
               
               <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 w-full">
                 Book a Call
