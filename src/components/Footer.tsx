@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">About Staydia</h3>
             <ul className="space-y-3">
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Our Story</Link></li>
-              <li><Link to="/technology" className="text-gray-400 hover:text-white transition-colors">Technology</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">Our Story</Link></li>
+              <li><Link to="/technology#how-it-works" className="text-gray-400 hover:text-white transition-colors">Technology</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Team</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Careers</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Press</Link></li>
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">Club Solutions</h3>
             <ul className="space-y-3">
-              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Free Camera Installation</Link></li>
+              <li><Link to="/for-clubs" className="text-gray-400 hover:text-white transition-colors">Free Camera Installation</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Revenue Sharing Model</Link></li>
               <li><Link to="/sports" className="text-gray-400 hover:text-white transition-colors">Sports We Cover</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Fan Engagement</Link></li>
