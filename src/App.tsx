@@ -16,6 +16,7 @@ import NewsArticlePage from "./components/NewsArticle";
 import NotFound from "./pages/NotFound";
 import Community from "./pages/Community";
 import ForClubs from "./pages/ForClubs";
+import ForLeagues from "./pages/ForLeagues";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/news/:slug" element={<NewsArticlePage />} />
           <Route path="/community" element={<Community />} />
           <Route path="/for-clubs" element={<ForClubs />} />
+          <Route path="/for-leagues" element={<ForLeagues />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
