@@ -45,7 +45,7 @@ const MobileNav: React.FC = () => {
   
   const MobileMenuContent = () => (
     <div className="flex flex-col h-full">
-      <div className="p-4 border-b border-staydia-lightgray">
+      <div className="p-4 border-b border-staydia-lightgray flex-shrink-0">
         <div className="flex items-center justify-between">
           <Link to="/">
             <img 
@@ -57,12 +57,12 @@ const MobileNav: React.FC = () => {
         </div>
       </div>
       
-      <ScrollArea className="flex-1 overflow-y-auto max-h-[calc(85vh-4rem)]">
-        <div className="px-4 py-2 space-y-4">
+      <ScrollArea className="flex-1 overflow-y-auto">
+        <div className="px-4 py-2">
           <Collapsible
             open={resourcesOpen}
             onOpenChange={setResourcesOpen}
-            className="border-b border-staydia-lightgray"
+            className="border-b border-staydia-lightgray py-2"
           >
             <CollapsibleTrigger asChild>
               <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
@@ -96,7 +96,7 @@ const MobileNav: React.FC = () => {
           <Collapsible
             open={communityOpen}
             onOpenChange={setCommunityOpen}
-            className="border-b border-staydia-lightgray"
+            className="border-b border-staydia-lightgray py-2"
           >
             <CollapsibleTrigger asChild>
               <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
@@ -129,13 +129,13 @@ const MobileNav: React.FC = () => {
             </CollapsibleContent>
           </Collapsible>
           
-          <div className="border-b border-staydia-lightgray">
+          <div className="border-b border-staydia-lightgray py-2">
             <Link to="/about" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
               About Us
             </Link>
           </div>
           
-          <div className="border-b border-staydia-lightgray">
+          <div className="border-b border-staydia-lightgray py-2">
             <Link to="/contact" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
               Contact Us
             </Link>
@@ -143,7 +143,7 @@ const MobileNav: React.FC = () => {
         </div>
       </ScrollArea>
       
-      <div className="p-4 mt-auto">
+      <div className="p-4 mt-auto flex-shrink-0">
         <Button 
           className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg"
           onClick={handleGetStarted}

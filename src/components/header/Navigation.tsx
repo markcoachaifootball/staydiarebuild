@@ -20,7 +20,7 @@ const Navigation: React.FC = () => {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">Resources</NavigationMenuTrigger>
-              <NavigationMenuContent className="w-[320px]">
+              <NavigationMenuContent className="w-[320px] max-h-[calc(100vh-5rem)] overflow-y-auto">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
                   <ResourceLinksMenu />
                 </ul>
