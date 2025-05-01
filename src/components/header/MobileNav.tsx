@@ -1,86 +1,182 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { socialLinks } from './SocialLinks';
 import { resourceLinks } from './ResourceLinks';
+import { 
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from "@/components/ui/collapsible";
+import { Button } from '../ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { 
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerTrigger
+} from '@/components/ui/drawer';
 
 const MobileNav: React.FC = () => {
+  const isMobile = useIsMobile();
+  const [resourcesOpen, setResourcesOpen] = React.useState(false);
+  const [communityOpen, setCommunityOpen] = React.useState(false);
+  
+  const MobileMenuContent = () => (
+    <div className="flex flex-col h-full">
+      <div className="px-6 pt-12 pb-6 space-y-8">
+        <div>
+          <Link to="/" className="mb-10">
+            <img 
+              src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
+              alt="Staydia Sports Logo" 
+              className="h-8 w-auto mb-8"
+            />
+          </Link>
+        </div>
+        
+        <div className="space-y-4">
+          <Link to="/features" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+            Pricing
+          </Link>
+          
+          <Collapsible
+            open={resourcesOpen}
+            onOpenChange={setResourcesOpen}
+            className="border-t border-staydia-lightgray"
+          >
+            <CollapsibleTrigger asChild>
+              <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+                <span>Resources</span>
+                <ChevronDown size={20} className={`transition-transform duration-200 ${resourcesOpen ? "transform rotate-180" : ""}`} />
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="pt-2 pb-3">
+              <ul className="space-y-3">
+                {resourceLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link 
+                      to={link.path}
+                      className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold py-2"
+                    >
+                      <div className="flex-shrink-0 w-7 h-7 bg-staydia-gold flex items-center justify-center rounded-full">
+                        {link.icon ? (
+                          link.icon
+                        ) : (
+                          <span className="text-staydia-black font-bold">{link.name.charAt(0)}</span>
+                        )}
+                      </div>
+                      <span>{link.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </CollapsibleContent>
+          </Collapsible>
+          
+          <Collapsible
+            open={communityOpen}
+            onOpenChange={setCommunityOpen}
+            className="border-t border-staydia-lightgray"
+          >
+            <CollapsibleTrigger asChild>
+              <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+                <span>Community</span>
+                <ChevronDown size={20} className={`transition-transform duration-200 ${communityOpen ? "transform rotate-180" : ""}`} />
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="pt-2 pb-3">
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/about" className="block text-gray-300 hover:text-staydia-gold py-2">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="block text-gray-300 hover:text-staydia-gold py-2">Contact</Link>
+                </li>
+                <li>
+                  <Link to="/news" className="block text-gray-300 hover:text-staydia-gold py-2">Newsroom</Link>
+                </li>
+                <li>
+                  <Link to="/fan-engagement" className="block text-gray-300 hover:text-staydia-gold py-2">Fan Engagement</Link>
+                </li>
+              </ul>
+            </CollapsibleContent>
+          </Collapsible>
+          
+          <div className="border-t border-staydia-lightgray">
+            <Link to="/download" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+              Download
+            </Link>
+          </div>
+          
+          <div className="mt-8 pt-8 border-t border-staydia-lightgray">
+            <h3 className="text-lg font-medium text-staydia-gold mb-3">Connect</h3>
+            <ul className="space-y-3">
+              {socialLinks.map((social, index) => (
+                <li key={index}>
+                  <a 
+                    href={social.url} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold py-1"
+                  >
+                    <span className="text-staydia-gold">{social.icon}</span>
+                    <span>{social.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mt-auto px-4 pb-8">
+        <div className="space-y-3">
+          <Button className="w-full py-6 bg-transparent border border-white text-white hover:bg-white hover:text-black text-lg">
+            SIGN IN
+          </Button>
+          <Button className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg">
+            GET STARTED
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="md:hidden flex items-center">
-      <Sheet>
-        <SheetTrigger asChild>
-          <button className="text-gray-300 hover:text-staydia-gold p-2">
-            <Menu size={24} />
-            <span className="sr-only">Menu</span>
-          </button>
-        </SheetTrigger>
-        <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-[300px]">
-          <div className="flex flex-col h-full">
-            <div className="p-6">
-              <div className="flex flex-col space-y-6">
-                <div>
-                  <h3 className="text-lg font-medium text-staydia-gold mb-3">Resources</h3>
-                  <ul className="space-y-3">
-                    {resourceLinks.map((link, index) => (
-                      <li key={index}>
-                        <Link 
-                          to={link.path}
-                          className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold"
-                        >
-                          <div className="flex-shrink-0 w-7 h-7 bg-staydia-gold flex items-center justify-center rounded-full">
-                            {link.icon ? (
-                              link.icon
-                            ) : (
-                              <span className="text-staydia-black font-bold">{link.name.charAt(0)}</span>
-                            )}
-                          </div>
-                          <span>{link.name}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-medium text-staydia-gold mb-3">Navigation</h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <Link to="/about" className="text-gray-300 hover:text-staydia-gold">About Us</Link>
-                    </li>
-                    <li>
-                      <Link to="/contact" className="text-gray-300 hover:text-staydia-gold">Contact</Link>
-                    </li>
-                    <li>
-                      <Link to="/news" className="text-gray-300 hover:text-staydia-gold">Newsroom</Link>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-medium text-staydia-gold mb-3">Connect</h3>
-                  <ul className="space-y-3">
-                    {socialLinks.map((social, index) => (
-                      <li key={index}>
-                        <a 
-                          href={social.url} 
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold"
-                        >
-                          <span className="text-staydia-gold">{social.icon}</span>
-                          <span>{social.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+      {isMobile ? (
+        <Drawer>
+          <DrawerTrigger asChild>
+            <button className="text-gray-300 hover:text-staydia-gold p-2">
+              <Menu size={24} />
+              <span className="sr-only">Menu</span>
+            </button>
+          </DrawerTrigger>
+          <DrawerContent className="bg-staydia-black min-h-[100dvh] rounded-none border-none">
+            <div className="absolute right-4 top-4">
+              <DrawerClose className="text-white hover:text-staydia-gold">
+                <X size={24} />
+              </DrawerClose>
             </div>
-          </div>
-        </SheetContent>
-      </Sheet>
+            <MobileMenuContent />
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Sheet>
+          <SheetTrigger asChild>
+            <button className="text-gray-300 hover:text-staydia-gold p-2">
+              <Menu size={24} />
+              <span className="sr-only">Menu</span>
+            </button>
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-full max-w-[400px]">
+            <MobileMenuContent />
+          </SheetContent>
+        </Sheet>
+      )}
     </div>
   );
 };
