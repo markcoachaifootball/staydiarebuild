@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { socialLinks } from './SocialLinks';
@@ -21,8 +21,13 @@ import {
 
 const MobileNav: React.FC = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [resourcesOpen, setResourcesOpen] = React.useState(false);
   const [communityOpen, setCommunityOpen] = React.useState(false);
+  
+  const handleGetStarted = () => {
+    navigate('/contact');
+  };
   
   const MobileMenuContent = () => (
     <div className="flex flex-col h-full">
@@ -134,10 +139,10 @@ const MobileNav: React.FC = () => {
       
       <div className="mt-auto px-4 pb-8">
         <div className="space-y-3">
-          <Button className="w-full py-6 bg-transparent border border-white text-white hover:bg-white hover:text-black text-lg">
-            SIGN IN
-          </Button>
-          <Button className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg">
+          <Button 
+            className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg"
+            onClick={handleGetStarted}
+          >
             GET STARTED
           </Button>
         </div>
