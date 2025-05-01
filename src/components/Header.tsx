@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from './header/Navigation';
 import DemoButton from './header/DemoButton';
+import MobileNav from './header/MobileNav';
 
 const Header: React.FC = () => {
   return (
@@ -13,12 +14,15 @@ const Header: React.FC = () => {
             <img 
               src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
               alt="Staydia Sports Logo" 
-              className="h-10 w-auto"  /* Changed from h-8 to h-10 to make the logo bigger */
+              className="h-10 w-auto"
             />
           </Link>
           <Navigation />
         </div>
-        <DemoButton />
+        <div className="flex items-center">
+          <DemoButton />
+          <MobileNav />
+        </div>
       </div>
     </header>
   );
