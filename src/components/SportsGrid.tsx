@@ -9,10 +9,10 @@ const sports = [
     icon: Activity,
     description: 'Staydia Sports for Football',
     features: [
-      'Automatic player tracking',
+      'Automatic video capture',
       'Live match streaming',
       'Highlight generation',
-      'Performance analytics'
+      'Download match footage'
     ]
   },
   {
@@ -21,9 +21,9 @@ const sports = [
     description: 'Staydia Sports for Rugby',
     features: [
       'Wide-angle coverage',
-      'Tackle analysis',
-      'Set piece review',
-      'Team statistics'
+      'Download game footage',
+      'Simple video review',
+      'Shareable content'
     ]
   },
   {
@@ -31,10 +31,10 @@ const sports = [
     icon: Target,
     description: 'Staydia Sports for Hockey',
     features: [
-      'High-speed tracking',
-      'Multiple camera angles',
-      'Play breakdown',
-      'Team reports'
+      'Full match recording',
+      'Download full games',
+      'Simple play review',
+      'Team content sharing'
     ]
   },
   {
@@ -42,9 +42,9 @@ const sports = [
     icon: BarChart3,
     description: 'Staydia Sports for Basketball',
     features: [
-      'Shot tracking',
-      'Player movement analysis',
-      'Game statistics',
+      'Complete game recording',
+      'Download match footage',
+      'Game content for sharing',
       'Highlight clips'
     ]
   },
