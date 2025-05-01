@@ -43,14 +43,10 @@ const MobileNav: React.FC = () => {
         </div>
         
         <div className="space-y-4">
-          <Link to="/features" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
-            Pricing
-          </Link>
-          
           <Collapsible
             open={resourcesOpen}
             onOpenChange={setResourcesOpen}
-            className="border-t border-staydia-lightgray"
+            className="border-b border-staydia-lightgray"
           >
             <CollapsibleTrigger asChild>
               <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
@@ -84,7 +80,7 @@ const MobileNav: React.FC = () => {
           <Collapsible
             open={communityOpen}
             onOpenChange={setCommunityOpen}
-            className="border-t border-staydia-lightgray"
+            className="border-b border-staydia-lightgray"
           >
             <CollapsibleTrigger asChild>
               <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
@@ -110,9 +106,15 @@ const MobileNav: React.FC = () => {
             </CollapsibleContent>
           </Collapsible>
           
-          <div className="border-t border-staydia-lightgray">
-            <Link to="/download" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
-              Download
+          <div className="border-b border-staydia-lightgray">
+            <Link to="/about" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+              About Us
+            </Link>
+          </div>
+          
+          <div className="border-b border-staydia-lightgray">
+            <Link to="/contact" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+              Contact Us
             </Link>
           </div>
           
