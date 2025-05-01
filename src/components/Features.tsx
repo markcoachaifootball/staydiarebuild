@@ -17,7 +17,7 @@ export const Features: React.FC = () => {
     },
     {
       title: "Enhanced Fan Engagement",
-      description: "Build a global fanbase with accessible matches - stream live or on-demand to connect supporters anywhere.",
+      description: "Stay connected with your community by allowing supporters to watch live and on demand, from anywhere.",
       icon: Users
     },
     {

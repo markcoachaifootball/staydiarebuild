@@ -15,7 +15,7 @@ const benefits = [
   },
   {
     title: "Enhanced Fan Engagement",
-    description: "Connect with fans worldwide through high-quality live streams and on-demand replays.",
+    description: "Stay connected with your community by allowing supporters to watch live and on demand, from anywhere.",
     icon: Users,
   },
   {
