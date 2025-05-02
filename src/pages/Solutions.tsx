@@ -1,13 +1,10 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { Clock, Database, Link, ZapIcon, Camera, Play } from "lucide-react";
 
 const Solutions = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -48,31 +45,13 @@ const Solutions = () => {
           {/* Video Section (moved from HowItWorks) */}
           <div className="mb-16">
             <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
-              {isPlaying ? (
-                <iframe 
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1" 
-                  title="How Staydia Works"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <div 
-                  className="absolute inset-0 cursor-pointer group"
-                  onClick={() => setIsPlaying(true)}
-                >
-                  <img 
-                    src="https://img.youtube.com/vi/LlAfWzJP3co/maxresdefault.jpg" 
-                    alt="How Staydia Works Video Thumbnail" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-                    <div className="w-20 h-20 bg-staydia-gold rounded-full flex items-center justify-center">
-                      <Play className="h-10 w-10 text-staydia-black" />
-                    </div>
-                  </div>
-                </div>
-              )}
+              <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1&mute=1" 
+                title="How Staydia Works"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>

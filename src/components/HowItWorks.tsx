@@ -12,12 +12,7 @@ import {
 } from "@/components/ui/dialog";
 
 const HowItWorks: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handlePlayVideo = () => {
-    setIsPlaying(true);
-  };
 
   const steps = [
     {
@@ -75,31 +70,13 @@ const HowItWorks: React.FC = () => {
             Getting setup with Staydia Sports
           </h3>
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
-            {isPlaying ? (
-              <iframe 
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/AANBHlCBxPo?autoplay=1" 
-                title="Getting setup with Staydia Sports"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
-            ) : (
-              <div 
-                className="absolute inset-0 cursor-pointer group"
-                onClick={() => setIsPlaying(true)}
-              >
-                <img 
-                  src="https://img.youtube.com/vi/AANBHlCBxPo/maxresdefault.jpg" 
-                  alt="Getting setup with Staydia Sports Video Thumbnail" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-                  <div className="w-20 h-20 bg-staydia-gold rounded-full flex items-center justify-center">
-                    <Play className="h-10 w-10 text-staydia-black" />
-                  </div>
-                </div>
-              </div>
-            )}
+            <iframe 
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/AANBHlCBxPo?autoplay=1&mute=1" 
+              title="Getting setup with Staydia Sports"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
         
