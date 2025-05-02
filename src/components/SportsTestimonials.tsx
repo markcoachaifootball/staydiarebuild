@@ -4,22 +4,28 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const testimonials = [
   {
-    quote: "The automated camera system has transformed how we analyze our games. It's been a game-changer for our club.",
-    author: "John Smith",
-    role: "Football Club Manager",
-    club: "Manchester United Amateur FC"
+    quote: "As a proud partner of Staydia Sports, RTB Ebbw Vale FC have had an exceptional experience with their live streaming camera. The quality of the video production is impressive, capturing every detail of our matches with HD clarity.",
+    author: "RTB Ebbw Vale FC",
+    role: "Football Club",
+    club: "RTB Ebbw Vale FC"
   },
   {
-    quote: "Our fans love being able to watch matches from anywhere. Plus, the revenue sharing model has created a new income stream for us.",
-    author: "Sarah Johnson",
-    role: "Rugby Club President",
-    club: "Dublin Lions RFC"
+    quote: "Staydia Sports has greatly enhanced the club. It is a great tool for our coaches and players to analyse games and it's grown our social media followers dramatically.",
+    author: "Lucan United",
+    role: "Football Club",
+    club: "Lucan United FC"
   },
   {
-    quote: "The quality of the AI tracking is incredible. It's like having a professional camera crew at every game.",
-    author: "Michael O'Connor",
-    role: "Basketball Coach",
-    club: "Glasgow Hawks"
+    quote: "The quality of the stream is excellent and gives us superb match coverage not only for the general viewer but also match team coaches for analysing their games, setup and strategy.",
+    author: "Nantyglo FC",
+    role: "Football Club",
+    club: "Nantyglo FC"
+  },
+  {
+    quote: "Live stream at Three Hills at Folkestone Optimist Hockey Club is watched by players, officials, parents and friends all over the UK and beyond. It has enhanced our capability to review, coach and learn.",
+    author: "Folkestone Optimist HC",
+    role: "Hockey Club",
+    club: "Folkestone Optimist Hockey Club"
   },
   {
     quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world.",
@@ -38,7 +44,7 @@ export const SportsTestimonials = () => {
           Hear from clubs already using Staydia's technology
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial) => (
             <Card key={testimonial.author} className="bg-staydia-black border border-staydia-lightgray">
               <CardContent className="pt-6">

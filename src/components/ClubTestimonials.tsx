@@ -20,39 +20,39 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "Staydia's AI camera system has completely transformed how we broadcast our matches. The quality is exceptional and our fans love it.",
-    author: "Thomas Wilson",
-    role: "Club Chairman",
-    club: "Whitehawk FC",
-    logo: "/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png"
+    quote: "As a proud partner of Staydia Sports, RTB Ebbw Vale FC have had an exceptional experience with their live streaming camera. The quality of the video production is impressive, capturing every detail of our matches with HD clarity.",
+    author: "RTB Ebbw Vale",
+    role: "Football Club",
+    club: "RTB Ebbw Vale FC",
+    logo: "/lovable-uploads/72a15165-96d8-48c8-8375-74cbbc1caa71.png"
   },
   {
-    quote: "The revenue sharing model has created a new income stream for our club while giving our supporters amazing value. It's been a win-win partnership.",
-    author: "Emma Roberts",
-    role: "Commercial Director",
-    club: "Edinburgh City FC",
-    logo: "/lovable-uploads/6b3c9981-9edc-4128-aff8-2a80a160e1c9.png"
+    quote: "Staydia Sports has greatly enhanced the club. It is a great tool for our coaches and players to analyse games and it's grown our social media followers dramatically. It has also given our members greater access to the club and help showcase our teams.",
+    author: "Lucan United",
+    role: "Football Club",
+    club: "Lucan United FC",
+    logo: "/lovable-uploads/88531769-dac6-40e2-ba39-ef73fa774d32.png"
   },
   {
-    quote: "Our technical staff loves the tactical clipping tool. It's made analysis so much easier and more efficient for our coaching team.",
-    author: "Michael Chambers",
-    role: "Head Coach",
-    club: "Bromley FC",
-    logo: "/lovable-uploads/8f4bbea6-85fc-451e-93da-15416813d362.png"
+    quote: "When staydia First made contact it seemed too good to be true what was on offer. The communication and service from the team has been second to none. The quality of the stream is excellent and gives us superb match coverage not only for the general viewer but also match team coaches for analysing their games, setup and strategy. It's benefitted all age groups from juniors to seniors and with the sponsor banners and updated score options it makes for a well rounded system we at nantyglo would recommend to all clubs interested in streaming their live matches. A big thumbs up.",
+    author: "Nantyglo FC",
+    role: "Football Club",
+    club: "Nantyglo FC",
+    logo: "/lovable-uploads/495df913-0805-48dc-a436-f282ad6a9368.png"
   },
   {
-    quote: "The system was incredibly easy to set up, and the support from the Staydia team has been outstanding throughout the entire process.",
-    author: "Laura Davidson",
-    role: "Club Secretary",
-    club: "Dulwich Hamlet FC",
-    logo: "/lovable-uploads/6fc52893-fca3-47e1-b26d-64bca2a37a8b.png"
+    quote: "Live stream at Three Hills at Folkestone Optimist Hockey Club is watched by players, officials, parents and friends all over the UK and beyond. It has enhanced our capability to review, coach and learn and added an attractive video-on-demand asset to our facilities so people can watch the games in the bar, especially the goal scorers!!",
+    author: "Folkestone Optimist Hockey Club",
+    role: "Hockey Club",
+    club: "Folkestone Optimist HC",
+    logo: "/lovable-uploads/8c6723e0-2d13-4e2b-b14b-c8df12d4788b.png"
   },
   {
     quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world. Our recent Robbie Keane Academy Cup was a great success with all games streamed live. With top academies from England Scotland and Italy taking part, the coaches, players and parents were very impressed with the quality. It helped coaches to look back at games and family and friends who could not make the games were able to watch at home.",
     author: "Martin Loughran",
     role: "Club Representative",
     club: "Crumlin Utd FC",
-    logo: "/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" // Using a placeholder logo, should be replaced with actual logo
+    logo: "/lovable-uploads/ab15a78c-e26b-4aa7-ba34-b715ea809f5b.png"
   }
 ];
 
