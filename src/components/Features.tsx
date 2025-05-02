@@ -95,7 +95,7 @@ export const Features: React.FC = () => {
                 <CarouselContent>
                   <CarouselItem>
                     <img 
-                      src="/lovable-uploads/afbf084c-fa36-4c9b-bce5-cff061e453c3.png" 
+                      src="/lovable-uploads/47ff50b1-da9d-4dc9-abac-a04e12b9c502.png" 
                       alt="Staydia streaming platform" 
                       className="w-full h-auto"
                     />
