@@ -20,6 +20,12 @@ const testimonials = [
     author: "Michael O'Connor",
     role: "Basketball Coach",
     club: "Glasgow Hawks"
+  },
+  {
+    quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world.",
+    author: "Martin Loughran",
+    role: "Club Representative",
+    club: "Crumlin Utd FC"
   }
 ];
 

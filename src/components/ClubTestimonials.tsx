@@ -46,6 +46,13 @@ const testimonials: Testimonial[] = [
     role: "Club Secretary",
     club: "Dulwich Hamlet FC",
     logo: "/lovable-uploads/6fc52893-fca3-47e1-b26d-64bca2a37a8b.png"
+  },
+  {
+    quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world. Our recent Robbie Keane Academy Cup was a great success with all games streamed live. With top academies from England Scotland and Italy taking part, the coaches, players and parents were very impressed with the quality. It helped coaches to look back at games and family and friends who could not make the games were able to watch at home.",
+    author: "Martin Loughran",
+    role: "Club Representative",
+    club: "Crumlin Utd FC",
+    logo: "/lovable-uploads/40ee1851-41aa-41d7-946b-7eb893affa64.png" // Using a placeholder logo, should be replaced with actual logo
   }
 ];
 
