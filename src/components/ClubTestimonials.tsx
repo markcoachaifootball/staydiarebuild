@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     logo: "/lovable-uploads/8c6723e0-2d13-4e2b-b14b-c8df12d4788b.png"
   },
   {
-    quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world. Our recent Robbie Keane Academy Cup was a great success with all games streamed live. With top academies from England Scotland and Italy taking part, the coaches, players and parents were very impressed with the quality. It helped coaches to look back at games and family and friends who could not make the games were able to watch at home.",
+    quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world. Our recent Robbie Keane Academy Cup was a great success with all games streamed live. With top academies from England, Scotland and Italy taking part, the coaches, players and parents were very impressed with the quality. It helped coaches to look back at games and family and friends who could not make the games were able to watch at home.",
     author: "Martin Loughran",
     role: "Club Representative",
     club: "Crumlin Utd FC",

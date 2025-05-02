@@ -28,7 +28,7 @@ const testimonials = [
     club: "Folkestone Optimist Hockey Club"
   },
   {
-    quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world.",
+    quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world. Our recent Robbie Keane Academy Cup was a great success with all games streamed live. With top academies from England, Scotland and Italy taking part, the coaches, players and parents were very impressed with the quality.",
     author: "Martin Loughran",
     role: "Club Representative",
     club: "Crumlin Utd FC"
