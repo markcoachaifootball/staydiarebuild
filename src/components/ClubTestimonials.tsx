@@ -35,9 +35,9 @@ const testimonials: Testimonial[] = [
   },
   {
     quote: "When staydia First made contact it seemed too good to be true what was on offer. The communication and service from the team has been second to none. The quality of the stream is excellent and gives us superb match coverage not only for the general viewer but also match team coaches for analysing their games, setup and strategy. It's benefitted all age groups from juniors to seniors and with the sponsor banners and updated score options it makes for a well rounded system we at nantyglo would recommend to all clubs interested in streaming their live matches. A big thumbs up.",
-    author: "Nantyglo FC",
+    author: "Nantyglo",
     role: "Football Club",
-    club: "Nantyglo FC",
+    club: "Gwent, Wales",
     logo: "/lovable-uploads/495df913-0805-48dc-a436-f282ad6a9368.png"
   },
   {
