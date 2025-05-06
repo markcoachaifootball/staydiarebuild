@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Carousel, 
@@ -42,9 +41,9 @@ const testimonials: Testimonial[] = [
   },
   {
     quote: "Live stream at Three Hills at Folkestone Optimist Hockey Club is watched by players, officials, parents and friends all over the UK and beyond. It has enhanced our capability to review, coach and learn and added an attractive video-on-demand asset to our facilities so people can watch the games in the bar, especially the goal scorers!!",
-    author: "Folkestone Optimist Hockey Club",
+    author: "Folkestone Optimist",
     role: "Hockey Club",
-    club: "Folkestone Optimist HC",
+    club: "Kent, England",
     logo: "/lovable-uploads/8c6723e0-2d13-4e2b-b14b-c8df12d4788b.png"
   },
   {
