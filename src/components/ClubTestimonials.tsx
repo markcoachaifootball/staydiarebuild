@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
     quote: "Staydia Sports has greatly enhanced the club. It is a great tool for our coaches and players to analyse games and it's grown our social media followers dramatically. It has also given our members greater access to the club and help showcase our teams.",
     author: "Lucan United",
     role: "Football Club",
-    club: "Lucan United FC",
+    club: "Dublin, Ireland",
     logo: "/lovable-uploads/88531769-dac6-40e2-ba39-ef73fa774d32.png"
   },
   {
