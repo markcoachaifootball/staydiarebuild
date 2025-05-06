@@ -7,31 +7,31 @@ const testimonials = [
     quote: "As a proud partner of Staydia Sports, RTB Ebbw Vale FC have had an exceptional experience with their live streaming camera. The quality of the video production is impressive, capturing every detail of our matches with HD clarity.",
     author: "RTB Ebbw Vale FC",
     role: "Football Club",
-    location: "Wales, UK"
+    location: "Ebbw Vale, Gwent, Wales"
   },
   {
     quote: "Staydia Sports has greatly enhanced the club. It is a great tool for our coaches and players to analyse games and it's grown our social media followers dramatically.",
     author: "Lucan United",
     role: "Football Club",
-    location: "Dublin, Ireland"
+    location: "Lucan, Dublin, Ireland"
   },
   {
     quote: "The quality of the stream is excellent and gives us superb match coverage not only for the general viewer but also match team coaches for analysing their games, setup and strategy.",
     author: "Nantyglo FC",
     role: "Football Club",
-    location: "Wales, UK"
+    location: "Nantyglo, Gwent, Wales"
   },
   {
     quote: "Live stream at Three Hills at Folkestone Optimist Hockey Club is watched by players, officials, parents and friends all over the UK and beyond. It has enhanced our capability to review, coach and learn.",
     author: "Folkestone Optimist HC",
     role: "Hockey Club",
-    location: "Kent, UK"
+    location: "Kent, England"
   },
   {
     quote: "Our partnership with Staydia Sports gives our players and coaches the opportunity to improve and develop. It also gives the club opportunity to show case the club all around the world. Our recent Robbie Keane Academy Cup was a great success with all games streamed live. With top academies from England, Scotland and Italy taking part, the coaches, players and parents were very impressed with the quality.",
     author: "Martin Loughran",
     role: "Club Representative",
-    location: "Crumlin Utd FC, Dublin"
+    location: "Crumlin, Dublin, Ireland"
   }
 ];
 
