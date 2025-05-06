@@ -46,10 +46,10 @@ export const SportsTestimonials = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.author} className="bg-staydia-black border border-staydia-lightgray">
+            <Card key={testimonial.author} className="bg-staydia-black border border-staydia-lightgray hover:border-staydia-gold transition-colors">
               <CardContent className="pt-6">
-                <blockquote className="text-gray-300 mb-4">"{testimonial.quote}"</blockquote>
-                <footer>
+                <blockquote className="text-gray-300 mb-6">"{testimonial.quote}"</blockquote>
+                <footer className="mt-4">
                   <p className="text-staydia-gold font-semibold">{testimonial.author}</p>
                   <p className="text-gray-400">{testimonial.role}</p>
                   <p className="text-gray-400">{testimonial.location}</p>
