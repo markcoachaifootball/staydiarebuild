@@ -8,6 +8,7 @@ import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
 import Community from '@/components/Community';
 import Newsroom from '@/components/Newsroom';
+import { SportsTestimonials } from '@/components/SportsTestimonials';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Technology />
       <HowItWorks />
       <Community />
+      <SportsTestimonials />
       <Newsroom />
       <Footer />
     </div>
