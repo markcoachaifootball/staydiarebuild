@@ -5,9 +5,9 @@ import { Card, CardContent } from '@/components/ui/card';
 const testimonials = [
   {
     quote: "As a proud partner of Staydia Sports, RTB Ebbw Vale FC have had an exceptional experience with their live streaming camera. The quality of the video production is impressive, capturing every detail of our matches with HD clarity.",
-    author: "RTB Ebbw Vale FC",
+    author: "RTB Ebbw Vale",
     role: "Football Club",
-    location: "Ebbw Vale, Gwent, Wales"
+    location: "Gwent, Wales"
   },
   {
     quote: "Staydia Sports has greatly enhanced the club. It is a great tool for our coaches and players to analyse games and it's grown our social media followers dramatically.",
