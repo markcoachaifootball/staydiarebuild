@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   Carousel, 
@@ -22,7 +23,7 @@ const testimonials: Testimonial[] = [
     quote: "As a proud partner of Staydia Sports, RTB Ebbw Vale FC have had an exceptional experience with their live streaming camera. The quality of the video production is impressive, capturing every detail of our matches with HD clarity.",
     author: "RTB Ebbw Vale",
     role: "Football Club",
-    club: "RTB Ebbw Vale FC",
+    club: "Gwent, Wales",
     logo: "/lovable-uploads/72a15165-96d8-48c8-8375-74cbbc1caa71.png"
   },
   {
