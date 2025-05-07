@@ -40,7 +40,7 @@ export const Features: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="section-title">Why Clubs Choose Staydia</h2>
           <p className="section-subtitle">
-            Join many other amateur and grassroots clubs already benefiting from our technology across EU & UK.
+            Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.
           </p>
           
           {/* Sports we work with */}
