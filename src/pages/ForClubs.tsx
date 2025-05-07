@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Camera, Banknote, Users, Play, ShieldCheck, Zap, AreaChart, ThumbsUp } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import DemoForm from '@/components/DemoForm';
+import PartnershipFAQ from '@/components/PartnershipFAQ';
 
 const ForClubs = () => {
   return (
@@ -187,6 +188,10 @@ const ForClubs = () => {
           </div>
         </div>
       </div>
+      
+      {/* Adding the FAQ section */}
+      <PartnershipFAQ />
+      
       <Footer />
     </div>
   );
