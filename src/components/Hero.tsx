@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
             <span className="text-staydia-gold">Sports Broadcasting</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Zero investment, automated camera systems with revenue generation for amateur and grassroots clubs across EU and UK.
+            Revolutionise Your Club's Reach & Revenue: AI-Powered Broadcasting, Zero Cost
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
