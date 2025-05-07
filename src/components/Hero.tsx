@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
 import DemoForm from './DemoForm';
@@ -13,20 +13,70 @@ import {
 
 const Hero: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const videoRef = useRef<HTMLDivElement | null>(null);
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoVisible(true);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5,
+      }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
   
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" ref={videoRef}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-staydia-black via-staydia-black/95 to-transparent z-10"></div>
         <div className="w-full h-full">
-          <img
-            src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
-            alt="Can't make the game? Stay connected with Staydia Sports"
-            className="w-full h-full object-cover opacity-50"
-            fetchPriority="high"
-            width="1920"
-            height="1080"
-          />
+          {isVideoVisible ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover opacity-50"
+              poster="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
+            >
+              <source src="https://staydia.com/videos/hero-background.mp4" type="video/mp4" />
+              <img
+                src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
+                alt="Can't make the game? Stay connected with Staydia Sports"
+                className="w-full h-full object-cover opacity-50"
+                fetchPriority="high"
+                width="1920"
+                height="1080"
+              />
+            </video>
+          ) : (
+            <img
+              src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
+              alt="Can't make the game? Stay connected with Staydia Sports"
+              className="w-full h-full object-cover opacity-50"
+              fetchPriority="high"
+              width="1920"
+              height="1080"
+            />
+          )}
         </div>
       </div>
 

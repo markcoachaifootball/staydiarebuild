@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ClubTestimonials from './ClubTestimonials';
@@ -14,6 +14,35 @@ import {
 
 export const Technology: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoVisible(true);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5,
+      }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section id="technology" className="py-24">
@@ -65,7 +94,7 @@ export const Technology: React.FC = () => {
         <ClubTestimonials />
 
         {/* Video Section with more seamless heading */}
-        <div className="mt-12 border-t border-staydia-lightgray pt-12">
+        <div className="mt-12 border-t border-staydia-lightgray pt-12" ref={videoRef}>
           <h3 className="text-2xl font-semibold text-staydia-gold mb-2">
             <Play className="mr-2 h-5 w-5 inline" />
             See How It Works
@@ -74,7 +103,7 @@ export const Technology: React.FC = () => {
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
             <iframe 
               className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1&mute=1" 
+              src={isVideoVisible ? "https://www.youtube.com/embed/LlAfWzJP3co?autoplay=1&mute=1" : "about:blank"} 
               title="How Staydia Works"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen
