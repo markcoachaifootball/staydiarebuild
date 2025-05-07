@@ -1,9 +1,19 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import DemoForm from './DemoForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export const Features: React.FC = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const features = [
     {
       title: "Zero Investment Required",
@@ -73,6 +83,16 @@ export const Features: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* Added CTA button */}
+        <div className="mt-12 text-center">
+          <Button 
+            className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg px-8 py-6"
+            onClick={() => setIsDialogOpen(true)}
+          >
+            Become A Staydia Partner
+          </Button>
+        </div>
         
         <div className="mt-16 pt-10 border-t border-staydia-lightgray">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -120,6 +140,16 @@ export const Features: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Demo Form Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold mb-4">Become A Staydia Partner</DialogTitle>
+          </DialogHeader>
+          <DemoForm />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
