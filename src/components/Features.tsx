@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -54,11 +53,10 @@ export const Features: React.FC = () => {
             Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.
           </p>
           
-          {/* Added FAQ Button */}
+          {/* Updated FAQ Button to yellow */}
           <div className="mt-4 mb-8">
             <Button 
-              variant="outline" 
-              className="border-staydia-gold text-staydia-gold hover:bg-staydia-gold/10 font-medium px-8 py-2"
+              className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-2"
               asChild
             >
               <Link to="/faq">Frequently Asked Questions</Link>
