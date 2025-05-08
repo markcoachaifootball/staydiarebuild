@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -25,29 +25,49 @@ const MobileNav: React.FC = () => {
   const navigate = useNavigate();
   const [resourcesOpen, setResourcesOpen] = React.useState(false);
   const [communityOpen, setCommunityOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
   
   const handleGetStarted = () => {
     navigate('/contact');
+    // Close the menu after navigation
+    setIsOpen(false);
   };
   
-  // Prevent body scroll when menu is open
-  React.useEffect(() => {
+  // Improved body scroll handling for iOS Safari
+  useEffect(() => {
+    if (isOpen) {
+      // Save the current scroll position
+      const scrollY = window.scrollY;
+      
+      // Apply fixed positioning to prevent scrolling
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+    } else {
+      // Restore scroll position when menu is closed
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      }
+    }
+    
+    // Cleanup on unmount
     return () => {
-      // Re-enable scrolling when component unmounts
-      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
     };
-  }, []);
-  
-  const handleOpenChange = (open: boolean) => {
-    // Disable or enable scrolling based on menu state
-    document.body.style.overflow = open ? 'hidden' : '';
-  };
+  }, [isOpen]);
   
   const MobileMenuContent = () => (
     <div className="flex flex-col h-full">
       <div className="p-4 border-b border-staydia-lightgray flex-shrink-0">
         <div className="flex items-center justify-between">
-          <Link to="/">
+          <Link to="/" onClick={() => setIsOpen(false)}>
             <img 
               src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
               alt="Staydia Sports Logo" 
@@ -77,6 +97,7 @@ const MobileNav: React.FC = () => {
                     <Link 
                       to={link.path}
                       className="flex items-center space-x-3 text-gray-300 hover:text-staydia-gold py-2"
+                      onClick={() => setIsOpen(false)}
                     >
                       <div className="flex-shrink-0 w-7 h-7 bg-staydia-gold flex items-center justify-center rounded-full">
                         {link.icon ? (
@@ -107,10 +128,22 @@ const MobileNav: React.FC = () => {
             <CollapsibleContent className="pt-2 pb-3">
               <ul className="space-y-3">
                 <li>
-                  <Link to="/news" className="block text-gray-300 hover:text-staydia-gold py-2">Newsroom</Link>
+                  <Link 
+                    to="/news" 
+                    className="block text-gray-300 hover:text-staydia-gold py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Newsroom
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/fan-engagement" className="block text-gray-300 hover:text-staydia-gold py-2">Fan Engagement</Link>
+                  <Link 
+                    to="/fan-engagement" 
+                    className="block text-gray-300 hover:text-staydia-gold py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Fan Engagement
+                  </Link>
                 </li>
                 {socialLinks.map((social, index) => (
                   <li key={index}>
@@ -130,13 +163,21 @@ const MobileNav: React.FC = () => {
           </Collapsible>
           
           <div className="border-b border-staydia-lightgray py-2">
-            <Link to="/about" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+            <Link 
+              to="/about" 
+              className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
               About Us
             </Link>
           </div>
           
           <div className="border-b border-staydia-lightgray py-2">
-            <Link to="/contact" className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
+            <Link 
+              to="/contact" 
+              className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
               Contact Us
             </Link>
           </div>
@@ -157,11 +198,13 @@ const MobileNav: React.FC = () => {
   return (
     <div className="md:hidden flex items-center">
       {isMobile ? (
-        <Drawer>
+        <Drawer open={isOpen} onOpenChange={setIsOpen}>
           <DrawerTrigger asChild>
-            <button className="text-gray-300 hover:text-staydia-gold p-2">
+            <button 
+              className="text-gray-300 hover:text-staydia-gold p-2" 
+              aria-label="Open menu"
+            >
               <Menu size={24} />
-              <span className="sr-only">Menu</span>
             </button>
           </DrawerTrigger>
           <DrawerContent className="bg-staydia-black max-h-[90vh] rounded-t-xl border-none">
@@ -174,14 +217,24 @@ const MobileNav: React.FC = () => {
           </DrawerContent>
         </Drawer>
       ) : (
-        <Sheet onOpenChange={handleOpenChange}>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="text-gray-300 hover:text-staydia-gold p-2">
+            <button 
+              className="text-gray-300 hover:text-staydia-gold p-2"
+              aria-label="Open menu"
+            >
               <Menu size={24} />
-              <span className="sr-only">Menu</span>
             </button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-staydia-black border-staydia-lightgray p-0 w-full max-w-[400px] h-full overflow-hidden">
+            <div className="absolute right-4 top-4">
+              <button 
+                className="text-white hover:text-staydia-gold"
+                onClick={() => setIsOpen(false)}
+              >
+                <X size={24} />
+              </button>
+            </div>
             <MobileMenuContent />
           </SheetContent>
         </Sheet>
