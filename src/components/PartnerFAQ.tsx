@@ -37,7 +37,7 @@ const partnerFaqItems = [
 
 const PartnerFAQ: React.FC = () => {
   return (
-    <section className="py-12 bg-staydia-darkgray" id="how-we-partner">
+    <section className="py-12 bg-staydia-darkgray">
       <div className="staydia-container">
         <div className="flex items-center gap-3 mb-8">
           <MessageCircle className="text-staydia-gold h-7 w-7" />

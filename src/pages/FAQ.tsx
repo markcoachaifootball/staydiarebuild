@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +19,11 @@ import PartnerFAQ from '@/components/PartnerFAQ';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 const FAQ = () => {
+  // Add useEffect to scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const generalFAQs = [
     {
       question: "How does Staydia's camera technology work?",
