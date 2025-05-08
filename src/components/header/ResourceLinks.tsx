@@ -4,12 +4,23 @@ import { Link } from 'react-router-dom';
 import {
   NavigationMenuLink
 } from "@/components/ui/navigation-menu";
+import { Camera } from "lucide-react";
 import { FootballIcon, RugbyIcon, HockeyIcon, BasketballIcon } from './SportsIcons';
+import SportIcon from './SportIcon';
+
+// Camera icon component for resources
+const CameraIcon = () => (
+  <SportIcon 
+    icon={
+      <Camera className="h-4 w-4 text-staydia-gold" />
+    }
+  />
+);
 
 export const resourceLinks = [
-  { name: "FAQ's", description: "Frequently Asked Questions", path: "/faq" },
-  { name: "For Clubs", description: "Solutions for sports clubs", path: "/for-clubs" },
-  { name: "For Leagues", description: "Products for leagues and competitions", path: "/for-leagues" },
+  { name: "FAQ's", description: "Frequently Asked Questions", path: "/faq", icon: <CameraIcon /> },
+  { name: "For Clubs", description: "Solutions for sports clubs", path: "/for-clubs", icon: <CameraIcon /> },
+  { name: "For Leagues", description: "Products for leagues and competitions", path: "/for-leagues", icon: <CameraIcon /> },
   { name: "Football", description: "Staydia Sports for Football", path: "/sports/football", icon: <FootballIcon /> },
   { name: "Rugby", description: "Staydia Sports for Rugby", path: "/sports/rugby", icon: <RugbyIcon /> },
   { name: "Hockey", description: "Staydia Sports for Hockey", path: "/sports/hockey", icon: <HockeyIcon /> },
