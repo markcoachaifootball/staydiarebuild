@@ -7,6 +7,7 @@ import {
 import { FootballIcon, RugbyIcon, HockeyIcon, BasketballIcon } from './SportsIcons';
 
 export const resourceLinks = [
+  { name: "FAQ", description: "Frequently Asked Questions", path: "/faq" },
   { name: "For Clubs", description: "Solutions for sports clubs", path: "/for-clubs" },
   { name: "For Leagues", description: "Products for leagues and competitions", path: "/for-leagues" },
   { name: "Football", description: "Staydia Sports for Football", path: "/sports/football", icon: <FootballIcon /> },
