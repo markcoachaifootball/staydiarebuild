@@ -4,6 +4,7 @@ import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
+import { Link } from 'react-router-dom';
 import {
   Dialog,
   DialogContent,
@@ -52,6 +53,17 @@ export const Features: React.FC = () => {
           <p className="section-subtitle">
             Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.
           </p>
+          
+          {/* Added FAQ Button */}
+          <div className="mt-4 mb-8">
+            <Button 
+              variant="outline" 
+              className="border-staydia-gold text-staydia-gold hover:bg-staydia-gold/10 font-medium px-8 py-2"
+              asChild
+            >
+              <Link to="/faq">Frequently Asked Questions</Link>
+            </Button>
+          </div>
           
           {/* Sports we work with */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
