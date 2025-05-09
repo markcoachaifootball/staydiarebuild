@@ -3,8 +3,11 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Globe, TrendingUp, Users } from "lucide-react";
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const AboutUs = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

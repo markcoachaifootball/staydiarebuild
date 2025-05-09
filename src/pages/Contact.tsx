@@ -3,8 +3,11 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Contact = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

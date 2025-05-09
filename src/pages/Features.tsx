@@ -3,8 +3,11 @@ import React from 'react';
 import Header from '@/components/Header';
 import { Features as FeaturesSection } from '@/components/Features';
 import Footer from '@/components/Footer';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Features = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

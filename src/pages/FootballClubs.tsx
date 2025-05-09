@@ -8,8 +8,11 @@ import FeaturesSection from '@/components/sports/FeaturesSection';
 import TestimonialsSection from '@/components/sports/TestimonialsSection';
 import StepsTimelineSection from '@/components/sports/StepsTimelineSection';
 import CallToActionSection from '@/components/sports/CallToActionSection';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const FootballClubs: React.FC = () => {
+  useScrollToTop();
+  
   const features = [
     {
       icon: <Camera className="h-8 w-8 text-staydia-gold" />,
