@@ -12,8 +12,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Partnerships = () => {
+  useScrollToTop();
+  
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   return (

@@ -14,8 +14,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Sports = () => {
+  useScrollToTop();
+  
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   return (

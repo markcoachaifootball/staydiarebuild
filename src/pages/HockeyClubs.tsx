@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,8 +8,11 @@ import WhyChooseSection from '@/components/sports/WhyChooseSection';
 import StepsTimelineSection from '@/components/sports/StepsTimelineSection';
 import CallToActionSection from '@/components/sports/CallToActionSection';
 import TestimonialsSection from '@/components/sports/TestimonialsSection';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const HockeyClubs: React.FC = () => {
+  useScrollToTop();
+  
   const features = [
     {
       icon: <Camera className="h-8 w-8 text-staydia-gold" />,

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -16,8 +15,11 @@ import FeaturesSection from '@/components/sports/FeaturesSection';
 import WhyChooseSection from '@/components/sports/WhyChooseSection';
 import StepsTimelineSection from '@/components/sports/StepsTimelineSection';
 import CallToActionSection from '@/components/sports/CallToActionSection';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const ForLeagues: React.FC = () => {
+  useScrollToTop();
+  
   const features = [
     {
       icon: <Globe className="h-8 w-8 text-staydia-gold" />,

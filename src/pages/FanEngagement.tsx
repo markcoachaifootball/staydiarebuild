@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import DemoForm from '@/components/DemoForm';
 import { Check } from "lucide-react";
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const FanEngagement = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black flex flex-col">
       <Header />

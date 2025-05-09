@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -8,8 +7,11 @@ import { Camera, Banknote, Users, Play, ShieldCheck, Zap, AreaChart, ThumbsUp } 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import DemoForm from '@/components/DemoForm';
 import PartnershipFAQ from '@/components/PartnershipFAQ';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const ForClubs = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

@@ -3,8 +3,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { Clock, Database, Link, ZapIcon, Camera, Play } from "lucide-react";
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Solutions = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,8 +8,11 @@ import RevenueHero from '@/components/revenue-sharing/RevenueHero';
 import WhyItWorksSection from '@/components/revenue-sharing/WhyItWorksSection';
 import RevenueCTA from '@/components/revenue-sharing/RevenueCTA';
 import BenefitsSection from '@/components/revenue-sharing/BenefitsSection';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const RevenueSharing = () => {
+  useScrollToTop();
+  
   // Define the steps for the revenue sharing model
   const howItWorksSteps = [
     {
