@@ -3,8 +3,11 @@ import React from 'react';
 import Header from '@/components/Header';
 import { Technology as TechnologySection } from '@/components/Technology';
 import Footer from '@/components/Footer';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Technology = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

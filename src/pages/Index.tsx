@@ -9,8 +9,11 @@ import HowItWorks from '@/components/HowItWorks';
 import Community from '@/components/Community';
 import Newsroom from '@/components/Newsroom';
 import { SportsTestimonials } from '@/components/SportsTestimonials';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Index = () => {
+  useScrollToTop();
+  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
