@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <Navigation />
         </div>
         <div className="flex items-center">
-          <DemoButton />
+          <DemoButton showDirectLink={true} />
           <MobileNav />
         </div>
       </div>
