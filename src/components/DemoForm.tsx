@@ -48,9 +48,8 @@ const DemoForm = () => {
         Message: ${data.message || 'No additional information provided'}
       `;
 
-      // Send form data to a service that will email info@staydiasports.com
-      // This is a mock implementation - in production, this would connect to a backend API
-      const response = await fetch("https://formsubmit.co/ajax/info@staydiasports.com", {
+      // Use the activated FormSubmit endpoint with the random string
+      const response = await fetch("https://formsubmit.co/2ad0f3bc62e419e2c155e05d8d2dbc1b", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -183,7 +182,10 @@ const DemoForm = () => {
           )}
         />
 
-        <Button type="submit" className="w-full bg-staydia-gold text-staydia-black hover:bg-opacity-90">
+        <Button 
+          type="submit" 
+          className="w-full bg-staydia-gold text-staydia-black hover:bg-opacity-90 py-6 text-lg font-medium shadow-md"
+        >
           Submit Demo Request
         </Button>
       </form>
