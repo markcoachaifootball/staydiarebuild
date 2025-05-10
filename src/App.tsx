@@ -8,7 +8,7 @@ import Solutions from './pages/Solutions';
 import ForLeagues from './pages/ForLeagues';
 import RevenueSharing from './pages/RevenueSharing';
 import NotFound from './pages/NotFound';
-import FAQ from './pages/FAQ'; // Updated to match the correct case of the file
+import FAQ from './pages/FAQ'; // Corrected the case to match the actual file name
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
 
