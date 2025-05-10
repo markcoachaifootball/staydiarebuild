@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Index from './pages/Index';
@@ -7,7 +8,7 @@ import Solutions from './pages/Solutions';
 import ForLeagues from './pages/ForLeagues';
 import RevenueSharing from './pages/RevenueSharing';
 import NotFound from './pages/NotFound';
-import Faq from './pages/Faq';
+import FAQ from './pages/FAQ'; // Updated to match the correct case of the file
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
 
@@ -17,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/faq" element={<Faq />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/for-leagues" element={<ForLeagues />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/revenue-sharing" element={<RevenueSharing />} />
