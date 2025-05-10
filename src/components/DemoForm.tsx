@@ -48,8 +48,8 @@ const DemoForm = () => {
         Message: ${data.message || 'No additional information provided'}
       `;
 
-      // Use the activated FormSubmit endpoint with the random string
-      const response = await fetch("https://formsubmit.co/2ad0f3bc62e419e2c155e05d8d2dbc1b", {
+      // Update to use info@staydiasports.com as recipient
+      const response = await fetch("https://formsubmit.co/info@staydiasports.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
