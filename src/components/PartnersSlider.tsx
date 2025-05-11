@@ -71,6 +71,18 @@ const partners = [
   {
     name: "Greystones United AFC",
     logo: "/lovable-uploads/8019936e-4b1c-40b2-bcfa-c251921fdb57.png"
+  },
+  {
+    name: "Tolka Rovers",
+    logo: "/lovable-uploads/3cac893a-957f-49c4-bb4e-4acceaa43a56.png"
+  },
+  {
+    name: "Ferrybank AFC",
+    logo: "/lovable-uploads/6955c596-a5e7-4a7a-86e2-9be8160af366.png"
+  },
+  {
+    name: "Mervue United AFC",
+    logo: "/lovable-uploads/ee38630e-844b-4e99-b0a6-f227511e1b12.png"
   }
 ];
 
