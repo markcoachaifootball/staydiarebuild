@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
@@ -102,13 +101,15 @@ const PartnersSlider: React.FC = () => {
               align: "start",
               loop: true,
               dragFree: true,
+              // Slow down the carousel by reducing the default speed
+              slidesToScroll: 1,
+              duration: 100  // This increases the time it takes to transition between slides (in milliseconds)
             }}
             plugins={[
               Autoplay({ 
                 delay: 0,  // No delay for continuous movement
                 stopOnInteraction: false,
-                stopOnMouseEnter: false,
-                speed: 0.5  // Reduce speed value to make it slower (default is 1)
+                stopOnMouseEnter: false
               })
             ]}
             className="w-full"
