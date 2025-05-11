@@ -108,6 +108,7 @@ const PartnersSlider: React.FC = () => {
                 delay: 0,  // No delay for continuous movement
                 stopOnInteraction: false,
                 stopOnMouseEnter: false,
+                speed: 0.5  // Reduce speed value to make it slower (default is 1)
               })
             ]}
             className="w-full"
