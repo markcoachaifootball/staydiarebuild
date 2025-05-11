@@ -8,9 +8,10 @@ import Solutions from './pages/Solutions';
 import ForLeagues from './pages/ForLeagues';
 import RevenueSharing from './pages/RevenueSharing';
 import NotFound from './pages/NotFound';
-import FAQ from './pages/FAQ'; // Corrected the case to match the actual file name
+import FAQ from './pages/FAQ';
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
+import ForClubs from './pages/ForClubs';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/for-leagues" element={<ForLeagues />} />
+        <Route path="/for-clubs" element={<ForClubs />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/revenue-sharing" element={<RevenueSharing />} />
         <Route path="/solutions" element={<Solutions />} />
