@@ -102,9 +102,9 @@ const PartnersSlider: React.FC = () => {
               align: "start",
               loop: true,
               dragFree: true,
-              // Significantly slow down the carousel by increasing the duration
+              // Make the carousel extremely slow by using a very high duration
               slidesToScroll: 1,
-              duration: 8000  // Very slow movement - takes 8 seconds to transition
+              duration: 20000  // Extremely slow movement - takes 20 seconds to transition
             }}
             plugins={[
               Autoplay({ 
