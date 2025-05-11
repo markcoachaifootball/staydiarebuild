@@ -75,7 +75,7 @@ const partners = [
   },
   {
     name: "Tolka Rovers",
-    logo: "/lovable-uploads/3cac893a-957f-49c4-bb4e-4acceaa43a56.png"
+    logo: "/lovable-uploads/8902c4d9-e11e-4dff-a170-4d77fba2f850.png"
   },
   {
     name: "Ferrybank AFC",
