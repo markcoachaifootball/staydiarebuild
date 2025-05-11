@@ -1,6 +1,7 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 // Updated partners array with all the uploaded logos
 const partners = [
@@ -87,16 +88,27 @@ const partners = [
 ];
 
 const PartnersSlider: React.FC = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      align: "start",
+      loop: true,
+    },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
   return (
     <section className="py-12 bg-staydia-black">
       <div className="staydia-container">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">WHO WE WORK WITH...</h2>
+        <h3 className="text-lg md:text-xl font-medium text-center mb-6 text-staydia-gold uppercase tracking-wider">Trusted Partners</h3>
         
         <Carousel 
           opts={{
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({ delay: 3000, stopOnInteraction: false })
+          ]}
           className="w-full"
         >
           <CarouselContent className="py-4">
