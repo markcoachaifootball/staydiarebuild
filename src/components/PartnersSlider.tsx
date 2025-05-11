@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import useEmblaCarousel from 'embla-carousel-react';
+
+import React from 'react';
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
 
 // Updated partners array with all the uploaded logos
@@ -88,47 +88,45 @@ const partners = [
 ];
 
 const PartnersSlider: React.FC = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      align: "start",
-      loop: true,
-    },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
-  );
+  // Create a duplicate array of partners for seamless continuous flow
+  const duplicatedPartners = [...partners, ...partners];
 
   return (
-    <section className="py-12 bg-staydia-black">
+    <section className="py-12 bg-staydia-black overflow-hidden">
       <div className="staydia-container">
         <h3 className="text-lg md:text-xl font-medium text-center mb-6 text-staydia-gold uppercase tracking-wider">Trusted Partners</h3>
         
-        <Carousel 
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({ delay: 3000, stopOnInteraction: false })
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="py-4">
-            {partners.map((partner, index) => (
-              <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4 xl:basis-1/5 pl-4 flex items-center justify-center">
-                <div className="h-32 w-full flex items-center justify-center p-4 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
-                  <img 
-                    src={partner.logo} 
-                    alt={`${partner.name} logo`} 
-                    className="max-h-24 max-w-full object-contain"
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-center gap-2 mt-4">
-            <CarouselPrevious className="relative static left-auto transform-none bg-staydia-darkgray border-staydia-lightgray hover:bg-staydia-gold hover:text-staydia-black" />
-            <CarouselNext className="relative static right-auto transform-none bg-staydia-darkgray border-staydia-lightgray hover:bg-staydia-gold hover:text-staydia-black" />
-          </div>
-        </Carousel>
+        <div className="relative w-full">
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+            }}
+            plugins={[
+              Autoplay({ 
+                delay: 0,  // No delay for continuous movement
+                stopOnInteraction: false,
+                stopOnMouseEnter: false,
+              })
+            ]}
+            className="w-full"
+          >
+            <CarouselContent className="py-4">
+              {duplicatedPartners.map((partner, index) => (
+                <CarouselItem key={index} className="md:basis-1/5 lg:basis-1/6 pl-4 flex items-center justify-center">
+                  <div className="h-32 w-full flex items-center justify-center p-4 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
+                    <img 
+                      src={partner.logo} 
+                      alt={`${partner.name} logo`} 
+                      className="max-h-24 max-w-full object-contain"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
       </div>
     </section>
   );
