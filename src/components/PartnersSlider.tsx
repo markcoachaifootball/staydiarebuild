@@ -104,6 +104,10 @@ const partners = [
   {
     name: "Mervue United AFC",
     logo: "/lovable-uploads/ee38630e-844b-4e99-b0a6-f227511e1b12.png"
+  },
+  {
+    name: "Clane United AFC",
+    logo: "/lovable-uploads/0d37ae5a-3f19-4ad6-97aa-9a0b9b772df2.png"
   }
 ];
 
