@@ -99,7 +99,7 @@ const partners = [
   },
   {
     name: "Ferrybank AFC",
-    logo: "/lovable-uploads/6955c596-a5e7-4a7a-86e2-9be8160af366.png"
+    logo: "/lovable-uploads/a7f28b75-e4a1-473a-b30d-786dae367a54.png"
   },
   {
     name: "Mervue United AFC",
