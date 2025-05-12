@@ -35,7 +35,7 @@ const partners = [
   },
   {
     name: "Caldicot RFC",
-    logo: "/lovable-uploads/99c374f7-f4f8-4f34-9869-6d1e610167f8.png"
+    logo: "/lovable-uploads/959508f5-8205-4ad1-a4e5-bad562ee0184.png"
   },
   {
     name: "Maesteg R.F.C.",
