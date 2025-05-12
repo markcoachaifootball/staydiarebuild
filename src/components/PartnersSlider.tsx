@@ -31,7 +31,7 @@ const partners = [
   },
   {
     name: "McKelvey Celtic FC",
-    logo: "/lovable-uploads/dd0297b4-2d5d-4247-a6e1-9e40f06f4c14.png"
+    logo: "/lovable-uploads/cba350a1-a7b3-4c43-a078-20e45862af4e.png"
   },
   {
     name: "Caldicot RFC",
