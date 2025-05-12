@@ -26,6 +26,18 @@ const partners = [
     logo: "/lovable-uploads/0975187a-7933-434a-8bb2-7fc430f6e000.png"
   },
   {
+    name: "Abergarged Buds FC",
+    logo: "/lovable-uploads/5477dbae-b8c5-4fb4-b460-bbdbb3f4c128.png"
+  },
+  {
+    name: "McKelvey Celtic FC",
+    logo: "/lovable-uploads/dd0297b4-2d5d-4247-a6e1-9e40f06f4c14.png"
+  },
+  {
+    name: "Caldicot RFC",
+    logo: "/lovable-uploads/99c374f7-f4f8-4f34-9869-6d1e610167f8.png"
+  },
+  {
     name: "Crumlin United",
     logo: "/lovable-uploads/6700ea10-eea6-4ebf-8758-381a8e979aa5.png"
   },
