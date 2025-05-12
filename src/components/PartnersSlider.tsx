@@ -39,7 +39,7 @@ const partners = [
   },
   {
     name: "Maesteg R.F.C.",
-    logo: "/lovable-uploads/6f7d4661-42e3-4386-8dba-e806644f5bf1.png"
+    logo: "/lovable-uploads/7e8ba267-344a-49ff-889f-f4070730bc53.png"
   },
   {
     name: "Crumlin United",
