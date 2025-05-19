@@ -119,6 +119,10 @@ const partners = [
   {
     name: "Bohemians F.C. Waterford",
     logo: "/lovable-uploads/dea99527-f642-4ea5-9915-5e41701c4de9.png"
+  },
+  {
+    name: "Newport Saints",
+    logo: "/lovable-uploads/f372f177-c5c6-4f6f-9dfb-9fda50f3e204.png"
   }
 ];
 
