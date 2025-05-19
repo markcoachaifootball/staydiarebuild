@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -125,7 +126,7 @@ const Contact = () => {
               <div className="mb-8 bg-green-600/10 p-6 rounded-lg border border-green-600/30">
                 <h3 className="text-xl font-medium mb-3 text-green-500">WhatsApp (Fastest Response)</h3>
                 <p className="text-gray-300 mb-4">
-                  For quick responses, you can reach our team via WhatsApp. We typically respond within a few hours.
+                  Include your club/league name for more info. We typically respond within minutes during business hours.
                 </p>
                 <Button 
                   onClick={handleWhatsAppClick}
