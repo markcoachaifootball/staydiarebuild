@@ -108,6 +108,10 @@ const partners = [
   {
     name: "Clane United AFC",
     logo: "/lovable-uploads/0d37ae5a-3f19-4ad6-97aa-9a0b9b772df2.png"
+  },
+  {
+    name: "Galway Football Association",
+    logo: "/lovable-uploads/d4a9c853-0baa-4687-bf5e-7c4d112deba6.png"
   }
 ];
 
