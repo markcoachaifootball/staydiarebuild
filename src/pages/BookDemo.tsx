@@ -32,10 +32,10 @@ const BookDemo = () => {
           <div className="bg-green-600/10 border border-green-600/20 p-8 rounded-xl mb-8 flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-3 text-white">
               <MessageCircle className="inline-block mr-2 h-6 w-6" />
-              Quick Response via WhatsApp
+              Contact via WhatsApp
             </h2>
             <p className="text-gray-300 mb-6 max-w-lg">
-              For immediate assistance, chat directly with our team on WhatsApp. We typically respond within minutes during business hours.
+              Include your club/league name for more info. We typically respond within minutes during business hours.
             </p>
             <Button 
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg flex items-center gap-2"
