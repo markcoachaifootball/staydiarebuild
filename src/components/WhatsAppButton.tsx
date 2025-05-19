@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 interface WhatsAppButtonProps {
   expanded?: boolean;
