@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useToast } from "@/hooks/use-toast";
 import { MessageCircle } from 'lucide-react';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Contact = () => {
   useScrollToTop();
@@ -121,15 +121,15 @@ const Contact = () => {
             <div className="bg-staydia-darkgray/50 border border-staydia-lightgray rounded-xl p-8">
               <h2 className="text-2xl font-semibold mb-6">Alternative ways to reach us</h2>
               
-              {/* WhatsApp */}
-              <div className="mb-8">
-                <h3 className="text-lg font-medium mb-3 text-staydia-gold">WhatsApp</h3>
+              {/* WhatsApp - Now more prominent */}
+              <div className="mb-8 bg-green-600/10 p-6 rounded-lg border border-green-600/30">
+                <h3 className="text-xl font-medium mb-3 text-green-500">WhatsApp (Fastest Response)</h3>
                 <p className="text-gray-300 mb-4">
                   For quick responses, you can reach our team via WhatsApp. We typically respond within a few hours.
                 </p>
                 <Button 
                   onClick={handleWhatsAppClick}
-                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white w-full justify-center py-3"
                 >
                   <MessageCircle className="h-5 w-5" />
                   Contact via WhatsApp
@@ -162,6 +162,7 @@ const Contact = () => {
         </div>
       </div>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
