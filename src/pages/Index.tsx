@@ -10,6 +10,7 @@ import Community from '@/components/Community';
 import Newsroom from '@/components/Newsroom';
 import { SportsTestimonials } from '@/components/SportsTestimonials';
 import PartnersSlider from '@/components/PartnersSlider';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
       <SportsTestimonials />
       <Newsroom />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
