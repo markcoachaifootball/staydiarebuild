@@ -112,6 +112,10 @@ const partners = [
   {
     name: "Galway Football Association",
     logo: "/lovable-uploads/d4a9c853-0baa-4687-bf5e-7c4d112deba6.png"
+  },
+  {
+    name: "Salthill Devon F.C.",
+    logo: "/lovable-uploads/2eac8192-a868-4a2f-8027-4a8b21470132.png"
   }
 ];
 
