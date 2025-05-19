@@ -116,6 +116,10 @@ const partners = [
   {
     name: "Salthill Devon F.C.",
     logo: "/lovable-uploads/2eac8192-a868-4a2f-8027-4a8b21470132.png"
+  },
+  {
+    name: "Bohemians F.C. Waterford",
+    logo: "/lovable-uploads/4490ea8d-5c4a-482d-a48c-313c4e2ca816.png"
   }
 ];
 
