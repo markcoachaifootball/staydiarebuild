@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useToast } from "@/hooks/use-toast";
-import { WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   useScrollToTop();
@@ -131,7 +131,7 @@ const Contact = () => {
                   onClick={handleWhatsAppClick}
                   className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white"
                 >
-                  <WhatsApp className="h-5 w-5" />
+                  <MessageCircle className="h-5 w-5" />
                   Contact via WhatsApp
                 </Button>
               </div>
