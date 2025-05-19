@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
@@ -119,7 +118,7 @@ const partners = [
   },
   {
     name: "Bohemians F.C. Waterford",
-    logo: "/lovable-uploads/9abd9955-44b4-4036-b5cb-191d6f82367b.png"
+    logo: "/lovable-uploads/dea99527-f642-4ea5-9915-5e41701c4de9.png"
   }
 ];
 
