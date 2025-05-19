@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
-import DemoForm from './DemoForm';
+import { Link } from 'react-router-dom';
 import {
   Dialog,
   DialogContent,
@@ -10,9 +10,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import DemoForm from './DemoForm';
 
 const Hero: React.FC = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const videoRef = useRef<HTMLDivElement | null>(null);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   
@@ -113,19 +113,12 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-4">
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8">
-                  Book Demo
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[500px]">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
-                </DialogHeader>
-                <DemoForm />
-              </DialogContent>
-            </Dialog>
+            <Button 
+              className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8"
+              asChild
+            >
+              <Link to="/book-demo">Book Demo</Link>
+            </Button>
 
             <Button 
               className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8"
