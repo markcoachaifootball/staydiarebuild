@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
@@ -111,7 +110,7 @@ const partners = [
   },
   {
     name: "Galway Football Association",
-    logo: "/lovable-uploads/b1b22ca6-ca54-4114-9d76-da01137753e5.png"
+    logo: "/lovable-uploads/3ef43494-2740-46b6-8dfd-ff89f10a7b84.png"
   },
   {
     name: "Salthill Devon F.C.",
