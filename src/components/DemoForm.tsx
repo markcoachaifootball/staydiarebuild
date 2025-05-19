@@ -100,8 +100,8 @@ const DemoForm = () => {
       
       {/* WhatsApp Option */}
       <div className="mb-6 p-4 bg-green-600/10 border border-green-600/30 rounded-lg">
-        <h3 className="text-lg font-semibold text-green-600 mb-2">Quick Response via WhatsApp</h3>
-        <p className="text-gray-700 mb-3">For immediate assistance, chat directly with our team</p>
+        <h3 className="text-lg font-semibold text-green-600 mb-2">Contact via WhatsApp</h3>
+        <p className="text-gray-700 mb-3">Include your club/league name for more info. We typically respond within minutes during business hours.</p>
         <Button 
           onClick={handleWhatsAppClick}
           className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white mb-4"
