@@ -52,8 +52,8 @@ const Contact = () => {
   };
   
   const handleWhatsAppClick = () => {
-    // WhatsApp business number - replace with the actual number
-    const phoneNumber = "353871234567"; // Example format: country code + number without +
+    // Updated WhatsApp number with the real one
+    const phoneNumber = "353861935525"; // Irish number format without +
     const message = encodeURIComponent("Hi, I'm interested in learning more about Staydia Sports.");
     
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
