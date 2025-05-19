@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { MessageCircle } from 'lucide-react';
 import {
   Form,
   FormControl,
@@ -82,6 +83,13 @@ const DemoForm = () => {
       });
     }
   };
+  
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "353861935525"; // Irish number format without +
+    const message = encodeURIComponent("Hi, I'm interested in learning more about Staydia Sports.");
+    
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
 
   return (
     <Form {...form}>
@@ -89,6 +97,22 @@ const DemoForm = () => {
         <h2 className="text-2xl font-bold text-black mb-2">Book Demo</h2>
         <p className="text-gray-600">Fill in your details below to request a demo</p>
       </div>
+      
+      {/* WhatsApp Option */}
+      <div className="mb-6 p-4 bg-green-600/10 border border-green-600/30 rounded-lg">
+        <h3 className="text-lg font-semibold text-green-600 mb-2">Quick Response via WhatsApp</h3>
+        <p className="text-gray-700 mb-3">For immediate assistance, chat directly with our team</p>
+        <Button 
+          onClick={handleWhatsAppClick}
+          className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white mb-4"
+          type="button"
+        >
+          <MessageCircle className="h-5 w-5" />
+          Contact via WhatsApp
+        </Button>
+        <p className="text-sm text-gray-600 text-center">or fill in the form below</p>
+      </div>
+      
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
