@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
@@ -23,6 +24,10 @@ const partners = [
   {
     name: "Leinster Senior Football League",
     logo: "/lovable-uploads/0975187a-7933-434a-8bb2-7fc430f6e000.png"
+  },
+  {
+    name: "Galway Football Association",
+    logo: "/lovable-uploads/3ef43494-2740-46b6-8dfd-ff89f10a7b84.png"
   },
   {
     name: "Abergarged Buds FC",
@@ -107,10 +112,6 @@ const partners = [
   {
     name: "Clane United AFC",
     logo: "/lovable-uploads/0d37ae5a-3f19-4ad6-97aa-9a0b9b772df2.png"
-  },
-  {
-    name: "Galway Football Association",
-    logo: "/lovable-uploads/3ef43494-2740-46b6-8dfd-ff89f10a7b84.png"
   },
   {
     name: "Salthill Devon F.C.",
