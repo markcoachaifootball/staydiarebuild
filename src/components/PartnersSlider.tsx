@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
@@ -14,20 +13,20 @@ const partners = [
     logo: "/lovable-uploads/81e756a2-1938-43d7-b605-5b572ff68d75.png"
   },
   {
-    name: "Nantyglo FC",
-    logo: "/lovable-uploads/53f2dea1-bee0-47a9-9982-a7ce531781a3.png"
-  },
-  {
-    name: "Folkestone Optimist HC",
-    logo: "/lovable-uploads/a0ac24cf-3014-4aeb-8b0e-205b5bf09950.png"
-  },
-  {
     name: "Leinster Senior Football League",
     logo: "/lovable-uploads/0975187a-7933-434a-8bb2-7fc430f6e000.png"
   },
   {
     name: "Galway Football Association",
     logo: "/lovable-uploads/3ef43494-2740-46b6-8dfd-ff89f10a7b84.png"
+  },
+  {
+    name: "Nantyglo FC",
+    logo: "/lovable-uploads/53f2dea1-bee0-47a9-9982-a7ce531781a3.png"
+  },
+  {
+    name: "Folkestone Optimist HC",
+    logo: "/lovable-uploads/a0ac24cf-3014-4aeb-8b0e-205b5bf09950.png"
   },
   {
     name: "Abergarged Buds FC",
@@ -134,6 +133,7 @@ const PartnersSlider: React.FC = () => {
   return (
     <section className="py-12 bg-staydia-black overflow-hidden">
       <div className="staydia-container">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Stay connected to your sports</h2>
         <h3 className="text-lg md:text-xl font-medium text-center mb-6 text-staydia-gold uppercase tracking-wider">Trusted Partners</h3>
         
         <div className="relative w-full">
