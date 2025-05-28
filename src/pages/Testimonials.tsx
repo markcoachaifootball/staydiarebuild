@@ -59,7 +59,7 @@ const Testimonials = () => {
       {/* Testimonials Single Row */}
       <section className="py-16 border-t border-staydia-lightgray">
         <div className="staydia-container">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="bg-staydia-darkgray border border-staydia-lightgray hover:border-staydia-gold transition-colors h-full">
                 <CardContent className="p-6 flex flex-col h-full">
