@@ -35,72 +35,6 @@ const testimonials = [
     author: "Crumlin United",
     location: "Dublin, Ireland",
     logo: "/lovable-uploads/ab15a78c-e26b-4aa7-ba34-b715ea809f5b.png"
-  },
-  {
-    quote: "The communication and service from the team has been second to none. The quality of the stream is excellent and gives us superb match coverage.",
-    author: "Gwent County FC",
-    location: "Wales",
-    logo: "/lovable-uploads/72a15165-96d8-48c8-8375-74cbbc1caa71.png"
-  },
-  {
-    quote: "It's benefitted all age groups from juniors to seniors and with the sponsor banners and updated score options it makes for a well rounded system.",
-    author: "Valley United",
-    location: "Wales",
-    logo: "/lovable-uploads/495df913-0805-48dc-a436-f282ad6a9368.png"
-  },
-  {
-    quote: "The technology has transformed how we broadcast our matches and engage with our community.",
-    author: "Dublin Sports Club",
-    location: "Dublin, Ireland",
-    logo: "/lovable-uploads/88531769-dac6-40e2-ba39-ef73fa774d32.png"
-  },
-  {
-    quote: "Our fans love being able to watch the games live online when they can't make it to the ground.",
-    author: "Kent FC",
-    location: "England",
-    logo: "/lovable-uploads/8c6723e0-2d13-4e2b-b14b-c8df12d4788b.png"
-  },
-  {
-    quote: "The AI-powered features have made our streaming setup incredibly easy to manage.",
-    author: "Sports Club Ireland",
-    location: "Ireland",
-    logo: "/lovable-uploads/ab15a78c-e26b-4aa7-ba34-b715ea809f5b.png"
-  },
-  {
-    quote: "We've seen a significant increase in online engagement since partnering with Staydia Sports.",
-    author: "Celtic Rangers",
-    location: "Wales",
-    logo: "/lovable-uploads/72a15165-96d8-48c8-8375-74cbbc1caa71.png"
-  },
-  {
-    quote: "The replay and analysis features have been invaluable for our coaching staff.",
-    author: "Premier FC",
-    location: "England",
-    logo: "/lovable-uploads/495df913-0805-48dc-a436-f282ad6a9368.png"
-  },
-  {
-    quote: "Quality streaming that allows our global fanbase to stay connected with the club.",
-    author: "United Sports",
-    location: "Dublin, Ireland",
-    logo: "/lovable-uploads/88531769-dac6-40e2-ba39-ef73fa774d32.png"
-  },
-  {
-    quote: "The automated camera tracking ensures we never miss the action during our matches.",
-    author: "Hockey Elite",
-    location: "Kent, England",
-    logo: "/lovable-uploads/8c6723e0-2d13-4e2b-b14b-c8df12d4788b.png"
-  },
-  {
-    quote: "Professional quality broadcasts that rival traditional sports media coverage.",
-    author: "Championship Club",
-    location: "Ireland",
-    logo: "/lovable-uploads/ab15a78c-e26b-4aa7-ba34-b715ea809f5b.png"
-  },
-  {
-    quote: "The revenue sharing model has created new income streams for our club.",
-    author: "Athletic FC",
-    location: "Wales",
-    logo: "/lovable-uploads/72a15165-96d8-48c8-8375-74cbbc1caa71.png"
   }
 ];
 
@@ -122,10 +56,10 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Testimonials Grid */}
+      {/* Testimonials Single Row */}
       <section className="py-16 border-t border-staydia-lightgray">
         <div className="staydia-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="bg-staydia-darkgray border border-staydia-lightgray hover:border-staydia-gold transition-colors h-full">
                 <CardContent className="p-6 flex flex-col h-full">
