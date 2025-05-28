@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ClubTestimonials from './ClubTestimonials';
 import DemoForm from './DemoForm';
 import {
   Dialog,
@@ -90,10 +89,7 @@ export const Technology: React.FC = () => {
           </div>
         </div>
 
-        {/* Club Testimonials Slider */}
-        <ClubTestimonials />
-
-        {/* Video Section with more seamless heading */}
+        {/* Video Section */}
         <div className="mt-12 border-t border-staydia-lightgray pt-12" ref={videoRef}>
           <h3 className="text-2xl font-semibold text-staydia-gold mb-2">
             <Play className="mr-2 h-5 w-5 inline" />

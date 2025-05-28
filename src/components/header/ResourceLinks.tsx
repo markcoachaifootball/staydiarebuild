@@ -19,6 +19,7 @@ const CameraIcon = () => (
 
 export const resourceLinks = [
   { name: "FAQ's", description: "Frequently Asked Questions", path: "/faq", icon: <CameraIcon /> },
+  { name: "Testimonials", description: "What our partners say", path: "/testimonials", icon: <CameraIcon /> },
   { name: "For Clubs", description: "Solutions for sports clubs", path: "/for-clubs", icon: <CameraIcon /> },
   { name: "For Leagues", description: "Products for leagues and competitions", path: "/for-leagues", icon: <CameraIcon /> },
   { name: "Football", description: "Staydia Sports for Football", path: "/sports/football", icon: <FootballIcon /> },

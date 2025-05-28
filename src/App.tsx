@@ -10,6 +10,7 @@ import RevenueSharing from './pages/RevenueSharing';
 import NotFound from './pages/NotFound';
 import FAQ from './pages/FAQ';
 import AboutUs from './pages/AboutUs';
+import Testimonials from './pages/Testimonials';
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
 import ForClubs from './pages/ForClubs';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/for-leagues" element={<ForLeagues />} />
         <Route path="/for-clubs" element={<ForClubs />} />
         <Route path="/sports" element={<Sports />} />
