@@ -1,10 +1,8 @@
-
 import React, { useState } from 'react';
 import { Camera, Banknote, Users, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
-import LivestreamingWithAI from './LivestreamingWithAI';
 import { Link } from 'react-router-dom';
 import {
   Dialog,
@@ -55,6 +53,16 @@ export const Features: React.FC = () => {
             Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.
           </p>
           
+          {/* Updated FAQ Button to yellow */}
+          <div className="mt-4 mb-8">
+            <Button 
+              className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-2"
+              asChild
+            >
+              <Link to="/faq">Frequently Asked Questions</Link>
+            </Button>
+          </div>
+          
           {/* Sports we work with */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             {sports.map((sport, index) => (
@@ -68,21 +76,6 @@ export const Features: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Add LivestreamingWithAI section */}
-      <LivestreamingWithAI />
-
-      <div className="staydia-container">
-        {/* Updated FAQ Button to yellow */}
-        <div className="text-center mt-16 mb-8">
-          <Button 
-            className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-2"
-            asChild
-          >
-            <Link to="/faq">Frequently Asked Questions</Link>
-          </Button>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
