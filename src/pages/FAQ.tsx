@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SportsIconsSection from '@/components/SportsIconsSection';
 import { Badge } from "@/components/ui/badge";
 import { 
   Accordion,
@@ -62,7 +63,13 @@ const FAQ = () => {
           <p className="text-xl text-gray-300 mb-12">
             Find answers to the most common questions about Staydia Sports.
           </p>
-          
+        </div>
+      </div>
+      
+      <SportsIconsSection />
+      
+      <div className="py-16 staydia-container">
+        <div className="max-w-4xl mx-auto">
           <Tabs defaultValue="general" className="mb-16">
             <TabsList className="w-full mb-8 bg-staydia-darkgray border border-staydia-lightgray">
               <TabsTrigger value="general" className="flex-1">General FAQ</TabsTrigger>
