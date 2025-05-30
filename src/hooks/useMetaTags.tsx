@@ -10,6 +10,8 @@ interface MetaTagsProps {
 
 export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) => {
   useEffect(() => {
+    console.log('Setting meta tags with:', { title, description, image, url });
+
     // Update document title
     if (title) {
       document.title = `${title} - Staydia Sports`;
@@ -22,6 +24,7 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       
       if (element) {
         element.setAttribute('content', content);
+        console.log(`Updated existing meta tag: ${property} = ${content}`);
       } else {
         element = document.createElement('meta');
         if (useProperty) {
@@ -31,19 +34,42 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
         }
         element.setAttribute('content', content);
         document.head.appendChild(element);
+        console.log(`Created new meta tag: ${property} = ${content}`);
       }
     };
 
-    // Update basic meta tags
+    // Clear any existing dynamic meta tags first
+    const existingTags = [
+      'meta[property="og:title"]',
+      'meta[property="og:description"]', 
+      'meta[property="og:image"]',
+      'meta[property="og:url"]',
+      'meta[property="og:type"]',
+      'meta[name="description"]',
+      'meta[name="twitter:title"]',
+      'meta[name="twitter:description"]',
+      'meta[name="twitter:image"]'
+    ];
+    
+    existingTags.forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.remove();
+      }
+    });
+
+    // Set basic meta description first
+    if (description) {
+      updateMetaTag('description', description, false);
+    }
+
+    // Update Open Graph meta tags (required for WhatsApp)
     if (title) {
       updateMetaTag('og:title', title, true);
-      updateMetaTag('twitter:title', title, false);
     }
 
     if (description) {
-      updateMetaTag('description', description, false);
       updateMetaTag('og:description', description, true);
-      updateMetaTag('twitter:description', description, false);
     }
 
     if (image) {
@@ -51,43 +77,44 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       updateMetaTag('og:image', fullImageUrl, true);
       updateMetaTag('og:image:width', '1200', true);
       updateMetaTag('og:image:height', '630', true);
-      updateMetaTag('twitter:image', fullImageUrl, false);
-      updateMetaTag('twitter:image:alt', title || 'Staydia Sports Article', false);
+      updateMetaTag('og:image:type', 'image/jpeg', true);
+      console.log('Set og:image to:', fullImageUrl);
     }
 
     if (url) {
       updateMetaTag('og:url', url, true);
-      updateMetaTag('canonical', url, false);
     }
 
-    // Set required Open Graph properties
+    // Set required Open Graph properties for WhatsApp
     updateMetaTag('og:type', 'article', true);
     updateMetaTag('og:site_name', 'Staydia Sports', true);
     
-    // Set Twitter card type
+    // Set Twitter card meta tags (fallback for some platforms)
+    if (title) {
+      updateMetaTag('twitter:title', title, false);
+    }
+    if (description) {
+      updateMetaTag('twitter:description', description, false);
+    }
+    if (image) {
+      const fullImageUrl = image.startsWith('http') ? image : `https:${image}`;
+      updateMetaTag('twitter:image', fullImageUrl, false);
+      updateMetaTag('twitter:image:alt', title || 'Staydia Sports Article', false);
+    }
     updateMetaTag('twitter:card', 'summary_large_image', false);
     updateMetaTag('twitter:site', '@staydiasports', false);
 
-    // Cleanup function to reset to default values when component unmounts
+    // Log all meta tags after setting them
+    console.log('All meta tags after update:');
+    document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"], meta[name="description"]').forEach(tag => {
+      const prop = tag.getAttribute('property') || tag.getAttribute('name');
+      const content = tag.getAttribute('content');
+      console.log(`${prop}: ${content}`);
+    });
+
+    // Cleanup function
     return () => {
       document.title = 'Staydia Sports';
-      // Remove dynamic meta tags to prevent conflicts
-      const dynamicTags = [
-        'meta[property="og:title"]',
-        'meta[property="og:description"]', 
-        'meta[property="og:image"]',
-        'meta[property="og:url"]',
-        'meta[name="twitter:title"]',
-        'meta[name="twitter:description"]',
-        'meta[name="twitter:image"]'
-      ];
-      
-      dynamicTags.forEach(selector => {
-        const element = document.querySelector(selector);
-        if (element) {
-          element.remove();
-        }
-      });
     };
   }, [title, description, image, url]);
 };
