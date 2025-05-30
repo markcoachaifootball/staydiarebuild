@@ -26,7 +26,16 @@ const NewsArticlePage: React.FC = () => {
     return imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
   };
 
-  // Use meta tags hook for social sharing
+  // Only use meta tags hook when article is loaded
+  React.useEffect(() => {
+    if (article && !isLoading && !error) {
+      console.log('Setting meta tags for article:', article.fields.title);
+      console.log('Article summary:', article.fields.summary);
+      console.log('Article image URL:', getMetaImageUrl());
+    }
+  }, [article, isLoading, error]);
+
+  // Use meta tags hook for social sharing - only when article is available
   useMetaTags({
     title: article?.fields?.title,
     description: article?.fields?.summary,

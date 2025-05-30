@@ -13,11 +13,15 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
     console.log('=== META TAGS DEBUG START ===');
     console.log('Input values:', { title, description, image, url });
 
-    // Update document title
-    if (title) {
-      document.title = `${title} - Staydia Sports`;
-      console.log('Set document title to:', document.title);
+    // Only proceed if we have actual content (not just fallbacks)
+    if (!title || !description) {
+      console.log('⚠️ No title or description provided, skipping meta tag updates');
+      return;
     }
+
+    // Update document title
+    document.title = `${title} - Staydia Sports`;
+    console.log('Set document title to:', document.title);
 
     // Helper function to update or create meta tags
     const updateMetaTag = (property: string, content: string, useProperty = false) => {
@@ -40,43 +44,34 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       }
     };
 
-    // Set fallback values
-    const finalTitle = title || 'Staydia Sports';
-    const finalDescription = description || 'Leading sports technology and streaming platform connecting fans with their favorite teams and leagues.';
     const finalUrl = url || window.location.href;
 
     // Basic meta description
-    updateMetaTag('description', finalDescription, false);
+    updateMetaTag('description', description, false);
 
     // Open Graph tags
     updateMetaTag('og:type', 'article', true);
     updateMetaTag('og:site_name', 'Staydia Sports', true);
-    updateMetaTag('og:title', finalTitle, true);
-    updateMetaTag('og:description', finalDescription, true);
+    updateMetaTag('og:title', title, true);
+    updateMetaTag('og:description', description, true);
     updateMetaTag('og:url', finalUrl, true);
 
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image', false);
     updateMetaTag('twitter:site', '@staydiasports', false);
-    updateMetaTag('twitter:title', finalTitle, false);
-    updateMetaTag('twitter:description', finalDescription, false);
+    updateMetaTag('twitter:title', title, false);
+    updateMetaTag('twitter:description', description, false);
 
-    // Handle image with proper fallback
-    let finalImage = image;
-    if (!finalImage) {
-      // Use a default image if no featured image is provided
-      finalImage = 'https://about.staydiasports.com/placeholder.svg';
-    }
-
-    if (finalImage) {
-      console.log('🖼️ Processing image:', finalImage);
+    // Handle image if provided
+    if (image) {
+      console.log('🖼️ Processing image:', image);
       
       // Ensure proper URL format
-      let fullImageUrl = finalImage;
-      if (finalImage.startsWith('//')) {
-        fullImageUrl = `https:${finalImage}`;
-      } else if (!finalImage.startsWith('http') && !finalImage.includes('placeholder.svg')) {
-        fullImageUrl = `https:${finalImage}`;
+      let fullImageUrl = image;
+      if (image.startsWith('//')) {
+        fullImageUrl = `https:${image}`;
+      } else if (!image.startsWith('http')) {
+        fullImageUrl = `https:${image}`;
       }
       
       // Add image optimization for Contentful images
@@ -93,18 +88,18 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       updateMetaTag('og:image:width', '1200', true);
       updateMetaTag('og:image:height', '630', true);
       updateMetaTag('og:image:type', 'image/jpeg', true);
-      updateMetaTag('og:image:alt', finalTitle, true);
+      updateMetaTag('og:image:alt', title, true);
       updateMetaTag('twitter:image', fullImageUrl, false);
-      updateMetaTag('twitter:image:alt', finalTitle, false);
+      updateMetaTag('twitter:image:alt', title, false);
+    } else {
+      console.log('⚠️ No image provided for meta tags');
     }
 
     // Article-specific meta tags
-    if (title && description) {
-      updateMetaTag('article:author', 'Staydia Sports', true);
-      updateMetaTag('article:published_time', new Date().toISOString(), true);
-      updateMetaTag('article:section', 'Sports', true);
-      updateMetaTag('article:tag', 'Sports News', true);
-    }
+    updateMetaTag('article:author', 'Staydia Sports', true);
+    updateMetaTag('article:published_time', new Date().toISOString(), true);
+    updateMetaTag('article:section', 'Sports', true);
+    updateMetaTag('article:tag', 'Sports News', true);
 
     // Additional SEO and social tags
     updateMetaTag('robots', 'index,follow', false);
