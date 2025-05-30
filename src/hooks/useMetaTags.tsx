@@ -40,30 +40,22 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       }
     };
 
-    // Clear existing meta tags first
+    // Clear existing meta tags first - be more aggressive
     const existingTags = [
-      'meta[property="og:title"]',
-      'meta[property="og:description"]', 
-      'meta[property="og:image"]',
-      'meta[property="og:image:url"]',
-      'meta[property="og:image:secure_url"]',
-      'meta[property="og:url"]',
-      'meta[property="og:type"]',
-      'meta[property="og:site_name"]',
+      'meta[property^="og:"]',
+      'meta[name^="twitter:"]',
       'meta[name="description"]',
-      'meta[name="twitter:title"]',
-      'meta[name="twitter:description"]',
-      'meta[name="twitter:image"]',
-      'meta[name="twitter:card"]'
+      'meta[property="article:author"]',
+      'meta[property="article:published_time"]'
     ];
     
     console.log('🧹 Clearing existing meta tags...');
     existingTags.forEach(selector => {
-      const element = document.querySelector(selector);
-      if (element) {
-        console.log(`Removed: ${selector}`);
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        console.log(`Removed: ${element.getAttribute('property') || element.getAttribute('name')}`);
         element.remove();
-      }
+      });
     });
 
     // Always set these base tags
@@ -97,20 +89,22 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
         fullImageUrl = `https:${image}`;
       }
       
-      // Add image optimization for better compatibility
+      // Add image optimization for better compatibility and ensure proper dimensions
       if (fullImageUrl.includes('images.ctfassets.net')) {
-        fullImageUrl += '?fm=jpg&q=80&w=1200&h=630&fit=fill';
+        // Use specific dimensions that work well for social media
+        fullImageUrl += '?fm=jpg&q=85&w=1200&h=630&fit=fill&f=center';
       }
       
       console.log('📸 Final image URL:', fullImageUrl);
       
-      // Set multiple image properties for better compatibility
+      // Set comprehensive image meta tags
       updateMetaTag('og:image', fullImageUrl, true);
       updateMetaTag('og:image:url', fullImageUrl, true);
       updateMetaTag('og:image:secure_url', fullImageUrl, true);
       updateMetaTag('og:image:width', '1200', true);
       updateMetaTag('og:image:height', '630', true);
       updateMetaTag('og:image:type', 'image/jpeg', true);
+      updateMetaTag('og:image:alt', title || 'Staydia Sports Article', true);
       updateMetaTag('twitter:image', fullImageUrl, false);
       updateMetaTag('twitter:image:alt', title || 'Staydia Sports Article', false);
     }
@@ -119,16 +113,21 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
     if (url) {
       updateMetaTag('og:url', url, true);
       updateMetaTag('twitter:url', url, false);
+      updateMetaTag('canonical', url, false);
     }
 
-    // Force a meta tag refresh by temporarily adding and removing a tag
-    const refreshTag = document.createElement('meta');
-    refreshTag.setAttribute('property', 'og:updated_time');
-    refreshTag.setAttribute('content', new Date().toISOString());
-    document.head.appendChild(refreshTag);
-    setTimeout(() => {
-      refreshTag.remove();
-    }, 100);
+    // Add article-specific meta tags
+    if (title && description) {
+      updateMetaTag('article:author', 'Staydia Sports', true);
+      updateMetaTag('article:published_time', new Date().toISOString(), true);
+      updateMetaTag('article:section', 'Sports', true);
+    }
+
+    // Force Facebook to re-scrape by adding a cache-busting parameter
+    const fbRefreshUrl = url ? `${url}?fb_refresh=${Date.now()}` : undefined;
+    if (fbRefreshUrl) {
+      updateMetaTag('og:url:refresh', fbRefreshUrl, true);
+    }
 
     // Wait a moment then log all final meta tags
     setTimeout(() => {

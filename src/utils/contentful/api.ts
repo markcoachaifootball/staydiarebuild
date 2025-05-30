@@ -16,18 +16,37 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
     const contentTypes = await client.getContentTypes();
     console.log('Available content types in Contentful space:', contentTypes.items.map(type => type.sys.id));
     
-    // Try to get entries with the 'article' content type and reduce include depth to avoid truncation
+    // Try to get entries with the 'article' content type with no includes to avoid truncation
     const response = await client.getEntries({
       content_type: 'article',
       order: ['-fields.date'],
       limit,
-      include: 1, // Reduced from 2 to 1 to avoid max depth issues
+      include: 0, // No includes to avoid max depth issues
     });
     
-    console.log('Contentful response with assets:', response);
+    console.log('Contentful response (no includes):', response);
     
     if (response.items.length > 0) {
-      return response.items as unknown as NewsArticle[];
+      // Now fetch assets separately for each article that has a featured image
+      const articlesWithImages = await Promise.all(
+        response.items.map(async (article: any) => {
+          if (article.fields?.featuredImage?.sys?.id) {
+            try {
+              console.log('Fetching image asset for article:', article.fields.title);
+              const imageAsset = await client.getAsset(article.fields.featuredImage.sys.id);
+              console.log('Fetched image asset:', imageAsset);
+              
+              // Replace the link with the full asset
+              article.fields.featuredImage = imageAsset;
+            } catch (imgError) {
+              console.log('Could not fetch image asset:', imgError);
+            }
+          }
+          return article;
+        })
+      );
+      
+      return articlesWithImages as unknown as NewsArticle[];
     }
     
     // If no results with 'article', try other common content types
@@ -39,7 +58,7 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
           content_type: type,
           order: ['-fields.date'],
           limit,
-          include: 1, // Reduced include depth
+          include: 0,
         });
         
         if (fallbackResponse.items.length > 0) {
@@ -80,7 +99,7 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           content_type: type,
           'fields.slug': slug,
           limit: 1,
-          include: 1, // Reduced include depth to avoid truncation
+          include: 0, // No includes to avoid truncation
         });
         
         console.log(`Response for ${type}:`, response);
@@ -91,17 +110,16 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           console.log('Article data:', article);
           console.log('Featured image data:', article.fields?.featuredImage);
           
-          // If we have a featured image with sys.id, let's try to fetch it separately to ensure we get all details
+          // If we have a featured image with sys.id, fetch it separately to get complete data
           if (article.fields?.featuredImage?.sys?.id) {
             try {
               console.log('Attempting to fetch image asset separately with ID:', article.fields.featuredImage.sys.id);
               const imageAsset = await client.getAsset(article.fields.featuredImage.sys.id);
               console.log('Separately fetched image asset:', imageAsset);
               
-              // Update the article with the complete image data
-              if (imageAsset.fields?.file?.url) {
-                article.fields.featuredImage = imageAsset as any;
-              }
+              // Replace the truncated image data with the complete asset
+              article.fields.featuredImage = imageAsset as any;
+              console.log('Updated article with complete image data:', article.fields.featuredImage);
             } catch (imgError) {
               console.log('Could not fetch image asset separately:', imgError);
             }
