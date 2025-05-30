@@ -5,7 +5,7 @@ export interface NewsArticleFields {
   slug: string;
   category?: string; 
   date?: string;
-  author?: string; // Add author field
+  author?: string | { _type?: string; value?: string; content?: any[]; fields?: { name?: string } }; // Updated to handle complex author structures
   featuredImage?: {
     fields: {
       file: {

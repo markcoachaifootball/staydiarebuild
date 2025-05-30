@@ -73,10 +73,10 @@ const NewsArticlePage: React.FC = () => {
       return authorField;
     }
     
-    // If it's a rich text field or complex object
-    if (typeof authorField === 'object') {
+    // If it's a complex object
+    if (typeof authorField === 'object' && authorField !== null) {
       // Check if it has a content property (rich text)
-      if (authorField.content && Array.isArray(authorField.content)) {
+      if ('content' in authorField && Array.isArray(authorField.content)) {
         // Extract text from rich text content
         const textContent = authorField.content
           .map((node: any) => {
@@ -90,13 +90,13 @@ const NewsArticlePage: React.FC = () => {
       }
       
       // Check if it has a value property
-      if (authorField.value && typeof authorField.value === 'string') {
+      if ('value' in authorField && typeof authorField.value === 'string') {
         return authorField.value;
       }
       
       // If it's a reference to another entry
-      if (authorField.fields && authorField.fields.name) {
-        return authorField.fields.name;
+      if ('fields' in authorField && authorField.fields && 'name' in authorField.fields) {
+        return authorField.fields.name || 'Unknown Author';
       }
     }
     
