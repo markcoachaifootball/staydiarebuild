@@ -1,11 +1,10 @@
-
 // Define the interface for the fields in our NewsArticle content type
 export interface NewsArticleFields {
   title: string;
   slug: string;
   category?: string; 
   date?: string;
-  author?: string | { _type?: string; value?: string; content?: any[]; fields?: { name?: string } }; // Updated to handle complex author structures
+  authur?: string; // Fixed to match actual Contentful field name (note the typo)
   featuredImage?: {
     fields: {
       file: {

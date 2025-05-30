@@ -62,42 +62,15 @@ const NewsArticlePage: React.FC = () => {
     },
   };
 
-  // Function to extract author name from various possible formats
+  // Function to extract author name - simplified to use the correct field name
   const getAuthorName = () => {
-    if (!article?.fields?.author) return 'Unknown Author';
+    // Use the correct field name 'authur' (matching Contentful typo)
+    const authorField = article?.fields?.authur;
     
-    const authorField = article.fields.author;
+    console.log('Author field value:', authorField); // Debug log
     
-    // If it's a simple string
-    if (typeof authorField === 'string') {
+    if (typeof authorField === 'string' && authorField.trim()) {
       return authorField;
-    }
-    
-    // If it's a complex object
-    if (typeof authorField === 'object' && authorField !== null) {
-      // Check if it has a content property (rich text)
-      if ('content' in authorField && Array.isArray(authorField.content)) {
-        // Extract text from rich text content
-        const textContent = authorField.content
-          .map((node: any) => {
-            if (node.content && Array.isArray(node.content)) {
-              return node.content.map((textNode: any) => textNode.value || '').join('');
-            }
-            return '';
-          })
-          .join('');
-        return textContent || 'Unknown Author';
-      }
-      
-      // Check if it has a value property
-      if ('value' in authorField && typeof authorField.value === 'string') {
-        return authorField.value;
-      }
-      
-      // If it's a reference to another entry
-      if ('fields' in authorField && authorField.fields && 'name' in authorField.fields) {
-        return authorField.fields.name || 'Unknown Author';
-      }
     }
     
     return 'Unknown Author';
@@ -163,7 +136,7 @@ const NewsArticlePage: React.FC = () => {
     return article?.fields?.featuredImage?.fields?.file?.url;
   };
 
-  console.log('Article author field:', article.fields.author); // Debug log
+  console.log('Full article fields:', article.fields); // Debug log
   console.log('Extracted author name:', getAuthorName()); // Debug log
 
   return (
