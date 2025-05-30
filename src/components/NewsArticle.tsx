@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
@@ -61,6 +62,47 @@ const NewsArticlePage: React.FC = () => {
     },
   };
 
+  // Function to extract author name from various possible formats
+  const getAuthorName = () => {
+    if (!article?.fields?.author) return 'Unknown Author';
+    
+    const authorField = article.fields.author;
+    
+    // If it's a simple string
+    if (typeof authorField === 'string') {
+      return authorField;
+    }
+    
+    // If it's a rich text field or complex object
+    if (typeof authorField === 'object') {
+      // Check if it has a content property (rich text)
+      if (authorField.content && Array.isArray(authorField.content)) {
+        // Extract text from rich text content
+        const textContent = authorField.content
+          .map((node: any) => {
+            if (node.content && Array.isArray(node.content)) {
+              return node.content.map((textNode: any) => textNode.value || '').join('');
+            }
+            return '';
+          })
+          .join('');
+        return textContent || 'Unknown Author';
+      }
+      
+      // Check if it has a value property
+      if (authorField.value && typeof authorField.value === 'string') {
+        return authorField.value;
+      }
+      
+      // If it's a reference to another entry
+      if (authorField.fields && authorField.fields.name) {
+        return authorField.fields.name;
+      }
+    }
+    
+    return 'Unknown Author';
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-staydia-black text-white">
@@ -121,7 +163,8 @@ const NewsArticlePage: React.FC = () => {
     return article?.fields?.featuredImage?.fields?.file?.url;
   };
 
-  console.log('Article author:', article.fields.author); // Debug log
+  console.log('Article author field:', article.fields.author); // Debug log
+  console.log('Extracted author name:', getAuthorName()); // Debug log
 
   return (
     <div className="min-h-screen bg-staydia-black text-white">
@@ -157,7 +200,7 @@ const NewsArticlePage: React.FC = () => {
 
           <div className="mb-10">
             <p className="text-gray-300 text-sm">
-              By {article.fields.author || 'Unknown Author'}
+              By {getAuthorName()}
             </p>
           </div>
 
