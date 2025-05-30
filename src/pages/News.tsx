@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -116,7 +117,7 @@ const News: React.FC = () => {
                       <CalendarIcon className="h-3 w-3 mr-1" />
                       {formatArticleDate(article.fields.date)}
                     </div>
-                    <h3 className="text-lg font-bold line-clamp-2 hover:text-staydia-gold transition-colors">
+                    <h3 className="text-lg font-bold line-clamp-2 text-staydia-gold transition-colors">
                       {article.fields.title}
                     </h3>
                   </CardHeader>
