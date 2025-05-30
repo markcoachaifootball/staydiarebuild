@@ -16,42 +16,22 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
     const contentTypes = await client.getContentTypes();
     console.log('Available content types in Contentful space:', contentTypes.items.map(type => type.sys.id));
     
-    // Now try to get entries without specifying content type to see what's available
-    const allEntries = await client.getEntries({
-      limit: 10,
-    });
-    console.log('All available entries:', allEntries);
-    
-    // Try to get a specific entry mentioned in the code sample
-    try {
-      const specificEntry = await client.getEntry('wYpXUJAU5yTq06YiqA95o');
-      console.log('Specific entry from code sample:', specificEntry);
-    } catch (err) {
-      console.log('Could not find the specific entry mentioned in the code sample:', err);
-    }
-    
-    // If we found entries, extract the content type from the first one
-    let contentTypeName = 'article'; // Default fallback
-    if (allEntries.items.length > 0 && allEntries.items[0].sys.contentType) {
-      contentTypeName = allEntries.items[0].sys.contentType.sys.id;
-      console.log('Detected content type from entries:', contentTypeName);
-    }
-    
-    // Now try to fetch with the detected content type
+    // Try to get entries with the 'article' content type and include assets
     const response = await client.getEntries({
-      content_type: contentTypeName,
+      content_type: 'article',
       order: ['-fields.date'],
       limit,
+      include: 2, // This includes linked assets and entries
     });
     
-    console.log('Contentful response with detected content type:', response);
+    console.log('Contentful response with assets:', response);
     
     if (response.items.length > 0) {
       return response.items as unknown as NewsArticle[];
     }
     
-    // If still no results, try both common fallback content types
-    const commonContentTypes = ['article', 'blogPost', 'post', 'news'];
+    // If no results with 'article', try other common content types
+    const commonContentTypes = ['blogPost', 'post', 'news'];
     for (const type of commonContentTypes) {
       try {
         console.log(`Trying content type: ${type}`);
@@ -59,6 +39,7 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
           content_type: type,
           order: ['-fields.date'],
           limit,
+          include: 2, // Include linked assets
         });
         
         if (fallbackResponse.items.length > 0) {
@@ -96,6 +77,7 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           content_type: type,
           'fields.slug': slug,
           limit: 1,
+          include: 2, // Include linked assets
         });
         
         if (response.items.length > 0) {
