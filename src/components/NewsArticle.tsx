@@ -10,25 +10,26 @@ import NewsArticleError from './news/NewsArticleError';
 const NewsArticlePage: React.FC = () => {
   const { article, isLoading, error, slug } = useNewsArticle();
 
-  // Get the proper image URL for meta tags
-  const getMetaImageUrl = () => {
+  // Get the proper image URL for social sharing
+  const getOptimizedImageUrl = () => {
     if (!article?.fields?.featuredImage?.fields?.file?.url) {
       return undefined;
     }
     
     const imageUrl = article.fields.featuredImage.fields.file.url;
+    // Ensure we have the full URL with https
     return imageUrl.startsWith('//') ? `https:${imageUrl}` : 
            imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
   };
 
-  // Only use meta tags and structured data when article is loaded
   const articleUrl = `https://about.staydiasports.com/news/${slug}`;
-  const metaImageUrl = getMetaImageUrl();
+  const socialImageUrl = getOptimizedImageUrl();
   
+  // Set up meta tags for social sharing when article is loaded
   useMetaTags({
     title: article?.fields?.title,
     description: article?.fields?.summary,
-    image: metaImageUrl,
+    image: socialImageUrl,
     url: articleUrl,
     type: 'article',
     publishedTime: article?.fields?.date,
@@ -37,11 +38,12 @@ const NewsArticlePage: React.FC = () => {
     tags: article?.fields?.category ? [article.fields.category, 'Sports News'] : ['Sports News']
   });
 
+  // Set up structured data for SEO
   useStructuredData({
     type: 'Article',
     title: article?.fields?.title,
     description: article?.fields?.summary,
-    image: metaImageUrl,
+    image: socialImageUrl,
     url: articleUrl,
     author: 'Staydia Sports',
     publishedDate: article?.fields?.date,
