@@ -45,6 +45,8 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       'meta[property="og:title"]',
       'meta[property="og:description"]', 
       'meta[property="og:image"]',
+      'meta[property="og:image:url"]',
+      'meta[property="og:image:secure_url"]',
       'meta[property="og:url"]',
       'meta[property="og:type"]',
       'meta[property="og:site_name"]',
@@ -83,7 +85,7 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       updateMetaTag('twitter:title', title, false);
     }
 
-    // Handle image - this is critical for WhatsApp
+    // Handle image - this is critical for Facebook/WhatsApp
     if (image) {
       console.log('🖼️ Processing image:', image);
       
@@ -102,7 +104,10 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       
       console.log('📸 Final image URL:', fullImageUrl);
       
+      // Set multiple image properties for better compatibility
       updateMetaTag('og:image', fullImageUrl, true);
+      updateMetaTag('og:image:url', fullImageUrl, true);
+      updateMetaTag('og:image:secure_url', fullImageUrl, true);
       updateMetaTag('og:image:width', '1200', true);
       updateMetaTag('og:image:height', '630', true);
       updateMetaTag('og:image:type', 'image/jpeg', true);
@@ -113,7 +118,17 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
     // Set URL
     if (url) {
       updateMetaTag('og:url', url, true);
+      updateMetaTag('twitter:url', url, false);
     }
+
+    // Force a meta tag refresh by temporarily adding and removing a tag
+    const refreshTag = document.createElement('meta');
+    refreshTag.setAttribute('property', 'og:updated_time');
+    refreshTag.setAttribute('content', new Date().toISOString());
+    document.head.appendChild(refreshTag);
+    setTimeout(() => {
+      refreshTag.remove();
+    }, 100);
 
     // Wait a moment then log all final meta tags
     setTimeout(() => {

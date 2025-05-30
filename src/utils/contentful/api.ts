@@ -16,12 +16,12 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
     const contentTypes = await client.getContentTypes();
     console.log('Available content types in Contentful space:', contentTypes.items.map(type => type.sys.id));
     
-    // Try to get entries with the 'article' content type and include assets
+    // Try to get entries with the 'article' content type and reduce include depth to avoid truncation
     const response = await client.getEntries({
       content_type: 'article',
       order: ['-fields.date'],
       limit,
-      include: 2, // This includes linked assets and entries
+      include: 1, // Reduced from 2 to 1 to avoid max depth issues
     });
     
     console.log('Contentful response with assets:', response);
@@ -39,7 +39,7 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
           content_type: type,
           order: ['-fields.date'],
           limit,
-          include: 2, // Include linked assets
+          include: 1, // Reduced include depth
         });
         
         if (fallbackResponse.items.length > 0) {
@@ -64,6 +64,8 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
   try {
     const client = preview ? previewClient : contentfulClient;
     
+    console.log(`Fetching article by slug: ${slug}`);
+    
     // Try to detect content type first
     const contentTypes = await client.getContentTypes();
     console.log('Available content types for article lookup:', contentTypes.items.map(type => type.sys.id));
@@ -73,22 +75,46 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
     
     for (const type of commonContentTypes) {
       try {
+        console.log(`Trying to fetch ${slug} from content type: ${type}`);
         const response = await client.getEntries({
           content_type: type,
           'fields.slug': slug,
           limit: 1,
-          include: 2, // Include linked assets
+          include: 1, // Reduced include depth to avoid truncation
         });
         
+        console.log(`Response for ${type}:`, response);
+        
         if (response.items.length > 0) {
-          console.log(`Found article with slug ${slug} in content type ${type}`);
-          return response.items[0] as unknown as NewsArticle;
+          const article = response.items[0] as unknown as NewsArticle;
+          console.log(`✅ Found article with slug ${slug} in content type ${type}`);
+          console.log('Article data:', article);
+          console.log('Featured image data:', article.fields?.featuredImage);
+          
+          // If we have a featured image, let's also fetch it separately to ensure we get all details
+          if (article.fields?.featuredImage?.sys?.id) {
+            try {
+              const imageAsset = await client.getAsset(article.fields.featuredImage.sys.id);
+              console.log('Separately fetched image asset:', imageAsset);
+              
+              // Update the article with the complete image data
+              if (imageAsset.fields?.file?.url) {
+                article.fields.featuredImage = imageAsset as any;
+              }
+            } catch (imgError) {
+              console.log('Could not fetch image asset separately:', imgError);
+            }
+          }
+          
+          return article;
         }
       } catch (err) {
+        console.log(`Error fetching from content type ${type}:`, err);
         // Continue to next type
       }
     }
     
+    console.log(`❌ Article with slug ${slug} not found in any content type`);
     // If not found in any content type, return example
     return getExampleArticleBySlug(slug);
   } catch (error) {
