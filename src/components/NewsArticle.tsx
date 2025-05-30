@@ -103,7 +103,7 @@ const NewsArticlePage: React.FC = () => {
       <Header />
       <div className="staydia-container py-24">
         <article>
-          <h1 className="text-4xl font-bold mb-4 text-white">{article.fields.title}</h1>
+          <h1 className="text-4xl font-bold mb-4 text-staydia-gold">{article.fields.title}</h1>
           <div className="flex items-center text-gray-400 mb-10">
             <CalendarIcon className="h-4 w-4 mr-2" />
             {new Date(article.fields.date).toLocaleDateString('en-US', {
