@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
@@ -8,12 +7,21 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { useMetaTags } from '@/hooks/useMetaTags';
 
 const NewsArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<NewsArticle | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Use meta tags hook for social sharing
+  useMetaTags({
+    title: article?.fields?.title,
+    description: article?.fields?.summary,
+    image: article?.fields?.featuredImage?.fields?.file?.url,
+    url: `https://about.staydiasports.com/news/${slug}`
+  });
 
   useEffect(() => {
     const getArticle = async () => {
