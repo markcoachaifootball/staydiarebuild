@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
@@ -122,6 +121,8 @@ const NewsArticlePage: React.FC = () => {
     return article?.fields?.featuredImage?.fields?.file?.url;
   };
 
+  console.log('Article author:', article.fields.author); // Debug log
+
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -154,11 +155,11 @@ const NewsArticlePage: React.FC = () => {
             </div>
           )}
 
-          {article.fields.author && (
-            <div className="mb-10">
-              <p className="text-gray-300 text-sm">By {article.fields.author}</p>
-            </div>
-          )}
+          <div className="mb-10">
+            <p className="text-gray-300 text-sm">
+              By {article.fields.author || 'Unknown Author'}
+            </p>
+          </div>
 
           <div className="prose prose-invert prose-lg max-w-none">
             <p className="text-gray-300 text-lg mb-8">{article.fields.summary}</p>
