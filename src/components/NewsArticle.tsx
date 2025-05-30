@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
@@ -97,7 +98,7 @@ const NewsArticlePage: React.FC = () => {
         <Footer />
       </div>
     );
-  }
+  };
 
   // Get image dimensions safely with fallbacks
   const getImageWidth = () => {
@@ -134,12 +135,6 @@ const NewsArticlePage: React.FC = () => {
               month: 'long',
               day: 'numeric',
             })}
-            {article.fields.author && (
-              <>
-                <span className="mx-2">•</span>
-                <span className="text-gray-300">By {article.fields.author}</span>
-              </>
-            )}
             <span className="mx-2">•</span>
             <span className="bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold rounded">
               {article.fields.category}
@@ -147,7 +142,7 @@ const NewsArticlePage: React.FC = () => {
           </div>
 
           {hasValidFeaturedImage() && (
-            <div className="mb-10">
+            <div className="mb-4">
               <img
                 src={`https:${article.fields.featuredImage.fields.file.url}`}
                 alt={article.fields.featuredImage.fields.title || article.fields.title}
@@ -156,6 +151,12 @@ const NewsArticlePage: React.FC = () => {
                 width={getImageWidth()}
                 height={getImageHeight()}
               />
+            </div>
+          )}
+
+          {article.fields.author && (
+            <div className="mb-10">
+              <p className="text-gray-300 text-sm">By {article.fields.author}</p>
             </div>
           )}
 
