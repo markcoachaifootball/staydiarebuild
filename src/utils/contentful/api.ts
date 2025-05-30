@@ -91,9 +91,10 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           console.log('Article data:', article);
           console.log('Featured image data:', article.fields?.featuredImage);
           
-          // If we have a featured image, let's also fetch it separately to ensure we get all details
+          // If we have a featured image with sys.id, let's try to fetch it separately to ensure we get all details
           if (article.fields?.featuredImage?.sys?.id) {
             try {
+              console.log('Attempting to fetch image asset separately with ID:', article.fields.featuredImage.sys.id);
               const imageAsset = await client.getAsset(article.fields.featuredImage.sys.id);
               console.log('Separately fetched image asset:', imageAsset);
               
@@ -104,6 +105,8 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
             } catch (imgError) {
               console.log('Could not fetch image asset separately:', imgError);
             }
+          } else {
+            console.log('No sys.id found in featured image or featured image missing');
           }
           
           return article;

@@ -1,3 +1,4 @@
+
 // Define the interface for the fields in our NewsArticle content type
 export interface NewsArticleFields {
   title: string;
@@ -6,6 +7,10 @@ export interface NewsArticleFields {
   date?: string;
   authur?: string; // Fixed to match actual Contentful field name (note the typo)
   featuredImage?: {
+    sys?: {
+      id: string;
+      type: string;
+    };
     fields: {
       file: {
         url: string;
