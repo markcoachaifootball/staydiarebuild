@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
@@ -133,7 +132,7 @@ const Newsroom: React.FC = () => {
                     <CalendarIcon className="h-3 w-3 mr-1" />
                     {formatArticleDate(article.fields.date)}
                   </div>
-                  <h3 className="text-lg font-bold line-clamp-2 hover:text-staydia-gold transition-colors">
+                  <h3 className="text-lg font-bold line-clamp-2 text-staydia-gold transition-colors">
                     {article.fields.title}
                   </h3>
                 </CardHeader>
