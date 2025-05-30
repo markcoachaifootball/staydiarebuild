@@ -1,8 +1,11 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleBySlug, NewsArticle } from '@/utils/contentful';
 import { CalendarIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const NewsArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -42,30 +45,38 @@ const NewsArticlePage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="staydia-container py-16">
-        <Skeleton className="h-10 w-3/4 mb-4" />
-        <Skeleton className="h-6 w-1/4 mb-10" />
-        <Skeleton className="h-96 w-full mb-10" />
-        <div className="space-y-4">
-          <Skeleton className="h-6 w-full" />
-          <Skeleton className="h-6 w-full" />
-          <Skeleton className="h-6 w-3/4" />
+      <div className="min-h-screen bg-staydia-black text-white">
+        <Header />
+        <div className="staydia-container py-24">
+          <Skeleton className="h-10 w-3/4 mb-4" />
+          <Skeleton className="h-6 w-1/4 mb-10" />
+          <Skeleton className="h-96 w-full mb-10" />
+          <div className="space-y-4">
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-full" />
+            <Skeleton className="h-6 w-3/4" />
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
 
   if (error || !article) {
     return (
-      <div className="staydia-container py-16">
-        <div className="bg-staydia-black border border-staydia-lightgray p-10 rounded-xl text-center">
-          <h2 className="text-2xl font-bold mb-4">
-            {error || 'Article not found'}
-          </h2>
-          <p>
-            Sorry, we couldn't find the article you're looking for.
-          </p>
+      <div className="min-h-screen bg-staydia-black text-white">
+        <Header />
+        <div className="staydia-container py-24">
+          <div className="bg-staydia-black border border-staydia-lightgray p-10 rounded-xl text-center">
+            <h2 className="text-2xl font-bold mb-4 text-white">
+              {error || 'Article not found'}
+            </h2>
+            <p className="text-gray-300">
+              Sorry, we couldn't find the article you're looking for.
+            </p>
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -88,40 +99,44 @@ const NewsArticlePage: React.FC = () => {
   };
 
   return (
-    <div className="staydia-container py-16">
-      <article>
-        <h1 className="text-4xl font-bold mb-4">{article.fields.title}</h1>
-        <div className="flex items-center text-gray-400 mb-10">
-          <CalendarIcon className="h-4 w-4 mr-2" />
-          {new Date(article.fields.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-          <span className="mx-2">•</span>
-          <span className="bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold rounded">
-            {article.fields.category}
-          </span>
-        </div>
-
-        {article.fields.featuredImage && (
-          <div className="mb-10">
-            <img
-              src={`https:${article.fields.featuredImage.fields.file.url}`}
-              alt={article.fields.featuredImage.fields.title || article.fields.title}
-              className="w-full h-auto rounded-xl"
-              loading="lazy"
-              width={getImageWidth()}
-              height={getImageHeight()}
-            />
+    <div className="min-h-screen bg-staydia-black text-white">
+      <Header />
+      <div className="staydia-container py-24">
+        <article>
+          <h1 className="text-4xl font-bold mb-4 text-white">{article.fields.title}</h1>
+          <div className="flex items-center text-gray-400 mb-10">
+            <CalendarIcon className="h-4 w-4 mr-2" />
+            {new Date(article.fields.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+            <span className="mx-2">•</span>
+            <span className="bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold rounded">
+              {article.fields.category}
+            </span>
           </div>
-        )}
 
-        <div className="prose prose-invert prose-lg max-w-none">
-          <p>{article.fields.summary}</p>
-          <p>Full article content would be rendered here using Contentful's rich text renderer.</p>
-        </div>
-      </article>
+          {article.fields.featuredImage && (
+            <div className="mb-10">
+              <img
+                src={`https:${article.fields.featuredImage.fields.file.url}`}
+                alt={article.fields.featuredImage.fields.title || article.fields.title}
+                className="w-full h-auto rounded-xl"
+                loading="lazy"
+                width={getImageWidth()}
+                height={getImageHeight()}
+              />
+            </div>
+          )}
+
+          <div className="prose prose-invert prose-lg max-w-none">
+            <p className="text-gray-300 text-lg">{article.fields.summary}</p>
+            <p className="text-gray-300">Full article content would be rendered here using Contentful's rich text renderer.</p>
+          </div>
+        </article>
+      </div>
+      <Footer />
     </div>
   );
 };
