@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface SocialShareButtonsProps {
@@ -15,7 +15,8 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({ title, url }) =
   const shareUrls = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=staydiasports`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    whatsapp: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`
   };
 
   const handleShare = (platform: string) => {
@@ -53,6 +54,15 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({ title, url }) =
         >
           <Linkedin size={16} />
           LinkedIn
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => handleShare('whatsapp')}
+          className="justify-start gap-2 bg-transparent border-gray-600 text-white hover:bg-green-600 hover:border-green-600"
+        >
+          <MessageCircle size={16} />
+          WhatsApp
         </Button>
       </div>
     </div>
