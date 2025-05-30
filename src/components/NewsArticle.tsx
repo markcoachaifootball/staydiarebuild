@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useMetaTags } from '@/hooks/useMetaTags';
+import { useStructuredData } from '@/hooks/useStructuredData';
 import { useNewsArticle } from '@/hooks/useNewsArticle';
 import NewsArticleLayout from './news/NewsArticleLayout';
 import NewsArticleLoading from './news/NewsArticleLoading';
@@ -12,35 +13,39 @@ const NewsArticlePage: React.FC = () => {
   // Get the proper image URL for meta tags
   const getMetaImageUrl = () => {
     if (!article?.fields?.featuredImage?.fields?.file?.url) {
-      console.log('No featured image found for meta tags');
       return undefined;
     }
     
     const imageUrl = article.fields.featuredImage.fields.file.url;
-    console.log('Meta image URL from article:', imageUrl);
-    
-    // Ensure proper URL format
-    if (imageUrl.startsWith('//')) {
-      return `https:${imageUrl}`;
-    }
-    return imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
+    return imageUrl.startsWith('//') ? `https:${imageUrl}` : 
+           imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
   };
 
-  // Only use meta tags hook when article is loaded
-  React.useEffect(() => {
-    if (article && !isLoading && !error) {
-      console.log('Setting meta tags for article:', article.fields.title);
-      console.log('Article summary:', article.fields.summary);
-      console.log('Article image URL:', getMetaImageUrl());
-    }
-  }, [article, isLoading, error]);
-
-  // Use meta tags hook for social sharing - only when article is available
+  // Only use meta tags and structured data when article is loaded
+  const articleUrl = `https://about.staydiasports.com/news/${slug}`;
+  const metaImageUrl = getMetaImageUrl();
+  
   useMetaTags({
     title: article?.fields?.title,
     description: article?.fields?.summary,
-    image: getMetaImageUrl(),
-    url: `https://about.staydiasports.com/news/${slug}`
+    image: metaImageUrl,
+    url: articleUrl,
+    type: 'article',
+    publishedTime: article?.fields?.date,
+    author: 'Staydia Sports',
+    section: article?.fields?.category || 'Sports',
+    tags: article?.fields?.category ? [article.fields.category, 'Sports News'] : ['Sports News']
+  });
+
+  useStructuredData({
+    type: 'Article',
+    title: article?.fields?.title,
+    description: article?.fields?.summary,
+    image: metaImageUrl,
+    url: articleUrl,
+    author: 'Staydia Sports',
+    publishedDate: article?.fields?.date,
+    section: article?.fields?.category || 'Sports'
   });
 
   if (isLoading) {

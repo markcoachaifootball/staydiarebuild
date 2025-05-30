@@ -11,9 +11,15 @@ import Newsroom from '@/components/Newsroom';
 import PartnersSlider from '@/components/PartnersSlider';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useStructuredData } from '@/hooks/useStructuredData';
 
 const Index = () => {
   useScrollToTop();
+  
+  // Add structured data for the main website
+  useStructuredData({
+    type: 'Organization'
+  });
   
   return (
     <div className="min-h-screen bg-staydia-black text-white">
