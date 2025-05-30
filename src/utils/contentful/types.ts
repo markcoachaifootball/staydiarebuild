@@ -5,6 +5,7 @@ export interface NewsArticleFields {
   slug: string;
   category?: string; 
   date?: string;
+  author?: string; // Add author field
   featuredImage?: {
     fields: {
       file: {

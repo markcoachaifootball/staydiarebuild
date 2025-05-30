@@ -134,6 +134,12 @@ const NewsArticlePage: React.FC = () => {
               month: 'long',
               day: 'numeric',
             })}
+            {article.fields.author && (
+              <>
+                <span className="mx-2">•</span>
+                <span className="text-gray-300">By {article.fields.author}</span>
+              </>
+            )}
             <span className="mx-2">•</span>
             <span className="bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold rounded">
               {article.fields.category}
