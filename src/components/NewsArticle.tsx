@@ -15,11 +15,23 @@ const NewsArticlePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Get the proper image URL for meta tags
+  const getMetaImageUrl = () => {
+    if (!article?.fields?.featuredImage?.fields?.file?.url) {
+      console.log('No featured image found for meta tags');
+      return undefined;
+    }
+    
+    const imageUrl = article.fields.featuredImage.fields.file.url;
+    console.log('Meta image URL from article:', imageUrl);
+    return imageUrl;
+  };
+
   // Use meta tags hook for social sharing
   useMetaTags({
     title: article?.fields?.title,
     description: article?.fields?.summary,
-    image: article?.fields?.featuredImage?.fields?.file?.url,
+    image: getMetaImageUrl(),
     url: `https://about.staydiasports.com/news/${slug}`
   });
 
@@ -32,9 +44,13 @@ const NewsArticlePage: React.FC = () => {
           return;
         }
         
+        console.log('Fetching article with slug:', slug);
         const fetchedArticle = await fetchArticleBySlug(slug);
         
         if (fetchedArticle) {
+          console.log('Article loaded:', fetchedArticle);
+          console.log('Article fields:', fetchedArticle.fields);
+          console.log('Featured image:', fetchedArticle.fields?.featuredImage);
           setArticle(fetchedArticle);
           setError(null);
         } else {
