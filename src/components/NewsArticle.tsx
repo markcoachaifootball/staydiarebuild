@@ -24,7 +24,12 @@ const NewsArticlePage: React.FC = () => {
     
     const imageUrl = article.fields.featuredImage.fields.file.url;
     console.log('Meta image URL from article:', imageUrl);
-    return imageUrl;
+    
+    // Ensure proper URL format
+    if (imageUrl.startsWith('//')) {
+      return `https:${imageUrl}`;
+    }
+    return imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
   };
 
   // Use meta tags hook for social sharing

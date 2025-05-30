@@ -40,13 +40,12 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       }
     };
 
-    // Clear existing meta tags first - be more aggressive
+    // Clear existing meta tags first
     const existingTags = [
       'meta[property^="og:"]',
       'meta[name^="twitter:"]',
       'meta[name="description"]',
-      'meta[property="article:author"]',
-      'meta[property="article:published_time"]'
+      'meta[property="article:"]'
     ];
     
     console.log('🧹 Clearing existing meta tags...');
@@ -58,40 +57,47 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       });
     });
 
-    // Always set these base tags
+    // Set fallback values
+    const finalTitle = title || 'Staydia Sports';
+    const finalDescription = description || 'Leading sports technology and streaming platform connecting fans with their favorite teams and leagues.';
+    const finalUrl = url || window.location.href;
+
+    // Basic meta description
+    updateMetaTag('description', finalDescription, false);
+
+    // Open Graph tags
     updateMetaTag('og:type', 'article', true);
     updateMetaTag('og:site_name', 'Staydia Sports', true);
+    updateMetaTag('og:title', finalTitle, true);
+    updateMetaTag('og:description', finalDescription, true);
+    updateMetaTag('og:url', finalUrl, true);
+
+    // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image', false);
     updateMetaTag('twitter:site', '@staydiasports', false);
+    updateMetaTag('twitter:title', finalTitle, false);
+    updateMetaTag('twitter:description', finalDescription, false);
 
-    // Set basic meta description
-    if (description) {
-      updateMetaTag('description', description, false);
-      updateMetaTag('og:description', description, true);
-      updateMetaTag('twitter:description', description, false);
+    // Handle image with proper fallback
+    let finalImage = image;
+    if (!finalImage) {
+      // Use a default image if no featured image is provided
+      finalImage = 'https://about.staydiasports.com/placeholder.svg';
     }
 
-    // Set title
-    if (title) {
-      updateMetaTag('og:title', title, true);
-      updateMetaTag('twitter:title', title, false);
-    }
-
-    // Handle image - this is critical for Facebook/WhatsApp
-    if (image) {
-      console.log('🖼️ Processing image:', image);
+    if (finalImage) {
+      console.log('🖼️ Processing image:', finalImage);
       
-      // Handle Contentful URLs properly
-      let fullImageUrl = image;
-      if (image.startsWith('//')) {
-        fullImageUrl = `https:${image}`;
-      } else if (!image.startsWith('http')) {
-        fullImageUrl = `https:${image}`;
+      // Ensure proper URL format
+      let fullImageUrl = finalImage;
+      if (finalImage.startsWith('//')) {
+        fullImageUrl = `https:${finalImage}`;
+      } else if (!finalImage.startsWith('http') && !finalImage.includes('placeholder.svg')) {
+        fullImageUrl = `https:${finalImage}`;
       }
       
-      // Add image optimization for better compatibility and ensure proper dimensions
+      // Add image optimization for Contentful images
       if (fullImageUrl.includes('images.ctfassets.net')) {
-        // Use specific dimensions that work well for social media
         fullImageUrl += '?fm=jpg&q=85&w=1200&h=630&fit=fill&f=center';
       }
       
@@ -104,30 +110,22 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       updateMetaTag('og:image:width', '1200', true);
       updateMetaTag('og:image:height', '630', true);
       updateMetaTag('og:image:type', 'image/jpeg', true);
-      updateMetaTag('og:image:alt', title || 'Staydia Sports Article', true);
+      updateMetaTag('og:image:alt', finalTitle, true);
       updateMetaTag('twitter:image', fullImageUrl, false);
-      updateMetaTag('twitter:image:alt', title || 'Staydia Sports Article', false);
+      updateMetaTag('twitter:image:alt', finalTitle, false);
     }
 
-    // Set URL
-    if (url) {
-      updateMetaTag('og:url', url, true);
-      updateMetaTag('twitter:url', url, false);
-      updateMetaTag('canonical', url, false);
-    }
-
-    // Add article-specific meta tags
+    // Article-specific meta tags
     if (title && description) {
       updateMetaTag('article:author', 'Staydia Sports', true);
       updateMetaTag('article:published_time', new Date().toISOString(), true);
       updateMetaTag('article:section', 'Sports', true);
+      updateMetaTag('article:tag', 'Sports News', true);
     }
 
-    // Force Facebook to re-scrape by adding a cache-busting parameter
-    const fbRefreshUrl = url ? `${url}?fb_refresh=${Date.now()}` : undefined;
-    if (fbRefreshUrl) {
-      updateMetaTag('og:url:refresh', fbRefreshUrl, true);
-    }
+    // Additional SEO and social tags
+    updateMetaTag('robots', 'index,follow', false);
+    updateMetaTag('author', 'Staydia Sports', false);
 
     // Wait a moment then log all final meta tags
     setTimeout(() => {
