@@ -40,23 +40,6 @@ export const useMetaTags = ({ title, description, image, url }: MetaTagsProps) =
       }
     };
 
-    // Clear existing meta tags first
-    const existingTags = [
-      'meta[property^="og:"]',
-      'meta[name^="twitter:"]',
-      'meta[name="description"]',
-      'meta[property="article:"]'
-    ];
-    
-    console.log('🧹 Clearing existing meta tags...');
-    existingTags.forEach(selector => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(element => {
-        console.log(`Removed: ${element.getAttribute('property') || element.getAttribute('name')}`);
-        element.remove();
-      });
-    });
-
     // Set fallback values
     const finalTitle = title || 'Staydia Sports';
     const finalDescription = description || 'Leading sports technology and streaming platform connecting fans with their favorite teams and leagues.';
