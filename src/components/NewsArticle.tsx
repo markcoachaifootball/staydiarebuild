@@ -84,7 +84,7 @@ const NewsArticlePage: React.FC = () => {
   // Get image dimensions safely with fallbacks
   const getImageWidth = () => {
     try {
-      return article?.fields.featuredImage?.fields.file?.details?.image?.width || 800;
+      return article?.fields?.featuredImage?.fields?.file?.details?.image?.width || 800;
     } catch {
       return 800;
     }
@@ -92,10 +92,15 @@ const NewsArticlePage: React.FC = () => {
 
   const getImageHeight = () => {
     try {
-      return article?.fields.featuredImage?.fields.file?.details?.image?.height || 600;
+      return article?.fields?.featuredImage?.fields?.file?.details?.image?.height || 600;
     } catch {
       return 600;
     }
+  };
+
+  // Check if featured image and its file exist
+  const hasValidFeaturedImage = () => {
+    return article?.fields?.featuredImage?.fields?.file?.url;
   };
 
   return (
@@ -117,7 +122,7 @@ const NewsArticlePage: React.FC = () => {
             </span>
           </div>
 
-          {article.fields.featuredImage && (
+          {hasValidFeaturedImage() && (
             <div className="mb-10">
               <img
                 src={`https:${article.fields.featuredImage.fields.file.url}`}
