@@ -16,7 +16,8 @@ const DEFAULT_DESCRIPTION =
 const NewsArticlePage: React.FC = () => {
   const { article, isLoading, error, slug } = useNewsArticle();
 
-  const getOptimizedImageUrl = () => {
+  // Compute fallbacks, always safe!
+  const getOptimizedImageUrl = React.useCallback(() => {
     const fileUrl = article?.fields?.featuredImage?.fields?.file?.url;
     if (!fileUrl) return undefined;
     let imageUrl: string = fileUrl.startsWith('//')
@@ -29,40 +30,41 @@ const NewsArticlePage: React.FC = () => {
       imageUrl += `${sep}fm=jpg&q=85&w=1200&h=630&fit=fill&f=center`;
     }
     return imageUrl;
-  };
+  }, [article]);
 
-  const articleUrl = `https://about.staydiasports.com/news/${slug}`;
+  // Only determine articleUrl, image, summary when we actually have article loaded:
+  const articleUrl = article ? `https://about.staydiasports.com/news/${article.fields.slug}` : undefined;
   const socialImageUrl = getOptimizedImageUrl() || DEFAULT_IMAGE;
-  const summary =
-    article?.fields?.summary && article.fields.summary.trim().length > 0
-      ? article.fields.summary
-      : DEFAULT_DESCRIPTION;
+  const summary = (article?.fields?.summary && article.fields.summary.trim().length > 0)
+    ? article.fields.summary
+    : DEFAULT_DESCRIPTION;
 
-  // Only set meta tags and structured data when the article is loaded
+  // Only set meta tags and structured data when article is loaded
   React.useEffect(() => {
     if (!article) return;
+    // Always use safe fallbacks, never undefined!
     useMetaTags({
-      title: article.fields.title,
+      title: article.fields.title || "Staydia Sports News",
       description: summary,
       image: socialImageUrl,
       url: articleUrl,
       type: 'article',
       publishedTime: article.fields.date,
-      author: 'Staydia Sports',
+      author: article.fields.authur || 'Staydia Sports',
       section: article.fields.category || 'Sports',
       tags: article.fields.category ? [article.fields.category, 'Sports News'] : ['Sports News'],
     });
     useStructuredData({
       type: 'Article',
-      title: article.fields.title,
+      title: article.fields.title || "Staydia Sports News",
       description: summary,
       image: socialImageUrl,
       url: articleUrl,
-      author: 'Staydia Sports',
+      author: article.fields.authur || 'Staydia Sports',
       publishedDate: article.fields.date,
       section: article.fields.category || 'Sports',
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article, socialImageUrl, articleUrl, summary]);
 
   if (isLoading) {
