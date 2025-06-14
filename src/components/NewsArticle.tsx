@@ -39,30 +39,30 @@ const NewsArticlePage: React.FC = () => {
     ? article.fields.summary
     : DEFAULT_DESCRIPTION;
 
-  // Only set meta tags and structured data when article is loaded
-  if (article) {
-    useMetaTags({
-      title: article.fields.title || "Staydia Sports News",
-      description: summary,
-      image: socialImageUrl,
-      url: articleUrl,
-      type: 'article',
-      publishedTime: article.fields.date,
-      author: article.fields.authur || 'Staydia Sports',
-      section: article.fields.category || 'Sports',
-      tags: article.fields.category ? [article.fields.category, 'Sports News'] : ['Sports News'],
-    });
-    useStructuredData({
-      type: 'Article',
-      title: article.fields.title || "Staydia Sports News",
-      description: summary,
-      image: socialImageUrl,
-      url: articleUrl,
-      author: article.fields.authur || 'Staydia Sports',
-      publishedDate: article.fields.date,
-      section: article.fields.category || 'Sports',
-    });
-  }
+  // --- Fix: Always call the hooks, pass sensible fallbacks to avoid accessing undefined ---
+
+  useMetaTags({
+    title: article?.fields?.title || "Staydia Sports News",
+    description: summary,
+    image: socialImageUrl,
+    url: articleUrl,
+    type: 'article',
+    publishedTime: article?.fields?.date,
+    author: article?.fields?.authur || 'Staydia Sports',
+    section: article?.fields?.category || 'Sports',
+    tags: article?.fields?.category ? [article.fields.category, 'Sports News'] : ['Sports News'],
+  });
+
+  useStructuredData({
+    type: 'Article',
+    title: article?.fields?.title || "Staydia Sports News",
+    description: summary,
+    image: socialImageUrl,
+    url: articleUrl,
+    author: article?.fields?.authur || 'Staydia Sports',
+    publishedDate: article?.fields?.date,
+    section: article?.fields?.category || 'Sports',
+  });
 
   if (isLoading) {
     return <NewsArticleLoading />;
