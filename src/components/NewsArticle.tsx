@@ -15,49 +15,47 @@ const NewsArticlePage: React.FC = () => {
     if (!article?.fields?.featuredImage?.fields?.file?.url) {
       return undefined;
     }
-    
     const imageUrl = article.fields.featuredImage.fields.file.url;
-    // Ensure we have the full URL with https
     return imageUrl.startsWith('//') ? `https:${imageUrl}` : 
            imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
   };
 
   const articleUrl = `https://about.staydiasports.com/news/${slug}`;
   const socialImageUrl = getOptimizedImageUrl();
+
+  // Only set meta tags and structured data when the article is loaded
+  React.useEffect(() => {
+    if (!article) return;
+    useMetaTags({
+      title: article.fields.title,
+      description: article.fields.summary,
+      image: socialImageUrl,
+      url: articleUrl,
+      type: 'article',
+      publishedTime: article.fields.date,
+      author: 'Staydia Sports',
+      section: article.fields.category || 'Sports',
+      tags: article.fields.category ? [article.fields.category, 'Sports News'] : ['Sports News']
+    });
+    useStructuredData({
+      type: 'Article',
+      title: article.fields.title,
+      description: article.fields.summary,
+      image: socialImageUrl,
+      url: articleUrl,
+      author: 'Staydia Sports',
+      publishedDate: article.fields.date,
+      section: article.fields.category || 'Sports'
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [article, socialImageUrl, articleUrl]);
   
-  // Set up meta tags for social sharing when article is loaded
-  useMetaTags({
-    title: article?.fields?.title,
-    description: article?.fields?.summary,
-    image: socialImageUrl,
-    url: articleUrl,
-    type: 'article',
-    publishedTime: article?.fields?.date,
-    author: 'Staydia Sports',
-    section: article?.fields?.category || 'Sports',
-    tags: article?.fields?.category ? [article.fields.category, 'Sports News'] : ['Sports News']
-  });
-
-  // Set up structured data for SEO
-  useStructuredData({
-    type: 'Article',
-    title: article?.fields?.title,
-    description: article?.fields?.summary,
-    image: socialImageUrl,
-    url: articleUrl,
-    author: 'Staydia Sports',
-    publishedDate: article?.fields?.date,
-    section: article?.fields?.category || 'Sports'
-  });
-
   if (isLoading) {
     return <NewsArticleLoading />;
   }
-
   if (error || !article) {
     return <NewsArticleError error={error || 'Article not found'} />;
   }
-
   return <NewsArticleLayout article={article} />;
 };
 
