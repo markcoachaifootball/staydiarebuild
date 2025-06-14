@@ -32,25 +32,33 @@ export const useMetaTags = ({
       return;
     }
 
-    console.log('🔄 Updating meta tags for social sharing:', { title, description, image });
-
-    const createdMetaTags: string[] = [];
-    // Always enforce absolute canonical URL
-    const appDomain = 'about.staydiasports.com';
-    // Robustly determine the final absolute URL for this article/page
+    // --- ENFORCE that the canonical/og:url always matches the full article URL ---
+    // If url provided isn't absolute or doesn't look like a news article, force it
     let finalUrl = url;
-    if (finalUrl && !finalUrl.startsWith('http')) {
+    const appDomain = 'about.staydiasports.com';
+
+    // If the URL is missing /news/, try to detect & append it from window location as fallback
+    const likelyIsHomepage = !finalUrl || finalUrl.endsWith(appDomain) || finalUrl.endsWith(appDomain + '/');
+    if (likelyIsHomepage && typeof window !== 'undefined') {
+      // try to use the current pathname
+      finalUrl = `https://${appDomain.replace(/^https?:\/\//, '')}${window.location.pathname}`;
+    } else if (finalUrl && !finalUrl.startsWith('http')) {
       // If url is a path, prepend with https domain
       finalUrl = `https://${appDomain.replace(/^https?:\/\//, '')}${finalUrl.startsWith('/') ? '' : '/'}${finalUrl}`;
     }
+
     if (!finalUrl) {
-      // fallback to window.location.href if nothing is provided
-      finalUrl = window.location.href;
+      // fallback to window.location.href if nothing is provided (should not generally happen)
+      finalUrl = typeof window !== "undefined" ? window.location.href : `https://${appDomain}/`;
     }
 
-    document.documentElement.lang = 'en';
-    document.title = `${title} | Staydia Sports`;
+    // Sanity check
+    console.log('[META_TAGS]: Determined canonical/og:url:', finalUrl);
 
+    document.documentElement.lang = 'en';
+    document.title = title ? `${title} | Staydia Sports` : 'Staydia Sports';
+
+    const createdMetaTags: string[] = [];
     const updateMetaTag = (selector: string, property: string, content: string, useProperty = false) => {
       let element = document.querySelector(selector);
       if (element) {
@@ -126,7 +134,6 @@ export const useMetaTags = ({
       canonicalLink.setAttribute('href', finalUrl);
       document.head.appendChild(canonicalLink);
     }
-
     previousMetaTags.current = createdMetaTags;
 
     console.log('✅ Meta tags updated for social sharing');
