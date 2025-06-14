@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NewsArticle } from '@/utils/contentful';
 
@@ -32,12 +33,19 @@ const NewsArticleImage: React.FC<NewsArticleImageProps> = ({ article }) => {
 
   // Always supply alt text and full https:// URL for the image and analytics-friendly loading params
   const fileUrl = article.fields.featuredImage.fields.file.url;
-  const imageUrl = fileUrl.startsWith('http')
+  let imageUrl: string = fileUrl.startsWith('http')
     ? fileUrl
     : fileUrl.startsWith('//')
       ? `https:${fileUrl}`
       : `https://${fileUrl.replace(/^\/+/, '')}`;
 
+  // Add basic optimization for news article images (for SEO and social)
+  if (imageUrl.includes('images.ctfassets.net')) {
+    const sep = imageUrl.includes('?') ? '&' : '?';
+    imageUrl += `${sep}fm=jpg&q=85&w=1200&h=630&fit=fill&f=center`;
+  }
+
+  // Alt text: Field fallback preference
   const altText =
     article.fields.featuredImage.fields.title ||
     article.fields.title ||
@@ -52,7 +60,6 @@ const NewsArticleImage: React.FC<NewsArticleImageProps> = ({ article }) => {
         loading="lazy"
         width={getImageWidth()}
         height={getImageHeight()}
-        // Add itemProp for Google images in Article
         itemProp="image"
       />
     </div>

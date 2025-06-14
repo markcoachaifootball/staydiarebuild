@@ -12,7 +12,7 @@ interface MetaTagsProps {
   tags?: string[];
 }
 
-export const useMetaTags = ({ 
+export const useMetaTags = ({
   title, 
   description, 
   image, 
@@ -34,15 +34,16 @@ export const useMetaTags = ({
     console.log('🔄 Updating meta tags for social sharing:', { title, description, image });
 
     const createdMetaTags: string[] = [];
-    const finalUrl = url || window.location.href;
+    // Always enforce absolute canonical URL
+    const appDomain = 'about.staydiasports.com';
+    let finalUrl = url || window.location.href;
+    if (finalUrl && !finalUrl.startsWith('http')) {
+      finalUrl = `https://${appDomain.replace(/^https?:\/\//, '')}${finalUrl.startsWith('/') ? '' : '/'}${finalUrl}`;
+    }
 
-    // Add language (for SEO/crawlers)
     document.documentElement.lang = 'en';
-
-    // Update document title
     document.title = `${title} | Staydia Sports`;
 
-    // Helper function to update or create meta tags
     const updateMetaTag = (selector: string, property: string, content: string, useProperty = false) => {
       let element = document.querySelector(selector);
       
@@ -61,11 +62,10 @@ export const useMetaTags = ({
       }
     };
 
-    // --- Basic meta tags
     updateMetaTag('meta[name="description"]', 'description', description);
     updateMetaTag('meta[name="keywords"]', 'keywords', tags?.join(', ') || 'Staydia Sports, Sports News');
 
-    // --- Open Graph (Facebook/LinkedIn)
+    // --- SOCIAL: Open Graph (Facebook/LinkedIn)
     updateMetaTag('meta[property="og:locale"]', 'og:locale', 'en_US', true);
     updateMetaTag('meta[property="og:type"]', 'og:type', type, true);
     updateMetaTag('meta[property="og:site_name"]', 'og:site_name', 'Staydia Sports', true);
@@ -73,28 +73,25 @@ export const useMetaTags = ({
     updateMetaTag('meta[property="og:description"]', 'og:description', description, true);
     updateMetaTag('meta[property="og:url"]', 'og:url', finalUrl, true);
 
-    // --- Twitter
+    // --- SOCIAL: Twitter/X
     updateMetaTag('meta[name="twitter:card"]', 'twitter:card', 'summary_large_image');
     updateMetaTag('meta[name="twitter:site"]', 'twitter:site', '@staydiasports');
     updateMetaTag('meta[name="twitter:creator"]', 'twitter:creator', '@staydiasports');
     updateMetaTag('meta[name="twitter:title"]', 'twitter:title', title);
     updateMetaTag('meta[name="twitter:description"]', 'twitter:description', description);
 
-    // --- Images
+    // --- IMAGES (always full URL, always specify og + twitter tags)
     if (image) {
       let optimizedImageUrl = image;
-      // Force absolute URL with https
       if (optimizedImageUrl.startsWith('//')) {
         optimizedImageUrl = `https:${optimizedImageUrl}`;
       } else if (!optimizedImageUrl.startsWith('http')) {
         optimizedImageUrl = `https://${optimizedImageUrl.replace(/^\/+/, '')}`;
       }
-      // Big/OG image version for Contentful assets
       if (optimizedImageUrl.includes('images.ctfassets.net')) {
         const sep = optimizedImageUrl.includes('?') ? '&' : '?';
         optimizedImageUrl += `${sep}fm=jpg&q=85&w=1200&h=630&fit=fill&f=center`;
       }
-      // Set Open Graph image tags
       updateMetaTag('meta[property="og:image"]', 'og:image', optimizedImageUrl, true);
       updateMetaTag('meta[property="og:image:url"]', 'og:image:url', optimizedImageUrl, true);
       updateMetaTag('meta[property="og:image:secure_url"]', 'og:image:secure_url', optimizedImageUrl, true);
@@ -102,7 +99,6 @@ export const useMetaTags = ({
       updateMetaTag('meta[property="og:image:height"]', 'og:image:height', '630', true);
       updateMetaTag('meta[property="og:image:type"]', 'og:image:type', 'image/jpeg', true);
       updateMetaTag('meta[property="og:image:alt"]', 'og:image:alt', title, true);
-      // Twitter
       updateMetaTag('meta[name="twitter:image"]', 'twitter:image', optimizedImageUrl);
       updateMetaTag('meta[name="twitter:image:alt"]', 'twitter:image:alt', title);
     }
@@ -114,7 +110,7 @@ export const useMetaTags = ({
       if (section) updateMetaTag('meta[property="article:section"]', 'article:section', section, true);
     }
 
-    // Canonical URL
+    // Canonical URL <link>
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
       canonicalLink.setAttribute('href', finalUrl);

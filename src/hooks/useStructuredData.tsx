@@ -27,7 +27,6 @@ export const useStructuredData = ({
     console.log('=== STRUCTURED DATA DEBUG ===');
     console.log('Creating JSON-LD for type:', type);
 
-    // Only remove our own structured data script (do NOT remove others, e.g. reviews, breadcrumbs, etc)
     const removeOldScript = () => {
       const scriptId = 'staydia-structured-data';
       const oldScript = document.getElementById(scriptId);
@@ -36,10 +35,12 @@ export const useStructuredData = ({
     removeOldScript();
 
     let structuredData: any = { "@context": "https://schema.org" };
-
-    const finalUrl = url || window.location.href;
+    const appDomain = 'about.staydiasports.com';
+    const finalUrl = url 
+      ? (url.startsWith('http') ? url : `https://${appDomain.replace(/^https?:\/\//, '')}${url.startsWith('/') ? '' : '/'}${url}`) 
+      : window.location.href;
     const finalImage = image
-      ? (image.startsWith('http') ? image : `https://about.staydiasports.com${image}`)
+      ? (image.startsWith('http') ? image : `https://${image.replace(/^\/+/, '')}`)
       : undefined;
 
     switch (type) {
