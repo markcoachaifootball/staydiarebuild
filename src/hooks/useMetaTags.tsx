@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 
 interface MetaTagsProps {
@@ -36,9 +37,15 @@ export const useMetaTags = ({
     const createdMetaTags: string[] = [];
     // Always enforce absolute canonical URL
     const appDomain = 'about.staydiasports.com';
-    let finalUrl = url || window.location.href;
+    // Robustly determine the final absolute URL for this article/page
+    let finalUrl = url;
     if (finalUrl && !finalUrl.startsWith('http')) {
+      // If url is a path, prepend with https domain
       finalUrl = `https://${appDomain.replace(/^https?:\/\//, '')}${finalUrl.startsWith('/') ? '' : '/'}${finalUrl}`;
+    }
+    if (!finalUrl) {
+      // fallback to window.location.href if nothing is provided
+      finalUrl = window.location.href;
     }
 
     document.documentElement.lang = 'en';
@@ -46,7 +53,6 @@ export const useMetaTags = ({
 
     const updateMetaTag = (selector: string, property: string, content: string, useProperty = false) => {
       let element = document.querySelector(selector);
-      
       if (element) {
         element.setAttribute('content', content);
       } else {
@@ -110,7 +116,7 @@ export const useMetaTags = ({
       if (section) updateMetaTag('meta[property="article:section"]', 'article:section', section, true);
     }
 
-    // Canonical URL <link>
+    // Canonical URL <link> - always points to absolute article/page URL only!
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
       canonicalLink.setAttribute('href', finalUrl);
