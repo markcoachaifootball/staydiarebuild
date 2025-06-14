@@ -40,9 +40,7 @@ const NewsArticlePage: React.FC = () => {
     : DEFAULT_DESCRIPTION;
 
   // Only set meta tags and structured data when article is loaded
-  React.useEffect(() => {
-    if (!article) return;
-    // Always use safe fallbacks, never undefined!
+  if (article) {
     useMetaTags({
       title: article.fields.title || "Staydia Sports News",
       description: summary,
@@ -64,8 +62,7 @@ const NewsArticlePage: React.FC = () => {
       publishedDate: article.fields.date,
       section: article.fields.category || 'Sports',
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [article, socialImageUrl, articleUrl, summary]);
+  }
 
   if (isLoading) {
     return <NewsArticleLoading />;
