@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 
 interface StructuredDataProps {
@@ -28,18 +27,20 @@ export const useStructuredData = ({
     console.log('=== STRUCTURED DATA DEBUG ===');
     console.log('Creating JSON-LD for type:', type);
 
-    // Remove existing structured data script
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    let structuredData: any = {
-      "@context": "https://schema.org"
+    // Only remove our own structured data script (do NOT remove others, e.g. reviews, breadcrumbs, etc)
+    const removeOldScript = () => {
+      const scriptId = 'staydia-structured-data';
+      const oldScript = document.getElementById(scriptId);
+      if (oldScript) oldScript.remove();
     };
+    removeOldScript();
+
+    let structuredData: any = { "@context": "https://schema.org" };
 
     const finalUrl = url || window.location.href;
-    const finalImage = image ? (image.startsWith('http') ? image : `https://about.staydiasports.com${image}`) : undefined;
+    const finalImage = image
+      ? (image.startsWith('http') ? image : `https://about.staydiasports.com${image}`)
+      : undefined;
 
     switch (type) {
       case 'Organization':
@@ -70,7 +71,7 @@ export const useStructuredData = ({
             "description": description,
             "url": finalUrl,
             "datePublished": publishedDate || new Date().toISOString(),
-            "dateModified": modifiedDate || new Date().toISOString(),
+            "dateModified": modifiedDate || publishedDate || new Date().toISOString(),
             "author": {
               "@type": "Organization",
               "name": author || "Staydia Sports"
@@ -88,7 +89,6 @@ export const useStructuredData = ({
               "@id": finalUrl
             }
           };
-
           if (finalImage) {
             structuredData.image = {
               "@type": "ImageObject",
@@ -97,10 +97,7 @@ export const useStructuredData = ({
               "height": 630
             };
           }
-
-          if (section) {
-            structuredData.articleSection = section;
-          }
+          if (section) structuredData.articleSection = section;
         }
         break;
 
@@ -120,9 +117,10 @@ export const useStructuredData = ({
         break;
     }
 
-    // Create and append the script
+    // Add the script with unique id so we can only clean up our own
     const script = document.createElement('script');
     script.type = 'application/ld+json';
+    script.id = 'staydia-structured-data';
     script.text = JSON.stringify(structuredData, null, 2);
     document.head.appendChild(script);
 
@@ -130,11 +128,6 @@ export const useStructuredData = ({
     console.log('=== STRUCTURED DATA DEBUG END ===');
 
     // Cleanup function
-    return () => {
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    return removeOldScript;
   }, [type, title, description, image, url, author, publishedDate, modifiedDate, section]);
 };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NewsArticle } from '@/utils/contentful';
 
@@ -29,19 +28,32 @@ const NewsArticleImage: React.FC<NewsArticleImageProps> = ({ article }) => {
     return article?.fields?.featuredImage?.fields?.file?.url;
   };
 
-  if (!hasValidFeaturedImage()) {
-    return null;
-  }
+  if (!hasValidFeaturedImage()) return null;
+
+  // Always supply alt text and full https:// URL for the image and analytics-friendly loading params
+  const fileUrl = article.fields.featuredImage.fields.file.url;
+  const imageUrl = fileUrl.startsWith('http')
+    ? fileUrl
+    : fileUrl.startsWith('//')
+      ? `https:${fileUrl}`
+      : `https://${fileUrl.replace(/^\/+/, '')}`;
+
+  const altText =
+    article.fields.featuredImage.fields.title ||
+    article.fields.title ||
+    'Staydia Sports news featured image';
 
   return (
     <div className="mb-4">
       <img
-        src={`https:${article.fields.featuredImage.fields.file.url}`}
-        alt={article.fields.featuredImage.fields.title || article.fields.title}
+        src={imageUrl}
+        alt={altText}
         className="w-full h-auto rounded-xl"
         loading="lazy"
         width={getImageWidth()}
         height={getImageHeight()}
+        // Add itemProp for Google images in Article
+        itemProp="image"
       />
     </div>
   );

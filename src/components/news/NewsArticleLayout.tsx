@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -14,6 +13,11 @@ interface NewsArticleLayoutProps {
 
 const NewsArticleLayout: React.FC<NewsArticleLayoutProps> = ({ article }) => {
   const articleUrl = `https://about.staydiasports.com/news/${article.fields.slug}`;
+
+  // Set lang attribute for HTML (for SEO)
+  React.useEffect(() => {
+    document.documentElement.lang = "en";
+  }, []);
 
   return (
     <div className="min-h-screen bg-staydia-black text-white">
