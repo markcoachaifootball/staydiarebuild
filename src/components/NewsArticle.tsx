@@ -7,49 +7,64 @@ import NewsArticleLayout from './news/NewsArticleLayout';
 import NewsArticleLoading from './news/NewsArticleLoading';
 import NewsArticleError from './news/NewsArticleError';
 
+// Default fallback assets
+const DEFAULT_IMAGE =
+  "https://about.staydiasports.com/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png";
+const DEFAULT_DESCRIPTION =
+  "Staydia Sports: AI-powered sports club management and the latest news in sports technology and innovation.";
+
 const NewsArticlePage: React.FC = () => {
   const { article, isLoading, error, slug } = useNewsArticle();
 
-  // Get the proper image URL for social sharing
   const getOptimizedImageUrl = () => {
-    if (!article?.fields?.featuredImage?.fields?.file?.url) {
-      return undefined;
+    const fileUrl = article?.fields?.featuredImage?.fields?.file?.url;
+    if (!fileUrl) return undefined;
+    let imageUrl: string = fileUrl.startsWith('//')
+      ? `https:${fileUrl}`
+      : fileUrl.startsWith('http')
+      ? fileUrl
+      : `https:${fileUrl}`;
+    if (imageUrl.includes('images.ctfassets.net')) {
+      const sep = imageUrl.includes('?') ? '&' : '?';
+      imageUrl += `${sep}fm=jpg&q=85&w=1200&h=630&fit=fill&f=center`;
     }
-    const imageUrl = article.fields.featuredImage.fields.file.url;
-    return imageUrl.startsWith('//') ? `https:${imageUrl}` : 
-           imageUrl.startsWith('http') ? imageUrl : `https:${imageUrl}`;
+    return imageUrl;
   };
 
   const articleUrl = `https://about.staydiasports.com/news/${slug}`;
-  const socialImageUrl = getOptimizedImageUrl();
+  const socialImageUrl = getOptimizedImageUrl() || DEFAULT_IMAGE;
+  const summary =
+    article?.fields?.summary && article.fields.summary.trim().length > 0
+      ? article.fields.summary
+      : DEFAULT_DESCRIPTION;
 
   // Only set meta tags and structured data when the article is loaded
   React.useEffect(() => {
     if (!article) return;
     useMetaTags({
       title: article.fields.title,
-      description: article.fields.summary,
+      description: summary,
       image: socialImageUrl,
       url: articleUrl,
       type: 'article',
       publishedTime: article.fields.date,
       author: 'Staydia Sports',
       section: article.fields.category || 'Sports',
-      tags: article.fields.category ? [article.fields.category, 'Sports News'] : ['Sports News']
+      tags: article.fields.category ? [article.fields.category, 'Sports News'] : ['Sports News'],
     });
     useStructuredData({
       type: 'Article',
       title: article.fields.title,
-      description: article.fields.summary,
+      description: summary,
       image: socialImageUrl,
       url: articleUrl,
       author: 'Staydia Sports',
       publishedDate: article.fields.date,
-      section: article.fields.category || 'Sports'
+      section: article.fields.category || 'Sports',
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [article, socialImageUrl, articleUrl]);
-  
+  }, [article, socialImageUrl, articleUrl, summary]);
+
   if (isLoading) {
     return <NewsArticleLoading />;
   }
