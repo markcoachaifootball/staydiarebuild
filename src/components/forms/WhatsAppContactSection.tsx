@@ -5,7 +5,7 @@ import { MessageCircle } from 'lucide-react';
 
 const WhatsAppContactSection: React.FC = () => {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "353861935525"; // Irish number format without +
+    const phoneNumber = "353899754690"; // Updated phone number
     const message = encodeURIComponent("Hi, I'm interested in learning more about Staydia Sports.");
     
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');

@@ -53,8 +53,8 @@ const Contact = () => {
   };
   
   const handleWhatsAppClick = () => {
-    // Updated WhatsApp number with the real one
-    const phoneNumber = "353861935525"; // Irish number format without +
+    // Updated WhatsApp number
+    const phoneNumber = "353899754690"; // Updated phone number
     const message = encodeURIComponent("Hi, I'm interested in learning more about Staydia Sports.");
     
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
