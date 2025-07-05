@@ -69,8 +69,14 @@ const Footer: React.FC = () => {
             />
           </div>
           
-          <div className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Staydia Sports. All rights reserved.
+          <div className="flex flex-col items-center space-y-2">
+            <div className="text-sm text-gray-400">
+              © {new Date().getFullYear()} Staydia Sports. All rights reserved.
+            </div>
+            <div className="flex items-center space-x-2 text-sm text-gray-400">
+              <span>🇮🇪</span>
+              <span>Made in Ireland</span>
+            </div>
           </div>
           
           <div className="flex mt-4 md:mt-0 space-x-4">
