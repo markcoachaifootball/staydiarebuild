@@ -15,23 +15,27 @@ const Newsroom: React.FC = () => {
   const getArticles = async () => {
     try {
       setIsLoading(true);
-      console.log('Fetching news articles from Contentful...');
+      console.log('🔄 Starting to fetch news articles from Contentful...');
       
       // We'll fetch 8 articles to show more on the homepage
       const newsArticles = await fetchNewsArticles(8);
+      console.log('📰 Received articles from API:', newsArticles);
       setArticles(newsArticles);
       setError(null);
       
       if (newsArticles.length > 0) {
         if (!newsArticles[0].sys.id.startsWith('example')) {
-          console.log('Loaded real Contentful articles', newsArticles);
+          console.log('✅ Loaded real Contentful articles', newsArticles.length, 'articles');
+          console.log('First article:', newsArticles[0]);
         } else {
-          console.log('Loaded example articles (no Contentful data found)');
+          console.log('⚠️ Loaded example articles (no Contentful data found)');
         }
+      } else {
+        console.log('❌ No articles returned from API');
       }
     } catch (err) {
       setError('Failed to load news articles. Please try again later.');
-      console.error('Error loading news articles:', err);
+      console.error('💥 Error loading news articles:', err);
     } finally {
       setIsLoading(false);
     }
