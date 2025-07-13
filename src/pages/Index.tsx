@@ -10,7 +10,6 @@ import Community from '@/components/Community';
 import Newsroom from '@/components/Newsroom';
 import PartnersSlider from '@/components/PartnersSlider';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { SmartSportsSearch } from '@/components/SmartSportsSearch';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useStructuredData } from '@/hooks/useStructuredData';
 
@@ -31,11 +30,6 @@ const Index = () => {
       <Technology />
       <HowItWorks />
       <Community />
-      <section className="py-16 bg-background/5">
-        <div className="container mx-auto px-4">
-          <SmartSportsSearch />
-        </div>
-      </section>
       <Newsroom />
       <Footer />
       <WhatsAppButton />
