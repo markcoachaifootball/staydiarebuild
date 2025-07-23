@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Article | Staydia Sports</title>
+    <meta name="description" content="Latest news and updates from Staydia Sports" />
+    
+    <!-- Default fallback meta tags for news articles -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Staydia Sports" />
+    <meta property="og:title" content="Staydia Sports News" />
+    <meta property="og:description" content="Latest news and updates from Staydia Sports" />
+    <meta property="og:image" content="https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@staydiasports" />
+    <meta name="twitter:title" content="Staydia Sports News" />
+    <meta name="twitter:description" content="Latest news and updates from Staydia Sports" />
+    <meta name="twitter:image" content="https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png" />
+    
+    <!-- Redirect to main app -->
+    <script>
+        window.location.href = '/news/' + window.location.pathname.split('/news/')[1];
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
