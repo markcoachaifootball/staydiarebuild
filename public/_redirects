@@ -1,6 +1,8 @@
-# Force serve static HTML file for the specific article path
+# Force serve static HTML file for the specific article path - try multiple variations
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
+https://about.staydiasports.com/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
+https://about.staydiasports.com/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 
 # Fallback for all other routes to main app
 /* /index.html 200
