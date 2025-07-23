@@ -52,9 +52,9 @@ const NewsCarousel: React.FC = () => {
       </div>
       
       <Carousel className="w-full max-w-6xl mx-auto" opts={{ align: "center" }}>
-          <CarouselContent>
+          <CarouselContent className="ml-0">
             {[1, 2, 3].map((i) => (
-              <CarouselItem key={i} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <CarouselItem key={i} className="basis-full md:basis-1/3 pl-4">
                 <div className="bg-staydia-darkgray/50 rounded-xl overflow-hidden animate-pulse">
                   <div className="aspect-video bg-gray-700"></div>
                   <div className="p-4">
@@ -80,9 +80,9 @@ const NewsCarousel: React.FC = () => {
       </div>
       
       <Carousel className="w-full max-w-6xl mx-auto" opts={{ align: "center" }}>
-        <CarouselContent>
+        <CarouselContent className="ml-0">
           {articles.map((article) => (
-            <CarouselItem key={article.sys.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+            <CarouselItem key={article.sys.id} className="basis-full md:basis-1/3 pl-4">
               <Link 
                 to={`/news/${generateSlug(article.fields.title)}`}
                 className="block bg-staydia-darkgray/50 rounded-xl overflow-hidden hover:bg-staydia-darkgray/70 transition-all duration-300 group"
