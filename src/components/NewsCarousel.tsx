@@ -53,13 +53,13 @@ const NewsCarousel: React.FC = () => {
         <Carousel className="w-full max-w-6xl mx-auto">
           <CarouselContent>
             {[1, 2, 3].map((i) => (
-              <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={i} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
                 <div className="bg-staydia-darkgray/50 rounded-xl overflow-hidden animate-pulse">
                   <div className="aspect-video bg-gray-700"></div>
-                  <div className="p-6">
-                    <div className="h-4 bg-gray-700 rounded mb-2"></div>
-                    <div className="h-6 bg-gray-700 rounded mb-4"></div>
-                    <div className="h-4 bg-gray-700 rounded"></div>
+                  <div className="p-4">
+                    <div className="h-3 bg-gray-700 rounded mb-2"></div>
+                    <div className="h-5 bg-gray-700 rounded mb-3"></div>
+                    <div className="h-3 bg-gray-700 rounded"></div>
                   </div>
                 </div>
               </CarouselItem>
@@ -82,7 +82,7 @@ const NewsCarousel: React.FC = () => {
       <Carousel className="w-full max-w-6xl mx-auto">
         <CarouselContent>
           {articles.map((article) => (
-            <CarouselItem key={article.sys.id} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={article.sys.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
               <Link 
                 to={`/news/${generateSlug(article.fields.title)}`}
                 className="block bg-staydia-darkgray/50 rounded-xl overflow-hidden hover:bg-staydia-darkgray/70 transition-all duration-300 group"
@@ -96,8 +96,8 @@ const NewsCarousel: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-staydia-gold mb-2">
+                <div className="p-4">
+                  <div className="flex items-center gap-2 text-xs text-staydia-gold mb-2">
                     <span className="capitalize">{article.fields.category || 'News'}</span>
                     {article.fields.date && (
                       <>
@@ -107,12 +107,12 @@ const NewsCarousel: React.FC = () => {
                     )}
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-staydia-gold transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-staydia-gold transition-colors line-clamp-2">
                     {article.fields.title}
                   </h3>
                   
                   {article.fields.summary && (
-                    <p className="text-gray-300 text-sm line-clamp-3">
+                    <p className="text-gray-300 text-xs line-clamp-2">
                       {article.fields.summary}
                     </p>
                   )}
