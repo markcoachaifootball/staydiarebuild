@@ -1,7 +1,8 @@
 # Serve static HTML for social media crawlers, main app for users
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! if=facebookexternalhit
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! if=twitterbot
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! if=linkedinbot
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Country=* if=facebookexternalhit
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Country=* if=Facebookbot
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Country=* if=twitterbot
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Country=* if=linkedinbot
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /index.html 200
 
 # Fallback for all other routes to main app
