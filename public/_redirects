@@ -1,2 +1,6 @@
-# Fallback for all routes to main app
+# Serve static HTML for social media crawlers, main app for users
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! if=crawler
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /index.html 200
+
+# Fallback for all other routes to main app
 /* /index.html 200
