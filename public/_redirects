@@ -1,10 +1,4 @@
-# Force serve static HTML for crawlers - using user agent detection
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,facebookexternalhit/*
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,facebookexternalhit/*
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,*bot*
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,*bot*
-
-# Try without conditions as fallback
+# Force serve static HTML file (simplified approach)
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 
