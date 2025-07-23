@@ -36,20 +36,6 @@
     
     <!-- Add Facebook App ID meta tag -->
     <meta property="fb:app_id" content="436761779744620" />
-    
-    <!-- Redirect to main app after social crawlers read meta tags -->
-    <script>
-        // Only redirect if not a crawler - be more specific about crawler detection
-        const userAgent = navigator.userAgent.toLowerCase();
-        const isCrawler = /bot|crawler|spider|crawling|facebook|twitter|linkedin|whatsapp|telegram|discord|slack|facebookexternalhit|meta-external|googlebot/i.test(userAgent);
-        
-        if (!isCrawler && typeof window !== 'undefined' && window.location) {
-            // Small delay to ensure crawlers can read meta tags
-            setTimeout(() => {
-                window.location.replace(window.location.pathname);
-            }, 100);
-        }
-    </script>
 </head>
 <body>
     <!-- Fallback content for crawlers -->
