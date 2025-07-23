@@ -96,8 +96,8 @@ const NewsCarousel: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 
-                <div className="p-2 md:p-4">
-                  <div className="flex items-center gap-1 md:gap-2 text-xs text-staydia-gold mb-1 md:mb-2">
+                <div className="p-4">
+                  <div className="flex items-center gap-2 text-xs text-staydia-gold mb-2">
                     <span className="capitalize">{article.fields.category || 'News'}</span>
                     {article.fields.date && (
                       <>
@@ -107,12 +107,12 @@ const NewsCarousel: React.FC = () => {
                     )}
                   </div>
                   
-                  <h3 className="text-sm md:text-lg font-bold mb-1 md:mb-2 group-hover:text-staydia-gold transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-staydia-gold transition-colors line-clamp-2">
                     {article.fields.title}
                   </h3>
                   
                   {article.fields.summary && (
-                    <p className="text-gray-300 text-xs line-clamp-2 hidden md:block">
+                    <p className="text-gray-300 text-xs line-clamp-2">
                       {article.fields.summary}
                     </p>
                   )}
