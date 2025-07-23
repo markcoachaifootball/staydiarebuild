@@ -1,8 +1,12 @@
-# Force serve static HTML file for the specific article path - try multiple variations
+# Force serve static HTML for crawlers - using user agent detection
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,facebookexternalhit/*
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,facebookexternalhit/*
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,*bot*
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200! Condition=User-Agent,*bot*
+
+# Try without conditions as fallback
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
-https://about.staydiasports.com/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
-https://about.staydiasports.com/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 
 # Fallback for all other routes to main app
 /* /index.html 200
