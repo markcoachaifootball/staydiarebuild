@@ -1,6 +1,2 @@
-# Force serve static HTML file from root directory
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
-/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
-
 # Fallback for all other routes to main app
 /* /index.html 200
