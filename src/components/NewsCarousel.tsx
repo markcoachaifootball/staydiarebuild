@@ -84,7 +84,7 @@ const NewsCarousel: React.FC = () => {
           {articles.map((article) => (
             <CarouselItem key={article.sys.id} className="basis-full md:basis-1/3">
               <Link 
-                to={`/news/${generateSlug(article.fields.title)}`}
+                to={`/news/${article.fields.slug}`}
                 className="block bg-staydia-darkgray/50 rounded-xl overflow-hidden hover:bg-staydia-darkgray/70 transition-all duration-300 group"
               >
                 <div className="aspect-video relative overflow-hidden">
