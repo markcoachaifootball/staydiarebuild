@@ -32,7 +32,6 @@ const Index = () => {
       <Technology />
       <HowItWorks />
       <Community />
-      <Newsroom />
       <Footer />
       <WhatsAppButton />
     </div>
