@@ -1,4 +1,5 @@
-# Serve static HTML for the specific article
+# Static HTML files served directly (must come BEFORE SPA fallback)
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html /lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
 
