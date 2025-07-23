@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
 import Community from '@/components/Community';
-import Newsroom from '@/components/Newsroom';
+
 import PartnersSlider from '@/components/PartnersSlider';
 import NewsCarousel from '@/components/NewsCarousel';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -32,7 +32,6 @@ const Index = () => {
       <Technology />
       <HowItWorks />
       <Community />
-      <Newsroom />
       <Footer />
       <WhatsAppButton />
     </div>
