@@ -126,7 +126,7 @@ const partners = [
   },
   {
     name: "Colchester R.F.C",
-    logo: "/lovable-uploads/0c628aae-d749-49ec-8ec9-b9edd088eaea.png"
+    logo: "/lovable-uploads/2a4ca23a-29a3-4bc6-aa07-74fb5443ed40.png"
   }
 ];
 
