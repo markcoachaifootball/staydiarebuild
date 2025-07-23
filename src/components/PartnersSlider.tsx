@@ -123,6 +123,10 @@ const partners = [
   {
     name: "Newport Saints",
     logo: "/lovable-uploads/f372f177-c5c6-4f6f-9dfb-9fda50f3e204.png"
+  },
+  {
+    name: "Colchester R.F.C",
+    logo: "/lovable-uploads/0c628aae-d749-49ec-8ec9-b9edd088eaea.png"
   }
 ];
 
