@@ -19,7 +19,7 @@ const NewsArticlePage: React.FC = () => {
   // Handle specific static article
   React.useEffect(() => {
     if (slug === 'lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible') {
-      window.location.href = '/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html';
+      window.location.href = '/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html';
       return;
     }
   }, [slug]);
