@@ -34,12 +34,20 @@
     <meta name="twitter:image" content="https://images.ctfassets.net/qo4q4xk8vua7/22CmVecxOVvH6RoWxaLVrE/a89344581beb1e0af40b1b31efcf0d50/LSL.jpg?fm=jpg&q=85&w=1200&h=630&fit=fill&f=center" />
     <meta name="twitter:image:alt" content="LSL & Staydia Sports partnership article" />
     
+    <!-- Add Facebook App ID meta tag -->
+    <meta property="fb:app_id" content="436761779744620" />
+    
     <!-- Redirect to main app after social crawlers read meta tags -->
     <script>
-        // Only redirect if not a crawler
-        const isCrawler = /bot|crawler|spider|crawling/i.test(navigator.userAgent);
-        if (!isCrawler) {
-            window.location.replace('/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible');
+        // Only redirect if not a crawler - be more specific about crawler detection
+        const userAgent = navigator.userAgent.toLowerCase();
+        const isCrawler = /bot|crawler|spider|crawling|facebook|twitter|linkedin|whatsapp|telegram|discord|slack|facebookexternalhit|meta-external|googlebot/i.test(userAgent);
+        
+        if (!isCrawler && typeof window !== 'undefined' && window.location) {
+            // Small delay to ensure crawlers can read meta tags
+            setTimeout(() => {
+                window.location.replace(window.location.pathname);
+            }, 100);
         }
     </script>
 </head>
