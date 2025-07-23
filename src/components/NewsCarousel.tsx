@@ -87,7 +87,7 @@ const NewsCarousel: React.FC = () => {
                 to={`/news/${generateSlug(article.fields.title)}`}
                 className="block bg-staydia-darkgray/50 rounded-xl overflow-hidden hover:bg-staydia-darkgray/70 transition-all duration-300 group"
               >
-                <div className="aspect-[4/3] md:aspect-video relative overflow-hidden">
+                <div className="aspect-video relative overflow-hidden">
                   <img 
                     src={getImageUrl(article)} 
                     alt={article.fields.title}
@@ -97,22 +97,22 @@ const NewsCarousel: React.FC = () => {
                 </div>
                 
                 <div className="p-2 md:p-4">
-                  <div className="flex items-center gap-1 md:gap-2 text-xs md:text-xs text-staydia-gold mb-1 md:mb-2">
-                    <span className="capitalize text-xs">{article.fields.category || 'News'}</span>
+                  <div className="flex items-center gap-1 md:gap-2 text-xs text-staydia-gold mb-1 md:mb-2">
+                    <span className="capitalize">{article.fields.category || 'News'}</span>
                     {article.fields.date && (
                       <>
                         <span>•</span>
-                        <span className="text-xs">{formatArticleDate(article.fields.date)}</span>
+                        <span>{formatArticleDate(article.fields.date)}</span>
                       </>
                     )}
                   </div>
                   
-                  <h3 className="text-xs md:text-lg font-bold mb-1 md:mb-2 group-hover:text-staydia-gold transition-colors line-clamp-2 leading-tight">
+                  <h3 className="text-sm md:text-lg font-bold mb-1 md:mb-2 group-hover:text-staydia-gold transition-colors line-clamp-2">
                     {article.fields.title}
                   </h3>
                   
                   {article.fields.summary && (
-                    <p className="text-gray-300 text-xs line-clamp-1 hidden md:block">
+                    <p className="text-gray-300 text-xs line-clamp-2 hidden md:block">
                       {article.fields.summary}
                     </p>
                   )}
