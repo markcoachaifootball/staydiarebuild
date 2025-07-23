@@ -34,6 +34,12 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    /* Staydia Colors */
+    --staydia-gold: 45 85% 65%;
+    --staydia-black: 0 0% 7%;
+    --staydia-darkgray: 0 0% 10%;
+    --staydia-lightgray: 0 0% 16%;
   }
 }
 

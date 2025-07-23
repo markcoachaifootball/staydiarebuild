@@ -64,10 +64,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				staydia: {
-					gold: '#F0BE5A',
-					black: '#111111',
-					darkgray: '#1A1A1A',
-					lightgray: '#2A2A2A'
+					gold: 'hsl(var(--staydia-gold))',
+					black: 'hsl(var(--staydia-black))',
+					darkgray: 'hsl(var(--staydia-darkgray))',
+					lightgray: 'hsl(var(--staydia-lightgray))'
 				}
 			},
 			borderRadius: {

@@ -48,7 +48,7 @@ const NewsCarousel: React.FC = () => {
     return (
       <section className="pt-8 pb-16 staydia-container">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4">Latest News</h2>
+        <h2 className="text-3xl font-bold mb-4 text-white">Latest News</h2>
       </div>
       
       <Carousel className="w-full max-w-4xl mx-auto" opts={{ align: "center" }}>
@@ -76,7 +76,7 @@ const NewsCarousel: React.FC = () => {
   return (
     <section className="pt-8 pb-16 staydia-container">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4">Latest News</h2>
+        <h2 className="text-3xl font-bold mb-4 text-white">Latest News</h2>
       </div>
       
       <Carousel className="w-full max-w-4xl mx-auto" opts={{ align: "center" }}>
