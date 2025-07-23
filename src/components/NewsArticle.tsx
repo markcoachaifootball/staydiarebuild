@@ -16,6 +16,14 @@ const DEFAULT_DESCRIPTION =
 const NewsArticlePage: React.FC = () => {
   const { article, isLoading, error, slug } = useNewsArticle();
 
+  // Handle specific static article
+  React.useEffect(() => {
+    if (slug === 'lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible') {
+      window.location.href = '/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html';
+      return;
+    }
+  }, [slug]);
+
   // Compute fallbacks, always safe!
   const getOptimizedImageUrl = React.useCallback(() => {
     const fileUrl = article?.fields?.featuredImage?.fields?.file?.url;
