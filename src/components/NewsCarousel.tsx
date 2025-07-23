@@ -51,7 +51,7 @@ const NewsCarousel: React.FC = () => {
         <h2 className="text-3xl font-bold mb-4">Latest News</h2>
       </div>
       
-      <Carousel className="w-full max-w-6xl mx-auto">
+      <Carousel className="w-full max-w-6xl mx-auto" opts={{ align: "center" }}>
           <CarouselContent>
             {[1, 2, 3].map((i) => (
               <CarouselItem key={i} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
@@ -79,7 +79,7 @@ const NewsCarousel: React.FC = () => {
         <h2 className="text-3xl font-bold mb-4">Latest News</h2>
       </div>
       
-      <Carousel className="w-full max-w-6xl mx-auto">
+      <Carousel className="w-full max-w-6xl mx-auto" opts={{ align: "center" }}>
         <CarouselContent>
           {articles.map((article) => (
             <CarouselItem key={article.sys.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
