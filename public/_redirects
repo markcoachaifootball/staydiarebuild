@@ -1,5 +1,2 @@
-# Netlify redirects for social media crawlers
-/news/* /news/index.html 200
-
-# Handle social media crawlers by serving pre-rendered content
-/news/* /api/social-preview/:splat 200! if=crawler
+# Fallback for all routes to main app
+/* /index.html 200
