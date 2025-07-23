@@ -2,6 +2,7 @@
 import { contentfulClient, previewClient } from './client';
 import { NewsArticle } from './types';
 import { getExampleArticles, getExampleArticleBySlug } from './mockData';
+import { generateSlug, normalizeSlug } from '../slugify';
 
 // Function to fetch news articles
 export async function fetchNewsArticles(limit: number = 4, preview: boolean = false): Promise<NewsArticle[]> {
@@ -30,6 +31,12 @@ export async function fetchNewsArticles(limit: number = 4, preview: boolean = fa
       // Now fetch assets separately for each article that has a featured image
       const articlesWithImages = await Promise.all(
         response.items.map(async (article: any) => {
+          // Generate clean slug if missing or problematic
+          if (article.fields?.title && (!article.fields.slug || article.fields.slug.includes('%'))) {
+            article.fields.slug = generateSlug(article.fields.title);
+            console.log('Generated clean slug for article:', article.fields.title, '->', article.fields.slug);
+          }
+          
           if (article.fields?.featuredImage?.sys?.id) {
             try {
               console.log('Fetching image asset for article:', article.fields.title);
@@ -83,7 +90,9 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
   try {
     const client = preview ? previewClient : contentfulClient;
     
-    console.log(`Fetching article by slug: ${slug}`);
+    // Normalize the slug to handle encoding issues
+    const normalizedSlug = normalizeSlug(slug);
+    console.log(`Fetching article by slug: ${slug} (normalized: ${normalizedSlug})`);
     
     // Try to detect content type first
     const contentTypes = await client.getContentTypes();
@@ -94,10 +103,11 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
     
     for (const type of commonContentTypes) {
       try {
-        console.log(`Trying to fetch ${slug} from content type: ${type}`);
+        console.log(`Trying to fetch ${normalizedSlug} from content type: ${type}`);
+        // Try both the normalized slug and original slug
         const response = await client.getEntries({
           content_type: type,
-          'fields.slug': slug,
+          'fields.slug[in]': `${normalizedSlug},${slug}`,
           limit: 1,
           include: 0, // No includes to avoid truncation
         });
@@ -106,7 +116,13 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
         
         if (response.items.length > 0) {
           const article = response.items[0] as unknown as NewsArticle;
-          console.log(`✅ Found article with slug ${slug} in content type ${type}`);
+          console.log(`✅ Found article with slug ${normalizedSlug} in content type ${type}`);
+          
+          // Ensure the article has a clean slug
+          if (article.fields?.title && (!article.fields.slug || article.fields.slug !== normalizedSlug)) {
+            article.fields.slug = normalizedSlug;
+          }
+          
           console.log('Article data:', article);
           console.log('Featured image data:', article.fields?.featuredImage);
           
