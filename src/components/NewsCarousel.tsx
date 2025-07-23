@@ -97,7 +97,17 @@ const NewsCarousel: React.FC = () => {
                 </div>
                 
                 <div className="p-2 md:p-4">
-                  <h3 className="text-sm md:text-lg font-bold mb-1 md:mb-2 group-hover:text-staydia-gold transition-colors line-clamp-3 leading-tight">
+                  <div className="flex items-center gap-1 md:gap-2 text-xs md:text-xs text-staydia-gold mb-1 md:mb-2">
+                    <span className="capitalize text-xs">{article.fields.category || 'News'}</span>
+                    {article.fields.date && (
+                      <>
+                        <span>•</span>
+                        <span className="text-xs">{formatArticleDate(article.fields.date)}</span>
+                      </>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-xs md:text-lg font-bold mb-1 md:mb-2 group-hover:text-staydia-gold transition-colors line-clamp-2 leading-tight">
                     {article.fields.title}
                   </h3>
                   
