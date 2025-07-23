@@ -1,2 +1,6 @@
+# Serve static HTML for the specific article
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
+/news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible/ /news/lsl-staydia-sports-partnership-engagement-which-is-nothing-short-of-incredible.html 200!
+
 # Fallback for all other routes to main app
 /* /index.html 200
