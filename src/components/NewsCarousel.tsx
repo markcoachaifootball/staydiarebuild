@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { fetchNewsArticles, NewsArticle } from '@/utils/contentful';
-
+import { generateSlug } from '@/utils/slugify';
 
 const NewsCarousel: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -84,7 +84,7 @@ const NewsCarousel: React.FC = () => {
           {articles.map((article) => (
             <CarouselItem key={article.sys.id} className="basis-1/3 pl-4">
               <Link 
-                to={`/news/${article.fields.slug}`}
+                to={`/news/${generateSlug(article.fields.title)}`}
                 className="block bg-staydia-darkgray/50 rounded-xl overflow-hidden hover:bg-staydia-darkgray/70 transition-all duration-300 group"
               >
                 <div className="aspect-[4/3] md:aspect-video relative overflow-hidden">
