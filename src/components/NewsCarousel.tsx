@@ -47,6 +47,9 @@ const NewsCarousel: React.FC = () => {
   if (isLoading) {
     return (
       <section className="py-16 staydia-container">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Latest News</h2>
+        </div>
         <Carousel className="w-full max-w-6xl mx-auto">
           <CarouselContent>
             {[1, 2, 3].map((i) => (
@@ -71,6 +74,11 @@ const NewsCarousel: React.FC = () => {
 
   return (
     <section className="py-16 staydia-container">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold mb-4">Latest News</h2>
+        <p className="text-gray-300 text-lg">Stay updated with the latest from Staydia</p>
+      </div>
+      
       <Carousel className="w-full max-w-6xl mx-auto">
         <CarouselContent>
           {articles.map((article) => (
