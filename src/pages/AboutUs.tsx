@@ -33,6 +33,26 @@ const AboutUs = () => {
             </div>
           </div>
 
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-center mb-12">Meet Our Founders</h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="text-staydia-gold h-12 w-12" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Steve Silva</h3>
+                <p className="text-staydia-gold font-medium">CEO & Co-founder</p>
+              </div>
+              <div className="text-center">
+                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="text-staydia-gold h-12 w-12" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Mark McGrory</h3>
+                <p className="text-staydia-gold font-medium">CTO & Co-founder</p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             <div className="bg-staydia-darkgray p-8 rounded-lg border border-staydia-lightgray">
               <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4">
@@ -63,25 +83,6 @@ const AboutUs = () => {
             </div>
           </div>
 
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">Meet Our Founders</h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="text-staydia-gold h-12 w-12" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Steve Silva</h3>
-                <p className="text-staydia-gold font-medium">CEO & Co-founder</p>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="text-staydia-gold h-12 w-12" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Mark McGrory</h3>
-                <p className="text-staydia-gold font-medium">CTO & Co-founder</p>
-              </div>
-            </div>
-          </div>
 
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-3xl font-bold mb-6">Join the Future of Sports Broadcasting</h2>
