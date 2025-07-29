@@ -54,22 +54,6 @@ const Navigation: React.FC = () => {
                   <li className="row-span-1">
                     <NavigationMenuLink asChild>
                       <Link
-                        to="/irish-football"
-                        className="flex items-center p-3 space-x-3 rounded-md hover:bg-staydia-darkgray group"
-                      >
-                        <div className="flex-shrink-0 w-8 h-8 bg-staydia-gold flex items-center justify-center rounded-full">
-                          <span className="text-staydia-black font-bold">⚽</span>
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">Irish Football</h4>
-                          <p className="text-xs text-gray-400">Live fixtures and results</p>
-                        </div>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li className="row-span-1">
-                    <NavigationMenuLink asChild>
-                      <Link
                         to="/fan-engagement"
                         className="flex items-center p-3 space-x-3 rounded-md hover:bg-staydia-darkgray group"
                       >

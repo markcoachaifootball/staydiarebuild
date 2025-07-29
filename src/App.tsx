@@ -12,7 +12,7 @@ import FAQ from './pages/FAQ';
 import AboutUs from './pages/AboutUs';
 import Testimonials from './pages/Testimonials';
 import News from './pages/News';
-import IrishFootball from './pages/IrishFootball';
+
 import NewsArticlePage from './components/NewsArticle';
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
@@ -80,7 +80,7 @@ function App() {
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/book-demo" element={<BookDemo />} />
         <Route path="/news" element={<News />} />
-        <Route path="/irish-football" element={<IrishFootball />} />
+        
         <Route path="/news/:slug" element={<NewsArticlePage />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
