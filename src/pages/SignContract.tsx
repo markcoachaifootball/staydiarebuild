@@ -21,6 +21,10 @@ interface Contract {
     name: string;
     content: string;
     terms_and_conditions: string;
+    template_file_url: string | null;
+    template_file_name: string | null;
+    terms_file_url: string | null;
+    terms_file_name: string | null;
   };
 }
 
@@ -59,7 +63,11 @@ export default function SignContract() {
           contract_templates (
             name,
             content,
-            terms_and_conditions
+            terms_and_conditions,
+            template_file_url,
+            template_file_name,
+            terms_file_url,
+            terms_file_name
           )
         `)
         .eq('signing_token', token)
@@ -312,24 +320,78 @@ export default function SignContract() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="prose max-w-none">
-                <div className="whitespace-pre-wrap text-sm leading-relaxed">
-                  {processContractContent(contract.contract_templates.content)}
+              {contract.contract_templates.template_file_url ? (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm text-muted-foreground">
+                      Contract Document: {contract.contract_templates.template_file_name}
+                    </p>
+                    <Button variant="outline" size="sm" asChild>
+                      <a 
+                        href={contract.contract_templates.template_file_url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        download
+                      >
+                        Download PDF
+                      </a>
+                    </Button>
+                  </div>
+                  <div className="border rounded-lg overflow-hidden">
+                    <iframe
+                      src={contract.contract_templates.template_file_url}
+                      className="w-full h-96"
+                      title="Contract Document"
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="prose max-w-none">
+                  <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                    {processContractContent(contract.contract_templates.content)}
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
 
           {/* Terms & Conditions */}
-          {contract.contract_templates.terms_and_conditions && (
+          {(contract.contract_templates.terms_and_conditions || contract.contract_templates.terms_file_url) && (
             <Card>
               <CardHeader>
                 <CardTitle>Terms & Conditions</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground mb-4">
-                  {contract.contract_templates.terms_and_conditions}
-                </div>
+                {contract.contract_templates.terms_file_url ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm text-muted-foreground">
+                        Terms & Conditions: {contract.contract_templates.terms_file_name}
+                      </p>
+                      <Button variant="outline" size="sm" asChild>
+                        <a 
+                          href={contract.contract_templates.terms_file_url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          download
+                        >
+                          Download PDF
+                        </a>
+                      </Button>
+                    </div>
+                    <div className="border rounded-lg overflow-hidden mb-4">
+                      <iframe
+                        src={contract.contract_templates.terms_file_url}
+                        className="w-full h-64"
+                        title="Terms and Conditions"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground mb-4">
+                    {contract.contract_templates.terms_and_conditions}
+                  </div>
+                )}
                 <div className="flex items-center space-x-2">
                   <Checkbox 
                     id="terms" 
