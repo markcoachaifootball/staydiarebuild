@@ -104,7 +104,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send the email
     const emailResponse = await resend.emails.send({
-      from: "Staydia Sports <contracts@staydiademo.com>",
+      from: "Staydia Sports <contracts@staydiasports.com>",
       to: [recipientEmail],
       subject: "Contract Signature Required - Staydia Sports",
       html: emailHtml,
