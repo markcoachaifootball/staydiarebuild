@@ -46,6 +46,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { contractId, recipientEmail, recipientName, message }: SendContractEmailRequest = await req.json();
 
+    console.log('User ID:', user.id);
+    console.log('Contract ID:', contractId);
+
     // Fetch the contract details
     const { data: contract, error: contractError } = await supabaseClient
       .from('contracts')
@@ -53,6 +56,9 @@ const handler = async (req: Request): Promise<Response> => {
       .eq('id', contractId)
       .eq('sent_by', user.id)
       .single();
+
+    console.log('Contract found:', !!contract);
+    console.log('Contract error:', contractError);
 
     if (contractError || !contract) {
       throw new Error("Contract not found or unauthorized");
