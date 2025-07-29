@@ -134,7 +134,7 @@ const Contracts = () => {
   };
 
   const copyContractLink = async (contractId: string) => {
-    const contractUrl = `${window.location.origin}/sign-contract?token=${contractId}`;
+    const contractUrl = `${window.location.origin}/sign/${contractId}`;
     
     try {
       await navigator.clipboard.writeText(contractUrl);
