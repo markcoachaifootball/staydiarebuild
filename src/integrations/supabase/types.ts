@@ -10,11 +10,176 @@ export type Database = {
   // Allows to automatically instanciate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.3 (519615d)"
+    PostgrestVersion: "12.2.12 (cd3cf9e)"
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contract_templates: {
+        Row: {
+          content: string
+          created_at: string
+          created_by: string
+          id: string
+          is_active: boolean | null
+          name: string
+          terms_and_conditions: string | null
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          created_by: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          terms_and_conditions?: string | null
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          terms_and_conditions?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contracts: {
+        Row: {
+          contract_data: Json | null
+          created_at: string
+          customer_company: string | null
+          customer_email: string
+          customer_name: string | null
+          expires_at: string | null
+          id: string
+          sent_at: string | null
+          sent_by: string
+          signed_at: string | null
+          signing_token: string | null
+          status: string | null
+          template_id: string
+          updated_at: string
+          viewed_at: string | null
+        }
+        Insert: {
+          contract_data?: Json | null
+          created_at?: string
+          customer_company?: string | null
+          customer_email: string
+          customer_name?: string | null
+          expires_at?: string | null
+          id?: string
+          sent_at?: string | null
+          sent_by: string
+          signed_at?: string | null
+          signing_token?: string | null
+          status?: string | null
+          template_id: string
+          updated_at?: string
+          viewed_at?: string | null
+        }
+        Update: {
+          contract_data?: Json | null
+          created_at?: string
+          customer_company?: string | null
+          customer_email?: string
+          customer_name?: string | null
+          expires_at?: string | null
+          id?: string
+          sent_at?: string | null
+          sent_by?: string
+          signed_at?: string | null
+          signing_token?: string | null
+          status?: string | null
+          template_id?: string
+          updated_at?: string
+          viewed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contracts_template_id_fkey"
+            columns: ["template_id"]
+            isOneToOne: false
+            referencedRelation: "contract_templates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          updated_at: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id: string
+          last_name?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      signatures: {
+        Row: {
+          contract_id: string
+          created_at: string
+          id: string
+          signature_data: string
+          signature_type: string | null
+          signer_ip: string | null
+          signer_user_agent: string | null
+          terms_accepted: boolean | null
+        }
+        Insert: {
+          contract_id: string
+          created_at?: string
+          id?: string
+          signature_data: string
+          signature_type?: string | null
+          signer_ip?: string | null
+          signer_user_agent?: string | null
+          terms_accepted?: boolean | null
+        }
+        Update: {
+          contract_id?: string
+          created_at?: string
+          id?: string
+          signature_data?: string
+          signature_type?: string | null
+          signer_ip?: string | null
+          signer_user_agent?: string | null
+          terms_accepted?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "signatures_contract_id_fkey"
+            columns: ["contract_id"]
+            isOneToOne: false
+            referencedRelation: "contracts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

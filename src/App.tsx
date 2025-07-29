@@ -17,6 +17,12 @@ import NewsArticlePage from './components/NewsArticle';
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
 import ForClubs from './pages/ForClubs';
+import Auth from './pages/Auth';
+import Contracts from './pages/Contracts';
+import ContractTemplates from './pages/ContractTemplates';
+import NewContract from './pages/NewContract';
+import ContractView from './pages/ContractView';
+import SignContract from './pages/SignContract';
 
 function App() {
   useEffect(() => {
@@ -75,6 +81,12 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/irish-football" element={<IrishFootball />} />
         <Route path="/news/:slug" element={<NewsArticlePage />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/contracts" element={<Contracts />} />
+        <Route path="/contracts/templates" element={<ContractTemplates />} />
+        <Route path="/contracts/new" element={<NewContract />} />
+        <Route path="/contracts/:id" element={<ContractView />} />
+        <Route path="/sign/:token" element={<SignContract />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
