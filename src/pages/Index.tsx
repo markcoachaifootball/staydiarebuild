@@ -26,11 +26,6 @@ const Index = () => {
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
       <Hero />
-      <div className="text-center py-8">
-        <a href="/auth" className="inline-flex items-center px-6 py-3 bg-staydia-gold text-staydia-black font-semibold rounded-lg hover:bg-staydia-gold/90 transition-colors">
-          Digital Contract System →
-        </a>
-      </div>
       <NewsCarousel />
       <PartnersSlider />
       <Features />
