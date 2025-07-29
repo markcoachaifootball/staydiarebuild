@@ -54,7 +54,6 @@ const handler = async (req: Request): Promise<Response> => {
       .from('contracts')
       .select('*')
       .eq('id', contractId)
-      .eq('sent_by', user.id)
       .maybeSingle();
 
     console.log('Contract found:', !!contract);
