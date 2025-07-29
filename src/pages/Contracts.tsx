@@ -24,6 +24,7 @@ interface Contract {
   created_at: string;
   signed_at: string | null;
   expires_at: string | null;
+  signing_token: string;
 }
 
 const Contracts = () => {
@@ -133,8 +134,8 @@ const Contracts = () => {
     });
   };
 
-  const copyContractLink = async (contractId: string) => {
-    const contractUrl = `${window.location.origin}/sign/${contractId}`;
+  const copyContractLink = async (contract: Contract) => {
+    const contractUrl = `${window.location.origin}/sign/${contract.signing_token}`;
     
     try {
       await navigator.clipboard.writeText(contractUrl);
@@ -268,7 +269,7 @@ const Contracts = () => {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                onClick={() => copyContractLink(contract.id)}
+                                onClick={() => copyContractLink(contract)}
                                 className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
                               >
                                 <Copy className="w-3 h-3 mr-1" />
