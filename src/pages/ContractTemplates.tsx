@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Save, Plus, Edit, Trash2 } from 'lucide-react';
+import { ArrowLeft, Save, Plus, Edit, Trash2, Upload, FileText, Download } from 'lucide-react';
 import { Session } from '@supabase/supabase-js';
 
 interface ContractTemplate {
@@ -16,6 +16,10 @@ interface ContractTemplate {
   content: string;
   terms_and_conditions: string;
   created_at: string;
+  template_file_url?: string;
+  template_file_name?: string;
+  terms_file_url?: string;
+  terms_file_name?: string;
 }
 
 export default function ContractTemplates() {
@@ -29,6 +33,11 @@ export default function ContractTemplates() {
     content: '',
     terms_and_conditions: ''
   });
+  const [templateFile, setTemplateFile] = useState<File | null>(null);
+  const [termsFile, setTermsFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const templateFileRef = useRef<HTMLInputElement>(null);
+  const termsFileRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -79,23 +88,62 @@ export default function ContractTemplates() {
     }
   };
 
+  const uploadFile = async (file: File, fileType: 'template' | 'terms'): Promise<{ url: string; name: string } | null> => {
+    if (!session?.user?.id) return null;
+
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${session.user.id}/${fileType}_${Date.now()}.${fileExt}`;
+
+    const { data, error } = await supabase.storage
+      .from('contract-documents')
+      .upload(fileName, file);
+
+    if (error) throw error;
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('contract-documents')
+      .getPublicUrl(fileName);
+
+    return { url: publicUrl, name: file.name };
+  };
+
   const handleSaveTemplate = async () => {
-    if (!newTemplate.name.trim() || !newTemplate.content.trim()) {
+    if (!newTemplate.name.trim() && !templateFile) {
       toast({
         title: "Missing fields",
-        description: "Please fill in the template name and content.",
+        description: "Please provide either a template name with content or upload a template file.",
         variant: "destructive",
       });
       return;
     }
 
     try {
+      setUploading(true);
+      let templateFileData = null;
+      let termsFileData = null;
+
+      // Upload template file if provided
+      if (templateFile) {
+        templateFileData = await uploadFile(templateFile, 'template');
+      }
+
+      // Upload terms file if provided
+      if (termsFile) {
+        termsFileData = await uploadFile(termsFile, 'terms');
+      }
+
+      const templateData = {
+        ...newTemplate,
+        created_by: session?.user?.id,
+        template_file_url: templateFileData?.url,
+        template_file_name: templateFileData?.name,
+        terms_file_url: termsFileData?.url,
+        terms_file_name: termsFileData?.name,
+      };
+
       const { error } = await supabase
         .from('contract_templates')
-        .insert([{
-          ...newTemplate,
-          created_by: session?.user?.id
-        }]);
+        .insert([templateData]);
 
       if (error) throw error;
 
@@ -105,6 +153,8 @@ export default function ContractTemplates() {
       });
 
       setNewTemplate({ name: '', content: '', terms_and_conditions: '' });
+      setTemplateFile(null);
+      setTermsFile(null);
       setIsCreating(false);
       fetchTemplates();
     } catch (error: any) {
@@ -113,6 +163,8 @@ export default function ContractTemplates() {
         description: error.message,
         variant: "destructive",
       });
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -224,17 +276,46 @@ export default function ContractTemplates() {
                 />
               </div>
               <div>
-                <Label htmlFor="template-content">Contract Content</Label>
+                <Label htmlFor="template-content">Contract Content (Optional if uploading file)</Label>
                 <Textarea
                   id="template-content"
                   placeholder="Enter your contract content here. Use {customer_name}, {customer_email}, {customer_company} for dynamic fields..."
-                  className="min-h-[300px]"
+                  className="min-h-[200px]"
                   value={newTemplate.content}
                   onChange={(e) => setNewTemplate({ ...newTemplate, content: e.target.value })}
                 />
               </div>
+              
               <div>
-                <Label htmlFor="terms-conditions">Terms & Conditions</Label>
+                <Label>Upload Contract Template (PDF/Word)</Label>
+                <div className="space-y-2">
+                  <Input
+                    ref={templateFileRef}
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    onChange={(e) => setTemplateFile(e.target.files?.[0] || null)}
+                    className="hidden"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => templateFileRef.current?.click()}
+                    className="w-full"
+                  >
+                    <Upload className="h-4 w-4 mr-2" />
+                    {templateFile ? templateFile.name : 'Choose Template File'}
+                  </Button>
+                  {templateFile && (
+                    <p className="text-sm text-muted-foreground">
+                      <FileText className="h-4 w-4 inline mr-1" />
+                      {templateFile.name} ({(templateFile.size / 1024 / 1024).toFixed(2)} MB)
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="terms-conditions">Terms & Conditions (Optional if uploading file)</Label>
                 <Textarea
                   id="terms-conditions"
                   placeholder="Enter terms and conditions that will require checkbox acceptance..."
@@ -243,12 +324,45 @@ export default function ContractTemplates() {
                   onChange={(e) => setNewTemplate({ ...newTemplate, terms_and_conditions: e.target.value })}
                 />
               </div>
+
+              <div>
+                <Label>Upload Terms & Conditions (PDF/Word)</Label>
+                <div className="space-y-2">
+                  <Input
+                    ref={termsFileRef}
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    onChange={(e) => setTermsFile(e.target.files?.[0] || null)}
+                    className="hidden"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => termsFileRef.current?.click()}
+                    className="w-full"
+                  >
+                    <Upload className="h-4 w-4 mr-2" />
+                    {termsFile ? termsFile.name : 'Choose Terms & Conditions File'}
+                  </Button>
+                  {termsFile && (
+                    <p className="text-sm text-muted-foreground">
+                      <FileText className="h-4 w-4 inline mr-1" />
+                      {termsFile.name} ({(termsFile.size / 1024 / 1024).toFixed(2)} MB)
+                    </p>
+                  )}
+                </div>
+              </div>
               <div className="flex gap-2">
-                <Button onClick={handleSaveTemplate}>
+                <Button onClick={handleSaveTemplate} disabled={uploading}>
                   <Save className="h-4 w-4 mr-2" />
-                  Save Template
+                  {uploading ? 'Saving...' : 'Save Template'}
                 </Button>
-                <Button variant="outline" onClick={() => setIsCreating(false)}>
+                <Button variant="outline" onClick={() => {
+                  setIsCreating(false);
+                  setTemplateFile(null);
+                  setTermsFile(null);
+                  setNewTemplate({ name: '', content: '', terms_and_conditions: '' });
+                }}>
                   Cancel
                 </Button>
               </div>
@@ -324,11 +438,35 @@ export default function ContractTemplates() {
                         <p className="text-sm text-muted-foreground mb-2">
                           Created: {new Date(template.created_at).toLocaleDateString()}
                         </p>
-                        <p className="text-sm text-muted-foreground line-clamp-3">
-                          {template.content.substring(0, 200)}...
-                        </p>
+                        {template.template_file_name ? (
+                          <div className="text-sm text-muted-foreground space-y-1">
+                            <p className="flex items-center">
+                              <FileText className="h-4 w-4 mr-1" />
+                              Template: {template.template_file_name}
+                            </p>
+                            {template.terms_file_name && (
+                              <p className="flex items-center">
+                                <FileText className="h-4 w-4 mr-1" />
+                                Terms: {template.terms_file_name}
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="text-sm text-muted-foreground line-clamp-3">
+                            {template.content.substring(0, 200)}...
+                          </p>
+                        )}
                       </div>
                       <div className="flex items-center gap-2 ml-4">
+                        {template.template_file_url && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(template.template_file_url, '_blank')}
+                          >
+                            <Download className="h-4 w-4" />
+                          </Button>
+                        )}
                         <Button
                           variant="outline"
                           size="sm"

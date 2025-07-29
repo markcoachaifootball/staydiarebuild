@@ -22,7 +22,11 @@ export type Database = {
           id: string
           is_active: boolean | null
           name: string
+          template_file_name: string | null
+          template_file_url: string | null
           terms_and_conditions: string | null
+          terms_file_name: string | null
+          terms_file_url: string | null
           updated_at: string
         }
         Insert: {
@@ -32,7 +36,11 @@ export type Database = {
           id?: string
           is_active?: boolean | null
           name: string
+          template_file_name?: string | null
+          template_file_url?: string | null
           terms_and_conditions?: string | null
+          terms_file_name?: string | null
+          terms_file_url?: string | null
           updated_at?: string
         }
         Update: {
@@ -42,7 +50,11 @@ export type Database = {
           id?: string
           is_active?: boolean | null
           name?: string
+          template_file_name?: string | null
+          template_file_url?: string | null
           terms_and_conditions?: string | null
+          terms_file_name?: string | null
+          terms_file_url?: string | null
           updated_at?: string
         }
         Relationships: []
