@@ -23,6 +23,7 @@ import ContractTemplates from './pages/ContractTemplates';
 import NewContract from './pages/NewContract';
 import ContractView from './pages/ContractView';
 import SignContract from './pages/SignContract';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   useEffect(() => {
@@ -82,10 +83,10 @@ function App() {
         <Route path="/irish-football" element={<IrishFootball />} />
         <Route path="/news/:slug" element={<NewsArticlePage />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/contracts" element={<Contracts />} />
-        <Route path="/contracts/templates" element={<ContractTemplates />} />
-        <Route path="/contracts/new" element={<NewContract />} />
-        <Route path="/contracts/:id" element={<ContractView />} />
+        <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
+        <Route path="/contracts/templates" element={<ProtectedRoute><ContractTemplates /></ProtectedRoute>} />
+        <Route path="/contracts/new" element={<ProtectedRoute><NewContract /></ProtectedRoute>} />
+        <Route path="/contracts/:id" element={<ProtectedRoute><ContractView /></ProtectedRoute>} />
         <Route path="/sign/:token" element={<SignContract />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
