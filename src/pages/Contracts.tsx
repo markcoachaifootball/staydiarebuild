@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send } from 'lucide-react';
+import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send, Copy } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
@@ -133,6 +133,24 @@ const Contracts = () => {
     });
   };
 
+  const copyContractLink = async (contractId: string) => {
+    const contractUrl = `${window.location.origin}/sign-contract?token=${contractId}`;
+    
+    try {
+      await navigator.clipboard.writeText(contractUrl);
+      toast({
+        title: "Link copied!",
+        description: "Contract signing link copied to clipboard",
+      });
+    } catch (error) {
+      toast({
+        title: "Copy failed",
+        description: "Could not copy link to clipboard",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -246,28 +264,38 @@ const Contracts = () => {
                         </div>
                         <div className="flex gap-2">
                           {(contract.status === 'draft' || contract.status === 'sent') && (
-                            <Dialog>
-                              <DialogTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  onClick={() => openEmailDialog(contract)}
-                                  className="border-staydia-orange text-staydia-orange hover:bg-staydia-orange hover:text-white"
-                                  disabled={emailLoading === contract.id}
-                                >
-                                  {emailLoading === contract.id ? (
-                                    <>
-                                      <Send className="w-3 h-3 mr-1 animate-spin" />
-                                      Sending...
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Mail className="w-3 h-3 mr-1" />
-                                      Send Link
-                                    </>
-                                  )}
-                                </Button>
-                              </DialogTrigger>
+                            <>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => copyContractLink(contract.id)}
+                                className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
+                              >
+                                <Copy className="w-3 h-3 mr-1" />
+                                Copy Link
+                              </Button>
+                              <Dialog>
+                                <DialogTrigger asChild>
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => openEmailDialog(contract)}
+                                    className="border-staydia-orange text-staydia-orange hover:bg-staydia-orange hover:text-white"
+                                    disabled={emailLoading === contract.id}
+                                  >
+                                    {emailLoading === contract.id ? (
+                                      <>
+                                        <Send className="w-3 h-3 mr-1 animate-spin" />
+                                        Sending...
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Mail className="w-3 h-3 mr-1" />
+                                        Send Link
+                                      </>
+                                    )}
+                                  </Button>
+                                </DialogTrigger>
                               <DialogContent className="bg-staydia-darkgray border-staydia-lightgray">
                                 <DialogHeader>
                                   <DialogTitle className="text-white">Send Contract Signing Link</DialogTitle>
@@ -326,8 +354,9 @@ const Contracts = () => {
                                     )}
                                   </Button>
                                 </div>
-                              </DialogContent>
-                            </Dialog>
+                                </DialogContent>
+                              </Dialog>
+                            </>
                           )}
                           <Button
                             variant="outline"
