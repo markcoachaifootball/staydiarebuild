@@ -166,6 +166,12 @@ const Contracts = () => {
                 </p>
               </div>
               <div className="flex gap-4">
+                <Button asChild variant="outline" className="border-staydia-orange text-staydia-orange hover:bg-staydia-orange hover:text-white">
+                  <Link to="/contracts/templates">
+                    <FileText className="w-4 h-4 mr-2" />
+                    Manage Templates
+                  </Link>
+                </Button>
                 <Button asChild className="bg-staydia-orange hover:bg-staydia-orange/80">
                   <Link to="/contracts/new">
                     <Plus className="w-4 h-4 mr-2" />
