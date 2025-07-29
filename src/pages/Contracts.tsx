@@ -4,7 +4,11 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
@@ -28,6 +32,12 @@ const Contracts = () => {
   const { toast } = useToast();
   const [contracts, setContracts] = useState<Contract[]>([]);
   const [loading, setLoading] = useState(true);
+  const [emailLoading, setEmailLoading] = useState<string | null>(null);
+  const [emailForm, setEmailForm] = useState({
+    recipientEmail: '',
+    recipientName: '',
+    message: ''
+  });
 
   useEffect(() => {
     fetchContracts();
@@ -78,6 +88,49 @@ const Contracts = () => {
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
+  };
+
+  const handleSendEmail = async (contractId: string) => {
+    setEmailLoading(contractId);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contract-email', {
+        body: {
+          contractId,
+          recipientEmail: emailForm.recipientEmail,
+          recipientName: emailForm.recipientName,
+          message: emailForm.message
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Email sent!",
+        description: "Contract signing link has been sent successfully.",
+      });
+
+      // Reset form and refresh contracts
+      setEmailForm({ recipientEmail: '', recipientName: '', message: '' });
+      await fetchContracts();
+      
+    } catch (error: any) {
+      toast({
+        title: "Error sending email",
+        description: error.message || "Failed to send contract email",
+        variant: "destructive",
+      });
+    } finally {
+      setEmailLoading(null);
+    }
+  };
+
+  const openEmailDialog = (contract: Contract) => {
+    setEmailForm({
+      recipientEmail: contract.customer_email || '',
+      recipientName: contract.customer_name || '',
+      message: ''
+    });
   };
 
   return (
@@ -192,6 +245,90 @@ const Contracts = () => {
                           </p>
                         </div>
                         <div className="flex gap-2">
+                          {(contract.status === 'draft' || contract.status === 'sent') && (
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => openEmailDialog(contract)}
+                                  className="border-staydia-orange text-staydia-orange hover:bg-staydia-orange hover:text-white"
+                                  disabled={emailLoading === contract.id}
+                                >
+                                  {emailLoading === contract.id ? (
+                                    <>
+                                      <Send className="w-3 h-3 mr-1 animate-spin" />
+                                      Sending...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Mail className="w-3 h-3 mr-1" />
+                                      Send Link
+                                    </>
+                                  )}
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent className="bg-staydia-darkgray border-staydia-lightgray">
+                                <DialogHeader>
+                                  <DialogTitle className="text-white">Send Contract Signing Link</DialogTitle>
+                                  <DialogDescription className="text-staydia-lightgray">
+                                    Send a secure signing link to the client via email.
+                                  </DialogDescription>
+                                </DialogHeader>
+                                <div className="space-y-4">
+                                  <div>
+                                    <Label htmlFor="recipient-email" className="text-white">Email Address</Label>
+                                    <Input
+                                      id="recipient-email"
+                                      type="email"
+                                      value={emailForm.recipientEmail}
+                                      onChange={(e) => setEmailForm(prev => ({ ...prev, recipientEmail: e.target.value }))}
+                                      placeholder="Enter recipient's email"
+                                      className="bg-staydia-gray border-staydia-lightgray text-white"
+                                    />
+                                  </div>
+                                  <div>
+                                    <Label htmlFor="recipient-name" className="text-white">Name (Optional)</Label>
+                                    <Input
+                                      id="recipient-name"
+                                      value={emailForm.recipientName}
+                                      onChange={(e) => setEmailForm(prev => ({ ...prev, recipientName: e.target.value }))}
+                                      placeholder="Enter recipient's name"
+                                      className="bg-staydia-gray border-staydia-lightgray text-white"
+                                    />
+                                  </div>
+                                  <div>
+                                    <Label htmlFor="message" className="text-white">Personal Message (Optional)</Label>
+                                    <Textarea
+                                      id="message"
+                                      value={emailForm.message}
+                                      onChange={(e) => setEmailForm(prev => ({ ...prev, message: e.target.value }))}
+                                      placeholder="Add a personal message to include in the email..."
+                                      className="bg-staydia-gray border-staydia-lightgray text-white"
+                                      rows={3}
+                                    />
+                                  </div>
+                                  <Button
+                                    onClick={() => handleSendEmail(contract.id)}
+                                    disabled={!emailForm.recipientEmail || emailLoading === contract.id}
+                                    className="w-full bg-staydia-orange hover:bg-staydia-orange/80"
+                                  >
+                                    {emailLoading === contract.id ? (
+                                      <>
+                                        <Send className="w-4 h-4 mr-2 animate-spin" />
+                                        Sending Email...
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Send className="w-4 h-4 mr-2" />
+                                        Send Contract Link
+                                      </>
+                                    )}
+                                  </Button>
+                                </div>
+                              </DialogContent>
+                            </Dialog>
+                          )}
                           <Button
                             variant="outline"
                             size="sm"
