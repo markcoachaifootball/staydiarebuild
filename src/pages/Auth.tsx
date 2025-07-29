@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
-import { Loader2, FileSignature } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(false);
@@ -107,21 +107,23 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center p-4">
+    <div className="min-h-screen bg-staydia-black flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <FileSignature className="h-12 w-12 text-primary" />
-          </div>
-          <h1 className="text-3xl font-bold">Digital Contracts</h1>
-          <p className="text-muted-foreground">Sign in to manage your contracts</p>
+          <img 
+            src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
+            alt="Staydia Sports Logo" 
+            className="h-12 w-auto mx-auto mb-6"
+          />
+          <h1 className="text-3xl font-bold text-staydia-white mb-2">Welcome</h1>
+          <p className="text-staydia-lightgray">Sign in to your account or create a new one</p>
         </div>
 
-        <Card>
+        <Card className="bg-staydia-darkgray border-staydia-lightgray">
           <CardHeader className="text-center">
-            <CardTitle>Welcome</CardTitle>
-            <CardDescription>
-              Sign in to your account or create a new one
+            <CardTitle className="text-staydia-white">Access Staydia Sports</CardTitle>
+            <CardDescription className="text-staydia-lightgray">
+              Internal access for club contract management
             </CardDescription>
           </CardHeader>
           <CardContent>
