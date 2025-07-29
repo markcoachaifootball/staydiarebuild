@@ -55,12 +55,18 @@ const handler = async (req: Request): Promise<Response> => {
       .select('*')
       .eq('id', contractId)
       .eq('sent_by', user.id)
-      .single();
+      .maybeSingle();
 
     console.log('Contract found:', !!contract);
     console.log('Contract error:', contractError);
+    console.log('Contract data:', contract);
 
-    if (contractError || !contract) {
+    if (contractError) {
+      console.error('Database error:', contractError);
+      throw new Error(`Database error: ${contractError.message}`);
+    }
+    
+    if (!contract) {
       throw new Error("Contract not found or unauthorized");
     }
 
