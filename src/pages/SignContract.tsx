@@ -7,8 +7,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
-import { FileSignature, Pen, Type, Check } from 'lucide-react';
+import { FileSignature, Pen, Type, Check, Eye, Download } from 'lucide-react';
 
 interface Contract {
   id: string;
@@ -37,6 +38,7 @@ export default function SignContract() {
   const [typedSignature, setTypedSignature] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [showTermsDialog, setShowTermsDialog] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -237,9 +239,19 @@ export default function SignContract() {
       // Update contract status
       await updateContractStatus('signed');
 
+      // Send notification to contract owner
+      await supabase.functions.invoke('contract-signed-notification', {
+        body: {
+          contractId: contract.id,
+          signerName: contract.customer_name || contract.customer_email,
+          signerEmail: contract.customer_email,
+          signatureType: signatureType
+        }
+      });
+
       toast({
         title: "Contract signed!",
-        description: "Thank you for signing the contract. You will receive a confirmation email shortly.",
+        description: "Thank you for signing the contract. The contract owner has been notified.",
       });
 
       // Redirect to success page or show success message
@@ -360,47 +372,111 @@ export default function SignContract() {
             <Card>
               <CardHeader>
                 <CardTitle>Terms & Conditions</CardTitle>
+                <CardDescription>
+                  Please review and accept the terms and conditions before signing
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                {contract.contract_templates.terms_file_url ? (
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm text-muted-foreground">
-                        Terms & Conditions: {contract.contract_templates.terms_file_name}
+                <div className="space-y-4">
+                  {/* Terms Preview */}
+                  <div className="border rounded-lg p-4 bg-muted/50">
+                    {contract.contract_templates.terms_file_url ? (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                          <FileSignature className="h-4 w-4 text-muted-foreground" />
+                          <span className="text-sm font-medium">
+                            {contract.contract_templates.terms_file_name || 'Terms & Conditions'}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Dialog open={showTermsDialog} onOpenChange={setShowTermsDialog}>
+                            <DialogTrigger asChild>
+                              <Button variant="outline" size="sm">
+                                <Eye className="h-4 w-4 mr-2" />
+                                View Terms
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                              <DialogHeader>
+                                <DialogTitle>Terms & Conditions</DialogTitle>
+                                <DialogDescription>
+                                  Please review the complete terms and conditions
+                                </DialogDescription>
+                              </DialogHeader>
+                              <div className="border rounded-lg overflow-hidden">
+                                <iframe
+                                  src={contract.contract_templates.terms_file_url}
+                                  className="w-full h-96"
+                                  title="Terms and Conditions"
+                                />
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                          <Button variant="outline" size="sm" asChild>
+                            <a 
+                              href={contract.contract_templates.terms_file_url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              download
+                            >
+                              <Download className="h-4 w-4 mr-2" />
+                              Download
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <h4 className="font-medium">Terms & Conditions Summary</h4>
+                          <Dialog open={showTermsDialog} onOpenChange={setShowTermsDialog}>
+                            <DialogTrigger asChild>
+                              <Button variant="outline" size="sm">
+                                <Eye className="h-4 w-4 mr-2" />
+                                View Full Terms
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                              <DialogHeader>
+                                <DialogTitle>Terms & Conditions</DialogTitle>
+                                <DialogDescription>
+                                  Complete terms and conditions for this contract
+                                </DialogDescription>
+                              </DialogHeader>
+                              <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                                {contract.contract_templates.terms_and_conditions}
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                        </div>
+                        <div className="text-sm text-muted-foreground line-clamp-3">
+                          {contract.contract_templates.terms_and_conditions?.substring(0, 200)}
+                          {contract.contract_templates.terms_and_conditions && contract.contract_templates.terms_and_conditions.length > 200 && '...'}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Acceptance Checkbox */}
+                  <div className="flex items-start space-x-3 p-4 border rounded-lg bg-card">
+                    <Checkbox 
+                      id="terms" 
+                      checked={termsAccepted}
+                      onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                      className="mt-0.5"
+                    />
+                    <div className="grid gap-1.5 leading-none">
+                      <Label 
+                        htmlFor="terms" 
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        I accept the terms and conditions
+                      </Label>
+                      <p className="text-xs text-muted-foreground">
+                        By checking this box, I confirm that I have read, understood, and agree to be bound by the terms and conditions outlined above.
                       </p>
-                      <Button variant="outline" size="sm" asChild>
-                        <a 
-                          href={contract.contract_templates.terms_file_url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          download
-                        >
-                          Download PDF
-                        </a>
-                      </Button>
-                    </div>
-                    <div className="border rounded-lg overflow-hidden mb-4">
-                      <iframe
-                        src={contract.contract_templates.terms_file_url}
-                        className="w-full h-64"
-                        title="Terms and Conditions"
-                      />
                     </div>
                   </div>
-                ) : (
-                  <div className="whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground mb-4">
-                    {contract.contract_templates.terms_and_conditions}
-                  </div>
-                )}
-                <div className="flex items-center space-x-2">
-                  <Checkbox 
-                    id="terms" 
-                    checked={termsAccepted}
-                    onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
-                  />
-                  <Label htmlFor="terms" className="text-sm">
-                    I accept the terms and conditions outlined above
-                  </Label>
                 </div>
               </CardContent>
             </Card>
@@ -472,21 +548,31 @@ export default function SignContract() {
               </Tabs>
 
               <div className="mt-6 pt-6 border-t">
-                <Button 
-                  onClick={handleSubmit}
-                  disabled={!termsAccepted || isSubmitting}
-                  className="w-full"
-                  size="lg"
-                >
-                  {isSubmitting ? (
-                    "Signing Contract..."
-                  ) : (
-                    <>
-                      <FileSignature className="h-4 w-4 mr-2" />
-                      Sign Contract
-                    </>
+                <div className="space-y-3">
+                  {!termsAccepted && (
+                    <p className="text-sm text-muted-foreground text-center">
+                      Please accept the terms and conditions to proceed with signing
+                    </p>
                   )}
-                </Button>
+                  <Button 
+                    onClick={handleSubmit}
+                    disabled={!termsAccepted || isSubmitting}
+                    className="w-full"
+                    size="lg"
+                  >
+                    {isSubmitting ? (
+                      "Signing Contract..."
+                    ) : (
+                      <>
+                        <FileSignature className="h-4 w-4 mr-2" />
+                        Sign Contract
+                      </>
+                    )}
+                  </Button>
+                  <p className="text-xs text-center text-muted-foreground">
+                    By signing, you confirm your agreement to all terms and your signature will be legally binding
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
