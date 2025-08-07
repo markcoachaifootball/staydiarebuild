@@ -73,9 +73,18 @@ export default function SignContract() {
           )
         `)
         .eq('signing_token', token)
-        .single();
+        .maybeSingle();
 
       if (error) throw error;
+
+      if (!data) {
+        toast({
+          title: "Contract not found",
+          description: "This contract does not exist or has been removed.",
+          variant: "destructive",
+        });
+        return;
+      }
 
       // Check if contract has expired
       if (new Date(data.expires_at) < new Date()) {
