@@ -65,8 +65,10 @@ export default {
 				},
 				staydia: {
 					gold: 'hsl(var(--staydia-gold))',
+					orange: 'hsl(var(--staydia-orange))',
 					black: 'hsl(var(--staydia-black))',
 					darkgray: 'hsl(var(--staydia-darkgray))',
+					gray: 'hsl(var(--staydia-gray))',
 					lightgray: 'hsl(var(--staydia-lightgray))'
 				}
 			},
