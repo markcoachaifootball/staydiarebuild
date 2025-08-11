@@ -365,7 +365,7 @@ export default function SignContract() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <p className="text-sm text-muted-foreground">
-                      Contract Document: {contract.contract_templates.template_file_name}
+                      Contract Summary (Pages 1-2): {contract.contract_templates.template_file_name}
                     </p>
                     <Button variant="outline" size="sm" asChild>
                       <a 
@@ -374,16 +374,22 @@ export default function SignContract() {
                         rel="noopener noreferrer"
                         download
                       >
-                        Download PDF
+                        <Download className="h-4 w-4 mr-2" />
+                        Download Full PDF
                       </a>
                     </Button>
                   </div>
                   <div className="border rounded-lg overflow-hidden">
                     <iframe
-                      src={contract.contract_templates.template_file_url}
-                      className="w-full h-96"
-                      title="Contract Document"
+                      src={`${contract.contract_templates.template_file_url}#page=1&zoom=85`}
+                      className="w-full h-[500px]"
+                      title="Contract Document - First 2 Pages"
                     />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground">
+                      Showing pages 1-2 of the contract. Complete terms and conditions are available below.
+                    </p>
                   </div>
                 </div>
               ) : (
@@ -410,49 +416,100 @@ export default function SignContract() {
                   {/* Terms Preview */}
                   <div className="border rounded-lg p-4 bg-muted/50">
                     {contract.contract_templates.terms_file_url ? (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <FileSignature className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm font-medium">
-                            {contract.contract_templates.terms_file_name || 'Terms & Conditions'}
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Dialog open={showTermsDialog} onOpenChange={setShowTermsDialog}>
-                            <DialogTrigger asChild>
-                              <Button variant="outline" size="sm">
-                                <Eye className="h-4 w-4 mr-2" />
-                                View Terms
-                              </Button>
-                            </DialogTrigger>
-                            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                              <DialogHeader>
-                                <DialogTitle>Terms & Conditions</DialogTitle>
-                                <DialogDescription>
-                                  Please review the complete terms and conditions
-                                </DialogDescription>
-                              </DialogHeader>
-                              <div className="border rounded-lg overflow-hidden">
-                                <iframe
-                                  src={contract.contract_templates.terms_file_url}
-                                  className="w-full h-96"
-                                  title="Terms and Conditions"
-                                />
-                              </div>
-                            </DialogContent>
-                          </Dialog>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <FileSignature className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm font-medium">
+                              Complete Contract Document ({contract.contract_templates.terms_file_name || 'Full Terms & Conditions'})
+                            </span>
+                          </div>
                           <Button variant="outline" size="sm" asChild>
                             <a 
-                              href={contract.contract_templates.terms_file_url} 
+                              href={contract.contract_templates.terms_file_url || contract.contract_templates.template_file_url} 
                               target="_blank" 
                               rel="noopener noreferrer"
                               download
                             >
                               <Download className="h-4 w-4 mr-2" />
-                              Download
+                              Download Complete PDF
                             </a>
                           </Button>
                         </div>
+                        <Dialog open={showTermsDialog} onOpenChange={setShowTermsDialog}>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" className="w-full">
+                              <Eye className="h-4 w-4 mr-2" />
+                              View Complete Contract Document (All Pages)
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Complete Contract Document</DialogTitle>
+                              <DialogDescription>
+                                Full contract including all terms and conditions
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="border rounded-lg overflow-hidden">
+                              <iframe
+                                src={contract.contract_templates.terms_file_url || contract.contract_templates.template_file_url}
+                                className="w-full h-[70vh]"
+                                title="Complete Contract Document"
+                              />
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                        <p className="text-sm text-muted-foreground">
+                          This includes all pages of the contract. Please review the complete document before signing.
+                        </p>
+                      </div>
+                    ) : contract.contract_templates.template_file_url ? (
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <FileSignature className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm font-medium">
+                              Complete Contract Document (Pages 3-23)
+                            </span>
+                          </div>
+                          <Button variant="outline" size="sm" asChild>
+                            <a 
+                              href={contract.contract_templates.template_file_url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              download
+                            >
+                              <Download className="h-4 w-4 mr-2" />
+                              Download Complete PDF
+                            </a>
+                          </Button>
+                        </div>
+                        <Dialog open={showTermsDialog} onOpenChange={setShowTermsDialog}>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" className="w-full">
+                              <Eye className="h-4 w-4 mr-2" />
+                              View Complete Contract Document (All Pages)
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Complete Contract Document</DialogTitle>
+                              <DialogDescription>
+                                Full contract including all terms and conditions (all 23 pages)
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="border rounded-lg overflow-hidden">
+                              <iframe
+                                src={contract.contract_templates.template_file_url}
+                                className="w-full h-[70vh]"
+                                title="Complete Contract Document"
+                              />
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                        <p className="text-sm text-muted-foreground">
+                          The complete contract document contains {contract.contract_templates.template_file_name ? '23 pages' : 'all terms and conditions'}. Please review before signing.
+                        </p>
                       </div>
                     ) : (
                       <div>
