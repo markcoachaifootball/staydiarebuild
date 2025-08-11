@@ -43,11 +43,6 @@ const handler = async (req: Request): Promise<Response> => {
           name,
           content,
           terms_and_conditions
-        ),
-        profiles!contracts_sent_by_fkey (
-          first_name,
-          last_name,
-          email
         )
       `)
       .eq('id', contractId)
@@ -58,9 +53,21 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Contract not found");
     }
 
+    // Fetch the contract owner's profile separately
+    const { data: ownerProfile, error: profileError } = await supabaseClient
+      .from('profiles')
+      .select('first_name, last_name, email')
+      .eq('id', contract.sent_by)
+      .single();
+
+    if (profileError) {
+      console.error('Profile fetch error:', profileError);
+      // Continue without profile info if not found
+    }
+
     // Get contract owner email
-    const ownerEmail = contract.profiles?.email;
-    const ownerName = contract.profiles ? `${contract.profiles.first_name} ${contract.profiles.last_name}`.trim() : 'Contract Owner';
+    const ownerEmail = ownerProfile?.email;
+    const ownerName = ownerProfile ? `${ownerProfile.first_name} ${ownerProfile.last_name}`.trim() : 'Contract Owner';
 
     if (!ownerEmail) {
       throw new Error("Contract owner email not found");
