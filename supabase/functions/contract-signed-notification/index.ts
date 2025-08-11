@@ -114,7 +114,7 @@ const handler = async (req: Request): Promise<Response> => {
           </p>
           
           <p style="color: #666; font-size: 14px;">
-            If you have any questions, please contact us at support@staydiademo.com
+            If you have any questions, please contact us at info@staydiasports.com
           </p>
         </div>
         
