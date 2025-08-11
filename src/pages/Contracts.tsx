@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send, Copy } from 'lucide-react';
+import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send, Copy, Trash2 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
@@ -34,6 +34,7 @@ const Contracts = () => {
   const [contracts, setContracts] = useState<Contract[]>([]);
   const [loading, setLoading] = useState(true);
   const [emailLoading, setEmailLoading] = useState<string | null>(null);
+  const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
   const [emailForm, setEmailForm] = useState({
     recipientEmail: '',
     recipientName: '',
@@ -149,6 +150,42 @@ const Contracts = () => {
         description: "Could not copy link to clipboard",
         variant: "destructive",
       });
+    }
+  };
+
+  const handleDeleteContract = async (contractId: string, contractName: string) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete the contract for "${contractName}"?\n\nThis action cannot be undone.`
+    );
+    
+    if (!confirmed) return;
+
+    setDeleteLoading(contractId);
+    
+    try {
+      const { error } = await supabase
+        .from('contracts')
+        .delete()
+        .eq('id', contractId);
+
+      if (error) throw error;
+
+      toast({
+        title: "Contract deleted",
+        description: "The draft contract has been permanently deleted.",
+      });
+
+      // Refresh contracts list
+      await fetchContracts();
+      
+    } catch (error: any) {
+      toast({
+        title: "Error deleting contract",
+        description: error.message || "Failed to delete contract",
+        variant: "destructive",
+      });
+    } finally {
+      setDeleteLoading(null);
     }
   };
 
@@ -364,6 +401,27 @@ const Contracts = () => {
                                 </DialogContent>
                               </Dialog>
                             </>
+                          )}
+                          {contract.status === 'draft' && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => handleDeleteContract(contract.id, contract.customer_name || 'Unnamed Customer')}
+                              disabled={deleteLoading === contract.id}
+                              className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+                            >
+                              {deleteLoading === contract.id ? (
+                                <>
+                                  <Trash2 className="w-3 h-3 mr-1 animate-spin" />
+                                  Deleting...
+                                </>
+                              ) : (
+                                <>
+                                  <Trash2 className="w-3 h-3 mr-1" />
+                                  Delete
+                                </>
+                              )}
+                            </Button>
                           )}
                           <Button
                             variant="outline"
