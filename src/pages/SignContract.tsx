@@ -388,7 +388,7 @@ export default function SignContract() {
                 </div>
               ) : (
                 <div className="prose max-w-none">
-                  <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                  <div className="whitespace-pre-wrap text-sm leading-relaxed bg-white p-6 rounded-lg border">
                     {processContractContent(contract.contract_templates.content)}
                   </div>
                 </div>
