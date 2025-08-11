@@ -86,11 +86,31 @@ export default function SignContract() {
         return;
       }
 
+      // Validate the signing token matches (additional security check)
+      if (data.signing_token !== token) {
+        toast({
+          title: "Invalid signing link",
+          description: "This signing link is not valid for this contract.",
+          variant: "destructive",
+        });
+        return;
+      }
+
       // Check if contract has expired
-      if (new Date(data.expires_at) < new Date()) {
+      if (data.expires_at && new Date(data.expires_at) < new Date()) {
         toast({
           title: "Contract expired",
           description: "This contract has expired and can no longer be signed.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Check if contract can be signed (valid statuses)
+      if (!['sent', 'viewed', 'draft'].includes(data.status)) {
+        toast({
+          title: "Contract already processed",
+          description: "This contract has already been signed or is no longer available for signing.",
           variant: "destructive",
         });
         return;

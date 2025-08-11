@@ -197,7 +197,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      can_sign_contract: {
+        Args: { contract_uuid: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
