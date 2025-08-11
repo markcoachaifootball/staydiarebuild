@@ -65,6 +65,19 @@ const handler = async (req: Request): Promise<Response> => {
       // Continue without profile info if not found
     }
 
+    // Fetch the signature data
+    const { data: signature, error: signatureError } = await supabaseClient
+      .from('signatures')
+      .select('*')
+      .eq('contract_id', contractId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (signatureError) {
+      console.error('Signature fetch error:', signatureError);
+    }
+
     // Get contract owner email
     const ownerEmail = ownerProfile?.email;
     const ownerName = ownerProfile ? `${ownerProfile.first_name} ${ownerProfile.last_name}`.trim() : 'Contract Owner';
@@ -77,57 +90,75 @@ const handler = async (req: Request): Promise<Response> => {
     const baseUrl = req.headers.get("origin") || "https://yourdomain.com";
     const contractViewLink = `${baseUrl}/contracts/${contractId}`;
 
+    // Create signature display based on type
+    let signatureDisplay = '';
+    if (signature) {
+      if (signature.signature_type === 'drawn' && signature.signature_data) {
+        // For drawn signatures, display the signature image
+        signatureDisplay = `
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+            <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
+            <img src="${signature.signature_data}" alt="Digital Signature" style="max-width: 300px; max-height: 100px; border: 1px solid #ddd; background: white; padding: 10px;">
+          </div>
+        `;
+      } else if (signature.signature_type === 'typed' && signature.signature_data) {
+        // For typed signatures, display the text in a signature style
+        signatureDisplay = `
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+            <h4 style="margin: 0 0 10px 0; color: #333;">Typed Signature:</h4>
+            <div style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: #2563eb; background: white; padding: 15px; border: 1px solid #ddd; display: inline-block;">
+              ${signature.signature_data}
+            </div>
+          </div>
+        `;
+      }
+    }
+
     // Compose the notification email
     const emailHtml = `
-      <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-        <div style="background: #1a1a1a; padding: 20px; text-align: center;">
-          <img src="${baseUrl}/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" alt="Staydia Sports" style="height: 40px;">
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+        <h2 style="color: #ff6b35;">🎉 Contract Signed Successfully!</h2>
+        
+        <p>Dear ${ownerName},</p>
+        
+        <p>Great news! Your contract <strong>"${contract.contract_templates?.name || 'Contract'}"</strong> has been successfully signed.</p>
+        
+        <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+          <h3 style="margin: 0 0 15px 0; color: #10b981;">Contract Details:</h3>
+          <p style="margin: 5px 0;"><strong>Signer:</strong> ${signerName}</p>
+          <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${signerEmail}" style="color: #2563eb;">${signerEmail}</a></p>
+          <p style="margin: 5px 0;"><strong>Company:</strong> ${contract.customer_company || 'Not specified'}</p>
+          <p style="margin: 5px 0;"><strong>Signature Type:</strong> ${signatureType === 'drawn' ? 'Digital Signature' : 'Typed Signature'}</p>
+          <p style="margin: 5px 0;"><strong>Signed On:</strong> ${new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          })}</p>
+          <p style="margin: 5px 0;"><strong>Terms Accepted:</strong> ${signature?.terms_accepted ? 'Yes' : 'No'}</p>
         </div>
         
-        <div style="background: #f9f9f9; padding: 30px;">
-          <h1 style="color: #333; margin-bottom: 20px;">🎉 Contract Signed Successfully!</h1>
-          
-          <p>Dear ${ownerName},</p>
-          
-          <p>Great news! Your contract <strong>"${contract.contract_templates?.name}"</strong> has been successfully signed.</p>
-          
-          <div style="background: #fff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
-            <h3 style="margin: 0 0 10px 0; color: #10b981;">Contract Details:</h3>
-            <p style="margin: 5px 0;"><strong>Signer:</strong> ${signerName}</p>
-            <p style="margin: 5px 0;"><strong>Email:</strong> ${signerEmail}</p>
-            <p style="margin: 5px 0;"><strong>Signature Type:</strong> ${signatureType === 'drawn' ? 'Digital Signature' : 'Typed Signature'}</p>
-            <p style="margin: 5px 0;"><strong>Signed On:</strong> ${new Date().toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
-            })}</p>
-          </div>
-          
-          <div style="text-align: center; margin: 30px 0;">
-            <a href="${contractViewLink}" 
-               style="background: #ff6b35; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
-              View Contract Details
-            </a>
-          </div>
-          
-          <p style="color: #666; font-size: 14px;">
-            You can now download the completed contract with all signatures from your contracts dashboard.
-          </p>
-          
-          <p style="color: #666; font-size: 14px;">
-            Next steps: You may want to countersign this contract and return a fully executed copy to the signer.
-          </p>
-          
-          <p style="color: #666; font-size: 14px;">
-            If you have any questions, please contact us at info@staydiasports.com
-          </p>
+        ${signatureDisplay}
+        
+        <p style="margin: 30px 0;">
+          <a href="${contractViewLink}" style="background: #ff6b35; color: white; padding: 12px 25px; text-decoration: none; border-radius: 4px; font-weight: bold;">View Contract Details</a>
+        </p>
+        
+        <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+          <h4 style="margin: 0 0 10px 0; color: #92400e;">Next Steps:</h4>
+          <ul style="margin: 10px 0; padding-left: 20px; color: #92400e;">
+            <li>Download the completed contract from your dashboard</li>
+            <li>Review the signature and contract details</li>
+            <li>Consider countersigning if required</li>
+            <li>Send a fully executed copy to the signer</li>
+          </ul>
         </div>
         
-        <div style="background: #333; color: #fff; padding: 20px; text-align: center; font-size: 12px;">
-          © 2024 Staydia Sports. All rights reserved.
-        </div>
+        <p style="font-size: 14px; color: #666;">If you have any questions, please contact us at <a href="mailto:info@staydiasports.com" style="color: #2563eb;">info@staydiasports.com</a></p>
+        
+        <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+        <p style="font-size: 12px; color: #999; text-align: center;">© 2024 Staydia Sports. All rights reserved.</p>
       </div>
     `;
 
