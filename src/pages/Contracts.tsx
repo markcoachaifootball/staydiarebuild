@@ -213,28 +213,52 @@ const Contracts = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to download PDF');
+        const errorData = await response.text();
+        throw new Error(errorData || 'Failed to generate contract document');
       }
 
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${contractName}_Contract.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-
-      toast({
-        title: "PDF Downloaded",
-        description: "Contract PDF has been downloaded successfully.",
-      });
+      const htmlContent = await response.text();
+      
+      // Create a new window/tab with the contract content for printing to PDF
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(htmlContent);
+        printWindow.document.close();
+        
+        // Wait for content to load then trigger print dialog
+        printWindow.onload = () => {
+          setTimeout(() => {
+            printWindow.print();
+            // Note: User will need to choose "Save as PDF" in the print dialog
+          }, 500);
+        };
+        
+        toast({
+          title: "Contract Ready",
+          description: "Contract opened in new tab. Use browser's print dialog and choose 'Save as PDF'.",
+        });
+      } else {
+        // Fallback: download as HTML file
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${contractName}_Contract.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        toast({
+          title: "Contract Downloaded",
+          description: "Contract downloaded as HTML. Open in browser and use print to save as PDF.",
+        });
+      }
     } catch (error: any) {
+      console.error('Download error:', error);
       toast({
         title: "Download failed", 
-        description: error.message || "Failed to download contract PDF",
+        description: error.message || "Failed to download contract",
         variant: "destructive",
       });
     }

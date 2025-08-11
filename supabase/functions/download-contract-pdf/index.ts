@@ -26,7 +26,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { contractId }: DownloadContractRequest = await req.json();
 
-    console.log('Generating PDF for contract:', contractId);
+    console.log('Generating contract document for:', contractId);
 
     // Fetch the contract details with template and signature
     const { data: contract, error: contractError } = await supabaseClient
@@ -67,15 +67,15 @@ const handler = async (req: Request): Promise<Response> => {
       .eq('id', contract.sent_by)
       .maybeSingle();
 
-    // Generate HTML content for the PDF
+    // Generate HTML content
     const ownerName = ownerProfile ? `${ownerProfile.first_name || ''} ${ownerProfile.last_name || ''}`.trim() : 'Contract Owner';
     const ownerCompany = ownerProfile?.company_name || 'Staydia Sports';
     
     const signatureSection = signature ? `
-      <div style="margin-top: 40px; padding: 20px; border: 1px solid #ddd; background-color: #f9f9f9;">
-        <h3 style="margin: 0 0 15px 0; color: #333;">Digital Signature</h3>
-        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-          <div>
+      <div class="signature-section">
+        <h3>Digital Signature</h3>
+        <div class="signature-details">
+          <div class="signature-info">
             <p><strong>Signed by:</strong> ${contract.customer_name || 'Unknown'}</p>
             <p><strong>Email:</strong> ${contract.customer_email || 'Unknown'}</p>
             <p><strong>Company:</strong> ${contract.customer_company || 'Not specified'}</p>
@@ -90,11 +90,11 @@ const handler = async (req: Request): Promise<Response> => {
             <p><strong>Terms Accepted:</strong> ${signature.terms_accepted ? 'Yes' : 'No'}</p>
           </div>
           ${signature.signature_type === 'drawn' && signature.signature_data ? `
-            <div style="text-align: center;">
+            <div class="signature-image">
               <img src="${signature.signature_data}" alt="Digital Signature" style="max-width: 300px; max-height: 100px; border: 1px solid #ccc; background: white; padding: 10px;">
             </div>
           ` : signature.signature_type === 'typed' && signature.signature_data ? `
-            <div style="text-align: center;">
+            <div class="signature-text">
               <div style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: #2563eb; background: white; padding: 15px; border: 1px solid #ccc; display: inline-block;">
                 ${signature.signature_data}
               </div>
@@ -103,8 +103,8 @@ const handler = async (req: Request): Promise<Response> => {
         </div>
       </div>
     ` : `
-      <div style="margin-top: 40px; padding: 20px; border: 1px solid #ddd; background-color: #fff3cd;">
-        <h3 style="margin: 0 0 15px 0; color: #856404;">Contract Status</h3>
+      <div class="status-section">
+        <h3>Contract Status</h3>
         <p><strong>Status:</strong> ${contract.status.charAt(0).toUpperCase() + contract.status.slice(1)}</p>
         <p><em>This contract has not been signed yet.</em></p>
       </div>
@@ -147,6 +147,30 @@ const handler = async (req: Request): Promise<Response> => {
             border-left: 4px solid #2563eb;
             margin: 20px 0;
           }
+          .signature-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 30px 0;
+          }
+          .status-section {
+            background-color: #fff3cd;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 30px 0;
+          }
+          .signature-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+          }
+          .signature-info {
+            flex: 1;
+          }
+          .signature-image, .signature-text {
+            text-align: center;
+          }
           h1, h2, h3 {
             color: #333;
           }
@@ -158,6 +182,16 @@ const handler = async (req: Request): Promise<Response> => {
             color: #666;
             text-align: center;
           }
+          .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+          }
+          @media print {
+            body { margin: 0; }
+            .header { break-after: avoid; }
+            .signature-section { break-inside: avoid; }
+          }
         </style>
       </head>
       <body>
@@ -168,7 +202,7 @@ const handler = async (req: Request): Promise<Response> => {
 
         <div class="contract-info">
           <h2>Contract Information</h2>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="grid">
             <div>
               <h3>From:</h3>
               <p><strong>${ownerName}</strong><br>
@@ -226,38 +260,16 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Use Puppeteer to generate PDF from HTML
-    const puppeteer = await import("https://deno.land/x/puppeteer@16.2.0/mod.ts");
-    
-    const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    
-    const page = await browser.newPage();
-    await page.setContent(htmlContent, { waitUntil: 'networkidle2' });
-    
-    const pdfBuffer = await page.pdf({
-      format: 'A4',
-      printBackground: true,
-      margin: {
-        top: '20mm',
-        right: '20mm',
-        bottom: '20mm',
-        left: '20mm'
-      }
-    });
-    
-    await browser.close();
-
     // Generate filename
-    const filename = `${contract.contract_templates?.name || 'Contract'}_${contract.customer_name || 'Unsigned'}_${new Date().toISOString().split('T')[0]}.pdf`;
+    const filename = `${contract.contract_templates?.name || 'Contract'}_${contract.customer_name || 'Unsigned'}_${new Date().toISOString().split('T')[0]}.html`;
 
-    console.log("PDF generated successfully for contract:", contractId);
+    console.log("HTML document generated successfully for contract:", contractId);
 
-    return new Response(pdfBuffer, {
+    // Return the HTML content that can be converted to PDF on the frontend
+    return new Response(htmlContent, {
       status: 200,
       headers: {
-        "Content-Type": "application/pdf",
+        "Content-Type": "text/html",
         "Content-Disposition": `attachment; filename="${filename}"`,
         ...corsHeaders,
       },
