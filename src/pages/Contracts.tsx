@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send, Copy, Trash2 } from 'lucide-react';
+import { Plus, FileText, Clock, CheckCircle, XCircle, LogOut, Mail, Send, Copy, Trash2, Download } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
@@ -186,6 +186,57 @@ const Contracts = () => {
       });
     } finally {
       setDeleteLoading(null);
+    }
+  };
+
+  const downloadContractPDF = async (contractId: string, contractName: string) => {
+    try {
+      const session = await supabase.auth.getSession();
+      const token = session.data.session?.access_token;
+
+      if (!token) {
+        throw new Error('Not authenticated');
+      }
+
+      // Get the Supabase URL and construct the function URL
+      const supabaseUrl = 'https://xisvzchvmcqeqtkxoecr.supabase.co';
+      const functionUrl = `${supabaseUrl}/functions/v1/download-contract-pdf`;
+
+      const response = await fetch(functionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhpc3Z6Y2h2bWNxZXF0a3hvZWNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1NzU1MTEsImV4cCI6MjA2ODE1MTUxMX0.OYbyWFSd9ZXcvuZirDmuxrKHAlqZ3Xa-EGGP8CEGn44'
+        },
+        body: JSON.stringify({ contractId })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to download PDF');
+      }
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${contractName}_Contract.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "PDF Downloaded",
+        description: "Contract PDF has been downloaded successfully.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Download failed", 
+        description: error.message || "Failed to download contract PDF",
+        variant: "destructive",
+      });
     }
   };
 
@@ -423,6 +474,15 @@ const Contracts = () => {
                               )}
                             </Button>
                           )}
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => downloadContractPDF(contract.id, contract.customer_name || 'Contract')}
+                            className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+                          >
+                            <Download className="w-3 h-3 mr-1" />
+                            PDF
+                          </Button>
                           <Button
                             variant="outline"
                             size="sm"
