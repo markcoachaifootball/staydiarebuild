@@ -94,13 +94,58 @@ const handler = async (req: Request): Promise<Response> => {
     let signatureDisplay = '';
     if (signature) {
       if (signature.signature_type === 'drawn' && signature.signature_data) {
-        // For drawn signatures, display the signature image
-        signatureDisplay = `
-          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
-            <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
-            <img src="${signature.signature_data}" alt="Digital Signature" style="max-width: 300px; max-height: 100px; border: 1px solid #ddd; background: white; padding: 10px;">
-          </div>
-        `;
+        // For drawn signatures, we need to upload to storage and get a public URL
+        // since email clients block data URLs for security reasons
+        let signatureUrl = '';
+        
+        try {
+          // Convert data URL to blob
+          const base64Data = signature.signature_data.replace(/^data:image\/[a-z]+;base64,/, '');
+          const binaryData = Uint8Array.from(atob(base64Data), c => c.charCodeAt(0));
+          
+          // Upload to Supabase storage
+          const fileName = `signature_${contractId}_${Date.now()}.png`;
+          const { data: uploadData, error: uploadError } = await supabaseClient.storage
+            .from('contract-documents')
+            .upload(`signatures/${fileName}`, binaryData, {
+              contentType: 'image/png',
+              upsert: false
+            });
+          
+          if (uploadError) {
+            console.error('Error uploading signature:', uploadError);
+            // Fallback to text description if upload fails
+            signatureDisplay = `
+              <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+                <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
+                <p style="color: #666; font-style: italic;">Digital signature captured (view in contract dashboard for full signature)</p>
+              </div>
+            `;
+          } else {
+            // Get public URL for the uploaded signature
+            const { data: urlData } = supabaseClient.storage
+              .from('contract-documents')
+              .getPublicUrl(`signatures/${fileName}`);
+            
+            signatureUrl = urlData.publicUrl;
+            
+            signatureDisplay = `
+              <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+                <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
+                <img src="${signatureUrl}" alt="Digital Signature" style="max-width: 300px; max-height: 100px; border: 1px solid #ddd; background: white; padding: 10px;">
+              </div>
+            `;
+          }
+        } catch (uploadError) {
+          console.error('Error processing signature for email:', uploadError);
+          // Fallback to text description if processing fails
+          signatureDisplay = `
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+              <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
+              <p style="color: #666; font-style: italic;">Digital signature captured (view in contract dashboard for full signature)</p>
+            </div>
+          `;
+        }
       } else if (signature.signature_type === 'typed' && signature.signature_data) {
         // For typed signatures, display the text in a signature style
         signatureDisplay = `
