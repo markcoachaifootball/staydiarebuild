@@ -73,43 +73,27 @@ const handler = async (req: Request): Promise<Response> => {
     const baseUrl = req.headers.get("origin") || "https://yourdomain.com";
     const signingLink = `${baseUrl}/sign/${contract.signing_token}`;
 
-    // Compose the email
+    // Compose a simple, clean email to avoid spam filters
     const emailHtml = `
-      <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-        <div style="background: #1a1a1a; padding: 20px; text-align: center;">
-          <img src="${baseUrl}/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" alt="Staydia Sports" style="height: 40px;">
-        </div>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+        <h2 style="color: #ff6b35;">Contract Signing Request</h2>
         
-        <div style="background: #f9f9f9; padding: 30px;">
-          <h1 style="color: #333; margin-bottom: 20px;">Contract Signing Request</h1>
-          
-          ${recipientName ? `<p>Dear ${recipientName},</p>` : '<p>Hello,</p>'}
-          
-          <p>You have received a contract from Staydia Sports that requires your digital signature.</p>
-          
-          ${message ? `<div style="background: #fff; padding: 20px; border-left: 4px solid #ff6b35; margin: 20px 0;">
-            <p style="margin: 0; font-style: italic;">"${message}"</p>
-          </div>` : ''}
-          
-          <div style="text-align: center; margin: 30px 0;">
-            <a href="${signingLink}" 
-               style="background: #ff6b35; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
-              Review & Sign Contract
-            </a>
-          </div>
-          
-          <p style="color: #666; font-size: 14px;">
-            This link is secure and unique to you. Please do not share it with others.
-          </p>
-          
-          <p style="color: #666; font-size: 14px;">
-            If you have any questions, please contact us at info@staydiasports.com
-          </p>
-        </div>
+        ${recipientName ? `<p>Dear ${recipientName},</p>` : '<p>Hello,</p>'}
         
-        <div style="background: #333; color: #fff; padding: 20px; text-align: center; font-size: 12px;">
-          © 2024 Staydia Sports. All rights reserved.
-        </div>
+        <p>You have received a contract from Staydia Sports that requires your digital signature.</p>
+        
+        ${message ? `<p style="background: #f5f5f5; padding: 15px; border-left: 3px solid #ff6b35; margin: 20px 0;"><em>${message}</em></p>` : ''}
+        
+        <p style="margin: 30px 0;">
+          <a href="${signingLink}" style="background: #ff6b35; color: white; padding: 12px 25px; text-decoration: none; border-radius: 4px; font-weight: bold;">Review & Sign Contract</a>
+        </p>
+        
+        <p style="font-size: 14px; color: #666;">This link is secure and unique to you. Please do not share it with others.</p>
+        
+        <p style="font-size: 14px; color: #666;">If you have any questions, please contact us at info@staydiasports.com</p>
+        
+        <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+        <p style="font-size: 12px; color: #999; text-align: center;">© 2024 Staydia Sports. All rights reserved.</p>
       </div>
     `;
 
