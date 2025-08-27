@@ -49,16 +49,44 @@ export const useStructuredData = ({
           ...structuredData,
           "@type": "Organization",
           "name": "Staydia Sports",
-          "description": "AI-powered sports club management platform",
+          "description": "AI-powered sports broadcasting and club management solutions for sports clubs. Automated camera systems, live streaming, fan engagement, and revenue generation through cutting-edge technology.",
           "url": "https://about.staydiasports.com",
-          "logo": "https://about.staydiasports.com/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://about.staydiasports.com/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png",
+            "width": 512,
+            "height": 512
+          },
           "sameAs": [
-            "https://twitter.com/staydiasports"
+            "https://twitter.com/staydiasports",
+            "https://linkedin.com/company/staydiasports"
           ],
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
+            "email": "hello@staydiasports.com",
+            "areaServed": "Global",
             "availableLanguage": "English"
+          },
+          "foundingDate": "2023",
+          "numberOfEmployees": "10-50",
+          "industry": "Sports Technology",
+          "knowsAbout": [
+            "AI-powered sports broadcasting",
+            "Sports club management",
+            "Live streaming technology",
+            "Fan engagement platforms",
+            "Revenue generation for sports clubs",
+            "Automated camera systems",
+            "Sports analytics",
+            "Club administration software"
+          ],
+          "offers": {
+            "@type": "Service",
+            "name": "AI-Powered Sports Broadcasting Platform",
+            "description": "Complete solution for sports clubs including automated cameras, live streaming, fan engagement tools, and revenue sharing opportunities.",
+            "serviceType": "Sports Technology Platform",
+            "areaServed": "Global"
           }
         };
         break;
