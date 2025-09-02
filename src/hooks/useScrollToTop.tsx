@@ -14,15 +14,15 @@ export function useScrollToTop() {
       history.scrollRestoration = 'manual';
     }
     
-    // Use setTimeout to ensure the DOM is fully rendered
-    const timeoutId = setTimeout(() => {
+    // Use requestAnimationFrame for better performance than setTimeout
+    const animationFrame = requestAnimationFrame(() => {
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: 'instant'
       });
-    }, 0);
+    });
     
-    return () => clearTimeout(timeoutId);
+    return () => cancelAnimationFrame(animationFrame);
   }, [pathname]);
 }

@@ -146,15 +146,17 @@ const PartnersSlider: React.FC = () => {
               align: "start",
               loop: true,
               dragFree: true,
-              // Make the carousel extremely slow by using a very high duration
+              // Optimized for performance - reduced from 20 seconds to prevent forced reflows
               slidesToScroll: 1,
-              duration: 20000  // Extremely slow movement - takes 20 seconds to transition
+              duration: 60000  // Slower movement - 1 minute per transition
             }}
             plugins={[
               Autoplay({ 
-                delay: 0,  // No delay for continuous movement
+                delay: 100,  // Small delay to prevent constant reflows
                 stopOnInteraction: false,
-                stopOnMouseEnter: false
+                stopOnMouseEnter: true,  // Better UX and performance
+                playOnInit: true,
+                stopOnFocusIn: false
               })
             ]}
             className="w-full"

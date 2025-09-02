@@ -66,7 +66,7 @@ const ClubTestimonials: React.FC = () => {
     if (autoplay) {
       interval = setInterval(() => {
         setActiveIndex((current) => (current + 1) % testimonials.length);
-      }, 5000);
+      }, 6000);  // Increased from 5000ms to 6000ms to reduce reflow frequency
     }
 
     return () => clearInterval(interval);
