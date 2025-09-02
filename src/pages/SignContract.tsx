@@ -40,6 +40,7 @@ export default function SignContract() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [showTermsDialog, setShowTermsDialog] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRectRef = useRef<DOMRect | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -102,7 +103,9 @@ export default function SignContract() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const rect = canvas.getBoundingClientRect();
+    // Cache the bounding rect to avoid forced reflows during drawing
+    canvasRectRef.current = canvas.getBoundingClientRect();
+    const rect = canvasRectRef.current;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -125,7 +128,10 @@ export default function SignContract() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const rect = canvas.getBoundingClientRect();
+    // Use cached rect to avoid forced reflows during drawing
+    const rect = canvasRectRef.current;
+    if (!rect) return;
+    
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -144,6 +150,8 @@ export default function SignContract() {
 
   const stopDrawing = () => {
     setIsDrawing(false);
+    // Clear cached rect when drawing stops
+    canvasRectRef.current = null;
   };
 
   const clearSignature = () => {
