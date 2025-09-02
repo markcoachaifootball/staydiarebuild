@@ -49,107 +49,43 @@ export default function SignContract() {
     }
   }, [token]);
 
-  useEffect(() => {
-    if (contract?.status === 'viewed') {
-      // Update status to viewed only once
-      updateContractStatus('viewed');
-    }
-  }, [contract?.id]);
 
   const fetchContract = async () => {
     try {
-      const { data, error } = await supabase
-        .from('contracts')
-        .select(`
-          *,
-          contract_templates (
-            name,
-            content,
-            terms_and_conditions,
-            template_file_url,
-            template_file_name,
-            terms_file_url,
-            terms_file_name
-          )
-        `)
-        .eq('signing_token', token)
-        .maybeSingle();
-
+      const { data, error } = await (supabase as any).rpc('get_contract_for_signing', { token });
       if (error) throw error;
-
-      if (!data) {
+      const record = Array.isArray(data) ? data[0] : data;
+      if (!record) {
         toast({
-          title: "Contract not found",
-          description: "This contract does not exist or has been removed.",
-          variant: "destructive",
+          title: 'Contract not found',
+          description: 'This contract does not exist, is expired, or is unavailable.',
+          variant: 'destructive',
         });
         return;
       }
-
-      // Validate the signing token matches (additional security check)
-      if (data.signing_token !== token) {
+      // Optional client-side expiry check
+      if (record.expires_at && new Date(record.expires_at) < new Date()) {
         toast({
-          title: "Invalid signing link",
-          description: "This signing link is not valid for this contract.",
-          variant: "destructive",
+          title: 'Contract expired',
+          description: 'This contract has expired and can no longer be signed.',
+          variant: 'destructive',
         });
         return;
       }
-
-      // Check if contract has expired
-      if (data.expires_at && new Date(data.expires_at) < new Date()) {
-        toast({
-          title: "Contract expired",
-          description: "This contract has expired and can no longer be signed.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      // Check if contract can be signed (valid statuses)
-      if (!['sent', 'viewed', 'draft'].includes(data.status)) {
-        toast({
-          title: "Contract already processed",
-          description: "This contract has already been signed or is no longer available for signing.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      setContract(data);
-
-      // Update status to viewed if not already signed
-      if (data.status === 'sent') {
-        updateContractStatus('viewed');
-      }
+      setContract(record as Contract);
+      // Mark as viewed (no-op if already viewed)
+      await (supabase as any).rpc('mark_contract_viewed', { token });
     } catch (error: any) {
       toast({
-        title: "Contract not found",
+        title: 'Contract not found',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     } finally {
       setIsLoading(false);
     }
   };
 
-  const updateContractStatus = async (status: string) => {
-    try {
-      const updateData: any = { status };
-      if (status === 'viewed') {
-        updateData.viewed_at = new Date().toISOString();
-      } else if (status === 'signed') {
-        updateData.signed_at = new Date().toISOString();
-      }
-
-      await supabase
-        .from('contracts')
-        .update(updateData)
-        .eq('signing_token', token);
-    } catch (error) {
-      console.error('Error updating contract status:', error);
-    }
-  };
 
   const processContractContent = (content: string) => {
     if (!contract) return content;
@@ -265,8 +201,7 @@ export default function SignContract() {
 
       if (signatureError) throw signatureError;
 
-      // Update contract status
-      await updateContractStatus('signed');
+      // Status will be updated by DB trigger after inserting into signatures
 
       // Send notification to contract owner
       await supabase.functions.invoke('contract-signed-notification', {
