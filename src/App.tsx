@@ -17,6 +17,7 @@ import NewsArticlePage from './components/NewsArticle';
 import { Toaster } from "@/components/ui/toaster"
 import BookDemo from './pages/BookDemo';
 import ForClubs from './pages/ForClubs';
+import Community from './pages/Community';
 import Auth from './pages/Auth';
 import Contracts from './pages/Contracts';
 import ContractTemplates from './pages/ContractTemplates';
@@ -79,6 +80,7 @@ function App() {
         <Route path="/revenue-sharing" element={<RevenueSharing />} />
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/book-demo" element={<BookDemo />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/news" element={<News />} />
         
         <Route path="/news/:slug" element={<NewsArticlePage />} />
