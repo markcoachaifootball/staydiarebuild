@@ -62,7 +62,8 @@ const Hero: React.FC = () => {
                 src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
                 alt="Can't make the game? Stay connected with Staydia Sports"
                 className="w-full h-full object-cover opacity-50"
-                fetchPriority="high"
+                loading="lazy"
+                decoding="async"
                 width="1920"
                 height="1080"
               />

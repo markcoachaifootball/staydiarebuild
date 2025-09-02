@@ -46,6 +46,8 @@ const AboutUs = () => {
                 src="/lovable-uploads/1dc0acaf-a439-4151-aa5b-d1c6062e4728.png"
                 alt="Staydia team working"
                 className="relative z-10 rounded-lg w-full shadow-xl"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

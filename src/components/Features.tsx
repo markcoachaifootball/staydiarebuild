@@ -128,6 +128,8 @@ export const Features: React.FC = () => {
                       src="/lovable-uploads/47ff50b1-da9d-4dc9-abac-a04e12b9c502.png" 
                       alt="Staydia streaming platform" 
                       className="w-full h-auto"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </CarouselItem>
                   <CarouselItem>
@@ -135,6 +137,8 @@ export const Features: React.FC = () => {
                       src="/lovable-uploads/902d2d1a-be94-49ac-96ae-86a3752ffbfd.png" 
                       alt="Staydia streaming platform match listing" 
                       className="w-full h-auto"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </CarouselItem>
                 </CarouselContent>

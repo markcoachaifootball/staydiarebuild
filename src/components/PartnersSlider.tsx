@@ -167,6 +167,8 @@ const PartnersSlider: React.FC = () => {
                       src={partner.logo} 
                       alt={`${partner.name} logo`} 
                       className="max-h-24 max-w-full object-contain"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </CarouselItem>
