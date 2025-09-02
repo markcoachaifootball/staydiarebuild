@@ -15,10 +15,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useMetaTags } from '@/hooks/useMetaTags';
+import { useStructuredData } from '@/hooks/useStructuredData';
 import { Link } from 'react-router-dom';
 
 const Sports = () => {
   useScrollToTop();
+  
+  useMetaTags({
+    title: 'Sports Broadcasting Solutions - Football, Basketball, Rugby & Hockey',
+    description: 'Discover AI-powered broadcasting solutions for football, basketball, rugby, and hockey clubs. Automated cameras, live streaming, and fan engagement tools.',
+    url: 'https://about.staydiasports.com/sports',
+    type: 'website',
+    tags: ['Sports Broadcasting', 'Football Clubs', 'Basketball Clubs', 'Rugby Clubs', 'Hockey Clubs', 'AI Technology']
+  });
+
+  useStructuredData({
+    type: 'WebSite',
+    title: 'Sports Broadcasting Solutions',
+    description: 'Comprehensive AI-powered broadcasting solutions for sports clubs across football, basketball, rugby, and hockey.',
+    url: 'https://about.staydiasports.com/sports'
+  });
   
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   

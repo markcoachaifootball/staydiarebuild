@@ -4,9 +4,26 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Globe, TrendingUp, Users } from "lucide-react";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useMetaTags } from '@/hooks/useMetaTags';
+import { useStructuredData } from '@/hooks/useStructuredData';
 
 const AboutUs = () => {
   useScrollToTop();
+  
+  useMetaTags({
+    title: 'About Staydia Sports - Our Story & Leadership Team',
+    description: 'Meet the founders and team behind Staydia Sports. Learn how we\'re democratising sports broadcasting with AI-powered technology for clubs worldwide.',
+    url: 'https://about.staydiasports.com/about-us',
+    type: 'website',
+    tags: ['About Us', 'Company Story', 'Sports Technology', 'Leadership Team']
+  });
+
+  useStructuredData({
+    type: 'Organization',
+    title: 'About Staydia Sports',
+    description: 'Founded with a mission to democratise sports broadcasting, Staydia Sports provides AI-powered broadcasting solutions for sports clubs worldwide.',
+    url: 'https://about.staydiasports.com/about-us'
+  });
   
   return (
     <div className="min-h-screen bg-staydia-black text-white">

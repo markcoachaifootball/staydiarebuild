@@ -9,9 +9,26 @@ import WhyItWorksSection from '@/components/revenue-sharing/WhyItWorksSection';
 import RevenueCTA from '@/components/revenue-sharing/RevenueCTA';
 import BenefitsSection from '@/components/revenue-sharing/BenefitsSection';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useMetaTags } from '@/hooks/useMetaTags';
+import { useStructuredData } from '@/hooks/useStructuredData';
 
 const RevenueSharing = () => {
   useScrollToTop();
+  
+  useMetaTags({
+    title: 'Revenue Sharing Model - Zero Cost Sports Broadcasting Solutions',
+    description: 'Learn about Staydia Sports\' revolutionary revenue sharing model. Free AI camera installation, automated broadcasting, and shared subscription revenue for clubs.',
+    url: 'https://about.staydiasports.com/revenue-sharing',
+    type: 'website',
+    tags: ['Revenue Sharing', 'Zero Cost Solutions', 'Sports Broadcasting', 'Club Revenue', 'Subscription Model']
+  });
+
+  useStructuredData({
+    type: 'WebSite',
+    title: 'Revenue Sharing Model - Staydia Sports',
+    description: 'Revolutionary revenue sharing model offering free AI camera installation and shared subscription revenue for sports clubs.',
+    url: 'https://about.staydiasports.com/revenue-sharing'
+  });
   
   // Define the steps for the revenue sharing model
   const howItWorksSteps = [

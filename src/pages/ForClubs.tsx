@@ -3,6 +3,8 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useMetaTags } from '@/hooks/useMetaTags';
+import { useStructuredData } from '@/hooks/useStructuredData';
 import ClubsHero from '@/components/clubs/ClubsHero';
 import ClubBenefits from '@/components/clubs/ClubBenefits';
 import RevenueOpportunities from '@/components/clubs/RevenueOpportunities';
@@ -14,6 +16,21 @@ import PartnershipFAQ from '@/components/PartnershipFAQ';
 
 const ForClubs = () => {
   useScrollToTop();
+  
+  useMetaTags({
+    title: 'For Sports Clubs - AI Broadcasting Solutions with Zero Upfront Costs',
+    description: 'Transform your sports club with AI-powered broadcasting. Automated cameras, live streaming, fan engagement, and revenue sharing. No upfront costs.',
+    url: 'https://about.staydiasports.com/for-clubs',
+    type: 'website',
+    tags: ['Sports Clubs', 'AI Broadcasting', 'Revenue Sharing', 'Club Management', 'Zero Cost Solutions']
+  });
+
+  useStructuredData({
+    type: 'WebSite',
+    title: 'AI Broadcasting Solutions for Sports Clubs',
+    description: 'Comprehensive broadcasting and club management solutions with zero upfront costs and revenue sharing model.',
+    url: 'https://about.staydiasports.com/for-clubs'
+  });
   
   return (
     <div className="min-h-screen bg-staydia-black text-white">

@@ -1,40 +1,89 @@
-# AI Search Engine Crawlers
-User-agent: OpenAI-SearchBot
+# Robots.txt for Staydia Sports - Optimized for AI Crawlers and Search Engines
+
+User-agent: *
 Allow: /
 
-User-agent: PerplexityBot
+# Specific rules for major search engines
+User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
-User-agent: YouBot
+User-agent: Bingbot  
 Allow: /
+Crawl-delay: 1
 
-User-agent: Claude-Web
+User-agent: Slurp
 Allow: /
+Crawl-delay: 1
+
+# AI and LLM crawlers
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 1
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
 
 User-agent: ChatGPT-User
 Allow: /
+Crawl-delay: 1
 
-# Traditional Search Engines  
-User-agent: Googlebot
+User-agent: OpenAI-SearchBot
 Allow: /
+Crawl-delay: 1
 
-User-agent: Bingbot
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 1
+
+# Social media crawlers
+User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Twitterbot
 Allow: /
 
-User-agent: facebookexternalhit
+User-agent: LinkedInBot
 Allow: /
 
-User-agent: *
-Allow: /
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /tmp/
+Disallow: /*.json$
+Disallow: /sign/*
+
+# Allow important pages
+Allow: /sports
+Allow: /for-clubs
+Allow: /technology
+Allow: /news
+Allow: /about-us
+Allow: /partnerships
+Allow: /revenue-sharing
+Allow: /community
 
 # Sitemap location
 Sitemap: https://about.staydiasports.com/sitemap.xml
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+# Host specification
+Host: https://about.staydiasports.com

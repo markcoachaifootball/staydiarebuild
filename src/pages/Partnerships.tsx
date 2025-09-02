@@ -13,9 +13,26 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useMetaTags } from '@/hooks/useMetaTags';
+import { useStructuredData } from '@/hooks/useStructuredData';
 
 const Partnerships = () => {
   useScrollToTop();
+  
+  useMetaTags({
+    title: 'Partnership Opportunities - Join Staydia Sports Network',
+    description: 'Explore partnership opportunities with Staydia Sports. Integration partnerships, distribution partnerships, and strategic alliances in sports technology.',
+    url: 'https://about.staydiasports.com/partnerships',
+    type: 'website',
+    tags: ['Partnerships', 'Business Development', 'Sports Technology', 'Integration Partners', 'Strategic Alliances']
+  });
+
+  useStructuredData({
+    type: 'WebSite',
+    title: 'Partnership Opportunities - Staydia Sports',
+    description: 'Join the Staydia Sports partner network and explore opportunities for integration partnerships, distribution partnerships, and strategic alliances.',
+    url: 'https://about.staydiasports.com/partnerships'
+  });
   
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
