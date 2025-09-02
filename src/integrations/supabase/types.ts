@@ -201,6 +201,22 @@ export type Database = {
         Args: { contract_uuid: string }
         Returns: boolean
       }
+      get_contract_for_signing: {
+        Args: { token: string }
+        Returns: {
+          contract_templates: Json
+          customer_company: string
+          customer_email: string
+          customer_name: string
+          expires_at: string
+          id: string
+          status: string
+        }[]
+      }
+      mark_contract_viewed: {
+        Args: { token: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
