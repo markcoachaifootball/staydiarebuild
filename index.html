@@ -50,6 +50,32 @@
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="application-name" content="Staydia Sports" />
     
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      body {
+        background-color: hsl(0 0% 7%);
+        color: white;
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .staydia-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      @media (min-width: 640px) {
+        .staydia-container {
+          padding: 0 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .staydia-container {
+          padding: 0 2rem;
+        }
+      }
+    </style>
+    
     <!-- Performance Optimizations -->
     <link rel="modulepreload" href="/src/main.tsx" />
   
