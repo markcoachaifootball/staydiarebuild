@@ -1,16 +1,19 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-staydia-black border-t border-staydia-lightgray py-16">
       <div className="staydia-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           <div>
-            <h3 className="text-staydia-gold font-bold text-lg mb-6">About Staydia</h3>
+            <h3 className="text-staydia-gold font-bold text-lg mb-6">{t('footer.company')}</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">Our Story</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">{t('footer.about')}</Link></li>
               <li><Link to="/technology#how-it-works" className="text-gray-400 hover:text-white transition-colors">Technology</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Team</Link></li>
               <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Careers</Link></li>
@@ -19,10 +22,10 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-staydia-gold font-bold text-lg mb-6">Club Solutions</h3>
+            <h3 className="text-staydia-gold font-bold text-lg mb-6">{t('footer.solutions')}</h3>
             <ul className="space-y-3">
-              <li><Link to="/for-clubs" className="text-gray-400 hover:text-white transition-colors">Free Camera Installation</Link></li>
-              <li><Link to="/revenue-sharing" className="text-gray-400 hover:text-white transition-colors">Revenue Sharing Model</Link></li>
+              <li><Link to="/for-clubs" className="text-gray-400 hover:text-white transition-colors">{t('footer.forClubs')}</Link></li>
+              <li><Link to="/revenue-sharing" className="text-gray-400 hover:text-white transition-colors">{t('footer.revenueSharing')}</Link></li>
               <li><Link to="/sports" className="text-gray-400 hover:text-white transition-colors">Sports We Cover</Link></li>
               <li><Link to="/fan-engagement" className="text-gray-400 hover:text-white transition-colors">Fan Engagement</Link></li>
             </ul>
@@ -42,7 +45,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">Contact</h3>
             <ul className="space-y-3">
-              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('footer.contact')}</Link></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Club Inquiries</a></li>
               <li><Link to="/partnerships" className="text-gray-400 hover:text-white transition-colors">Partnerships</Link></li>
               <li><div className="flex space-x-3 mt-2">
@@ -71,7 +74,7 @@ const Footer: React.FC = () => {
           
           <div className="flex flex-col items-center space-y-2">
             <div className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Staydia Sports. All rights reserved.
+              © {new Date().getFullYear()} Staydia Sports. {t('footer.allRightsReserved')}
             </div>
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <span>🇮🇪</span>

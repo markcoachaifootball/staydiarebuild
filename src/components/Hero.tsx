@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Activity } from "lucide-react";
 import { Link } from 'react-router-dom';
@@ -13,6 +14,7 @@ import {
 import DemoForm from './DemoForm';
 
 const Hero: React.FC = () => {
+  const { t } = useTranslation();
   const videoRef = useRef<HTMLDivElement | null>(null);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   
@@ -60,7 +62,7 @@ const Hero: React.FC = () => {
               <source src="https://staydia.com/videos/hero-background.mp4" type="video/mp4" />
               <img
                 src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
-                alt="Can't make the game? Stay connected with Staydia Sports"
+                alt={t('hero.title')}
                 className="w-full h-full object-cover opacity-50"
                 loading="lazy"
                 decoding="async"
@@ -71,7 +73,7 @@ const Hero: React.FC = () => {
           ) : (
             <img
               src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
-              alt="Can't make the game? Stay connected with Staydia Sports"
+              alt={t('hero.title')}
               className="w-full h-full object-cover opacity-50"
               loading="eager"
               width="1920"
@@ -118,7 +120,7 @@ const Hero: React.FC = () => {
               className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8"
               asChild
             >
-              <Link to="/book-demo">Book Demo</Link>
+              <Link to="/book-demo">{t('hero.bookDemo')}</Link>
             </Button>
 
             <Button 

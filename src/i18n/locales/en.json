@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Home",
+    "sports": "Sports",
+    "forClubs": "For Clubs",
+    "forLeagues": "For Leagues", 
+    "solutions": "Solutions",
+    "revenueSharing": "Revenue Sharing",
+    "about": "About",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "testimonials": "Testimonials",
+    "news": "News",
+    "community": "Community",
+    "bookDemo": "Book Demo",
+    "getStarted": "Get Started",
+    "login": "Login"
+  },
+  "hero": {
+    "title": "Can't make the game? Stay connected with Staydia Sports",
+    "subtitle": "The complete streaming and fan engagement platform for sports clubs and leagues",
+    "description": "Transform how your fans experience live sports with our professional streaming platform, real-time analytics, and revenue-sharing opportunities.",
+    "watchDemo": "Watch Demo",
+    "bookDemo": "Book a Demo"
+  },
+  "footer": {
+    "company": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "careers": "Careers",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "solutions": "Solutions",
+    "forClubs": "For Clubs",
+    "forLeagues": "For Leagues",
+    "revenueSharing": "Revenue Sharing",
+    "support": "Support",
+    "faq": "FAQ",
+    "documentation": "Documentation",
+    "community": "Community",
+    "allRightsReserved": "All rights reserved.",
+    "stayConnected": "Stay Connected"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try Again",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "language": "Language"
+  }
+}

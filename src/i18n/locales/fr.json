@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "sports": "Sports",
+    "forClubs": "Pour les Clubs",
+    "forLeagues": "Pour les Ligues",
+    "solutions": "Solutions",
+    "revenueSharing": "Partage des Revenus",
+    "about": "À Propos",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "testimonials": "Témoignages",
+    "news": "Actualités",
+    "community": "Communauté",
+    "bookDemo": "Réserver une Démo",
+    "getStarted": "Commencer",
+    "login": "Connexion"
+  },
+  "hero": {
+    "title": "Vous ne pouvez pas assister au match ? Restez connecté avec Staydia Sports",
+    "subtitle": "La plateforme complète de streaming et d'engagement des fans pour les clubs et ligues sportifs",
+    "description": "Transformez la façon dont vos fans vivent le sport en direct avec notre plateforme de streaming professionnelle, des analyses en temps réel et des opportunités de partage des revenus.",
+    "watchDemo": "Voir la Démo",
+    "bookDemo": "Réserver une Démo"
+  },
+  "footer": {
+    "company": "Entreprise",
+    "about": "À Propos",
+    "contact": "Contact",
+    "careers": "Carrières",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "solutions": "Solutions",
+    "forClubs": "Pour les Clubs",
+    "forLeagues": "Pour les Ligues",
+    "revenueSharing": "Partage des Revenus",
+    "support": "Support",
+    "faq": "FAQ",
+    "documentation": "Documentation",
+    "community": "Communauté",
+    "allRightsReserved": "Tous droits réservés.",
+    "stayConnected": "Restez Connecté"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "getStarted": "Commencer",
+    "contactUs": "Nous Contacter",
+    "readMore": "Lire Plus",
+    "viewAll": "Voir Tout",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "tryAgain": "Réessayer",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "submit": "Soumettre",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "language": "Langue"
+  }
+}

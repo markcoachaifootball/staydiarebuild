@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Home",
+    "sports": "Sport",
+    "forClubs": "Voor Clubs",
+    "forLeagues": "Voor Competities",
+    "solutions": "Oplossingen",
+    "revenueSharing": "Omzet Delen",
+    "about": "Over Ons",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "testimonials": "Getuigenissen",
+    "news": "Nieuws",
+    "community": "Community",
+    "bookDemo": "Demo Boeken",
+    "getStarted": "Beginnen",
+    "login": "Inloggen"
+  },
+  "hero": {
+    "title": "Kunt u niet naar de wedstrijd? Blijf verbonden met Staydia Sports",
+    "subtitle": "Het complete streaming- en fanengagementplatform voor sportclubs en competities",
+    "description": "Transformeer hoe uw fans live sport beleven met ons professionele streamingplatform, realtime analyses en mogelijkheden voor omzetdeling.",
+    "watchDemo": "Demo Bekijken",
+    "bookDemo": "Demo Boeken"
+  },
+  "footer": {
+    "company": "Bedrijf",
+    "about": "Over Ons",
+    "contact": "Contact",
+    "careers": "Carrières",
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "solutions": "Oplossingen",
+    "forClubs": "Voor Clubs",
+    "forLeagues": "Voor Competities",
+    "revenueSharing": "Omzet Delen",
+    "support": "Support",
+    "faq": "FAQ",
+    "documentation": "Documentatie",
+    "community": "Community",
+    "allRightsReserved": "Alle rechten voorbehouden.",
+    "stayConnected": "Blijf Verbonden"
+  },
+  "common": {
+    "learnMore": "Meer Leren",
+    "getStarted": "Beginnen",
+    "contactUs": "Contact Opnemen",
+    "readMore": "Lees Meer",
+    "viewAll": "Bekijk Alles",
+    "loading": "Laden...",
+    "error": "Fout",
+    "tryAgain": "Opnieuw Proberen",
+    "close": "Sluiten",
+    "open": "Openen",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "submit": "Verzenden",
+    "next": "Volgende",
+    "previous": "Vorige",
+    "search": "Zoeken",
+    "language": "Taal"
+  }
+}

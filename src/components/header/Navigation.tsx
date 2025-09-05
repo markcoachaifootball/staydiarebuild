@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,6 +14,8 @@ import ResourceLinksMenu from './ResourceLinks';
 import SocialLinksMenu from './SocialLinks';
 
 const Navigation: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <nav className="hidden md:flex items-center">
       <div className="flex items-center space-x-8">
@@ -45,7 +48,7 @@ const Navigation: React.FC = () => {
                           <span className="text-staydia-black font-bold">N</span>
                         </div>
                         <div>
-                          <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">Newsroom</h4>
+                          <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">{t('nav.news')}</h4>
                           <p className="text-xs text-gray-400">Latest updates and announcements</p>
                         </div>
                       </Link>
@@ -75,11 +78,11 @@ const Navigation: React.FC = () => {
         </NavigationMenu>
         
         <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          About Us
+          {t('nav.about')}
         </Link>
         
         <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          Contact
+          {t('nav.contact')}
         </Link>
       </div>
     </nav>

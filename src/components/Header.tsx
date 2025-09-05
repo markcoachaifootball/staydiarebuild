@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Navigation from './header/Navigation';
 import DemoButton from './header/DemoButton';
 import MobileNav from './header/MobileNav';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header: React.FC = () => {
   return (
@@ -19,7 +20,8 @@ const Header: React.FC = () => {
           </Link>
           <Navigation />
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
           <DemoButton showDirectLink={true} />
           <MobileNav />
         </div>

@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "sports": "Sport",
+    "forClubs": "Für Vereine",
+    "forLeagues": "Für Ligen",
+    "solutions": "Lösungen",
+    "revenueSharing": "Umsatzbeteiligung",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "faq": "FAQ",
+    "testimonials": "Testimonials",
+    "news": "Nachrichten",
+    "community": "Community",
+    "bookDemo": "Demo Buchen",
+    "getStarted": "Loslegen",
+    "login": "Anmelden"
+  },
+  "hero": {
+    "title": "Können Sie nicht zum Spiel? Bleiben Sie mit Staydia Sports verbunden",
+    "subtitle": "Die komplette Streaming- und Fan-Engagement-Plattform für Sportvereine und -ligen",
+    "description": "Verwandeln Sie die Art, wie Ihre Fans Live-Sport erleben, mit unserer professionellen Streaming-Plattform, Echtzeit-Analysen und Umsatzbeteiligungsmöglichkeiten.",
+    "watchDemo": "Demo Ansehen",
+    "bookDemo": "Demo Buchen"
+  },
+  "footer": {
+    "company": "Unternehmen",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "careers": "Karriere",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "solutions": "Lösungen",
+    "forClubs": "Für Vereine",
+    "forLeagues": "Für Ligen",
+    "revenueSharing": "Umsatzbeteiligung",
+    "support": "Support",
+    "faq": "FAQ",
+    "documentation": "Dokumentation",
+    "community": "Community",
+    "allRightsReserved": "Alle Rechte vorbehalten.",
+    "stayConnected": "Verbunden Bleiben"
+  },
+  "common": {
+    "learnMore": "Mehr Erfahren",
+    "getStarted": "Loslegen",
+    "contactUs": "Kontakt Aufnehmen",
+    "readMore": "Weiterlesen",
+    "viewAll": "Alle Anzeigen",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "tryAgain": "Erneut Versuchen",
+    "close": "Schließen",
+    "open": "Öffnen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "submit": "Senden",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "search": "Suchen",
+    "language": "Sprache"
+  }
+}
