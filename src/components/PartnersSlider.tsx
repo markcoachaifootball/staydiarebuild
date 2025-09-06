@@ -152,11 +152,11 @@ const PartnersSlider: React.FC = () => {
               dragFree: true,
               // Optimized for performance - reduced from 20 seconds to prevent forced reflows
               slidesToScroll: 1,
-              duration: 60000  // Slower movement - 1 minute per transition
+              duration: 20000  // Faster movement - 20 seconds per transition
             }}
             plugins={[
               Autoplay({ 
-                delay: 100,  // Small delay to prevent constant reflows
+                delay: 50,  // Faster autoplay
                 stopOnInteraction: false,
                 stopOnMouseEnter: true,  // Better UX and performance
                 playOnInit: true,
