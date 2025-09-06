@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay';
+import { useTranslation } from 'react-i18next';
 
 // Updated partners array with all the uploaded logos
 const partners = [
@@ -135,14 +136,15 @@ const partners = [
 ];
 
 const PartnersSlider: React.FC = () => {
+  const { t } = useTranslation();
   // Create a duplicate array of partners for seamless continuous flow
   const duplicatedPartners = [...partners, ...partners];
 
   return (
     <section className="py-12 bg-staydia-black overflow-hidden">
       <div className="staydia-container">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Stay connected to your sports</h2>
-        <h3 className="text-lg md:text-xl font-medium text-center mb-6 text-staydia-gold uppercase tracking-wider">Trusted Partners</h3>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">{t('partners.title')}</h2>
+        <h3 className="text-lg md:text-xl font-medium text-center mb-6 text-staydia-gold uppercase tracking-wider">{t('partners.subtitle')}</h3>
         
         <div className="relative w-full">
           <Carousel 

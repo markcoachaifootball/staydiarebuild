@@ -18,10 +18,54 @@
   },
   "hero": {
     "title": "Vous ne pouvez pas assister au match ? Restez connecté avec Staydia Sports",
-    "subtitle": "La plateforme complète de streaming et d'engagement des fans pour les clubs et ligues sportifs",
-    "description": "Transformez la façon dont vos fans vivent le sport en direct avec notre plateforme de streaming professionnelle, des analyses en temps réel et des opportunités de partage des revenus.",
-    "watchDemo": "Voir la Démo",
+    "subtitle": "La plateforme complète de streaming et d'engagement des fans pour les clubs et ligues sportives",
+    "description": "Transformez l'expérience sportive en direct de vos fans avec notre plateforme de streaming professionnelle, des analyses en temps réel et des opportunités de partage des revenus.",
+    "watchDemo": "Regarder la Démo",
     "bookDemo": "Réserver une Démo"
+  },
+  "partners": {
+    "title": "Restez connecté à vos sports",
+    "subtitle": "Partenaires de Confiance"
+  },
+  "features": {
+    "title": "Pourquoi les Clubs Choisissent Staydia",
+    "subtitle": "Rejoignez de nombreux autres clubs amateurs de football, hockey sur gazon, rugby et basketball à travers l'UE et le Royaume-Uni qui s'associent à Staydia Sports. Nous fournissons la caméra IA, la plateforme et l'expertise – vous gardez 100% de vos revenus publicitaires. C'est aussi simple que ça.",
+    "faqButton": "Questions Fréquemment Posées",
+    "becomePartner": "Devenir Partenaire Staydia",
+    "zeroInvestment": {
+      "title": "Aucun Investissement Requis",
+      "description": "Nous installons et maintenons des caméras alimentées par IA dans votre venue sans aucun coût initial pour votre club."
+    },
+    "revenue": {
+      "title": "Génération de Revenus",
+      "description": "Créez de nouvelles sources de revenus grâce aux abonnements des fans et aux opportunités de sponsoring en direct."
+    },
+    "fanEngagement": {
+      "title": "Engagement Amélioré des Fans",
+      "description": "Restez connecté avec votre communauté en permettant aux supporters de regarder en direct et à la demande, depuis n'importe où."
+    },
+    "streaming": {
+      "title": "Streaming Professionnel en Direct",
+      "description": "Diffusion automatisée de haute qualité avec marque personnalisée et outils de création de highlights."
+    },
+    "sports": {
+      "football": "Football",
+      "rugby": "Rugby",
+      "basketball": "Basketball",
+      "hockey": "Hockey"
+    },
+    "platform": {
+      "title": "Plateforme de Streaming à la Marque du Club",
+      "description": "Offrez à vos fans une expérience de visionnage professionnelle présentant la marque de votre club.",
+      "features": {
+        "liveMatches": "Matchs en direct et à venir",
+        "replays": "Rediffusions à la demande",
+        "highlights": "Points forts du club",
+        "clipping": "Outil de découpage",
+        "sponsorship": "Intégration de sponsoring"
+      },
+      "caption": "Interface de streaming à la marque Staydia"
+    }
   },
   "footer": {
     "company": "Entreprise",
@@ -29,7 +73,7 @@
     "contact": "Contact",
     "careers": "Carrières",
     "privacy": "Politique de Confidentialité",
-    "terms": "Conditions d'Utilisation",
+    "terms": "Conditions de Service",
     "solutions": "Solutions",
     "forClubs": "Pour les Clubs",
     "forLeagues": "Pour les Ligues",
@@ -52,7 +96,7 @@
     "tryAgain": "Réessayer",
     "close": "Fermer",
     "open": "Ouvrir",
-    "save": "Enregistrer",
+    "save": "Sauvegarder",
     "cancel": "Annuler",
     "submit": "Soumettre",
     "next": "Suivant",

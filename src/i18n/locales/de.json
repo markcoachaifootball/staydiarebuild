@@ -5,13 +5,13 @@
     "forClubs": "Für Vereine",
     "forLeagues": "Für Ligen",
     "solutions": "Lösungen",
-    "revenueSharing": "Umsatzbeteiligung",
+    "revenueSharing": "Umsatzteilung",
     "about": "Über Uns",
     "contact": "Kontakt",
     "faq": "FAQ",
     "testimonials": "Testimonials",
-    "news": "Nachrichten",
-    "community": "Community",
+    "news": "Neuigkeiten",
+    "community": "Gemeinschaft",
     "bookDemo": "Demo Buchen",
     "getStarted": "Loslegen",
     "login": "Anmelden"
@@ -19,9 +19,53 @@
   "hero": {
     "title": "Können Sie nicht zum Spiel? Bleiben Sie mit Staydia Sports verbunden",
     "subtitle": "Die komplette Streaming- und Fan-Engagement-Plattform für Sportvereine und -ligen",
-    "description": "Verwandeln Sie die Art, wie Ihre Fans Live-Sport erleben, mit unserer professionellen Streaming-Plattform, Echtzeit-Analysen und Umsatzbeteiligungsmöglichkeiten.",
+    "description": "Verwandeln Sie das Live-Sport-Erlebnis Ihrer Fans mit unserer professionellen Streaming-Plattform, Echtzeit-Analysen und Umsatzteilungs-Möglichkeiten.",
     "watchDemo": "Demo Ansehen",
     "bookDemo": "Demo Buchen"
+  },
+  "partners": {
+    "title": "Bleiben Sie mit Ihrem Sport verbunden",
+    "subtitle": "Vertrauensvolle Partner"
+  },
+  "features": {
+    "title": "Warum Vereine Staydia Wählen",
+    "subtitle": "Schließen Sie sich vielen anderen Amateur-Fußball-, Feldhockey-, Rugby- und Basketballvereinen in der EU und im Vereinigten Königreich an, die sich mit Staydia Sports zusammenschließen. Wir stellen die KI-Kamera, die Plattform und das Fachwissen zur Verfügung – Sie behalten 100% Ihrer Werbeeinnahmen. So einfach ist das.",
+    "faqButton": "Häufig Gestellte Fragen",
+    "becomePartner": "Staydia Partner Werden",
+    "zeroInvestment": {
+      "title": "Keine Investition Erforderlich",
+      "description": "Wir installieren und warten KI-gesteuerte Kameras in Ihrer Anlage ohne jegliche Vorabkosten für Ihren Verein."
+    },
+    "revenue": {
+      "title": "Umsatzgenerierung",
+      "description": "Schaffen Sie neue Einnahmequellen durch Fan-Abonnements und In-Stream-Sponsoring-Möglichkeiten."
+    },
+    "fanEngagement": {
+      "title": "Verbessertes Fan-Engagement",
+      "description": "Bleiben Sie mit Ihrer Gemeinschaft verbunden, indem Sie Unterstützern ermöglichen, live und auf Abruf von überall aus zuzuschauen."
+    },
+    "streaming": {
+      "title": "Professionelles Live-Streaming",
+      "description": "Automatisierte hochwertige Übertragung mit individuellem Branding und Highlight-Erstellungstools."
+    },
+    "sports": {
+      "football": "Fußball",
+      "rugby": "Rugby",
+      "basketball": "Basketball",
+      "hockey": "Hockey"
+    },
+    "platform": {
+      "title": "Vereinsgebrandete Streaming-Plattform",
+      "description": "Bieten Sie Ihren Fans ein professionelles Seherlebnis mit dem Branding Ihres Vereins.",
+      "features": {
+        "liveMatches": "Live- und kommende Spiele",
+        "replays": "On-Demand-Wiederholungen",
+        "highlights": "Vereins-Highlights",
+        "clipping": "Clipping-Tool",
+        "sponsorship": "Sponsoring-Integration"
+      },
+      "caption": "Staydias vereinsgebrandete Streaming-Oberfläche"
+    }
   },
   "footer": {
     "company": "Unternehmen",
@@ -33,19 +77,19 @@
     "solutions": "Lösungen",
     "forClubs": "Für Vereine",
     "forLeagues": "Für Ligen",
-    "revenueSharing": "Umsatzbeteiligung",
+    "revenueSharing": "Umsatzteilung",
     "support": "Support",
     "faq": "FAQ",
     "documentation": "Dokumentation",
-    "community": "Community",
+    "community": "Gemeinschaft",
     "allRightsReserved": "Alle Rechte vorbehalten.",
     "stayConnected": "Verbunden Bleiben"
   },
   "common": {
     "learnMore": "Mehr Erfahren",
     "getStarted": "Loslegen",
-    "contactUs": "Kontakt Aufnehmen",
-    "readMore": "Weiterlesen",
+    "contactUs": "Kontaktieren Sie Uns",
+    "readMore": "Mehr Lesen",
     "viewAll": "Alle Anzeigen",
     "loading": "Laden...",
     "error": "Fehler",
@@ -54,7 +98,7 @@
     "open": "Öffnen",
     "save": "Speichern",
     "cancel": "Abbrechen",
-    "submit": "Senden",
+    "submit": "Einreichen",
     "next": "Weiter",
     "previous": "Zurück",
     "search": "Suchen",

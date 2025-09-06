@@ -11,17 +11,61 @@
     "faq": "FAQ",
     "testimonials": "Getuigenissen",
     "news": "Nieuws",
-    "community": "Community",
+    "community": "Gemeenschap",
     "bookDemo": "Demo Boeken",
-    "getStarted": "Beginnen",
+    "getStarted": "Aan de Slag",
     "login": "Inloggen"
   },
   "hero": {
-    "title": "Kunt u niet naar de wedstrijd? Blijf verbonden met Staydia Sports",
-    "subtitle": "Het complete streaming- en fanengagementplatform voor sportclubs en competities",
-    "description": "Transformeer hoe uw fans live sport beleven met ons professionele streamingplatform, realtime analyses en mogelijkheden voor omzetdeling.",
+    "title": "Kun je niet naar de wedstrijd? Blijf verbonden met Staydia Sports",
+    "subtitle": "Het complete streaming- en fan engagement platform voor sportclubs en competities",
+    "description": "Transformeer hoe je fans live sport ervaren met ons professionele streaming platform, realtime analyses en omzetdelings-mogelijkheden.",
     "watchDemo": "Demo Bekijken",
     "bookDemo": "Demo Boeken"
+  },
+  "partners": {
+    "title": "Blijf verbonden met je sport",
+    "subtitle": "Vertrouwde Partners"
+  },
+  "features": {
+    "title": "Waarom Clubs Kiezen voor Staydia",
+    "subtitle": "Sluit je aan bij vele andere amateur voetbal-, hockey-, rugby- en basketbalclubs door de EU en het VK die samenwerken met Staydia Sports. Wij zorgen voor de AI-camera, het platform en de expertise – jij houdt 100% van je advertentie-inkomsten. Zo simpel is het.",
+    "faqButton": "Veelgestelde Vragen",
+    "becomePartner": "Word Staydia Partner",
+    "zeroInvestment": {
+      "title": "Geen Investering Vereist",
+      "description": "Wij installeren en onderhouden AI-gestuurde camera's in je accommodatie zonder enige voorkosten voor je club."
+    },
+    "revenue": {
+      "title": "Omzetgeneratie",
+      "description": "Creëer nieuwe inkomstenbronnen door fan-abonnementen en in-stream sponsoring mogelijkheden."
+    },
+    "fanEngagement": {
+      "title": "Verbeterde Fan Betrokkenheid",
+      "description": "Blijf verbonden met je gemeenschap door supporters toe te staan live en on-demand te kijken, vanaf elke locatie."
+    },
+    "streaming": {
+      "title": "Professionele Livestreaming",
+      "description": "Geautomatiseerde hoogwaardige uitzendingen met aangepaste branding en highlight-creatie tools."
+    },
+    "sports": {
+      "football": "Voetbal",
+      "rugby": "Rugby",
+      "basketball": "Basketball",
+      "hockey": "Hockey"
+    },
+    "platform": {
+      "title": "Club-Gebrande Streaming Platform",
+      "description": "Geef je fans een professionele kijkervaring met de branding van je club.",
+      "features": {
+        "liveMatches": "Live en komende wedstrijden",
+        "replays": "On-demand herhalingen",
+        "highlights": "Club highlights",
+        "clipping": "Knip-tool",
+        "sponsorship": "Sponsoring integratie"
+      },
+      "caption": "Staydia's club-gebrande streaming interface"
+    }
   },
   "footer": {
     "company": "Bedrijf",
@@ -29,27 +73,27 @@
     "contact": "Contact",
     "careers": "Carrières",
     "privacy": "Privacybeleid",
-    "terms": "Gebruiksvoorwaarden",
+    "terms": "Servicevoorwaarden",
     "solutions": "Oplossingen",
     "forClubs": "Voor Clubs",
     "forLeagues": "Voor Competities",
     "revenueSharing": "Omzet Delen",
-    "support": "Support",
+    "support": "Ondersteuning",
     "faq": "FAQ",
     "documentation": "Documentatie",
-    "community": "Community",
+    "community": "Gemeenschap",
     "allRightsReserved": "Alle rechten voorbehouden.",
     "stayConnected": "Blijf Verbonden"
   },
   "common": {
     "learnMore": "Meer Leren",
-    "getStarted": "Beginnen",
-    "contactUs": "Contact Opnemen",
+    "getStarted": "Aan de Slag",
+    "contactUs": "Neem Contact Op",
     "readMore": "Lees Meer",
     "viewAll": "Bekijk Alles",
     "loading": "Laden...",
     "error": "Fout",
-    "tryAgain": "Opnieuw Proberen",
+    "tryAgain": "Probeer Opnieuw",
     "close": "Sluiten",
     "open": "Openen",
     "save": "Opslaan",

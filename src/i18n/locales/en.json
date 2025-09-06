@@ -23,6 +23,50 @@
     "watchDemo": "Watch Demo",
     "bookDemo": "Book a Demo"
   },
+  "partners": {
+    "title": "Stay connected to your sports",
+    "subtitle": "Trusted Partners"
+  },
+  "features": {
+    "title": "Why Clubs Choose Staydia",
+    "subtitle": "Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.",
+    "faqButton": "Frequently Asked Questions",
+    "becomePartner": "Become A Staydia Partner",
+    "zeroInvestment": {
+      "title": "Zero Investment Required",
+      "description": "We install and maintain AI-powered cameras at your venue with absolutely no upfront costs to your club."
+    },
+    "revenue": {
+      "title": "Revenue Generation", 
+      "description": "Create new income streams through fan subscriptions and in-stream sponsorship opportunities."
+    },
+    "fanEngagement": {
+      "title": "Enhanced Fan Engagement",
+      "description": "Stay connected with your community by allowing supporters to watch live and on demand, from anywhere."
+    },
+    "streaming": {
+      "title": "Professional Livestreaming",
+      "description": "Automated high-quality broadcasting with custom branding and highlight creation tools."
+    },
+    "sports": {
+      "football": "Football",
+      "rugby": "Rugby", 
+      "basketball": "Basketball",
+      "hockey": "Hockey"
+    },
+    "platform": {
+      "title": "Club-Branded Streaming Platform",
+      "description": "Give your fans a professional viewing experience featuring your club's branding.",
+      "features": {
+        "liveMatches": "Live and upcoming matches",
+        "replays": "On-demand replays",
+        "highlights": "Club highlights", 
+        "clipping": "Clipping tool",
+        "sponsorship": "Sponsorship integration"
+      },
+      "caption": "Staydia's club-branded streaming interface"
+    }
+  },
   "footer": {
     "company": "Company",
     "about": "About Us",

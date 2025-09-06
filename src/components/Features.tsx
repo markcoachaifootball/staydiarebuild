@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Button } from "@/components/ui/button";
 import DemoForm from './DemoForm';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   Dialog,
   DialogContent,
@@ -12,45 +13,46 @@ import {
 } from "@/components/ui/dialog";
 
 export const Features: React.FC = () => {
+  const { t } = useTranslation();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   const features = [
     {
-      title: "Zero Investment Required",
-      description: "We install and maintain AI-powered cameras at your venue with absolutely no upfront costs to your club.",
+      title: t('features.zeroInvestment.title'),
+      description: t('features.zeroInvestment.description'),
       icon: Camera
     },
     {
-      title: "Revenue Generation",
-      description: "Create new income streams through fan subscriptions and in-stream sponsorship opportunities.",
+      title: t('features.revenue.title'),
+      description: t('features.revenue.description'),
       icon: Banknote
     },
     {
-      title: "Enhanced Fan Engagement",
-      description: "Stay connected with your community by allowing supporters to watch live and on demand, from anywhere.",
+      title: t('features.fanEngagement.title'),
+      description: t('features.fanEngagement.description'),
       icon: Users
     },
     {
-      title: "Professional Livestreaming",
-      description: "Automated high-quality broadcasting with custom branding and highlight creation tools.",
+      title: t('features.streaming.title'),
+      description: t('features.streaming.description'),
       icon: Play
     }
   ];
 
   const sports = [
-    { name: "Football", icon: "⚽" },
-    { name: "Rugby", icon: "🏉" },
-    { name: "Basketball", icon: "🏀" },
-    { name: "Hockey", icon: "🏑" }
+    { name: t('features.sports.football'), icon: "⚽" },
+    { name: t('features.sports.rugby'), icon: "🏉" },
+    { name: t('features.sports.basketball'), icon: "🏀" },
+    { name: t('features.sports.hockey'), icon: "🏑" }
   ];
 
   return (
     <section id="features" className="py-24 bg-staydia-darkgray">
       <div className="staydia-container">
         <div className="text-center mb-16">
-          <h2 className="section-title">Why Clubs Choose Staydia</h2>
+          <h2 className="section-title">{t('features.title')}</h2>
           <p className="section-subtitle">
-            Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.
+            {t('features.subtitle')}
           </p>
           
           {/* Updated FAQ Button to yellow */}
@@ -59,7 +61,7 @@ export const Features: React.FC = () => {
               className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-2"
               asChild
             >
-              <Link to="/faq">Frequently Asked Questions</Link>
+              <Link to="/faq">{t('features.faqButton')}</Link>
             </Button>
           </div>
           
@@ -100,19 +102,19 @@ export const Features: React.FC = () => {
             className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg px-8 py-6"
             onClick={() => setIsDialogOpen(true)}
           >
-            Become A Staydia Partner
+            {t('features.becomePartner')}
           </Button>
         </div>
         
         <div className="mt-16 pt-10 border-t border-staydia-lightgray">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Club-Branded Streaming Platform</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('features.platform.title')}</h3>
               <p className="text-gray-300 mb-6">
-                Give your fans a professional viewing experience featuring your club's branding.
+                {t('features.platform.description')}
               </p>
               <ul className="space-y-3">
-                {["Live and upcoming matches", "On-demand replays", "Club highlights", "Clipping tool", "Sponsorship integration"].map((item, i) => (
+                {[t('features.platform.features.liveMatches'), t('features.platform.features.replays'), t('features.platform.features.highlights'), t('features.platform.features.clipping'), t('features.platform.features.sponsorship')].map((item, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-staydia-gold rounded-full"></span>
                     <span className="text-gray-300">{item}</span>
@@ -148,7 +150,7 @@ export const Features: React.FC = () => {
                 </div>
               </Carousel>
               <div className="bg-staydia-black/80 p-4">
-                <p className="text-center text-sm text-gray-400">Staydia's club-branded streaming interface</p>
+                <p className="text-center text-sm text-gray-400">{t('features.platform.caption')}</p>
               </div>
             </div>
           </div>
@@ -159,7 +161,7 @@ export const Features: React.FC = () => {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold mb-4">Become A Staydia Partner</DialogTitle>
+            <DialogTitle className="text-2xl font-bold mb-4">{t('features.becomePartner')}</DialogTitle>
           </DialogHeader>
           <DemoForm />
         </DialogContent>
