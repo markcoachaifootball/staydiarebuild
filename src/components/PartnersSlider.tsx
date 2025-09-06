@@ -127,6 +127,10 @@ const partners = [
   {
     name: "Colchester R.F.C",
     logo: "/lovable-uploads/2a4ca23a-29a3-4bc6-aa07-74fb5443ed40.png"
+  },
+  {
+    name: "Belfast Harlequins Hockey Club",
+    logo: "/lovable-uploads/b1cf8ec9-c840-4c08-9ab5-8070d9ee2db4.png"
   }
 ];
 
