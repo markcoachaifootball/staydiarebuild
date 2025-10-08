@@ -11,8 +11,8 @@ export function generateSlug(text: string): string {
   return text
     .toLowerCase()
     .trim()
-    // Remove quotes, colons, and other special characters
-    .replace(/["""''`,:;!?()[\]{}]/g, '')
+    // Remove quotes, apostrophes, colons, and other special characters
+    .replace(/["""''`',:;!?()[\]{}]/g, '')
     // Replace ampersands with 'and'
     .replace(/&/g, ' and ')
     // Replace any remaining non-alphanumeric characters (except hyphens) with spaces
