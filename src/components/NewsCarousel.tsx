@@ -81,10 +81,12 @@ const NewsCarousel: React.FC = () => {
       
       <Carousel className="w-full max-w-4xl mx-auto" opts={{ align: "start", loop: false }}>
         <CarouselContent>
-          {articles.map((article) => (
+          {articles.map((article) => {
+            const slug = article.fields.slug || generateSlug(article.fields.title);
+            return (
             <CarouselItem key={article.sys.id} className="basis-full md:basis-1/3">
               <Link 
-                to={`/news/${article.fields.slug}`}
+                to={`/news/${slug}`}
                 className="block bg-staydia-darkgray/50 rounded-xl overflow-hidden hover:bg-staydia-darkgray/70 transition-all duration-300 group"
               >
                 <div className="aspect-video relative overflow-hidden">
@@ -121,7 +123,8 @@ const NewsCarousel: React.FC = () => {
                 </div>
               </Link>
             </CarouselItem>
-          ))}
+          );
+          })}
         </CarouselContent>
         <CarouselPrevious className="left-4" />
         <CarouselNext className="right-4" />

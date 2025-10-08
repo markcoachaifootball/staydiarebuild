@@ -6,6 +6,7 @@ import { CalendarIcon, ArrowRightIcon, NewspaperIcon } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { generateSlug } from '@/utils/slugify';
 
 const Newsroom: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -113,8 +114,10 @@ const Newsroom: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {articles.map((article) => (
-            <Link to={`/news/${article.fields.slug}`} key={article.sys.id} className="no-underline">
+          {articles.map((article) => {
+            const slug = article.fields.slug || generateSlug(article.fields.title);
+            return (
+            <Link to={`/news/${slug}`} key={article.sys.id} className="no-underline">
               <Card 
                 className="bg-staydia-black border border-staydia-lightgray overflow-hidden hover:border-staydia-gold transition-all duration-300"
               >
@@ -155,7 +158,8 @@ const Newsroom: React.FC = () => {
                 </CardFooter>
               </Card>
             </Link>
-          ))}
+          );
+          })}
         </div>
       )}
     </div>
