@@ -145,6 +145,54 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           
           return article;
         }
+        
+        // If no match by slug, try to match by title
+        console.log(`No slug match, trying to match by title for ${type}`);
+        const titleResponse = await client.getEntries({
+          content_type: type,
+          limit: 100, // Get more articles to search through
+          include: 0,
+        });
+        
+        // Find article where generated slug from title matches our slug
+        const matchedArticle = titleResponse.items.find((item: any) => {
+          if (item.fields?.title) {
+            const generatedSlug = generateSlug(item.fields.title);
+            console.log(`Comparing generated slug "${generatedSlug}" with "${normalizedSlug}"`);
+            return generatedSlug === normalizedSlug;
+          }
+          return false;
+        });
+        
+        if (matchedArticle) {
+          console.log(`✅ Found article by title match in content type ${type}`);
+          const article = matchedArticle as unknown as NewsArticle;
+          
+          // Set the normalized slug
+          article.fields.slug = normalizedSlug;
+          
+          console.log('Article data:', article);
+          console.log('Featured image data:', article.fields?.featuredImage);
+          
+          // If we have a featured image with sys.id, fetch it separately to get complete data
+          if (article.fields?.featuredImage?.sys?.id) {
+            try {
+              console.log('Attempting to fetch image asset separately with ID:', article.fields.featuredImage.sys.id);
+              const imageAsset = await client.getAsset(article.fields.featuredImage.sys.id);
+              console.log('Separately fetched image asset:', imageAsset);
+              
+              // Replace the truncated image data with the complete asset
+              article.fields.featuredImage = imageAsset as any;
+              console.log('Updated article with complete image data:', article.fields.featuredImage);
+            } catch (imgError) {
+              console.log('Could not fetch image asset separately:', imgError);
+            }
+          } else {
+            console.log('No sys.id found in featured image or featured image missing');
+          }
+          
+          return article;
+        }
       } catch (err) {
         console.log(`Error fetching from content type ${type}:`, err);
         // Continue to next type
