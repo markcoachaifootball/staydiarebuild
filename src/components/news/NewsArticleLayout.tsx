@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsArticleHeader from './NewsArticleHeader';
@@ -12,7 +13,8 @@ interface NewsArticleLayoutProps {
 }
 
 const NewsArticleLayout: React.FC<NewsArticleLayoutProps> = ({ article }) => {
-  const articleUrl = `https://about.staydiasports.com/news/${article.fields.slug}`;
+  const { slug } = useParams<{ slug: string }>();
+  const articleUrl = `https://about.staydiasports.com/news/${slug}`;
 
   // Set lang attribute for HTML (for SEO)
   React.useEffect(() => {
