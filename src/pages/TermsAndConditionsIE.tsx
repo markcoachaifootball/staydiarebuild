@@ -1,14 +1,49 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Document, Page, pdfjs } from 'react-pdf';
 import { Button } from "@/components/ui/button";
-import { Download, ArrowLeft } from "lucide-react";
+import { Download, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+
+// Set up the worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const TermsAndConditionsIE = () => {
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [pageWidth, setPageWidth] = useState<number>(600);
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Set page width based on screen size
+    const updateWidth = () => {
+      if (window.innerWidth < 640) {
+        setPageWidth(window.innerWidth - 32); // Account for padding
+      } else if (window.innerWidth < 1024) {
+        setPageWidth(600);
+      } else {
+        setPageWidth(800);
+      }
+    };
+    
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
-  const navigate = useNavigate();
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
+
+  const goToPrevPage = () => {
+    setPageNumber((prev) => Math.max(prev - 1, 1));
+  };
+
+  const goToNextPage = () => {
+    setPageNumber((prev) => Math.min(prev + 1, numPages));
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -39,11 +74,62 @@ const TermsAndConditionsIE = () => {
           </div>
 
           <div className="bg-card rounded-lg shadow-lg overflow-hidden">
-            <iframe
-              src="/documents/terms-and-conditions-ie-v1.pdf"
-              className="w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-[900px] border-0"
-              title="Terms and Conditions Ireland"
-            />
+            <div className="flex flex-col items-center p-4 md:p-6">
+              <Document
+                file="/documents/terms-and-conditions-ie-v1.pdf"
+                onLoadSuccess={onDocumentLoadSuccess}
+                loading={
+                  <div className="flex items-center justify-center h-[400px]">
+                    <p className="text-muted-foreground">Loading PDF...</p>
+                  </div>
+                }
+                error={
+                  <div className="flex flex-col items-center justify-center h-[400px] gap-4">
+                    <p className="text-destructive">Failed to load PDF</p>
+                    <Button asChild>
+                      <a href="/documents/terms-and-conditions-ie-v1.pdf" download>
+                        Download PDF instead
+                      </a>
+                    </Button>
+                  </div>
+                }
+              >
+                <Page 
+                  pageNumber={pageNumber} 
+                  width={pageWidth}
+                  renderTextLayer={true}
+                  renderAnnotationLayer={true}
+                />
+              </Document>
+              
+              {numPages > 0 && (
+                <div className="flex items-center justify-center gap-4 mt-6 w-full">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={goToPrevPage}
+                    disabled={pageNumber <= 1}
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
+                  
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-foreground font-medium">
+                      Page {pageNumber} of {numPages}
+                    </span>
+                  </div>
+                  
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={goToNextPage}
+                    disabled={pageNumber >= numPages}
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
 
           <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">
