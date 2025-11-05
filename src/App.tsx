@@ -25,6 +25,7 @@ import NewContract from './pages/NewContract';
 import ContractView from './pages/ContractView';
 import SignContract from './pages/SignContract';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import TermsAndConditionsIE from './pages/TermsAndConditionsIE';
 
 function App() {
   useEffect(() => {
@@ -83,8 +84,9 @@ function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/news" element={<News />} />
         
-        <Route path="/news/:slug" element={<NewsArticlePage />} />
-        <Route path="/auth" element={<Auth />} />
+          <Route path="/news/:slug" element={<NewsArticlePage />} />
+          <Route path="/termsandconditionsieV1" element={<TermsAndConditionsIE />} />
+          <Route path="/auth" element={<Auth />} />
         <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
         <Route path="/contracts/templates" element={<ProtectedRoute><ContractTemplates /></ProtectedRoute>} />
         <Route path="/contracts/new" element={<ProtectedRoute><NewContract /></ProtectedRoute>} />
