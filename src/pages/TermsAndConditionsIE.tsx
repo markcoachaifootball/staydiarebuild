@@ -73,67 +73,61 @@ const TermsAndConditionsIE = () => {
             </Button>
           </div>
 
-          <div className="bg-card rounded-lg shadow-lg overflow-hidden">
-            <div className="flex flex-col items-center p-4 md:p-6">
-              <div className="mb-4">
-                <Document
-                  file="/documents/terms-and-conditions-ie-v1.pdf"
-                  onLoadSuccess={onDocumentLoadSuccess}
-                  loading={
-                    <div className="flex items-center justify-center h-[400px]">
-                      <p className="text-muted-foreground">Loading PDF...</p>
-                    </div>
-                  }
-                  error={
-                    <div className="flex flex-col items-center justify-center h-[400px] gap-4">
-                      <p className="text-destructive">Failed to load PDF</p>
-                      <Button asChild>
-                        <a href="/documents/terms-and-conditions-ie-v1.pdf" download>
-                          Download PDF instead
-                        </a>
-                      </Button>
-                    </div>
-                  }
-                  className="flex justify-center"
-                >
-                  <Page 
-                    pageNumber={pageNumber} 
-                    width={pageWidth}
-                    renderTextLayer={true}
-                    renderAnnotationLayer={true}
-                    className="shadow-sm"
-                  />
-                </Document>
-              </div>
-              
-              {numPages > 0 && (
-                <div className="flex items-center justify-center gap-4 w-full border-t pt-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={goToPrevPage}
-                    disabled={pageNumber <= 1}
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-foreground font-medium">
-                      Page {pageNumber} of {numPages}
-                    </span>
-                  </div>
-                  
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={goToNextPage}
-                    disabled={pageNumber >= numPages}
-                  >
-                    <ChevronRight className="h-4 w-4" />
+          <div className="bg-card rounded-lg shadow-lg overflow-hidden p-4 md:p-6">
+            <Document
+              file="/documents/terms-and-conditions-ie-v1.pdf"
+              onLoadSuccess={onDocumentLoadSuccess}
+              loading={
+                <div className="flex items-center justify-center h-[400px]">
+                  <p className="text-muted-foreground">Loading PDF...</p>
+                </div>
+              }
+              error={
+                <div className="flex flex-col items-center justify-center h-[400px] gap-4">
+                  <p className="text-destructive">Failed to load PDF</p>
+                  <Button asChild>
+                    <a href="/documents/terms-and-conditions-ie-v1.pdf" download>
+                      Download PDF instead
+                    </a>
                   </Button>
                 </div>
-              )}
-            </div>
+              }
+            >
+              <div className="flex justify-center">
+                <Page 
+                  pageNumber={pageNumber} 
+                  width={pageWidth}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                />
+              </div>
+            </Document>
+            
+            {numPages > 0 && (
+              <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={goToPrevPage}
+                  disabled={pageNumber <= 1}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                
+                <span className="text-sm text-foreground font-medium">
+                  Page {pageNumber} of {numPages}
+                </span>
+                
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={goToNextPage}
+                  disabled={pageNumber >= numPages}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
           </div>
 
           <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">
