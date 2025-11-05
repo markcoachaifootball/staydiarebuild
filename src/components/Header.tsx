@@ -15,7 +15,7 @@ const Header: React.FC = () => {
             <img 
               src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
               alt="Staydia Sports Logo" 
-              className="h-20 sm:h-24 w-auto object-contain"
+              className="h-16 sm:h-20 md:h-24 w-auto object-contain"
             />
           </Link>
           <Navigation />
