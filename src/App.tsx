@@ -27,6 +27,7 @@ import SignContract from './pages/SignContract';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import TermsAndConditionsIE from './pages/TermsAndConditionsIE';
 import TermsAndConditionsUK from './pages/TermsAndConditionsUK';
+import TermsAndConditionsGBP from './pages/TermsAndConditionsGBP';
 
 function App() {
   useEffect(() => {
@@ -88,6 +89,7 @@ function App() {
           <Route path="/news/:slug" element={<NewsArticlePage />} />
           <Route path="/termsandconditionsieV1" element={<TermsAndConditionsIE />} />
           <Route path="/termsandconditionsukV1" element={<TermsAndConditionsUK />} />
+          <Route path="/termsandconditionsgbpv1" element={<TermsAndConditionsGBP />} />
           <Route path="/auth" element={<Auth />} />
         <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
         <Route path="/contracts/templates" element={<ProtectedRoute><ContractTemplates /></ProtectedRoute>} />
