@@ -28,6 +28,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import TermsAndConditionsIE from './pages/TermsAndConditionsIE';
 import TermsAndConditionsUK from './pages/TermsAndConditionsUK';
 import TermsAndConditionsGBP from './pages/TermsAndConditionsGBP';
+import TermsAndConditionsEURO from './pages/TermsAndConditionsEURO';
 
 function App() {
   useEffect(() => {
@@ -90,6 +91,7 @@ function App() {
           <Route path="/termsandconditionsieV1" element={<TermsAndConditionsIE />} />
           <Route path="/termsandconditionsukV1" element={<TermsAndConditionsUK />} />
           <Route path="/termsandconditionsgbpv1" element={<TermsAndConditionsGBP />} />
+          <Route path="/termsandconditionseurov1" element={<TermsAndConditionsEURO />} />
           <Route path="/auth" element={<Auth />} />
         <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
         <Route path="/contracts/templates" element={<ProtectedRoute><ContractTemplates /></ProtectedRoute>} />
