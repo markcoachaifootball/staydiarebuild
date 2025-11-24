@@ -197,10 +197,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      can_sign_contract: {
-        Args: { contract_uuid: string }
-        Returns: boolean
-      }
+      can_sign_contract: { Args: { contract_uuid: string }; Returns: boolean }
       get_contract_for_signing: {
         Args: { token: string }
         Returns: {
@@ -213,10 +210,7 @@ export type Database = {
           status: string
         }[]
       }
-      mark_contract_viewed: {
-        Args: { token: string }
-        Returns: undefined
-      }
+      mark_contract_viewed: { Args: { token: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
