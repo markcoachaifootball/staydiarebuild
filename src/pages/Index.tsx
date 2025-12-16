@@ -1,5 +1,5 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
@@ -11,11 +11,14 @@ import Community from '@/components/Community';
 import PartnersSlider from '@/components/PartnersSlider';
 import NewsCarousel from '@/components/NewsCarousel';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import IntroLoader from '@/components/IntroLoader';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
 
 const Index = () => {
+  const [showIntro, setShowIntro] = useState(true);
+  
   useScrollToTop();
   
   // Add structured data for the main website
@@ -35,18 +38,24 @@ const Index = () => {
   });
   
   return (
-    <div className="min-h-screen bg-staydia-black text-white">
-      <Header />
-      <Hero />
-      <NewsCarousel />
-      <PartnersSlider />
-      <Features />
-      <Technology />
-      <HowItWorks />
-      <Community />
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    <>
+      <AnimatePresence>
+        {showIntro && <IntroLoader onComplete={() => setShowIntro(false)} />}
+      </AnimatePresence>
+      
+      <div className={`min-h-screen bg-staydia-black text-white ${showIntro ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+        <Header />
+        <Hero />
+        <NewsCarousel />
+        <PartnersSlider />
+        <Features />
+        <Technology />
+        <HowItWorks />
+        <Community />
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </>
   );
 };
 
