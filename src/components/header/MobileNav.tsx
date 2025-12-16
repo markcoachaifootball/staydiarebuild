@@ -71,7 +71,7 @@ const MobileNav: React.FC = () => {
             <img 
               src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
               alt="Staydia Sports Logo" 
-              className="h-8 w-auto"
+              className="h-10 sm:h-12 w-auto object-contain"
             />
           </Link>
         </div>

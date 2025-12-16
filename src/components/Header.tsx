@@ -9,13 +9,13 @@ import LanguageSwitcher from './LanguageSwitcher';
 const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-staydia-black/80 backdrop-blur-lg border-b border-staydia-lightgray">
-      <div className="staydia-container flex items-center justify-between h-16">
+      <div className="staydia-container flex items-center justify-between h-20 lg:h-16">
         <div className="flex items-center">
-          <Link to="/" className="mr-10">
+          <Link to="/" className="mr-4 sm:mr-6 lg:mr-10">
             <img 
               src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" 
               alt="Staydia Sports Logo" 
-              className="h-40 md:h-32 lg:h-16 w-auto object-contain"
+              className="h-12 sm:h-14 md:h-16 lg:h-10 w-auto object-contain"
             />
           </Link>
           <Navigation />
