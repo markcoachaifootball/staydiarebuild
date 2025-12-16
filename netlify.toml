@@ -5,7 +5,18 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# SPA redirect - handle client-side routing
+# Exclude static files from SPA redirect
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+# SPA redirect - handle client-side routing (must be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
