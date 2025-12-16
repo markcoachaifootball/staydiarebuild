@@ -10,6 +10,26 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+// Input validation helpers
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_NAME_LENGTH = 200;
+const MAX_MESSAGE_LENGTH = 2000;
+
+function isValidUUID(str: string): boolean {
+  return typeof str === 'string' && UUID_REGEX.test(str);
+}
+
+function isValidEmail(str: string): boolean {
+  return typeof str === 'string' && str.length <= 254 && EMAIL_REGEX.test(str);
+}
+
+function sanitizeString(str: string | undefined, maxLength: number): string {
+  if (!str || typeof str !== 'string') return '';
+  // Remove potential HTML/script injection and trim
+  return str.replace(/<[^>]*>/g, '').trim().slice(0, maxLength);
+}
+
 interface SendContractEmailRequest {
   contractId: string;
   recipientEmail: string;
@@ -33,7 +53,10 @@ const handler = async (req: Request): Promise<Response> => {
     // Get the authorization header
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) {
-      throw new Error("No authorization header");
+      return new Response(
+        JSON.stringify({ error: "Authorization required" }),
+        { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     // Set the auth token for the client
@@ -41,10 +64,46 @@ const handler = async (req: Request): Promise<Response> => {
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser(token);
     
     if (authError || !user) {
-      throw new Error("Unauthorized");
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
-    const { contractId, recipientEmail, recipientName, message }: SendContractEmailRequest = await req.json();
+    // Parse and validate input
+    let rawInput: SendContractEmailRequest;
+    try {
+      rawInput = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON body" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const { contractId, recipientEmail, recipientName, message } = rawInput;
+
+    // Validate contractId
+    if (!contractId || !isValidUUID(contractId)) {
+      console.error('Invalid contractId:', contractId);
+      return new Response(
+        JSON.stringify({ error: "Invalid contract ID format" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Validate recipientEmail
+    if (!recipientEmail || !isValidEmail(recipientEmail)) {
+      console.error('Invalid recipientEmail:', recipientEmail);
+      return new Response(
+        JSON.stringify({ error: "Invalid email address" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Sanitize optional strings
+    const sanitizedName = sanitizeString(recipientName, MAX_NAME_LENGTH);
+    const sanitizedMessage = sanitizeString(message, MAX_MESSAGE_LENGTH);
 
     console.log('User ID:', user.id);
     console.log('Contract ID:', contractId);
@@ -56,17 +115,19 @@ const handler = async (req: Request): Promise<Response> => {
       .eq('id', contractId)
       .maybeSingle();
 
-    console.log('Contract found:', !!contract);
-    console.log('Contract error:', contractError);
-    console.log('Contract data:', contract);
-
     if (contractError) {
       console.error('Database error:', contractError);
-      throw new Error(`Database error: ${contractError.message}`);
+      return new Response(
+        JSON.stringify({ error: "Failed to fetch contract" }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
     
     if (!contract) {
-      throw new Error("Contract not found or unauthorized");
+      return new Response(
+        JSON.stringify({ error: "Contract not found or unauthorized" }),
+        { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     // Generate the signing link
@@ -78,11 +139,11 @@ const handler = async (req: Request): Promise<Response> => {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <h2 style="color: #ff6b35;">Contract Signing Request</h2>
         
-        ${recipientName ? `<p>Dear ${recipientName},</p>` : '<p>Hello,</p>'}
+        ${sanitizedName ? `<p>Dear ${sanitizedName},</p>` : '<p>Hello,</p>'}
         
         <p>You have received a contract from Staydia Sports that requires your digital signature.</p>
         
-        ${message ? `<p style="background: #f5f5f5; padding: 15px; border-left: 3px solid #ff6b35; margin: 20px 0;"><em>${message}</em></p>` : ''}
+        ${sanitizedMessage ? `<p style="background: #f5f5f5; padding: 15px; border-left: 3px solid #ff6b35; margin: 20px 0;"><em>${sanitizedMessage}</em></p>` : ''}
         
         <p style="margin: 30px 0;">
           <a href="${signingLink}" style="background: #ff6b35; color: white; padding: 12px 25px; text-decoration: none; border-radius: 4px; font-weight: bold;">Review & Sign Contract</a>
@@ -133,7 +194,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in send-contract-email function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "An error occurred while sending the email" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

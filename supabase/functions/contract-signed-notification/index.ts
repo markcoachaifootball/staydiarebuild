@@ -10,6 +10,26 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+// Input validation helpers
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_NAME_LENGTH = 200;
+const VALID_SIGNATURE_TYPES = ['drawn', 'typed'];
+
+function isValidUUID(str: string): boolean {
+  return typeof str === 'string' && UUID_REGEX.test(str);
+}
+
+function isValidEmail(str: string): boolean {
+  return typeof str === 'string' && str.length <= 254 && EMAIL_REGEX.test(str);
+}
+
+function sanitizeString(str: string | undefined, maxLength: number): string {
+  if (!str || typeof str !== 'string') return '';
+  // Remove potential HTML/script injection and trim
+  return str.replace(/<[^>]*>/g, '').trim().slice(0, maxLength);
+}
+
 interface ContractSignedRequest {
   contractId: string;
   signerName: string;
@@ -30,7 +50,48 @@ const handler = async (req: Request): Promise<Response> => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
     );
 
-    const { contractId, signerName, signerEmail, signatureType }: ContractSignedRequest = await req.json();
+    // Parse and validate input
+    let rawInput: ContractSignedRequest;
+    try {
+      rawInput = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON body" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const { contractId, signerName, signerEmail, signatureType } = rawInput;
+
+    // Validate contractId
+    if (!contractId || !isValidUUID(contractId)) {
+      console.error('Invalid contractId:', contractId);
+      return new Response(
+        JSON.stringify({ error: "Invalid contract ID format" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Validate signerEmail
+    if (!signerEmail || !isValidEmail(signerEmail)) {
+      console.error('Invalid signerEmail:', signerEmail);
+      return new Response(
+        JSON.stringify({ error: "Invalid signer email" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Validate signatureType
+    if (!signatureType || !VALID_SIGNATURE_TYPES.includes(signatureType)) {
+      console.error('Invalid signatureType:', signatureType);
+      return new Response(
+        JSON.stringify({ error: "Invalid signature type" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Sanitize signerName
+    const sanitizedSignerName = sanitizeString(signerName, MAX_NAME_LENGTH) || signerEmail;
 
     console.log('Contract signed notification for:', contractId);
 
@@ -50,7 +111,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (contractError || !contract) {
       console.error('Contract fetch error:', contractError);
-      throw new Error("Contract not found");
+      return new Response(
+        JSON.stringify({ error: "Contract not found" }),
+        { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     // Fetch the contract owner's profile separately
@@ -83,7 +147,11 @@ const handler = async (req: Request): Promise<Response> => {
     const ownerName = ownerProfile ? `${ownerProfile.first_name} ${ownerProfile.last_name}`.trim() : 'Contract Owner';
 
     if (!ownerEmail) {
-      throw new Error("Contract owner email not found");
+      console.error("Contract owner email not found");
+      return new Response(
+        JSON.stringify({ error: "Contract owner email not found" }),
+        { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     // Generate the contract view link
@@ -122,19 +190,29 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
             `;
           } else {
-            // Get public URL for the uploaded signature
-            const { data: urlData } = supabaseClient.storage
+            // Create a signed URL for the uploaded signature (valid for 1 hour)
+            const { data: signedUrlData, error: signedUrlError } = await supabaseClient.storage
               .from('contract-documents')
-              .getPublicUrl(`signatures/${fileName}`);
+              .createSignedUrl(`signatures/${fileName}`, 3600);
             
-            signatureUrl = urlData.publicUrl;
-            
-            signatureDisplay = `
-              <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
-                <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
-                <img src="${signatureUrl}" alt="Digital Signature" style="max-width: 300px; max-height: 100px; border: 1px solid #ddd; background: white; padding: 10px;">
-              </div>
-            `;
+            if (signedUrlError || !signedUrlData?.signedUrl) {
+              console.error('Error creating signed URL:', signedUrlError);
+              signatureDisplay = `
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+                  <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
+                  <p style="color: #666; font-style: italic;">Digital signature captured (view in contract dashboard for full signature)</p>
+                </div>
+              `;
+            } else {
+              signatureUrl = signedUrlData.signedUrl;
+              
+              signatureDisplay = `
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
+                  <h4 style="margin: 0 0 10px 0; color: #333;">Digital Signature:</h4>
+                  <img src="${signatureUrl}" alt="Digital Signature" style="max-width: 300px; max-height: 100px; border: 1px solid #ddd; background: white; padding: 10px;">
+                </div>
+              `;
+            }
           }
         } catch (uploadError) {
           console.error('Error processing signature for email:', uploadError);
@@ -147,32 +225,36 @@ const handler = async (req: Request): Promise<Response> => {
           `;
         }
       } else if (signature.signature_type === 'typed' && signature.signature_data) {
-        // For typed signatures, display the text in a signature style
+        // For typed signatures, display the text in a signature style (sanitize the data)
+        const sanitizedSignatureData = sanitizeString(signature.signature_data, MAX_NAME_LENGTH);
         signatureDisplay = `
           <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center;">
             <h4 style="margin: 0 0 10px 0; color: #333;">Typed Signature:</h4>
             <div style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: #2563eb; background: white; padding: 15px; border: 1px solid #ddd; display: inline-block;">
-              ${signature.signature_data}
+              ${sanitizedSignatureData}
             </div>
           </div>
         `;
       }
     }
 
-    // Compose the notification email
+    // Compose the notification email (sanitize all user-provided content)
+    const sanitizedCustomerCompany = sanitizeString(contract.customer_company, MAX_NAME_LENGTH) || 'Not specified';
+    const templateName = sanitizeString(contract.contract_templates?.name, MAX_NAME_LENGTH) || 'Contract';
+    
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <h2 style="color: #ff6b35;">🎉 Contract Signed Successfully!</h2>
         
-        <p>Dear ${ownerName},</p>
+        <p>Dear ${sanitizeString(ownerName, MAX_NAME_LENGTH)},</p>
         
-        <p>Great news! Your contract <strong>"${contract.contract_templates?.name || 'Contract'}"</strong> has been successfully signed.</p>
+        <p>Great news! Your contract <strong>"${templateName}"</strong> has been successfully signed.</p>
         
         <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
           <h3 style="margin: 0 0 15px 0; color: #10b981;">Contract Details:</h3>
-          <p style="margin: 5px 0;"><strong>Signer:</strong> ${signerName}</p>
+          <p style="margin: 5px 0;"><strong>Signer:</strong> ${sanitizedSignerName}</p>
           <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${signerEmail}" style="color: #2563eb;">${signerEmail}</a></p>
-          <p style="margin: 5px 0;"><strong>Company:</strong> ${contract.customer_company || 'Not specified'}</p>
+          <p style="margin: 5px 0;"><strong>Company:</strong> ${sanitizedCustomerCompany}</p>
           <p style="margin: 5px 0;"><strong>Signature Type:</strong> ${signatureType === 'drawn' ? 'Digital Signature' : 'Typed Signature'}</p>
           <p style="margin: 5px 0;"><strong>Signed On:</strong> ${new Date().toLocaleDateString('en-US', { 
             year: 'numeric', 
@@ -211,7 +293,7 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "Staydia Sports <contracts@staydiasports.com>",
       to: [ownerEmail],
-      subject: `Contract Signed: ${contract.contract_templates?.name || 'Your Contract'}`,
+      subject: `Contract Signed: ${templateName}`,
       html: emailHtml,
     });
 
@@ -230,7 +312,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in contract-signed-notification function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "An error occurred while sending the notification" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

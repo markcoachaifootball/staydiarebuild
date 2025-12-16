@@ -195,26 +195,27 @@ export default function SignContract() {
     setIsSubmitting(true);
 
     try {
-      // Insert signature
-      const { error: signatureError } = await supabase
-        .from('signatures')
-        .insert([{
-          contract_id: contract.id,
-          signature_data: signatureData,
-          signature_type: signatureType,
-          terms_accepted: termsAccepted,
-          signer_ip: '', // Could be populated with actual IP
-          signer_user_agent: navigator.userAgent
-        }]);
+      // Use the secure sign_contract RPC function that validates the signing token
+      const { data: result, error: signError } = await (supabase as any).rpc('sign_contract', {
+        p_token: token,
+        p_signature_data: signatureData,
+        p_signature_type: signatureType,
+        p_terms_accepted: termsAccepted,
+        p_signer_user_agent: navigator.userAgent
+      });
 
-      if (signatureError) throw signatureError;
+      if (signError) throw signError;
+
+      if (!result?.success) {
+        throw new Error(result?.error || 'Failed to sign contract');
+      }
 
       // Status will be updated by DB trigger after inserting into signatures
 
       // Send notification to contract owner
       await supabase.functions.invoke('contract-signed-notification', {
         body: {
-          contractId: contract.id,
+          contractId: result.contract_id,
           signerName: contract.customer_name || contract.customer_email,
           signerEmail: contract.customer_email,
           signatureType: signatureType
