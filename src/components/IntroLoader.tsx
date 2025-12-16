@@ -7,7 +7,7 @@ interface IntroLoaderProps {
 
 const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [showAll, setShowAll] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
   
   const words = [
     { text: 'AI-Automated', highlight: true },
@@ -23,15 +23,20 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
         setCurrentWordIndex(prev => prev + 1);
       }, 400);
       return () => clearTimeout(timer);
-    } else {
-      // Show all words together briefly
-      setShowAll(true);
+    } else if (!showLogo) {
+      // Show logo after words
+      setShowLogo(true);
+    }
+  }, [currentWordIndex, showLogo, words.length]);
+
+  useEffect(() => {
+    if (showLogo) {
       const completeTimer = setTimeout(() => {
         onComplete();
-      }, 800);
+      }, 1000);
       return () => clearTimeout(completeTimer);
     }
-  }, [currentWordIndex, onComplete, words.length]);
+  }, [showLogo, onComplete]);
 
   return (
     <motion.div
@@ -41,7 +46,7 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
     >
       <div className="flex flex-wrap justify-center items-center gap-3 md:gap-5 px-6 max-w-4xl">
         <AnimatePresence mode="wait">
-          {!showAll ? (
+          {!showLogo ? (
             <motion.span
               key={currentWordIndex}
               initial={{ opacity: 0, y: 20 }}
@@ -57,23 +62,15 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
               {words[currentWordIndex]?.text}
             </motion.span>
           ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+            <motion.img
+              key="logo"
+              src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png"
+              alt="Staydia Sports"
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="flex flex-wrap justify-center items-center gap-3 md:gap-5"
-            >
-              {words.map((word, index) => (
-                <span
-                  key={index}
-                  className={`text-3xl md:text-5xl lg:text-6xl font-bold ${
-                    word.highlight ? 'text-staydia-gold' : 'text-white'
-                  }`}
-                >
-                  {word.text}
-                </span>
-              ))}
-            </motion.div>
+              className="h-32 md:h-48 lg:h-56 w-auto"
+            />
           )}
         </AnimatePresence>
       </div>
