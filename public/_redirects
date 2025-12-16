@@ -1,2 +1,9 @@
+# Sitemap proxy to Supabase edge function
+/sitemap.xml https://xisvzchvmcqeqtkxoecr.supabase.co/functions/v1/generate-sitemap 200
+/sitemap https://xisvzchvmcqeqtkxoecr.supabase.co/functions/v1/generate-sitemap 200
+
+# Robots.txt
+/robots.txt /robots.txt 200
+
 # Fallback for all other routes to main app
 /* /index.html 200
