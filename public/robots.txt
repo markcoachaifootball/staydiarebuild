@@ -82,7 +82,7 @@ Allow: /partnerships
 Allow: /revenue-sharing
 Allow: /community
 
-# Sitemap location
+# Sitemap location (dynamically generated)
 Sitemap: https://about.staydiasports.com/sitemap.xml
 
 # Host specification

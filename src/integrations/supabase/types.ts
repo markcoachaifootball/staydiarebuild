@@ -192,6 +192,39 @@ export type Database = {
           },
         ]
       }
+      sitemap_entries: {
+        Row: {
+          changefreq: string
+          created_at: string
+          id: string
+          is_active: boolean
+          lastmod: string
+          loc: string
+          priority: number
+          updated_at: string
+        }
+        Insert: {
+          changefreq?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          lastmod?: string
+          loc: string
+          priority?: number
+          updated_at?: string
+        }
+        Update: {
+          changefreq?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          lastmod?: string
+          loc?: string
+          priority?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
