@@ -5,30 +5,7 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Proxy sitemap to Supabase edge function for dynamic generation
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "https://xisvzchvmcqeqtkxoecr.supabase.co/functions/v1/generate-sitemap"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/sitemap"
-  to = "https://xisvzchvmcqeqtkxoecr.supabase.co/functions/v1/generate-sitemap"
-  status = 200
-  force = true
-
-# Exclude robots.txt from SPA redirect
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-
-# SPA redirect - handle client-side routing (must be last)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# All redirects are managed in public/_redirects file
 
 # Security and performance headers
 [[headers]]
