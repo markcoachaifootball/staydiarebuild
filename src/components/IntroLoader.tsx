@@ -21,7 +21,7 @@ const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
     if (currentWordIndex < words.length) {
       const timer = setTimeout(() => {
         setCurrentWordIndex(prev => prev + 1);
-      }, 400);
+      }, 700);
       return () => clearTimeout(timer);
     } else if (!showLogo) {
       // Show logo after words
