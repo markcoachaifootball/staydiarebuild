@@ -5,9 +5,15 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Proxy sitemap.xml to Supabase edge function for dynamic generation
+# Proxy sitemap to Supabase edge function for dynamic generation
 [[redirects]]
   from = "/sitemap.xml"
+  to = "https://xisvzchvmcqeqtkxoecr.supabase.co/functions/v1/generate-sitemap"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sitemap"
   to = "https://xisvzchvmcqeqtkxoecr.supabase.co/functions/v1/generate-sitemap"
   status = 200
   force = true
