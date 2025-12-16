@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -15,11 +15,18 @@ import IntroLoader from '@/components/IntroLoader';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const Index = () => {
   const [showIntro, setShowIntro] = useState(true);
   
   useScrollToTop();
+  usePrerenderReady(); // Signal to Netlify Prerender Extension that page is ready
+  
+  // Add structured data for the main website
+  useStructuredData({
+    type: 'Organization'
+  });
   
   // Add structured data for the main website
   useStructuredData({
