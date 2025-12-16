@@ -7,6 +7,31 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+// Input validation helpers
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const MAX_NAME_LENGTH = 200;
+
+function isValidUUID(str: string): boolean {
+  return typeof str === 'string' && UUID_REGEX.test(str);
+}
+
+function sanitizeString(str: string | undefined | null, maxLength: number): string {
+  if (!str || typeof str !== 'string') return '';
+  // Remove potential HTML/script injection and trim
+  return str.replace(/<[^>]*>/g, '').trim().slice(0, maxLength);
+}
+
+function escapeHtml(str: string): string {
+  const htmlEscapes: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+  return str.replace(/[&<>"']/g, char => htmlEscapes[char]);
+}
+
 interface DownloadContractRequest {
   contractId: string;
 }
@@ -24,7 +49,27 @@ const handler = async (req: Request): Promise<Response> => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
     );
 
-    const { contractId }: DownloadContractRequest = await req.json();
+    // Parse and validate input
+    let rawInput: DownloadContractRequest;
+    try {
+      rawInput = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON body" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const { contractId } = rawInput;
+
+    // Validate contractId
+    if (!contractId || !isValidUUID(contractId)) {
+      console.error('Invalid contractId:', contractId);
+      return new Response(
+        JSON.stringify({ error: "Invalid contract ID format" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
 
     console.log('Generating contract document for:', contractId);
 
@@ -44,7 +89,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (contractError || !contract) {
       console.error('Contract fetch error:', contractError);
-      throw new Error("Contract not found");
+      return new Response(
+        JSON.stringify({ error: "Contract not found" }),
+        { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     // Fetch the signature data
@@ -67,18 +115,27 @@ const handler = async (req: Request): Promise<Response> => {
       .eq('id', contract.sent_by)
       .maybeSingle();
 
-    // Generate HTML content
-    const ownerName = ownerProfile ? `${ownerProfile.first_name || ''} ${ownerProfile.last_name || ''}`.trim() : 'Contract Owner';
-    const ownerCompany = ownerProfile?.company_name || 'Staydia Sports';
+    // Generate HTML content with sanitized data
+    const ownerFirstName = sanitizeString(ownerProfile?.first_name, MAX_NAME_LENGTH);
+    const ownerLastName = sanitizeString(ownerProfile?.last_name, MAX_NAME_LENGTH);
+    const ownerName = `${ownerFirstName} ${ownerLastName}`.trim() || 'Contract Owner';
+    const ownerCompany = escapeHtml(sanitizeString(ownerProfile?.company_name, MAX_NAME_LENGTH) || 'Staydia Sports');
+    const ownerEmail = escapeHtml(sanitizeString(ownerProfile?.email, 254) || '');
+    
+    const customerName = escapeHtml(sanitizeString(contract.customer_name, MAX_NAME_LENGTH) || 'Not specified');
+    const customerEmail = escapeHtml(sanitizeString(contract.customer_email, 254) || 'Unknown');
+    const customerCompany = escapeHtml(sanitizeString(contract.customer_company, MAX_NAME_LENGTH) || 'Not specified');
+    const templateName = escapeHtml(sanitizeString(contract.contract_templates?.name, MAX_NAME_LENGTH) || 'Contract');
+    const contractStatus = escapeHtml(sanitizeString(contract.status, 50) || 'unknown');
     
     const signatureSection = signature ? `
       <div class="signature-section">
         <h3>Digital Signature</h3>
         <div class="signature-details">
           <div class="signature-info">
-            <p><strong>Signed by:</strong> ${contract.customer_name || 'Unknown'}</p>
-            <p><strong>Email:</strong> ${contract.customer_email || 'Unknown'}</p>
-            <p><strong>Company:</strong> ${contract.customer_company || 'Not specified'}</p>
+            <p><strong>Signed by:</strong> ${customerName}</p>
+            <p><strong>Email:</strong> ${customerEmail}</p>
+            <p><strong>Company:</strong> ${customerCompany}</p>
             <p><strong>Date:</strong> ${signature.created_at ? new Date(signature.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long', 
@@ -96,7 +153,7 @@ const handler = async (req: Request): Promise<Response> => {
           ` : signature.signature_type === 'typed' && signature.signature_data ? `
             <div class="signature-text">
               <div style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: #2563eb; background: white; padding: 15px; border: 1px solid #ccc; display: inline-block;">
-                ${signature.signature_data}
+                ${escapeHtml(sanitizeString(signature.signature_data, MAX_NAME_LENGTH))}
               </div>
             </div>
           ` : ''}
@@ -105,7 +162,7 @@ const handler = async (req: Request): Promise<Response> => {
     ` : `
       <div class="status-section">
         <h3>Contract Status</h3>
-        <p><strong>Status:</strong> ${contract.status.charAt(0).toUpperCase() + contract.status.slice(1)}</p>
+        <p><strong>Status:</strong> ${contractStatus.charAt(0).toUpperCase() + contractStatus.slice(1)}</p>
         <p><em>This contract has not been signed yet.</em></p>
       </div>
     `;
@@ -115,7 +172,7 @@ const handler = async (req: Request): Promise<Response> => {
       <html>
       <head>
         <meta charset="UTF-8">
-        <title>${contract.contract_templates?.name || 'Contract'}</title>
+        <title>${templateName}</title>
         <style>
           body {
             font-family: Arial, sans-serif;
@@ -196,7 +253,7 @@ const handler = async (req: Request): Promise<Response> => {
       </head>
       <body>
         <div class="header">
-          <h1>${contract.contract_templates?.name || 'Contract'}</h1>
+          <h1>${templateName}</h1>
           <p><strong>${ownerCompany}</strong></p>
         </div>
 
@@ -205,25 +262,25 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="grid">
             <div>
               <h3>From:</h3>
-              <p><strong>${ownerName}</strong><br>
-              ${ownerProfile?.email || ''}<br>
+              <p><strong>${escapeHtml(ownerName)}</strong><br>
+              ${ownerEmail}<br>
               ${ownerCompany}</p>
             </div>
             <div>
               <h3>To:</h3>
-              <p><strong>${contract.customer_name || 'Not specified'}</strong><br>
-              ${contract.customer_email}<br>
-              ${contract.customer_company || 'Not specified'}</p>
+              <p><strong>${customerName}</strong><br>
+              ${customerEmail}<br>
+              ${customerCompany}</p>
             </div>
           </div>
           <div style="margin-top: 20px;">
-            <p><strong>Contract ID:</strong> ${contract.id}</p>
+            <p><strong>Contract ID:</strong> ${escapeHtml(contract.id)}</p>
             <p><strong>Created:</strong> ${new Date(contract.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric'
             })}</p>
-            <p><strong>Status:</strong> ${contract.status.charAt(0).toUpperCase() + contract.status.slice(1)}</p>
+            <p><strong>Status:</strong> ${contractStatus.charAt(0).toUpperCase() + contractStatus.slice(1)}</p>
             ${contract.expires_at ? `<p><strong>Expires:</strong> ${new Date(contract.expires_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -261,7 +318,7 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     // Generate filename
-    const filename = `${contract.contract_templates?.name || 'Contract'}_${contract.customer_name || 'Unsigned'}_${new Date().toISOString().split('T')[0]}.html`;
+    const filename = `${templateName}_${customerName}_${new Date().toISOString().split('T')[0]}.html`;
 
     console.log("HTML document generated successfully for contract:", contractId);
 
@@ -277,7 +334,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in download-contract-pdf function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "An error occurred while generating the document" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

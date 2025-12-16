@@ -197,7 +197,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      can_sign_contract: { Args: { contract_uuid: string }; Returns: boolean }
+      can_sign_contract_with_token: {
+        Args: { contract_uuid: string; provided_token: string }
+        Returns: boolean
+      }
       get_contract_for_signing: {
         Args: { token: string }
         Returns: {
@@ -211,6 +214,16 @@ export type Database = {
         }[]
       }
       mark_contract_viewed: { Args: { token: string }; Returns: undefined }
+      sign_contract: {
+        Args: {
+          p_signature_data: string
+          p_signature_type?: string
+          p_signer_user_agent?: string
+          p_terms_accepted?: boolean
+          p_token: string
+        }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never
