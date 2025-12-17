@@ -2,6 +2,7 @@
 import React from 'react';
 import { useMetaTags } from '@/hooks/useMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 import { useNewsArticle } from '@/hooks/useNewsArticle';
 import NewsArticleLayout from './news/NewsArticleLayout';
 import NewsArticleLoading from './news/NewsArticleLoading';
@@ -15,6 +16,9 @@ const DEFAULT_DESCRIPTION =
 
 const NewsArticlePage: React.FC = () => {
   const { article, isLoading, error, slug } = useNewsArticle();
+
+  // Signal prerender ready only after article data is loaded
+  usePrerenderReady(!isLoading && !!article);
 
 
   // Compute fallbacks, always safe!
