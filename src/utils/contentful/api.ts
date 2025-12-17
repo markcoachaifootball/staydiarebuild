@@ -108,36 +108,33 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
     // Try common content types for articles
     const commonContentTypes = ['article', 'blogPost', 'post', 'news'];
 
-    // Prerender mode: run content-type queries in parallel to avoid Netlify Prerender timeouts.
+    // Prerender mode: keep it FAST and deterministic to avoid Netlify Prerender timeouts.
+    // We query the primary content type first ("article") with includes so title + featured image resolve.
     if (isPrerender) {
-      const settled = await Promise.allSettled(
-        commonContentTypes.map(async (type) => {
-          const response = await client.getEntries({
-            content_type: type,
-            'fields.slug[in]': `${normalizedSlug},${slug}`,
-            limit: 1,
-            include: 2,
-          });
-          return { type, response };
-        })
-      );
+      try {
+        const response = await client.getEntries({
+          content_type: 'article',
+          'fields.slug[in]': `${normalizedSlug},${slug}`,
+          limit: 1,
+          include: 2,
+        });
 
-      for (const res of settled) {
-        if (res.status !== 'fulfilled') continue;
-        if (res.value.response.items.length === 0) continue;
+        if (response.items.length > 0) {
+          const article = response.items[0] as unknown as NewsArticle;
+          console.log(`✅ Found article with slug ${normalizedSlug} in content type article (prerender)`);
 
-        const article = res.value.response.items[0] as unknown as NewsArticle;
-        console.log(`✅ Found article with slug ${normalizedSlug} in content type ${res.value.type}`);
+          if (article.fields?.title && (!article.fields.slug || article.fields.slug !== normalizedSlug)) {
+            article.fields.slug = normalizedSlug;
+          }
 
-        if (article.fields?.title && (!article.fields.slug || article.fields.slug !== normalizedSlug)) {
-          article.fields.slug = normalizedSlug;
+          return article;
         }
-
-        // In prerender mode we avoid extra asset round-trips.
-        return article;
+      } catch (err) {
+        console.log('Error fetching article (prerender):', err);
       }
 
-      console.log(`❌ Article with slug ${slug} not found in any content type (prerender)`);
+      // If not found quickly, fall back to example article rather than spending more network time.
+      console.log(`❌ Article with slug ${slug} not found (prerender fast path)`);
       return getExampleArticleBySlug(slug);
     }
 
