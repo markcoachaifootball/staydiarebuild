@@ -17,8 +17,8 @@ const DEFAULT_DESCRIPTION =
 const NewsArticlePage: React.FC = () => {
   const { article, isLoading, error, slug } = useNewsArticle();
 
-  // Signal prerender ready only after article data is loaded
-  usePrerenderReady(!isLoading && !!article);
+  // Signal prerender ready after loading finishes (success or error), so SSR snapshots don't time out.
+  usePrerenderReady(!isLoading);
 
 
   // Compute fallbacks, always safe!
