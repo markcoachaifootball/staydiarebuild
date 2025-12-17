@@ -167,11 +167,11 @@ const PartnersSlider: React.FC = () => {
       <CarouselContent className="py-2">
         {items.map((partner, index) => (
           <CarouselItem key={index} className="basis-1/3 md:basis-1/5 lg:basis-1/6 pl-4 flex items-center justify-center">
-            <div className="h-24 w-full flex items-center justify-center p-3 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
+            <div className="h-20 w-full flex items-center justify-center p-2 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
               <img 
                 src={partner.logo} 
                 alt={`${partner.name} logo`} 
-                className="max-h-18 max-w-full object-contain"
+                className="h-14 w-auto object-contain"
                 loading="lazy"
                 decoding="async"
               />
