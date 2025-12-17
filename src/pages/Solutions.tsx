@@ -4,10 +4,11 @@ import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { Clock, Database, Link, ZapIcon, Camera, Play } from "lucide-react";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const Solutions = () => {
   useScrollToTop();
-  
+  usePrerenderReady(); // Signal prerender ready for static content
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
