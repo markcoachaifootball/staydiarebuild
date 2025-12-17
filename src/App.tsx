@@ -32,8 +32,16 @@ import TermsAndConditionsEURO from './pages/TermsAndConditionsEURO';
 
 function App() {
   useEffect(() => {
+    const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+    const isSeoBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(
+      ua
+    );
+
+    // Avoid injecting third-party widgets during prerender/SEO bot rendering (can cause blank snapshots).
+    if (isSeoBot) return;
+
     console.log('Initializing chatbot...');
-    
+
     // Wait for the script to load
     const initChatbot = () => {
       console.log('Creating chatbot element...');
@@ -42,14 +50,14 @@ function App() {
       chatbot.setAttribute('chatbot-id', '602ffd9d-1806-4845-a3bb-b80709090732');
       chatbot.setAttribute('platform-id', '34581499-3f3d-4064-a3d1-6aa724875aec');
       chatbot.setAttribute('is-local', 'false');
-      
+
       const link = document.createElement('a');
       link.href = 'https://www.chatsimple.ai/?utm_source=widget&utm_medium=referral';
       chatbot.appendChild(link);
-      
+
       document.body.appendChild(chatbot);
       console.log('Chatbot element added to DOM');
-      
+
       // Cleanup on unmount
       return () => {
         if (document.body.contains(chatbot)) {
@@ -57,7 +65,7 @@ function App() {
         }
       };
     };
-    
+
     // Check if the script is already loaded, if not wait for it
     if (document.querySelector('script[src="https://cdn.chatsimple.ai/ai-loader.js"]')) {
       // Script exists, wait a bit for it to initialize
