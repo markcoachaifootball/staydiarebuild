@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             <span className="text-staydia-gold">& Streaming</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Revolutionise Your Club's Reach & Revenue: AI-Powered Broadcasting, Zero Cost
+            Revolutionise Your Club's Reach & Revenue: AI-Automated Sports Camera & Streaming, Zero Cost
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
