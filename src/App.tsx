@@ -7,6 +7,8 @@ import Contact from './pages/Contact';
 import Solutions from './pages/Solutions';
 import ForLeagues from './pages/ForLeagues';
 import RevenueSharing from './pages/RevenueSharing';
+import Technology from './pages/Technology';
+import FanEngagement from './pages/FanEngagement';
 import NotFound from './pages/NotFound';
 import FAQ from './pages/FAQ';
 import AboutUs from './pages/AboutUs';
@@ -87,6 +89,8 @@ function App() {
         <Route path="/sports" element={<Sports />} />
         <Route path="/revenue-sharing" element={<RevenueSharing />} />
         <Route path="/solutions" element={<Solutions />} />
+        <Route path="/technology" element={<Technology />} />
+        <Route path="/fan-engagement" element={<FanEngagement />} />
         <Route path="/book-demo" element={<BookDemo />} />
         <Route path="/community" element={<Community />} />
         <Route path="/news" element={<News />} />

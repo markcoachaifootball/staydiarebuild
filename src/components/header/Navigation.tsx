@@ -19,10 +19,31 @@ const Navigation: React.FC = () => {
   return (
     <nav className="hidden md:flex items-center">
       <div className="flex items-center space-x-8">
+        <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
+          Solutions
+        </Link>
+        <Link to="/sports" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
+          Sports
+        </Link>
+        <Link to="/for-clubs" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
+          For Clubs
+        </Link>
+        <Link to="/for-leagues" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
+          For Leagues
+        </Link>
+        <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
+          Technology
+        </Link>
+        <Link to="/news" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
+          News
+        </Link>
+
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">Resources</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">
+                Resources
+              </NavigationMenuTrigger>
               <NavigationMenuContent className="w-[320px] max-h-[calc(100vh-5rem)] overflow-y-auto">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
                   <ResourceLinksMenu />
@@ -31,11 +52,13 @@ const Navigation: React.FC = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        
+
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">Community</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">
+                Community
+              </NavigationMenuTrigger>
               <NavigationMenuContent className="w-[320px] max-h-[calc(100vh-5rem)] overflow-y-auto">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
                   <li className="row-span-1">
@@ -76,11 +99,11 @@ const Navigation: React.FC = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        
+
         <Link to="/about" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
           {t('nav.about')}
         </Link>
-        
+
         <Link to="/contact" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
           {t('nav.contact')}
         </Link>
