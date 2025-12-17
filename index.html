@@ -260,6 +260,7 @@
             var SPACE = 'qo4q4xk8vua7';
             var TOKEN = '9r0ya2DRB2KRdn8Jqr2xQpu8n8mBC56Mz0Dn7Q-1TzU';
 
+            // Build a minimal, fast Contentful request (reduce payload to improve prerender reliability)
             var url =
               'https://cdn.contentful.com/spaces/' + encodeURIComponent(SPACE) +
               '/environments/master/entries' +
@@ -267,9 +268,20 @@
               '&content_type=article' +
               '&limit=1' +
               '&include=2' +
-              '&fields.slug[in]=' + encodeURIComponent(rawSlug + ',' + normalizedSlug);
+              '&fields.slug[in]=' + encodeURIComponent(rawSlug + ',' + normalizedSlug) +
+              '&select=' + encodeURIComponent('fields.title,fields.summary,fields.slug,fields.featuredImage');
 
-            // Safety: ensure prerender doesn't hang forever if React never flips prerenderReady.
+            // Set critical URL-related tags immediately (even if Contentful is slow)
+            try {
+              var canonicalEarly = document.querySelector('link[rel="canonical"]');
+              if (canonicalEarly) canonicalEarly.setAttribute('href', 'https://about.staydiasports.com' + path);
+              var ogUrlEarly = document.querySelector('meta[property="og:url"]');
+              if (ogUrlEarly) ogUrlEarly.setAttribute('content', 'https://about.staydiasports.com' + path);
+              var ogTypeEarly = document.querySelector('meta[property="og:type"]');
+              if (ogTypeEarly) ogTypeEarly.setAttribute('content', 'article');
+            } catch (e) {}
+
+            // Safety: ensure prerender doesn't hang forever, but allow enough time for Contentful to respond.
             var done = false;
             function finishPrerender() {
               if (done) return;
@@ -280,9 +292,22 @@
                 document.documentElement.setAttribute('data-prerender-ready', 'true');
               } catch (e) {}
             }
-            setTimeout(finishPrerender, 4000);
 
-            fetch(url)
+            // Netlify prerender snapshots can capture too early if this is too small.
+            // Give Contentful a bigger window, then fail open.
+            setTimeout(finishPrerender, 15000);
+
+            // Abort the fetch if it stalls (keeps us from waiting forever while still allowing a long safety window).
+            var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+            if (controller) {
+              setTimeout(function() {
+                try { controller.abort(); } catch (e) {}
+              }, 12000);
+            }
+
+            var fetchOpts = controller ? { signal: controller.signal } : undefined;
+
+            fetch(url, fetchOpts)
               .then(function(r) { return r.json(); })
               .then(function(json) {
                 var item = json && json.items && json.items[0];
