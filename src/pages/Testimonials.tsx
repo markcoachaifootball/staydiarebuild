@@ -1,9 +1,9 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const testimonials = [
   {
@@ -40,7 +40,7 @@ const testimonials = [
 
 const Testimonials = () => {
   useScrollToTop();
-  
+  usePrerenderReady();
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />

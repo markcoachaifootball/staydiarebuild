@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,9 +6,11 @@ import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useToast } from "@/hooks/use-toast";
 import { MessageCircle } from 'lucide-react';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const Contact = () => {
   useScrollToTop();
+  usePrerenderReady();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     organisation: '',

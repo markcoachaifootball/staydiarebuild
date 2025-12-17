@@ -1,13 +1,13 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Linkedin, Youtube, Github, Slack, Facebook, Instagram, Twitter } from 'lucide-react';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const Community: React.FC = () => {
   useScrollToTop();
-  
+  usePrerenderReady();
   const socialLinks = [
     { 
       name: "LinkedIn", 

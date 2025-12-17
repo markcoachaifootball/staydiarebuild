@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,10 +6,11 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from 'lucide-react';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const BookDemo = () => {
   useScrollToTop();
-  
+  usePrerenderReady();
   const handleWhatsAppClick = () => {
     const phoneNumber = "353899754690"; // Updated phone number
     const message = encodeURIComponent("Hi, I'm interested in learning more about Staydia Sports.");
