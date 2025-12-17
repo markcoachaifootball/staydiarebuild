@@ -14,7 +14,7 @@ import Testimonials from './pages/Testimonials';
 import News from './pages/News';
 
 import NewsArticlePage from './components/NewsArticle';
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import BookDemo from './pages/BookDemo';
 import ForClubs from './pages/ForClubs';
 import Community from './pages/Community';
@@ -29,16 +29,12 @@ import TermsAndConditionsIE from './pages/TermsAndConditionsIE';
 import TermsAndConditionsUK from './pages/TermsAndConditionsUK';
 import TermsAndConditionsGBP from './pages/TermsAndConditionsGBP';
 import TermsAndConditionsEURO from './pages/TermsAndConditionsEURO';
+import { isSeoBotUserAgent } from '@/utils/isSeoBot';
 
 function App() {
   useEffect(() => {
-    const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
-    const isSeoBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(
-      ua
-    );
-
     // Avoid injecting third-party widgets during prerender/SEO bot rendering (can cause blank snapshots).
-    if (isSeoBot) return;
+    if (isSeoBotUserAgent()) return;
 
     console.log('Initializing chatbot...');
 
@@ -94,17 +90,45 @@ function App() {
         <Route path="/book-demo" element={<BookDemo />} />
         <Route path="/community" element={<Community />} />
         <Route path="/news" element={<News />} />
-        
-          <Route path="/news/:slug" element={<NewsArticlePage />} />
-          <Route path="/termsandconditionsieV1" element={<TermsAndConditionsIE />} />
-          <Route path="/termsandconditionsukV1" element={<TermsAndConditionsUK />} />
-          <Route path="/termsandconditionsgbpv1" element={<TermsAndConditionsGBP />} />
-          <Route path="/termsandconditionseurov1" element={<TermsAndConditionsEURO />} />
-          <Route path="/auth" element={<Auth />} />
-        <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
-        <Route path="/contracts/templates" element={<ProtectedRoute><ContractTemplates /></ProtectedRoute>} />
-        <Route path="/contracts/new" element={<ProtectedRoute><NewContract /></ProtectedRoute>} />
-        <Route path="/contracts/:id" element={<ProtectedRoute><ContractView /></ProtectedRoute>} />
+
+        <Route path="/news/:slug" element={<NewsArticlePage />} />
+        <Route path="/termsandconditionsieV1" element={<TermsAndConditionsIE />} />
+        <Route path="/termsandconditionsukV1" element={<TermsAndConditionsUK />} />
+        <Route path="/termsandconditionsgbpv1" element={<TermsAndConditionsGBP />} />
+        <Route path="/termsandconditionseurov1" element={<TermsAndConditionsEURO />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route
+          path="/contracts"
+          element={
+            <ProtectedRoute>
+              <Contracts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contracts/templates"
+          element={
+            <ProtectedRoute>
+              <ContractTemplates />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contracts/new"
+          element={
+            <ProtectedRoute>
+              <NewContract />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contracts/:id"
+          element={
+            <ProtectedRoute>
+              <ContractView />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/sign/:token" element={<SignContract />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -114,3 +138,4 @@ function App() {
 }
 
 export default App;
+

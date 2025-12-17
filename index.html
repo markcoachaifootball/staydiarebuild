@@ -111,6 +111,28 @@
 
   <body>
     <div id="root"></div>
+
+    <!-- Non-JS fallback: ensures crawlers still see internal links even if prerendering is misconfigured -->
+    <noscript>
+      <header class="staydia-container" style="padding: 2rem 1rem;">
+        <nav aria-label="Primary" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+          <a href="/" style="color:#DAA520;text-decoration:none;font-weight:700;">Staydia Sports</a>
+          <a href="/solutions" style="color:white;text-decoration:none;">Solutions</a>
+          <a href="/sports" style="color:white;text-decoration:none;">Sports</a>
+          <a href="/for-clubs" style="color:white;text-decoration:none;">For Clubs</a>
+          <a href="/for-leagues" style="color:white;text-decoration:none;">For Leagues</a>
+          <a href="/news" style="color:white;text-decoration:none;">News</a>
+          <a href="/contact" style="color:white;text-decoration:none;">Contact</a>
+        </nav>
+      </header>
+      <main class="staydia-container" style="padding: 0 1rem 2.5rem;">
+        <h1 style="margin:0 0 0.75rem;color:white;">AI-Powered Sports Broadcasting</h1>
+        <p style="margin:0;color:#d1d5db;max-width:60ch;">
+          Staydia Sports helps clubs stream matches with automated camera systems and fan engagement tools.
+        </p>
+      </main>
+    </noscript>
+
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script>
@@ -135,4 +157,5 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
 

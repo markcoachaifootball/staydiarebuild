@@ -11,10 +11,11 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { generateSlug } from '@/utils/slugify';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const News: React.FC = () => {
   useScrollToTop();
-  
+
   const [articles, setArticles] = useState<NewsArticle[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,6 +37,9 @@ const News: React.FC = () => {
 
     getArticles();
   }, []);
+
+  // Prerender should wait for contentful fetch to finish to avoid blank HTML snapshots
+  usePrerenderReady(!isLoading);
 
   // Format the date to standard format
   const formatArticleDate = (dateString: string) => {
@@ -89,10 +93,7 @@ const News: React.FC = () => {
         ) : error ? (
           <div className="text-center py-10 bg-staydia-black border border-staydia-lightgray rounded-xl">
             <p className="text-red-400">{error}</p>
-            <Button 
-              onClick={() => window.location.reload()} 
-              className="mt-4 bg-staydia-gold text-staydia-black hover:bg-opacity-90"
-            >
+            <Button onClick={() => window.location.reload()} className="mt-4 bg-staydia-gold text-staydia-black hover:bg-opacity-90">
               Retry
             </Button>
           </div>
@@ -101,45 +102,37 @@ const News: React.FC = () => {
             {articles.map((article) => {
               const slug = article.fields.slug || generateSlug(article.fields.title);
               return (
-              <Link to={`/news/${slug}`} key={article.sys.id} className="no-underline">
-                <Card 
-                  className="bg-staydia-black border border-staydia-lightgray overflow-hidden hover:border-staydia-gold transition-all duration-300 h-full"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={getImageUrl(article)} 
-                      alt={article.fields.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="absolute top-0 left-0 bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold">
-                      {article.fields.category}
+                <Link to={`/news/${slug}`} key={article.sys.id} className="no-underline">
+                  <Card className="bg-staydia-black border border-staydia-lightgray overflow-hidden hover:border-staydia-gold transition-all duration-300 h-full">
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={getImageUrl(article)}
+                        alt={article.fields.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-0 left-0 bg-staydia-gold text-staydia-black px-3 py-1 text-xs font-bold">
+                        {article.fields.category}
+                      </div>
                     </div>
-                  </div>
-                  <CardHeader className="pb-2">
-                    <div className="flex items-center text-gray-400 text-xs mb-2">
-                      <CalendarIcon className="h-3 w-3 mr-1" />
-                      {formatArticleDate(article.fields.date)}
-                    </div>
-                    <h3 className="text-lg font-bold line-clamp-2 text-staydia-gold transition-colors">
-                      {article.fields.title}
-                    </h3>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-sm text-gray-400 line-clamp-3">
-                      {article.fields.summary}
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button 
-                      variant="link" 
-                      className="text-staydia-gold hover:text-white p-0 h-auto"
-                    >
-                      Read More
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </Link>
-            );
+                    <CardHeader className="pb-2">
+                      <div className="flex items-center text-gray-400 text-xs mb-2">
+                        <CalendarIcon className="h-3 w-3 mr-1" />
+                        {formatArticleDate(article.fields.date)}
+                      </div>
+                      <h3 className="text-lg font-bold line-clamp-2 text-staydia-gold transition-colors">{article.fields.title}</h3>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-sm text-gray-400 line-clamp-3">{article.fields.summary}</p>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="link" className="text-staydia-gold hover:text-white p-0 h-auto">
+                        Read More
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </Link>
+              );
             })}
           </div>
         )}

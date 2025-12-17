@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -16,41 +16,56 @@ import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
 import { usePrerenderReady } from '@/hooks/usePrerenderReady';
+import { isSeoBotUserAgent } from '@/utils/isSeoBot';
 
 const Index = () => {
-  const [showIntro, setShowIntro] = useState(true);
-  
+  const isSeoBot = isSeoBotUserAgent();
+  const [showIntro, setShowIntro] = useState(() => !isSeoBot);
+  const [isReadyForPrerender, setIsReadyForPrerender] = useState(false);
+
   useScrollToTop();
-  usePrerenderReady(); // Signal to Netlify Prerender Extension that page is ready
-  
+
+  // IMPORTANT: don't mark prerender ready while the intro keeps the page hidden (opacity-0)
+  useEffect(() => {
+    if (isSeoBot) {
+      // Give async content (e.g. carousels) a moment to hydrate during bot snapshots.
+      const t = window.setTimeout(() => setIsReadyForPrerender(true), 2000);
+      return () => window.clearTimeout(t);
+    }
+
+    setIsReadyForPrerender(!showIntro);
+  }, [isSeoBot, showIntro]);
+
+  usePrerenderReady(isReadyForPrerender);
+
   // Add structured data for the main website
   useStructuredData({
-    type: 'Organization'
-  });
-  
-  // Add structured data for the main website
-  useStructuredData({
-    type: 'Organization'
+    type: 'Organization',
   });
 
   // Optimize meta tags for AI search engines
   useAIMetaTags({
     title: 'Staydia Sports - AI-Powered Sports Broadcasting Platform',
-    description: 'Revolutionise Your Club\'s Reach & Revenue with AI-powered broadcasting, automated camera systems, live streaming, and fan engagement tools. Zero upfront costs for sports clubs.',
-    keywords: 'AI sports broadcasting, sports club management, automated cameras, live streaming, fan engagement, revenue sharing, football clubs, basketball clubs, rugby clubs, hockey clubs, sports technology platform',
+    description:
+      "Revolutionise Your Club's Reach & Revenue with AI-powered broadcasting, automated camera systems, live streaming, and fan engagement tools. Zero upfront costs for sports clubs.",
+    keywords:
+      'AI sports broadcasting, sports club management, automated cameras, live streaming, fan engagement, revenue sharing, football clubs, basketball clubs, rugby clubs, hockey clubs, sports technology platform',
     category: 'sports-technology',
-    content: 'Staydia Sports provides AI-powered broadcasting solutions for sports clubs worldwide. Our automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model. Perfect for football, basketball, rugby, and hockey clubs of all sizes.',
+    content:
+      'Staydia Sports provides AI-powered broadcasting solutions for sports clubs worldwide. Our automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model. Perfect for football, basketball, rugby, and hockey clubs of all sizes.',
     url: 'https://about.staydiasports.com/',
-    image: 'https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png'
+    image: 'https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png',
   });
-  
+
   return (
     <>
       <AnimatePresence>
-        {showIntro && <IntroLoader onComplete={() => setShowIntro(false)} />}
+        {!isSeoBot && showIntro && <IntroLoader onComplete={() => setShowIntro(false)} />}
       </AnimatePresence>
-      
-      <div className={`min-h-screen bg-staydia-black text-white ${showIntro ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+
+      <div
+        className={`min-h-screen bg-staydia-black text-white ${showIntro ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
+      >
         <Header />
         <Hero />
         <NewsCarousel />
