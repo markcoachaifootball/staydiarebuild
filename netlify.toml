@@ -5,6 +5,11 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Edge Functions
+[[edge_functions]]
+  path = "/news/*"
+  function = "og-tags"
+
 # All redirects are managed in public/_redirects file
 
 # Security and performance headers
