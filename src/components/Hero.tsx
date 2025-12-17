@@ -86,9 +86,10 @@ const Hero: React.FC = () => {
       <div className="staydia-container relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-            <span className="text-white">AI-Powered</span>
+            <span className="text-white">AI-Automated Sports </span>
+            <span className="text-white animate-pulse">Camera</span>
             <br />
-            <span className="text-staydia-gold">Sports Broadcasting</span>
+            <span className="text-staydia-gold">& Streaming</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
             Revolutionise Your Club's Reach & Revenue: AI-Powered Broadcasting, Zero Cost
