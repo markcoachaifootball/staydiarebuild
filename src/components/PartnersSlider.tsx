@@ -131,7 +131,7 @@ const partners = [
   },
   {
     name: "Belfast Harlequins Hockey Club",
-    logo: "/lovable-uploads/b1cf8ec9-c840-4c08-9ab5-8070d9ee2db4.png"
+    logo: "/lovable-uploads/belfast-harlequins-hockey.jpg"
   }
 ];
 
