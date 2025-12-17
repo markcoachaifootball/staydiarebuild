@@ -110,28 +110,114 @@
   </head>
 
   <body>
+    <!-- 
+      Crawler-friendly fallback: This static HTML is visible BEFORE React hydrates.
+      React will hide it via #static-fallback { display: none } once the app loads.
+      This ensures Googlebot/crawlers always see critical links in the initial HTML.
+    -->
+    <div id="static-fallback" style="background:#111;color:#fff;font-family:system-ui,-apple-system,sans-serif;">
+      <!-- Static Header -->
+      <header style="border-bottom:1px solid #333;padding:1rem;">
+        <div class="staydia-container" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+          <a href="/" style="display:flex;align-items:center;text-decoration:none;">
+            <img src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" alt="Staydia Sports" width="120" height="40" style="height:40px;width:auto;" />
+          </a>
+          <nav aria-label="Main navigation" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;">
+            <a href="/solutions" style="color:#d1d5db;text-decoration:none;">Solutions</a>
+            <a href="/sports" style="color:#d1d5db;text-decoration:none;">Sports</a>
+            <a href="/for-clubs" style="color:#d1d5db;text-decoration:none;">For Clubs</a>
+            <a href="/for-leagues" style="color:#d1d5db;text-decoration:none;">For Leagues</a>
+            <a href="/revenue-sharing" style="color:#d1d5db;text-decoration:none;">Revenue Sharing</a>
+            <a href="/news" style="color:#d1d5db;text-decoration:none;">News</a>
+            <a href="/about" style="color:#d1d5db;text-decoration:none;">About</a>
+            <a href="/contact" style="color:#d1d5db;text-decoration:none;">Contact</a>
+            <a href="/book-demo" style="background:#DAA520;color:#111;padding:0.5rem 1rem;border-radius:4px;text-decoration:none;font-weight:600;">Book Demo</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Static Hero Content -->
+      <main class="staydia-container" style="padding:3rem 1rem;">
+        <h1 style="font-size:2.5rem;margin:0 0 1rem;color:#fff;">AI-Powered Sports Broadcasting</h1>
+        <p style="font-size:1.25rem;color:#9ca3af;max-width:60ch;margin:0 0 2rem;">
+          Staydia Sports provides AI-powered broadcasting solutions for sports clubs. Automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model.
+        </p>
+        <a href="/book-demo" style="display:inline-block;background:#DAA520;color:#111;padding:0.75rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:600;">Get Started</a>
+      </main>
+
+      <!-- Static Footer -->
+      <footer style="border-top:1px solid #333;padding:2rem 1rem;">
+        <div class="staydia-container">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin-bottom:2rem;">
+            <!-- Company -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Company</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="/about" style="color:#9ca3af;text-decoration:none;">About Us</a>
+                <a href="/testimonials" style="color:#9ca3af;text-decoration:none;">Testimonials</a>
+                <a href="/community" style="color:#9ca3af;text-decoration:none;">Community</a>
+                <a href="/faq" style="color:#9ca3af;text-decoration:none;">FAQ</a>
+              </nav>
+            </div>
+            <!-- Solutions -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Solutions</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="/for-clubs" style="color:#9ca3af;text-decoration:none;">For Clubs</a>
+                <a href="/for-leagues" style="color:#9ca3af;text-decoration:none;">For Leagues</a>
+                <a href="/revenue-sharing" style="color:#9ca3af;text-decoration:none;">Revenue Sharing</a>
+                <a href="/sports" style="color:#9ca3af;text-decoration:none;">Sports We Cover</a>
+              </nav>
+            </div>
+            <!-- Fan Experience -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Fan Experience</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="https://staydiasports.com" style="color:#9ca3af;text-decoration:none;">Watch Live</a>
+                <a href="https://staydiasports.com/videos" style="color:#9ca3af;text-decoration:none;">On-Demand Library</a>
+                <a href="/news" style="color:#9ca3af;text-decoration:none;">News</a>
+              </nav>
+            </div>
+            <!-- Contact -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Contact</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="/contact" style="color:#9ca3af;text-decoration:none;">Contact Us</a>
+                <a href="/book-demo" style="color:#9ca3af;text-decoration:none;">Book a Demo</a>
+                <a href="/partnerships" style="color:#9ca3af;text-decoration:none;">Partnerships</a>
+              </nav>
+            </div>
+          </div>
+          <div style="border-top:1px solid #333;padding-top:1.5rem;text-align:center;">
+            <p style="color:#6b7280;margin:0;font-size:0.875rem;">© 2024 Staydia Sports. All rights reserved. Made in Ireland 🇮🇪</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- React app mounts here and hides the static fallback -->
     <div id="root"></div>
 
-    <!-- Non-JS fallback: ensures crawlers still see internal links even if prerendering is misconfigured -->
-    <noscript>
-      <header class="staydia-container" style="padding: 2rem 1rem;">
-        <nav aria-label="Primary" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
-          <a href="/" style="color:#DAA520;text-decoration:none;font-weight:700;">Staydia Sports</a>
-          <a href="/solutions" style="color:white;text-decoration:none;">Solutions</a>
-          <a href="/sports" style="color:white;text-decoration:none;">Sports</a>
-          <a href="/for-clubs" style="color:white;text-decoration:none;">For Clubs</a>
-          <a href="/for-leagues" style="color:white;text-decoration:none;">For Leagues</a>
-          <a href="/news" style="color:white;text-decoration:none;">News</a>
-          <a href="/contact" style="color:white;text-decoration:none;">Contact</a>
-        </nav>
-      </header>
-      <main class="staydia-container" style="padding: 0 1rem 2.5rem;">
-        <h1 style="margin:0 0 0.75rem;color:white;">AI-Powered Sports Broadcasting</h1>
-        <p style="margin:0;color:#d1d5db;max-width:60ch;">
-          Staydia Sports helps clubs stream matches with automated camera systems and fan engagement tools.
-        </p>
-      </main>
-    </noscript>
+    <!-- Hide static fallback once React loads -->
+    <script>
+      // Hide static fallback as soon as React root is populated
+      (function() {
+        var fb = document.getElementById('static-fallback');
+        if (!fb) return;
+        // Use MutationObserver to detect when React renders content
+        var root = document.getElementById('root');
+        if (!root) return;
+        var observer = new MutationObserver(function(mutations) {
+          if (root.children.length > 0) {
+            fb.style.display = 'none';
+            observer.disconnect();
+          }
+        });
+        observer.observe(root, { childList: true });
+        // Fallback: hide after 5s even if React hasn't rendered (unlikely)
+        setTimeout(function() { fb.style.display = 'none'; }, 5000);
+      })();
+    </script>
 
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
@@ -157,5 +243,4 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
 
