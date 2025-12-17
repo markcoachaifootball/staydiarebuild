@@ -198,24 +198,45 @@
     <!-- React app mounts here and hides the static fallback -->
     <div id="root"></div>
 
-    <!-- Hide static fallback once React loads -->
+    <!-- Hide static fallback once React content is ready -->
     <script>
-      // Hide static fallback as soon as React root is populated
+      // Hide static fallback - for bots wait for prerenderReady, for users hide on React mount
       (function() {
         var fb = document.getElementById('static-fallback');
         if (!fb) return;
-        // Use MutationObserver to detect when React renders content
         var root = document.getElementById('root');
         if (!root) return;
-        var observer = new MutationObserver(function(mutations) {
-          if (root.children.length > 0) {
-            fb.style.display = 'none';
-            observer.disconnect();
-          }
-        });
-        observer.observe(root, { childList: true });
-        // Fallback: hide after 5s even if React hasn't rendered (unlikely)
-        setTimeout(function() { fb.style.display = 'none'; }, 5000);
+        
+        // Detect if this is a crawler/prerender bot
+        var ua = navigator.userAgent || '';
+        var isBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(ua);
+        
+        function hideFallback() {
+          fb.style.display = 'none';
+        }
+        
+        if (isBot) {
+          // For bots: wait for prerenderReady to ensure all content (including async article data) is loaded
+          var checkReady = setInterval(function() {
+            if (window.prerenderReady === true) {
+              clearInterval(checkReady);
+              hideFallback();
+            }
+          }, 100);
+          // Safety timeout: hide after 15s even if prerenderReady never fires
+          setTimeout(function() { clearInterval(checkReady); hideFallback(); }, 15000);
+        } else {
+          // For regular users: hide as soon as React mounts to avoid flash
+          var observer = new MutationObserver(function() {
+            if (root.children.length > 0) {
+              hideFallback();
+              observer.disconnect();
+            }
+          });
+          observer.observe(root, { childList: true });
+          // Fallback timeout
+          setTimeout(hideFallback, 5000);
+        }
       })();
     </script>
 
