@@ -17,9 +17,11 @@ import {
 import PartnerFAQ from '@/components/PartnerFAQ';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const FAQ = () => {
   useScrollToTop();
+  usePrerenderReady();
 
   const generalFAQs = [
     {

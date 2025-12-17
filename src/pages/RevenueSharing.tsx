@@ -11,10 +11,11 @@ import BenefitsSection from '@/components/revenue-sharing/BenefitsSection';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useMetaTags } from '@/hooks/useMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const RevenueSharing = () => {
   useScrollToTop();
-  
+  usePrerenderReady();
   useMetaTags({
     title: 'Revenue Sharing Model - Zero Cost Sports Broadcasting Solutions',
     description: 'Learn about Staydia Sports\' revolutionary revenue sharing model. Free AI camera installation, automated broadcasting, and shared subscription revenue for clubs.',

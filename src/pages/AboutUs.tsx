@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -6,10 +5,11 @@ import { Globe, TrendingUp, Users } from "lucide-react";
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useMetaTags } from '@/hooks/useMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const AboutUs = () => {
   useScrollToTop();
-  
+  usePrerenderReady();
   useMetaTags({
     title: 'About Staydia Sports - Our Story & Leadership Team',
     description: 'Meet the founders and team behind Staydia Sports. Learn how we\'re democratising sports broadcasting with AI-powered technology for clubs worldwide.',
