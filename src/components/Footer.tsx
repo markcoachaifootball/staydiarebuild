@@ -24,10 +24,13 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-staydia-gold font-bold text-lg mb-6">{t('footer.solutions')}</h3>
             <ul className="space-y-3">
+              <li><Link to="/solutions" className="text-gray-400 hover:text-white transition-colors">Solutions</Link></li>
               <li><Link to="/for-clubs" className="text-gray-400 hover:text-white transition-colors">{t('footer.forClubs')}</Link></li>
+              <li><Link to="/for-leagues" className="text-gray-400 hover:text-white transition-colors">For Leagues</Link></li>
               <li><Link to="/revenue-sharing" className="text-gray-400 hover:text-white transition-colors">{t('footer.revenueSharing')}</Link></li>
               <li><Link to="/sports" className="text-gray-400 hover:text-white transition-colors">Sports We Cover</Link></li>
               <li><Link to="/fan-engagement" className="text-gray-400 hover:text-white transition-colors">Fan Engagement</Link></li>
+              <li><Link to="/technology" className="text-gray-400 hover:text-white transition-colors">Technology</Link></li>
             </ul>
           </div>
           

@@ -357,15 +357,11 @@
           }
         })();
 
-        // Existing behavior: hide fallback - for bots wait for prerenderReady, for users hide on React mount
+        // Keep the static fallback visible for SEO bots.
+        // Reason: many nav links + article hero live in this HTML to guarantee crawlability.
+        // Hiding it after React hydration makes those links disappear in bot renders.
         if (isBot) {
-          var checkReady = setInterval(function() {
-            if (window.prerenderReady === true) {
-              clearInterval(checkReady);
-              hideFallback();
-            }
-          }, 100);
-          setTimeout(function() { clearInterval(checkReady); hideFallback(); }, 15000);
+          // no-op
         } else {
           var observer = new MutationObserver(function() {
             if (root.children.length > 0) {

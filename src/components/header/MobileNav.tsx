@@ -164,6 +164,36 @@ const MobileNav: React.FC = () => {
           
           <div className="border-b border-staydia-lightgray py-2">
             <Link 
+              to="/solutions" 
+              className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Solutions
+            </Link>
+          </div>
+
+          <div className="border-b border-staydia-lightgray py-2">
+            <Link 
+              to="/sports" 
+              className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Sports
+            </Link>
+          </div>
+
+          <div className="border-b border-staydia-lightgray py-2">
+            <Link 
+              to="/technology" 
+              className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Technology
+            </Link>
+          </div>
+
+          <div className="border-b border-staydia-lightgray py-2">
+            <Link 
               to="/about" 
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
@@ -179,6 +209,16 @@ const MobileNav: React.FC = () => {
               onClick={() => setIsOpen(false)}
             >
               Contact Us
+            </Link>
+          </div>
+
+          <div className="border-b border-staydia-lightgray py-2">
+            <Link 
+              to="/book-demo" 
+              className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Book a Demo
             </Link>
           </div>
         </div>
