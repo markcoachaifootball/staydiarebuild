@@ -137,8 +137,50 @@ const partners = [
 
 const PartnersSlider: React.FC = () => {
   const { t } = useTranslation();
-  // Create a duplicate array of partners for seamless continuous flow
-  const duplicatedPartners = [...partners, ...partners];
+  
+  // Split partners into 3 rows
+  const rowSize = Math.ceil(partners.length / 3);
+  const row1 = [...partners.slice(0, rowSize), ...partners.slice(0, rowSize)];
+  const row2 = [...partners.slice(rowSize, rowSize * 2), ...partners.slice(rowSize, rowSize * 2)];
+  const row3 = [...partners.slice(rowSize * 2), ...partners.slice(rowSize * 2)];
+
+  const renderCarousel = (items: typeof partners, delay: number) => (
+    <Carousel 
+      opts={{
+        align: "start",
+        loop: true,
+        dragFree: true,
+        slidesToScroll: 1,
+        duration: 20000
+      }}
+      plugins={[
+        Autoplay({ 
+          delay: delay,
+          stopOnInteraction: false,
+          stopOnMouseEnter: true,
+          playOnInit: true,
+          stopOnFocusIn: false
+        })
+      ]}
+      className="w-full"
+    >
+      <CarouselContent className="py-2">
+        {items.map((partner, index) => (
+          <CarouselItem key={index} className="basis-1/3 md:basis-1/5 lg:basis-1/6 pl-4 flex items-center justify-center">
+            <div className="h-24 w-full flex items-center justify-center p-3 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
+              <img 
+                src={partner.logo} 
+                alt={`${partner.name} logo`} 
+                className="max-h-18 max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
+  );
 
   return (
     <section className="py-12 bg-staydia-black overflow-hidden">
@@ -146,43 +188,10 @@ const PartnersSlider: React.FC = () => {
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">{t('partners.title')}</h2>
         <h3 className="text-lg md:text-xl font-medium text-center mb-6 text-staydia-gold uppercase tracking-wider">{t('partners.subtitle')}</h3>
         
-        <div className="relative w-full">
-          <Carousel 
-            opts={{
-              align: "start",
-              loop: true,
-              dragFree: true,
-              // Optimized for performance - reduced from 20 seconds to prevent forced reflows
-              slidesToScroll: 1,
-              duration: 20000  // Faster movement - 20 seconds per transition
-            }}
-            plugins={[
-              Autoplay({ 
-                delay: 50,  // Faster autoplay
-                stopOnInteraction: false,
-                stopOnMouseEnter: true,  // Better UX and performance
-                playOnInit: true,
-                stopOnFocusIn: false
-              })
-            ]}
-            className="w-full"
-          >
-            <CarouselContent className="py-4">
-              {duplicatedPartners.map((partner, index) => (
-                <CarouselItem key={index} className="md:basis-1/5 lg:basis-1/6 pl-4 flex items-center justify-center">
-                  <div className="h-32 w-full flex items-center justify-center p-4 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
-                    <img 
-                      src={partner.logo} 
-                      alt={`${partner.name} logo`} 
-                      className="max-h-24 max-w-full object-contain"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+        <div className="relative w-full space-y-2">
+          {renderCarousel(row1, 40)}
+          {renderCarousel(row2, 60)}
+          {renderCarousel(row3, 50)}
         </div>
       </div>
     </section>
