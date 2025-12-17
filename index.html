@@ -136,13 +136,28 @@
         </div>
       </header>
 
-      <!-- Static Hero Content -->
+      <!-- Static Hero / News Article Fallback Content -->
       <main class="staydia-container" style="padding:3rem 1rem;">
-        <h1 style="font-size:2.5rem;margin:0 0 1rem;color:#fff;">AI-Powered Sports Broadcasting</h1>
-        <p style="font-size:1.25rem;color:#9ca3af;max-width:60ch;margin:0 0 2rem;">
-          Staydia Sports provides AI-powered broadcasting solutions for sports clubs. Automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model.
-        </p>
-        <a href="/book-demo" style="display:inline-block;background:#DAA520;color:#111;padding:0.75rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:600;">Get Started</a>
+        <!-- Default (homepage) fallback -->
+        <section id="static-home-hero" aria-label="Staydia Sports overview">
+          <h1 style="font-size:2.5rem;margin:0 0 1rem;color:#fff;">AI-Powered Sports Broadcasting</h1>
+          <p style="font-size:1.25rem;color:#9ca3af;max-width:60ch;margin:0 0 2rem;">
+            Staydia Sports provides AI-powered broadcasting solutions for sports clubs. Automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model.
+          </p>
+          <a href="/book-demo" style="display:inline-block;background:#DAA520;color:#111;padding:0.75rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:600;">Get Started</a>
+        </section>
+
+        <!-- News article fallback (bots/prerender) -->
+        <article id="static-news-article" aria-label="News article" style="display:none;">
+          <header style="margin:0 0 1.5rem;">
+            <p style="color:#9ca3af;margin:0 0 0.75rem;font-size:0.95rem;">Staydia Sports News</p>
+            <h1 id="static-news-title" style="font-size:2.25rem;margin:0;color:#fff;">Loading article…</h1>
+          </header>
+          <figure id="static-news-figure" style="margin:0 0 1.5rem;display:none;">
+            <img id="static-news-image" src="" alt="" width="1200" height="630" style="width:100%;height:auto;border-radius:12px;" />
+          </figure>
+          <p id="static-news-summary" style="font-size:1.15rem;color:#d1d5db;max-width:75ch;margin:0;">Fetching the latest article details…</p>
+        </article>
       </main>
 
       <!-- Static Footer -->
@@ -198,35 +213,160 @@
     <!-- React app mounts here and hides the static fallback -->
     <div id="root"></div>
 
-    <!-- Hide static fallback once React content is ready -->
+    <!-- Hide/enrich static fallback once React content is ready -->
     <script>
-      // Hide static fallback - for bots wait for prerenderReady, for users hide on React mount
       (function() {
         var fb = document.getElementById('static-fallback');
         if (!fb) return;
         var root = document.getElementById('root');
         if (!root) return;
-        
-        // Detect if this is a crawler/prerender bot
+
         var ua = navigator.userAgent || '';
         var isBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(ua);
-        
+
         function hideFallback() {
           fb.style.display = 'none';
         }
-        
+
+        // --- Bot-only: enrich /news/:slug fallback with real article title + image ASAP ---
+        (function enrichNewsFallbackForBots() {
+          try {
+            if (!isBot) return;
+            var path = (location && location.pathname) ? location.pathname : '';
+            if (!path || path.indexOf('/news/') !== 0) return;
+
+            var homeHero = document.getElementById('static-home-hero');
+            var articleEl = document.getElementById('static-news-article');
+            var titleEl = document.getElementById('static-news-title');
+            var summaryEl = document.getElementById('static-news-summary');
+            var figEl = document.getElementById('static-news-figure');
+            var imgEl = document.getElementById('static-news-image');
+
+            if (!articleEl || !titleEl || !summaryEl) return;
+
+            // Switch to article mode
+            if (homeHero) homeHero.style.display = 'none';
+            articleEl.style.display = 'block';
+
+            // Extract slug from URL
+            var rawSlug = decodeURIComponent(path.replace(/^\/news\//, '')).replace(/\/+$/, '');
+            var normalizedSlug = rawSlug.toLowerCase();
+
+            // Contentful CDA request (public content only)
+            var SPACE = 'qo4q4xk8vua7';
+            var TOKEN = '9r0ya2DRB2KRdn8Jqr2xQpu8n8mBC56Mz0Dn7Q-1TzU';
+
+            var url =
+              'https://cdn.contentful.com/spaces/' + encodeURIComponent(SPACE) +
+              '/environments/master/entries' +
+              '?access_token=' + encodeURIComponent(TOKEN) +
+              '&content_type=article' +
+              '&limit=1' +
+              '&include=2' +
+              '&fields.slug[in]=' + encodeURIComponent(rawSlug + ',' + normalizedSlug);
+
+            // Safety: ensure prerender doesn't hang forever if React never flips prerenderReady.
+            var done = false;
+            function finishPrerender() {
+              if (done) return;
+              done = true;
+              try {
+                window.prerenderReady = true;
+                document.documentElement.setAttribute('data-prerender-ready', 'true');
+              } catch (e) {}
+            }
+            setTimeout(finishPrerender, 4000);
+
+            fetch(url)
+              .then(function(r) { return r.json(); })
+              .then(function(json) {
+                var item = json && json.items && json.items[0];
+                if (!item || !item.fields) {
+                  summaryEl.textContent = 'Article not found.';
+                  finishPrerender();
+                  return;
+                }
+
+                var title = item.fields.title || rawSlug;
+                var summary = item.fields.summary || 'Read the latest updates from Staydia Sports.';
+
+                titleEl.textContent = title;
+                summaryEl.textContent = summary;
+
+                // Set basic head tags for bots (helps rendered output)
+                try {
+                  document.title = title + ' | Staydia Sports News';
+                  var canonical = document.querySelector('link[rel="canonical"]');
+                  if (canonical) canonical.setAttribute('href', 'https://about.staydiasports.com' + path);
+                  var ogTitle = document.querySelector('meta[property="og:title"]');
+                  if (ogTitle) ogTitle.setAttribute('content', title);
+                  var ogUrl = document.querySelector('meta[property="og:url"]');
+                  if (ogUrl) ogUrl.setAttribute('content', 'https://about.staydiasports.com' + path);
+                  var ogType = document.querySelector('meta[property="og:type"]');
+                  if (ogType) ogType.setAttribute('content', 'article');
+                  var desc = document.querySelector('meta[name="description"]');
+                  if (desc) desc.setAttribute('content', summary);
+                  var ogDesc = document.querySelector('meta[property="og:description"]');
+                  if (ogDesc) ogDesc.setAttribute('content', summary);
+                  var twDesc = document.querySelector('meta[name="twitter:description"]');
+                  if (twDesc) twDesc.setAttribute('content', summary);
+                } catch (e) {}
+
+                // Resolve featured image via includes.Asset
+                var featured = item.fields.featuredImage;
+                var assetId = featured && featured.sys && featured.sys.id;
+                var assets = json && json.includes && json.includes.Asset ? json.includes.Asset : [];
+                var asset = null;
+                if (assetId && assets && assets.length) {
+                  for (var i = 0; i < assets.length; i++) {
+                    if (assets[i] && assets[i].sys && assets[i].sys.id === assetId) {
+                      asset = assets[i];
+                      break;
+                    }
+                  }
+                }
+
+                if (asset && asset.fields && asset.fields.file && asset.fields.file.url && imgEl && figEl) {
+                  var u = asset.fields.file.url;
+                  var imageUrl = (u.indexOf('http') === 0) ? u : (u.indexOf('//') === 0 ? ('https:' + u) : ('https://' + u.replace(/^\/+/, '')));
+                  if (imageUrl.indexOf('images.ctfassets.net') !== -1) {
+                    imageUrl += (imageUrl.indexOf('?') !== -1 ? '&' : '?') + 'fm=jpg&q=85&w=1200&h=630&fit=fill&f=center';
+                  }
+                  imgEl.src = imageUrl;
+                  imgEl.alt = (asset.fields.title || title || 'Staydia Sports news featured image');
+                  figEl.style.display = 'block';
+
+                  try {
+                    var ogImg = document.querySelector('meta[property="og:image"]');
+                    if (ogImg) ogImg.setAttribute('content', imageUrl);
+                    var twImg = document.querySelector('meta[name="twitter:image"]');
+                    if (twImg) twImg.setAttribute('content', imageUrl);
+                    var twAlt = document.querySelector('meta[name="twitter:image:alt"]');
+                    if (twAlt) twAlt.setAttribute('content', imgEl.alt);
+                  } catch (e) {}
+                }
+
+                finishPrerender();
+              })
+              .catch(function() {
+                summaryEl.textContent = 'Unable to load this article right now.';
+                finishPrerender();
+              });
+          } catch (e) {
+            try { window.prerenderReady = true; } catch (x) {}
+          }
+        })();
+
+        // Existing behavior: hide fallback - for bots wait for prerenderReady, for users hide on React mount
         if (isBot) {
-          // For bots: wait for prerenderReady to ensure all content (including async article data) is loaded
           var checkReady = setInterval(function() {
             if (window.prerenderReady === true) {
               clearInterval(checkReady);
               hideFallback();
             }
           }, 100);
-          // Safety timeout: hide after 15s even if prerenderReady never fires
           setTimeout(function() { clearInterval(checkReady); hideFallback(); }, 15000);
         } else {
-          // For regular users: hide as soon as React mounts to avoid flash
           var observer = new MutationObserver(function() {
             if (root.children.length > 0) {
               hideFallback();
@@ -234,7 +374,6 @@
             }
           });
           observer.observe(root, { childList: true });
-          // Fallback timeout
           setTimeout(hideFallback, 5000);
         }
       })();
