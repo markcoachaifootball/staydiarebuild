@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -18,10 +17,11 @@ import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useMetaTags } from '@/hooks/useMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { Link } from 'react-router-dom';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const Sports = () => {
   useScrollToTop();
-  
+  usePrerenderReady(); // Signal prerender ready for static content
   useMetaTags({
     title: 'Sports Broadcasting Solutions - Football, Basketball, Rugby & Hockey',
     description: 'Discover AI-powered broadcasting solutions for football, basketball, rugby, and hockey clubs. Automated cameras, live streaming, and fan engagement tools.',

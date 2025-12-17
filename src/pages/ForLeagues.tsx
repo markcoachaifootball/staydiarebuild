@@ -16,10 +16,11 @@ import WhyChooseSection from '@/components/sports/WhyChooseSection';
 import StepsTimelineSection from '@/components/sports/StepsTimelineSection';
 import CallToActionSection from '@/components/sports/CallToActionSection';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const ForLeagues: React.FC = () => {
   useScrollToTop();
-  
+  usePrerenderReady(); // Signal prerender ready for static content
   const features = [
     {
       icon: <Globe className="h-8 w-8 text-staydia-gold" />,

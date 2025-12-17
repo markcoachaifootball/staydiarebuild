@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,9 +12,11 @@ import SupportedSports from '@/components/clubs/SupportedSports';
 import ConsultationCTA from '@/components/clubs/ConsultationCTA';
 import PartnersSlider from '@/components/PartnersSlider';
 import PartnershipFAQ from '@/components/PartnershipFAQ';
+import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
 const ForClubs = () => {
   useScrollToTop();
+  usePrerenderReady(); // Signal prerender ready for static content
   
   useMetaTags({
     title: 'For Sports Clubs - AI Broadcasting Solutions with Zero Upfront Costs',
