@@ -17,12 +17,17 @@ export const usePrerenderReady = (isReady: boolean = true) => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    // If the HTML fallback is actively enriching content (e.g., /news/:slug for bots),
+    // do NOT flip prerenderReady early or Netlify will snapshot before the content is injected.
+    const w = window as any;
+    if (w.__PRERENDER_LOCK__) return;
+
     if (isReady) {
       // Use requestAnimationFrame to ensure DOM has been painted before signaling ready
       // This ensures prerender captures the actual rendered content, not stale DOM
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          (window as any).prerenderReady = true;
+          w.prerenderReady = true;
 
           // Helpful marker for debugging: should appear in prerendered HTML snapshots.
           try {

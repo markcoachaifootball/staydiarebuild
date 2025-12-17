@@ -248,6 +248,10 @@
             if (homeHero) homeHero.style.display = 'none';
             articleEl.style.display = 'block';
 
+            // IMPORTANT: prevent React from flipping window.prerenderReady early.
+            // Netlify Prerender captures a snapshot as soon as prerenderReady becomes true.
+            // We lock it here and unlock in finishPrerender() after we inject title + image.
+            try { window.__PRERENDER_LOCK__ = true; } catch (e) {}
             // Extract slug from URL
             var rawSlug = decodeURIComponent(path.replace(/^\/news\//, '')).replace(/\/+$/, '');
             var normalizedSlug = rawSlug.toLowerCase();
@@ -270,6 +274,7 @@
             function finishPrerender() {
               if (done) return;
               done = true;
+              try { window.__PRERENDER_LOCK__ = false; } catch (e) {}
               try {
                 window.prerenderReady = true;
                 document.documentElement.setAttribute('data-prerender-ready', 'true');
