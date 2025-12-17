@@ -10,19 +10,24 @@
     <meta name="keywords" content="AI-powered sports broadcasting, sports club broadcasting, fan engagement, sports streaming, club revenue, football broadcasting, basketball broadcasting, rugby broadcasting, hockey broadcasting" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://about.staydiasports.com/" />
-    
+
+    <!-- Prerender signal for Netlify Prerender Extension (must be set BEFORE React loads) -->
+    <script>
+      window.prerenderReady = false;
+    </script>
+
     <!-- Resource Hints for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.contentful.com">
-    <link rel="preconnect" href="https://cdn.chatsimple.ai">
-    <link rel="dns-prefetch" href="https://cdn.gpteng.co">
-    <link rel="dns-prefetch" href="https://staydia.com">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.contentful.com" />
+    <link rel="preconnect" href="https://cdn.chatsimple.ai" />
+    <link rel="dns-prefetch" href="https://cdn.gpteng.co" />
+    <link rel="dns-prefetch" href="https://staydia.com" />
+
     <!-- Favicon -->
-    <link rel="icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" type="image/png" sizes="48x48">
-    <link rel="apple-touch-icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png">
+    <link rel="icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -49,34 +54,31 @@
     <meta name="google-site-verification" content="google43906e706d08592d" />
     <meta name="theme-color" content="#000000" />
     <meta name="msapplication-TileColor" content="#000000" />
-    
+
     <!-- JSON-LD Structured Data for Organization (critical for prerendering/AI crawlers) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Staydia Sports",
-      "url": "https://about.staydiasports.com",
-      "logo": "https://about.staydiasports.com/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png",
-      "description": "AI-powered sports broadcasting platform enabling zero-cost live streaming and content creation for sports clubs worldwide.",
-      "sameAs": [
-        "https://twitter.com/staydiasports",
-        "https://www.linkedin.com/company/staydia"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "url": "https://about.staydiasports.com/contact"
-      },
-      "potentialAction": {
-        "@type": "ViewAction",
-        "target": "https://about.staydiasports.com/book-demo",
-        "name": "Book a Demo"
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Staydia Sports",
+        "url": "https://about.staydiasports.com",
+        "logo": "https://about.staydiasports.com/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png",
+        "description": "AI-powered sports broadcasting platform enabling zero-cost live streaming and content creation for sports clubs worldwide.",
+        "sameAs": ["https://twitter.com/staydiasports", "https://www.linkedin.com/company/staydia"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "url": "https://about.staydiasports.com/contact"
+        },
+        "potentialAction": {
+          "@type": "ViewAction",
+          "target": "https://about.staydiasports.com/book-demo",
+          "name": "Book a Demo"
+        }
       }
-    }
     </script>
     <meta name="application-name" content="Staydia Sports" />
-    
+
     <!-- Critical CSS for above-the-fold content -->
     <style>
       body {
@@ -102,15 +104,12 @@
         }
       }
     </style>
-    
+
     <!-- Performance Optimizations -->
     <link rel="modulepreload" href="/src/main.tsx" />
-  
   </head>
 
   <body>
-    <!-- Prerender signal for Netlify Prerender Extension -->
-    <script>window.prerenderReady = false;</script>
     <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
@@ -119,7 +118,10 @@
       (function () {
         try {
           var ua = navigator.userAgent || '';
-          var isSeoBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(ua);
+          var isSeoBot =
+            /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(
+              ua
+            );
           if (isSeoBot) return;
           var s = document.createElement('script');
           s.src = 'https://cdn.chatsimple.ai/ai-loader.js';
@@ -133,3 +135,4 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+

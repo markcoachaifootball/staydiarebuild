@@ -108,6 +108,40 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
     // Try common content types for articles
     const commonContentTypes = ['article', 'blogPost', 'post', 'news'];
 
+    // Prerender mode: run content-type queries in parallel to avoid Netlify Prerender timeouts.
+    if (isPrerender) {
+      const settled = await Promise.allSettled(
+        commonContentTypes.map(async (type) => {
+          const response = await client.getEntries({
+            content_type: type,
+            'fields.slug[in]': `${normalizedSlug},${slug}`,
+            limit: 1,
+            include: 2,
+          });
+          return { type, response };
+        })
+      );
+
+      for (const res of settled) {
+        if (res.status !== 'fulfilled') continue;
+        if (res.value.response.items.length === 0) continue;
+
+        const article = res.value.response.items[0] as unknown as NewsArticle;
+        console.log(`✅ Found article with slug ${normalizedSlug} in content type ${res.value.type}`);
+
+        if (article.fields?.title && (!article.fields.slug || article.fields.slug !== normalizedSlug)) {
+          article.fields.slug = normalizedSlug;
+        }
+
+        // In prerender mode we avoid extra asset round-trips.
+        return article;
+      }
+
+      console.log(`❌ Article with slug ${slug} not found in any content type (prerender)`);
+      return getExampleArticleBySlug(slug);
+    }
+
+    // Normal mode: sequential fallback + title-match fallback (kept for compatibility)
     for (const type of commonContentTypes) {
       try {
         console.log(`Trying to fetch ${normalizedSlug} from content type: ${type}`);
@@ -116,7 +150,7 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           content_type: type,
           'fields.slug[in]': `${normalizedSlug},${slug}`,
           limit: 1,
-          include: isPrerender ? 1 : 0,
+          include: 0,
         });
 
         if (response.items.length > 0) {
@@ -128,7 +162,6 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
             article.fields.slug = normalizedSlug;
           }
 
-          // Avoid extra asset round-trip for prerender bots (include already inlined if available).
           if (!isPrerender && (article as any).fields?.featuredImage?.sys?.id) {
             try {
               const imageAsset = await client.getAsset((article as any).fields.featuredImage.sys.id);
@@ -141,38 +174,35 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
           return article;
         }
 
-        // Title-match fallback is helpful for humans but can be slow; skip for prerender to avoid timeouts.
-        if (!isPrerender) {
-          console.log(`No slug match, trying to match by title for ${type}`);
-          const titleResponse = await client.getEntries({
-            content_type: type,
-            limit: 100,
-            include: 0,
-          });
+        console.log(`No slug match, trying to match by title for ${type}`);
+        const titleResponse = await client.getEntries({
+          content_type: type,
+          limit: 100,
+          include: 0,
+        });
 
-          const matchedArticle = titleResponse.items.find((item: any) => {
-            if (item.fields?.title) {
-              const generatedSlug = generateSlug(item.fields.title);
-              return generatedSlug === normalizedSlug;
-            }
-            return false;
-          });
-
-          if (matchedArticle) {
-            const article = matchedArticle as unknown as NewsArticle;
-            (article as any).fields.slug = normalizedSlug;
-
-            if ((article as any).fields?.featuredImage?.sys?.id) {
-              try {
-                const imageAsset = await client.getAsset((article as any).fields.featuredImage.sys.id);
-                (article as any).fields.featuredImage = imageAsset as any;
-              } catch (imgError) {
-                console.log('Could not fetch image asset separately:', imgError);
-              }
-            }
-
-            return article;
+        const matchedArticle = titleResponse.items.find((item: any) => {
+          if (item.fields?.title) {
+            const generatedSlug = generateSlug(item.fields.title);
+            return generatedSlug === normalizedSlug;
           }
+          return false;
+        });
+
+        if (matchedArticle) {
+          const article = matchedArticle as unknown as NewsArticle;
+          (article as any).fields.slug = normalizedSlug;
+
+          if ((article as any).fields?.featuredImage?.sys?.id) {
+            try {
+              const imageAsset = await client.getAsset((article as any).fields.featuredImage.sys.id);
+              (article as any).fields.featuredImage = imageAsset as any;
+            } catch (imgError) {
+              console.log('Could not fetch image asset separately:', imgError);
+            }
+          }
+
+          return article;
         }
       } catch (err) {
         console.log(`Error fetching from content type ${type}:`, err);
@@ -187,3 +217,4 @@ export async function fetchArticleBySlug(slug: string, preview: boolean = false)
     return getExampleArticleBySlug(slug);
   }
 }
+
