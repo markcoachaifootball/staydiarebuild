@@ -37,14 +37,19 @@ interface ContentfulResponse {
 }
 
 async function fetchArticleFromContentful(slug: string): Promise<{ title: string; summary: string; imageUrl: string; date?: string; author?: string; category?: string } | null> {
-  const normalizedSlug = slug.toLowerCase();
+  // Try multiple slug variations for flexible matching
+  const slugVariations = [
+    slug,
+    slug.toLowerCase(),
+    slug.replace(/-/g, ' '),
+    slug.toLowerCase().replace(/-/g, ' '),
+  ];
   
   const url = new URL(`https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE}/environments/master/entries`);
   url.searchParams.set("access_token", CONTENTFUL_TOKEN);
   url.searchParams.set("content_type", "article");
-  url.searchParams.set("limit", "1");
+  url.searchParams.set("limit", "10");
   url.searchParams.set("include", "2");
-  url.searchParams.set("fields.slug[in]", `${slug},${normalizedSlug}`);
   url.searchParams.set("select", "fields.title,fields.summary,fields.slug,fields.featuredImage,fields.date,fields.category,fields.authur");
 
   try {
@@ -58,9 +63,15 @@ async function fetchArticleFromContentful(slug: string): Promise<{ title: string
     }
 
     const data: ContentfulResponse = await response.json();
-    const article = data.items?.[0];
+    
+    // Find article with matching slug (case-insensitive)
+    const article = data.items?.find(item => {
+      const articleSlug = item.fields?.slug?.toLowerCase();
+      return slugVariations.some(v => v.toLowerCase() === articleSlug);
+    });
 
     if (!article?.fields) {
+      console.log("No article found for slug:", slug);
       return null;
     }
 
