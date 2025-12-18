@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" ref={videoRef}>
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-staydia-black via-staydia-black/95 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-staydia-black/80 via-staydia-black/50 to-transparent z-10"></div>
         <div className="w-full h-full">
           {isVideoVisible ? (
             <video
@@ -56,14 +56,14 @@ const Hero: React.FC = () => {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover opacity-70"
+              className="w-full h-full object-cover opacity-90"
               poster="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
             >
               <source src="/videos/hero-background.mp4" type="video/mp4" />
               <img
                 src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
                 alt={t('hero.title')}
-                className="w-full h-full object-cover opacity-70"
+                className="w-full h-full object-cover opacity-90"
                 loading="lazy"
                 decoding="async"
                 width="1920"
