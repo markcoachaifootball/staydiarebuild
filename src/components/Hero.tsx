@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
               className="w-full h-full object-cover opacity-50"
               poster="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
             >
-              <source src="https://staydia.com/videos/hero-background.mp4" type="video/mp4" />
+              <source src="/videos/hero-background.mp4" type="video/mp4" />
               <img
                 src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
                 alt={t('hero.title')}
