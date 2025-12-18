@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" ref={videoRef}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-staydia-black via-staydia-black/90 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 w-full md:w-3/4 lg:w-2/3 h-full">
+        <div className="absolute right-0 top-0 w-full h-full md:w-2/3 lg:w-1/2 md:translate-x-[10%]">
           {isVideoVisible ? (
             <video
               autoPlay
