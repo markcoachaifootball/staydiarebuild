@@ -29,10 +29,10 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[140px] bg-transparent border-staydia-lightgray text-white">
-        <div className="flex items-center gap-2">
-          <Globe className="h-4 w-4" />
-          <SelectValue placeholder={currentLanguage.flag + ' ' + currentLanguage.name.split(' ')[0]} />
+      <SelectTrigger className="w-[70px] h-9 bg-transparent border-staydia-lightgray text-white text-sm px-2">
+        <div className="flex items-center gap-1.5">
+          <Globe className="h-3.5 w-3.5" />
+          <SelectValue placeholder={currentLanguage.code.toUpperCase()} />
         </div>
       </SelectTrigger>
       <SelectContent className="bg-staydia-black border-staydia-lightgray">
