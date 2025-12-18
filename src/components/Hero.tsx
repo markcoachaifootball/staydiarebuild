@@ -56,14 +56,14 @@ const Hero: React.FC = () => {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover opacity-50"
+              className="w-full h-full object-cover opacity-70"
               poster="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
             >
               <source src="/videos/hero-background.mp4" type="video/mp4" />
               <img
                 src="/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png"
                 alt={t('hero.title')}
-                className="w-full h-full object-cover opacity-50"
+                className="w-full h-full object-cover opacity-70"
                 loading="lazy"
                 decoding="async"
                 width="1920"
