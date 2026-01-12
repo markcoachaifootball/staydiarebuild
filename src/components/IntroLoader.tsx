@@ -7,6 +7,11 @@ interface IntroLoaderProps {
 
 const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  
+  // Remove the loading class immediately on mount to prevent flash
+  useEffect(() => {
+    document.documentElement.classList.remove('intro-loading');
+  }, []);
   const [showLogo, setShowLogo] = useState(false);
   
   const words = [
