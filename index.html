@@ -16,6 +16,24 @@
       window.prerenderReady = false;
     </script>
 
+    <!-- Prevent static-fallback flash for real users (keep it for bots/prerender) -->
+    <style>
+      html.no-static-fallback #static-fallback {
+        display: none !important;
+      }
+    </style>
+    <script>
+      (function () {
+        try {
+          var ua = navigator.userAgent || '';
+          var isBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(
+            ua
+          );
+          if (!isBot) document.documentElement.classList.add('no-static-fallback');
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Resource Hints for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
