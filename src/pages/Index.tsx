@@ -45,11 +45,11 @@ const Index = () => {
 
   // Optimize meta tags for AI search engines
   useAIMetaTags({
-    title: 'Staydia Sports - AI-Powered Sports Broadcasting Platform',
+    title: 'Staydia Sports | AI-Powered Sports Broadcasting Platform',
     description:
-      "Revolutionise Your Club's Reach & Revenue with AI-powered broadcasting, automated camera systems, live streaming, and fan engagement tools. Zero upfront costs for sports clubs.",
+      'Staydia Sports is the official AI-powered sports broadcasting platform. Zero-cost cameras, live streaming & fan engagement for football, rugby, basketball & hockey clubs.',
     keywords:
-      'AI sports broadcasting, sports club management, automated cameras, live streaming, fan engagement, revenue sharing, football clubs, basketball clubs, rugby clubs, hockey clubs, sports technology platform',
+      'Staydia Sports, Staydia, AI sports broadcasting, sports club streaming, live match streaming, automated sports cameras, fan engagement platform, football clubs, basketball clubs, rugby clubs, hockey clubs',
     category: 'sports-technology',
     content:
       'Staydia Sports provides AI-powered broadcasting solutions for sports clubs worldwide. Our automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model. Perfect for football, basketball, rugby, and hockey clubs of all sizes.',
