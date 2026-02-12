@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Globe } from 'lucide-react';
+import { markManualLanguageSelection } from '@/i18n/geoLanguageDetector';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -20,6 +21,7 @@ const LanguageSwitcher: React.FC = () => {
   const { i18n, t } = useTranslation();
 
   const handleLanguageChange = (languageCode: string) => {
+    markManualLanguageSelection();
     i18n.changeLanguage(languageCode);
     // Update HTML lang attribute for SEO
     document.documentElement.lang = languageCode;
