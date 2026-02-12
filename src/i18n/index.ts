@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import geoLanguageDetector from './geoLanguageDetector';
 
 // Import translation files
 import enTranslations from './locales/en.json';
@@ -23,8 +24,11 @@ const resources = {
   },
 };
 
+const languageDetector = new LanguageDetector();
+languageDetector.addDetector(geoLanguageDetector);
+
 i18n
-  .use(LanguageDetector)
+  .use(languageDetector)
   .use(initReactI18next)
   .init({
     resources,
@@ -36,7 +40,7 @@ i18n
     },
     
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'geoLocation', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
     },
   });
