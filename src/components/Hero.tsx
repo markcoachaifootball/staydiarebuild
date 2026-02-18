@@ -86,13 +86,13 @@ const Hero: React.FC = () => {
       <div className="staydia-container relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-            <span className="text-white">AI-Automated Sports </span>
-            <span className="text-white animate-pulse">Camera</span>
+            <span className="text-white">{t('hero.heading1')} </span>
+            <span className="text-white animate-pulse">{t('hero.heading2')}</span>
             <br />
-            <span className="text-staydia-gold">& Streaming</span>
+            <span className="text-staydia-gold">{t('hero.heading3')}</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Revolutionise Your Club's Reach & Revenue: AI-Automated Sports Camera & Streaming, Zero Cost
+            {t('hero.subheading')}
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -100,19 +100,19 @@ const Hero: React.FC = () => {
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
                 <Camera className="h-5 w-5 text-staydia-gold" />
               </div>
-              <p className="text-gray-300">Zero Cost AI-Camera</p>
+              <p className="text-gray-300">{t('hero.bullet1')}</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
                 <Activity className="h-5 w-5 text-staydia-gold" />
               </div>
-              <p className="text-gray-300">Unlimited Automated Coverage</p>
+              <p className="text-gray-300">{t('hero.bullet2')}</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-staydia-gold/20 rounded-full flex items-center justify-center">
                 <Users className="h-5 w-5 text-staydia-gold" />
               </div>
-              <p className="text-gray-300">Revenue Generation Model</p>
+              <p className="text-gray-300">{t('hero.bullet3')}</p>
             </div>
           </div>
           
@@ -128,7 +128,7 @@ const Hero: React.FC = () => {
               className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 text-lg h-14 px-8"
               onClick={() => window.open('https://staydiasports.com', '_blank')}
             >
-              Watch Events
+              {t('hero.watchEvents')}
             </Button>
           </div>
         </div>
