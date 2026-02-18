@@ -20,29 +20,29 @@ const Navigation: React.FC = () => {
     <nav className="hidden md:flex items-center">
       <div className="flex items-center space-x-8">
         <Link to="/solutions" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          Solutions
+          {t('nav.solutions')}
         </Link>
         <Link to="/sports" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          Sports
+          {t('nav.sports')}
         </Link>
         <Link to="/for-clubs" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          For Clubs
+          {t('nav.forClubs')}
         </Link>
         <Link to="/for-leagues" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          For Leagues
+          {t('nav.forLeagues')}
         </Link>
         <Link to="/technology" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          Technology
+          {t('nav.technology')}
         </Link>
         <Link to="/news" className="text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base">
-          News
+          {t('nav.news')}
         </Link>
 
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">
-                Resources
+                {t('nav.resources')}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="w-[320px] max-h-[calc(100vh-5rem)] overflow-y-auto">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
@@ -57,7 +57,7 @@ const Navigation: React.FC = () => {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent text-gray-300 hover:text-staydia-gold transition-colors font-medium text-base px-0 py-1">
-                Community
+                {t('nav.community')}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="w-[320px] max-h-[calc(100vh-5rem)] overflow-y-auto">
                 <ul className="grid gap-2 p-4 bg-staydia-black border border-staydia-lightgray">
@@ -87,7 +87,7 @@ const Navigation: React.FC = () => {
                           <span className="text-staydia-black font-bold">F</span>
                         </div>
                         <div>
-                          <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">Fan Engagement</h4>
+                          <h4 className="text-sm font-medium text-white group-hover:text-staydia-gold">{t('nav.fanEngagement')}</h4>
                           <p className="text-xs text-gray-400">Connect with your fans</p>
                         </div>
                       </Link>

@@ -14,7 +14,10 @@
     "community": "Community",
     "bookDemo": "Book Demo",
     "getStarted": "Get Started",
-    "login": "Login"
+    "login": "Login",
+    "technology": "Technology",
+    "resources": "Resources",
+    "fanEngagement": "Fan Engagement"
   },
   "hero": {
     "title": "Can't make the game? Stay connected with Staydia Sports",

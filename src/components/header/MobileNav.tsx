@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { socialLinks } from './SocialLinks';
 import { resourceLinks } from './ResourceLinks';
@@ -21,6 +22,7 @@ import {
 import { ScrollArea } from '../ui/scroll-area';
 
 const MobileNav: React.FC = () => {
+  const { t } = useTranslation();
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [resourcesOpen, setResourcesOpen] = React.useState(false);
@@ -86,7 +88,7 @@ const MobileNav: React.FC = () => {
           >
             <CollapsibleTrigger asChild>
               <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
-                <span>Resources</span>
+                <span>{t('nav.resources')}</span>
                 <ChevronDown size={20} className={`transition-transform duration-200 ${resourcesOpen ? "transform rotate-180" : ""}`} />
               </button>
             </CollapsibleTrigger>
@@ -121,7 +123,7 @@ const MobileNav: React.FC = () => {
           >
             <CollapsibleTrigger asChild>
               <button className="flex items-center justify-between w-full text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors">
-                <span>Community</span>
+                <span>{t('nav.community')}</span>
                 <ChevronDown size={20} className={`transition-transform duration-200 ${communityOpen ? "transform rotate-180" : ""}`} />
               </button>
             </CollapsibleTrigger>
@@ -133,7 +135,7 @@ const MobileNav: React.FC = () => {
                     className="block text-gray-300 hover:text-staydia-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    Newsroom
+                    {t('nav.news')}
                   </Link>
                 </li>
                 <li>
@@ -142,7 +144,7 @@ const MobileNav: React.FC = () => {
                     className="block text-gray-300 hover:text-staydia-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    Fan Engagement
+                    {t('nav.fanEngagement')}
                   </Link>
                 </li>
                 {socialLinks.map((social, index) => (
@@ -168,7 +170,7 @@ const MobileNav: React.FC = () => {
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Solutions
+              {t('nav.solutions')}
             </Link>
           </div>
 
@@ -178,7 +180,7 @@ const MobileNav: React.FC = () => {
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Sports
+              {t('nav.sports')}
             </Link>
           </div>
 
@@ -188,7 +190,7 @@ const MobileNav: React.FC = () => {
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Technology
+              {t('nav.technology')}
             </Link>
           </div>
 
@@ -198,7 +200,7 @@ const MobileNav: React.FC = () => {
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              About Us
+              {t('nav.about')}
             </Link>
           </div>
           
@@ -208,7 +210,7 @@ const MobileNav: React.FC = () => {
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Contact Us
+              {t('nav.contact')}
             </Link>
           </div>
 
@@ -218,7 +220,7 @@ const MobileNav: React.FC = () => {
               className="block text-xl font-medium text-white py-3 hover:text-staydia-gold transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Book a Demo
+              {t('nav.bookDemo')}
             </Link>
           </div>
         </div>
@@ -229,7 +231,7 @@ const MobileNav: React.FC = () => {
           className="w-full py-6 bg-staydia-gold text-black hover:bg-opacity-90 text-lg"
           onClick={handleGetStarted}
         >
-          GET STARTED
+          {t('nav.getStarted').toUpperCase()}
         </Button>
       </div>
     </div>
