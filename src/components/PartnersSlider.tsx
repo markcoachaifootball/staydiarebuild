@@ -132,6 +132,30 @@ const partners = [
   {
     name: "Belfast Harlequins Hockey Club",
     logo: "/lovable-uploads/belfast-harlequins-hockey.jpg"
+  },
+  {
+    name: "Peamount United",
+    logo: "/lovable-uploads/peamount-utd.webp"
+  },
+  {
+    name: "Quorn Football Club",
+    logo: "/lovable-uploads/quorn-fc.webp"
+  },
+  {
+    name: "Raphoe Town F.C.",
+    logo: "/lovable-uploads/raphoe-town-fc.webp"
+  },
+  {
+    name: "Berkhamsted F.C.",
+    logo: "/lovable-uploads/berkhamsted-fc.webp"
+  },
+  {
+    name: "St. Mary's AFC Cork",
+    logo: "/lovable-uploads/st-marys-afc-cork.webp"
+  },
+  {
+    name: "Ringmahon Rangers F.C.",
+    logo: "/lovable-uploads/ringmahon-rangers-fc.webp"
   }
 ];
 
