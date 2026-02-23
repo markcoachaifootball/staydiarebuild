@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 const partners = [
   {
     name: "RTB Ebbw Vale FC",
-    logo: "/lovable-uploads/f7bd9d48-c789-440e-8797-22d31896ac18.png"
+    logo: "/lovable-uploads/f7bd9d48-c789-440e-8797-22d31896ac18.png",
   },
   {
     name: "Lucan United",
@@ -135,7 +135,8 @@ const partners = [
   },
   {
     name: "Peamount United",
-    logo: "/lovable-uploads/peamount-utd.webp"
+    logo: "/lovable-uploads/peamount-utd.webp",
+    large: true
   },
   {
     name: "Quorn Football Club",
@@ -191,11 +192,11 @@ const PartnersSlider: React.FC = () => {
       <CarouselContent className="py-2">
         {items.map((partner, index) => (
           <CarouselItem key={index} className="basis-1/3 md:basis-1/5 lg:basis-1/6 pl-4 flex items-center justify-center">
-            <div className="h-20 w-full flex items-center justify-center p-2 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all">
+            <div className={`${partner.large ? 'h-28' : 'h-20'} w-full flex items-center justify-center p-2 bg-white/5 rounded-lg border border-staydia-lightgray hover:border-staydia-gold transition-all`}>
               <img 
                 src={partner.logo} 
                 alt={`${partner.name} logo`} 
-                className="h-14 w-auto object-contain"
+                className={`${partner.large ? 'h-24' : 'h-14'} w-auto object-contain`}
                 loading="lazy"
                 decoding="async"
               />
