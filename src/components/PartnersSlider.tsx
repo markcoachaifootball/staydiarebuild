@@ -135,7 +135,7 @@ const partners = [
   },
   {
     name: "Peamount United",
-    logo: "/lovable-uploads/peamount-utd.webp"
+    logo: "/lovable-uploads/peamount-utd.png"
   },
   {
     name: "Quorn Football Club",
