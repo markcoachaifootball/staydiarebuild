@@ -2,8 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Linkedin, Youtube, Facebook, Instagram, Twitter } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Community: React.FC = () => {
+  const { t } = useTranslation();
+
   const socialLinks = [
     { name: "Instagram", icon: <Instagram className="h-6 w-6" />, url: "https://www.instagram.com/staydiasports/" },
     { name: "Twitter", icon: <Twitter className="h-6 w-6" />, url: "https://x.com/staydiasports?s=21&t=Vfehwxe3dkb4DvSbxUA3Vg" },
@@ -16,10 +19,8 @@ const Community: React.FC = () => {
     <section id="community" className="py-24">
       <div className="staydia-container">
         <div className="text-center mb-16">
-          <h2 className="section-title">Join Our Community</h2>
-          <p className="section-subtitle">
-            Connect with sports fans and stay updated on the latest news, features, and exclusive content.
-          </p>
+          <h2 className="section-title">{t('community.title')}</h2>
+          <p className="section-subtitle">{t('community.subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -43,7 +44,7 @@ const Community: React.FC = () => {
         
         <div className="mt-12 text-center">
           <Link to="/community" className="inline-block px-8 py-3 bg-staydia-gold text-staydia-black rounded-full font-medium hover:bg-opacity-90 transition-colors">
-            Visit our Community Page
+            {t('community.visitPage')}
           </Link>
         </div>
       </div>
