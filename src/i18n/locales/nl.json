@@ -114,5 +114,68 @@
     "previous": "Vorige",
     "search": "Zoeken",
     "language": "Taal"
+  },
+  "solutions": {
+    "title": "Sport Streaming Revolutioneren met AI",
+    "description": "Staydia Sports brengt professionele uitzendkwaliteit naar clubs en competities van alle niveaus – moeiteloos en zonder kosten.",
+    "smartCamera": "AI-gestuurd Smart Camerasysteem – Volledig geautomatiseerde, vaste camera's die elke wedstrijd vastleggen zonder cameraman.",
+    "livestreaming": "Hoogwaardig Livestreaming Platform – Stream wedstrijden live of on-demand naar fans overal.",
+    "clubBranded": "Op Maat Gemaakte Club-Ervaring – De kleuren, logo's en identiteit van je club staan centraal voor fans.",
+    "revenueGeneration": "Omzetgeneratie – Creëer nieuwe inkomstenbronnen via fan-abonnementen en in-stream sponsoring.",
+    "highlights": "Highlights & Tactisch Knippen – Tactische en highlight clips gemaakt met een gebruiksvriendelijk tool.",
+    "socialMedia": "Naadloze Social Media Integratie – Maak en deel direct videocontent via de kanalen van je club.",
+    "tagline": "Staydia Sports: Waar technologie de groei van je club aandrijft.",
+    "bookDemo": "Demo Boeken",
+    "seeHowItWorks": "Bekijk Hoe Het Werkt",
+    "noCameraman": "Geen cameraman nodig",
+    "forClubs": "Voor Clubs",
+    "forLeagues": "Voor Competities",
+    "forClubsList": {
+      "item1": "Geautomatiseerd productiesysteem",
+      "item2": "Hoogwaardig streaming platform",
+      "item3": "Fan engagement tools",
+      "item4": "Omzetgeneratie opties"
+    },
+    "forLeaguesList": {
+      "item1": "AI-geautomatiseerde camera's geïnstalleerd bij elke club in je competitie",
+      "item2": "Complete wedstrijdbibliotheek over alle competitieniveaus",
+      "item3": "Automatische opnametechnologie zonder handmatige interventie",
+      "item4": "Verbeterde betrokkenheid in je hele competitie-ecosysteem"
+    },
+    "readyToTransform": "Klaar om je competitie te transformeren?",
+    "readyToTransformDesc": "Plan een consultatie om te ontdekken hoe Staydia elke wedstrijd in je hele competitie automatisch kan vastleggen.",
+    "bookLeagueConsultation": "Competitie Consultatie Boeken",
+    "requestEnterpriseDemo": "Enterprise Demo Aanvragen",
+    "enterpriseTitle": "Enterprise Uitzendkwaliteit",
+    "enterpriseDesc": "Onze professionele camerasystemen en streaming platform zijn ontworpen voor sportorganisaties die betrouwbaarheid, kwaliteit en schaalbaarheid eisen.",
+    "enterpriseList": {
+      "item1": "Geautomatiseerd multi-camera productiesysteem",
+      "item2": "Uitzendkwaliteit live streaming mogelijkheden",
+      "item3": "Aanpasbare gebrandde kijkervaring",
+      "item4": "Geavanceerde analyses en engagement metrics",
+      "item5": "Tactisch clipping tool",
+      "item6": "Clipping tool voor social media highlights"
+    }
+  },
+  "howItWorks": {
+    "title": "Implementatieproces",
+    "subtitle": "Een gestroomlijnde aanpak om de uitzendmogelijkheden van je organisatie te verbeteren.",
+    "step1Title": "Consultatie",
+    "step1Desc": "Ontmoet ons team om de specifieke uitzendbehoeften van je organisatie te bespreken.",
+    "step2Title": "Partner Worden",
+    "step2Desc": "Competitiebrede invoering van onze AI-camera's of club voor club.",
+    "step3Title": "Installatie",
+    "step3Desc": "Ons technisch team verzorgt de volledige installatie en integratie van onze AI-camera's voor clubs.",
+    "step4Title": "Ondersteuning",
+    "step4Desc": "Doorlopende toegewijde ondersteuning en onderhoud voor optimale prestaties.",
+    "videoTitle": "Aan de slag met Staydia Sports",
+    "ctaTitle": "Klaar om je sportuitzendingen te verbeteren?",
+    "ctaDesc": "Sluit je aan bij toonaangevende sportorganisaties die al gebruik maken van Staydia Sports innovatieve AI-oplossingen.",
+    "bookDemo": "Demo Boeken"
+  },
+  "community": {
+    "title": "Word Lid van Onze Gemeenschap",
+    "subtitle": "Verbind je met sportfans en blijf op de hoogte van het laatste nieuws, functies en exclusieve content.",
+    "visitPage": "Bezoek onze Community Pagina"
   }
 }

@@ -114,5 +114,68 @@
     "previous": "Zurück",
     "search": "Suchen",
     "language": "Sprache"
+  },
+  "solutions": {
+    "title": "Sport-Streaming mit KI revolutionieren",
+    "description": "Staydia Sports bringt professionelle Übertragungsqualität für Vereine und Ligen aller Ebenen – mühelos und kostenlos.",
+    "smartCamera": "KI-gesteuertes Smart-Kamerasystem – Vollautomatisierte, fest installierte Kameras, die jedes Spiel ohne Kameramann aufzeichnen.",
+    "livestreaming": "Hochwertige Livestreaming-Plattform – Übertragen Sie Spiele live oder auf Abruf an Fans überall.",
+    "clubBranded": "Individuelles Club-Branding – Die Farben, Logos und Identität Ihres Vereins stehen für Fans im Mittelpunkt.",
+    "revenueGeneration": "Umsatzgenerierung – Schaffen Sie neue Einnahmequellen durch Fan-Abonnements und In-Stream-Sponsoring-Möglichkeiten.",
+    "highlights": "Highlights & Taktisches Clipping – Taktik- und Highlight-Clips einfach mit unserem Tool erstellt.",
+    "socialMedia": "Nahtlose Social-Media-Integration – Erstellen und teilen Sie sofort Videoinhalte über die Kanäle Ihres Vereins.",
+    "tagline": "Staydia Sports: Wo Technologie das Wachstum Ihres Vereins antreibt.",
+    "bookDemo": "Demo Buchen",
+    "seeHowItWorks": "So Funktioniert Es",
+    "noCameraman": "Kein Kameramann nötig",
+    "forClubs": "Für Vereine",
+    "forLeagues": "Für Ligen",
+    "forClubsList": {
+      "item1": "Automatisiertes Produktionssystem",
+      "item2": "Hochwertige Streaming-Plattform",
+      "item3": "Fan-Engagement-Tools",
+      "item4": "Umsatzgenerierungsoptionen"
+    },
+    "forLeaguesList": {
+      "item1": "KI-automatisierte Kameras in jedem Verein Ihrer Liga installiert",
+      "item2": "Komplette Spielbibliothek über alle Wettbewerbsebenen",
+      "item3": "Automatische Aufnahmetechnologie ohne manuellen Eingriff",
+      "item4": "Verbessertes Engagement in Ihrem gesamten Liga-Ökosystem"
+    },
+    "readyToTransform": "Bereit, Ihre Liga zu transformieren?",
+    "readyToTransformDesc": "Vereinbaren Sie eine Beratung, um zu erfahren, wie Staydia jedes Spiel in Ihrer gesamten Liga automatisch erfassen kann.",
+    "bookLeagueConsultation": "Liga-Beratung Buchen",
+    "requestEnterpriseDemo": "Enterprise-Demo Anfordern",
+    "enterpriseTitle": "Enterprise-Übertragung",
+    "enterpriseDesc": "Unsere professionellen Kamerasysteme und Streaming-Plattform sind für Sportorganisationen konzipiert, die Zuverlässigkeit, Qualität und Skalierbarkeit fordern.",
+    "enterpriseList": {
+      "item1": "Automatisiertes Multi-Kamera-Produktionssystem",
+      "item2": "Sendequalität Live-Streaming-Fähigkeiten",
+      "item3": "Anpassbares gebrandetes Seherlebnis",
+      "item4": "Erweiterte Analysen und Engagement-Metriken",
+      "item5": "Taktisches Clipping-Tool",
+      "item6": "Clipping-Tool für Social-Media-Highlights"
+    }
+  },
+  "howItWorks": {
+    "title": "Implementierungsprozess",
+    "subtitle": "Ein optimierter Ansatz zur Verbesserung der Übertragungsfähigkeiten Ihrer Organisation.",
+    "step1Title": "Beratung",
+    "step1Desc": "Treffen Sie sich mit unserem Team, um die spezifischen Übertragungsbedürfnisse Ihrer Organisation zu besprechen.",
+    "step2Title": "Partnerschaft",
+    "step2Desc": "Ligaweite Einführung unserer KI-Kameras oder Verein für Verein.",
+    "step3Title": "Installation",
+    "step3Desc": "Unser technisches Team übernimmt die komplette Einrichtung und Integration unserer KI-Kameras für Vereine.",
+    "step4Title": "Support",
+    "step4Desc": "Laufende engagierte Unterstützung und Wartung zur Sicherstellung optimaler Leistung.",
+    "videoTitle": "Einrichtung mit Staydia Sports",
+    "ctaTitle": "Bereit, Ihre Sportübertragung zu verbessern?",
+    "ctaDesc": "Schließen Sie sich führenden Sportorganisationen an, die bereits Staydia Sports innovative KI-Lösungen nutzen.",
+    "bookDemo": "Demo Buchen"
+  },
+  "community": {
+    "title": "Treten Sie Unserer Gemeinschaft Bei",
+    "subtitle": "Verbinden Sie sich mit Sportfans und bleiben Sie über die neuesten Nachrichten, Funktionen und exklusiven Inhalte auf dem Laufenden.",
+    "visitPage": "Unsere Community-Seite Besuchen"
   }
 }

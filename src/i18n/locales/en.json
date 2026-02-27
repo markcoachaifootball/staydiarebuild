@@ -114,5 +114,68 @@
     "previous": "Previous",
     "search": "Search",
     "language": "Language"
+  },
+  "solutions": {
+    "title": "Revolutionising Sports Streaming with AI",
+    "description": "Staydia Sports brings professional-quality broadcasting to clubs and leagues of all levels—effortlessly and at no cost.",
+    "smartCamera": "AI-Powered Smart Camera System – Fully automated, fixed cameras that capture every game without a cameraman.",
+    "livestreaming": "High-Quality Livestreaming Platform – Stream matches live or on-demand to fans anywhere.",
+    "clubBranded": "Custom Club-Branded Experience – Your club's colors, logos, and identity front and center for fans.",
+    "revenueGeneration": "Revenue Generation – Create new income streams through fan subscriptions and in-stream sponsorship opportunities.",
+    "highlights": "Highlights & Tactical Clipping – Tactical & highlight clips created with easy to use tool.",
+    "socialMedia": "Seamless Social Media Integration – Instantly create and share video content across your club's channels.",
+    "tagline": "Staydia Sports: Where technology powers your club's growth.",
+    "bookDemo": "Book a Demo",
+    "seeHowItWorks": "See How It Works",
+    "noCameraman": "No cameraman needed",
+    "forClubs": "For Clubs",
+    "forLeagues": "For Leagues",
+    "forClubsList": {
+      "item1": "Automated production system",
+      "item2": "High-quality streaming platform",
+      "item3": "Fan engagement tools",
+      "item4": "Revenue generation options"
+    },
+    "forLeaguesList": {
+      "item1": "AI-automated cameras installed at every club across your league",
+      "item2": "Complete match library across all competition levels",
+      "item3": "Automatic capture technology with zero manual intervention",
+      "item4": "Enhanced engagement across your entire league ecosystem"
+    },
+    "readyToTransform": "Ready to transform your league?",
+    "readyToTransformDesc": "Schedule a consultation to learn how Staydia can help capture every match across your entire league automatically.",
+    "bookLeagueConsultation": "Book a League Consultation",
+    "requestEnterpriseDemo": "Request Enterprise Demo",
+    "enterpriseTitle": "Enterprise-Grade Broadcasting",
+    "enterpriseDesc": "Our professional camera systems and streaming platform are designed for sports organizations that demand reliability, quality, and scalability.",
+    "enterpriseList": {
+      "item1": "Automated multi-camera production system",
+      "item2": "Broadcast-quality live streaming capabilities",
+      "item3": "Customizable branded viewing experience",
+      "item4": "Advanced analytics and engagement metrics",
+      "item5": "Clipping tactical tool",
+      "item6": "Clipping tool for Social media Highlights"
+    }
+  },
+  "howItWorks": {
+    "title": "Implementation Process",
+    "subtitle": "A streamlined approach to elevating your organisation's broadcasting capabilities.",
+    "step1Title": "Consultation",
+    "step1Desc": "Meet with our team to discuss your organisation's specific broadcasting needs.",
+    "step2Title": "Partner With Us",
+    "step2Desc": "League wide adoption of our AI cameras or club by club.",
+    "step3Title": "Installation",
+    "step3Desc": "Our technical team handles the complete setup and integration of our AI cameras for clubs.",
+    "step4Title": "Support",
+    "step4Desc": "Ongoing dedicated support and maintenance to ensure optimal performance.",
+    "videoTitle": "Getting setup with Staydia Sports",
+    "ctaTitle": "Ready to elevate your sports broadcasting?",
+    "ctaDesc": "Join leading sports organisations already leveraging Staydia Sports Innovative AI solutions.",
+    "bookDemo": "Book Demo"
+  },
+  "community": {
+    "title": "Join Our Community",
+    "subtitle": "Connect with sports fans and stay updated on the latest news, features, and exclusive content.",
+    "visitPage": "Visit our Community Page"
   }
 }

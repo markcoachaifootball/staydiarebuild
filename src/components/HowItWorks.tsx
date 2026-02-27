@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Check, Play } from "lucide-react";
 import DemoForm from './DemoForm';
 import { Button } from "@/components/ui/button";
+import { useTranslation } from 'react-i18next';
 import {
   Dialog,
   DialogContent,
@@ -13,38 +14,21 @@ import {
 
 const HowItWorks: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { t } = useTranslation();
 
   const steps = [
-    {
-      number: "01",
-      title: "Consultation",
-      description: "Meet with our team to discuss your organisation's specific broadcasting needs."
-    },
-    {
-      number: "02",
-      title: "Partner With Us",
-      description: "League wide adoption of our AI cameras or club by club."
-    },
-    {
-      number: "03",
-      title: "Installation",
-      description: "Our technical team handles the complete setup and integration of our AI cameras for clubs."
-    },
-    {
-      number: "04",
-      title: "Support",
-      description: "Ongoing dedicated support and maintenance to ensure optimal performance."
-    }
+    { number: "01", title: t('howItWorks.step1Title'), description: t('howItWorks.step1Desc') },
+    { number: "02", title: t('howItWorks.step2Title'), description: t('howItWorks.step2Desc') },
+    { number: "03", title: t('howItWorks.step3Title'), description: t('howItWorks.step3Desc') },
+    { number: "04", title: t('howItWorks.step4Title'), description: t('howItWorks.step4Desc') }
   ];
 
   return (
     <section id="how-it-works" className="py-24 bg-staydia-darkgray">
       <div className="staydia-container">
         <div className="text-center mb-16">
-          <h2 className="section-title">Implementation Process</h2>
-          <p className="section-subtitle">
-            A streamlined approach to elevating your organisation's broadcasting capabilities.
-          </p>
+          <h2 className="section-title">{t('howItWorks.title')}</h2>
+          <p className="section-subtitle">{t('howItWorks.subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -67,13 +51,13 @@ const HowItWorks: React.FC = () => {
         <div className="mt-16 pt-16 border-t border-staydia-lightgray">
           <h3 className="text-2xl font-semibold text-staydia-gold mb-6 inline-flex items-center">
             <Play className="mr-2 h-5 w-5" />
-            Getting setup with Staydia Sports
+            {t('howItWorks.videoTitle')}
           </h3>
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl border border-staydia-lightgray">
             <iframe 
               className="absolute inset-0 w-full h-full"
               src="https://www.youtube.com/embed/AANBHlCBxPo?autoplay=1&mute=1" 
-              title="Getting setup with Staydia Sports"
+              title={t('howItWorks.videoTitle')}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen
             ></iframe>
@@ -81,17 +65,15 @@ const HowItWorks: React.FC = () => {
         </div>
         
         <div className="mt-20 bg-black/50 border border-staydia-lightgray p-8 md:p-12 rounded-xl text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-6">Ready to elevate your sports broadcasting?</h3>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join leading sports organisations already leveraging Staydia Sports Innovative AI solutions.
-          </p>
+          <h3 className="text-2xl md:text-3xl font-bold mb-6">{t('howItWorks.ctaTitle')}</h3>
+          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">{t('howItWorks.ctaDesc')}</p>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90">Book Demo</Button>
+              <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90">{t('howItWorks.bookDemo')}</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px]">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+                <DialogTitle className="text-2xl font-bold mb-4">{t('howItWorks.bookDemo')}</DialogTitle>
               </DialogHeader>
               <DemoForm />
             </DialogContent>

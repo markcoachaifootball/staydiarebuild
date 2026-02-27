@@ -114,5 +114,68 @@
     "previous": "Précédent",
     "search": "Rechercher",
     "language": "Langue"
+  },
+  "solutions": {
+    "title": "Révolutionner le Streaming Sportif avec l'IA",
+    "description": "Staydia Sports apporte une diffusion de qualité professionnelle aux clubs et ligues de tous niveaux – sans effort et sans coût.",
+    "smartCamera": "Système de Caméra Intelligente IA – Caméras fixes entièrement automatisées qui capturent chaque match sans caméraman.",
+    "livestreaming": "Plateforme de Livestreaming Haute Qualité – Diffusez les matchs en direct ou à la demande aux fans partout.",
+    "clubBranded": "Expérience Club Personnalisée – Les couleurs, logos et l'identité de votre club au premier plan pour les fans.",
+    "revenueGeneration": "Génération de Revenus – Créez de nouvelles sources de revenus grâce aux abonnements fans et aux opportunités de sponsoring.",
+    "highlights": "Highlights & Découpage Tactique – Clips tactiques et highlights créés avec un outil facile à utiliser.",
+    "socialMedia": "Intégration Réseaux Sociaux – Créez et partagez instantanément du contenu vidéo sur les chaînes de votre club.",
+    "tagline": "Staydia Sports : Là où la technologie propulse la croissance de votre club.",
+    "bookDemo": "Réserver une Démo",
+    "seeHowItWorks": "Voir Comment Ça Marche",
+    "noCameraman": "Pas besoin de caméraman",
+    "forClubs": "Pour les Clubs",
+    "forLeagues": "Pour les Ligues",
+    "forClubsList": {
+      "item1": "Système de production automatisé",
+      "item2": "Plateforme de streaming haute qualité",
+      "item3": "Outils d'engagement des fans",
+      "item4": "Options de génération de revenus"
+    },
+    "forLeaguesList": {
+      "item1": "Caméras IA automatisées installées dans chaque club de votre ligue",
+      "item2": "Bibliothèque complète de matchs à tous les niveaux de compétition",
+      "item3": "Technologie de capture automatique sans intervention manuelle",
+      "item4": "Engagement amélioré dans tout l'écosystème de votre ligue"
+    },
+    "readyToTransform": "Prêt à transformer votre ligue ?",
+    "readyToTransformDesc": "Planifiez une consultation pour découvrir comment Staydia peut capturer automatiquement chaque match dans toute votre ligue.",
+    "bookLeagueConsultation": "Réserver une Consultation Ligue",
+    "requestEnterpriseDemo": "Demander une Démo Enterprise",
+    "enterpriseTitle": "Diffusion de Niveau Enterprise",
+    "enterpriseDesc": "Nos systèmes de caméras professionnels et notre plateforme de streaming sont conçus pour les organisations sportives exigeant fiabilité, qualité et évolutivité.",
+    "enterpriseList": {
+      "item1": "Système de production multi-caméras automatisé",
+      "item2": "Capacités de streaming en direct de qualité diffusion",
+      "item3": "Expérience de visionnage personnalisable",
+      "item4": "Analyses avancées et métriques d'engagement",
+      "item5": "Outil de découpage tactique",
+      "item6": "Outil de découpage pour highlights réseaux sociaux"
+    }
+  },
+  "howItWorks": {
+    "title": "Processus de Mise en Œuvre",
+    "subtitle": "Une approche rationalisée pour améliorer les capacités de diffusion de votre organisation.",
+    "step1Title": "Consultation",
+    "step1Desc": "Rencontrez notre équipe pour discuter des besoins spécifiques de diffusion de votre organisation.",
+    "step2Title": "Partenariat",
+    "step2Desc": "Adoption à l'échelle de la ligue de nos caméras IA ou club par club.",
+    "step3Title": "Installation",
+    "step3Desc": "Notre équipe technique gère la configuration complète et l'intégration de nos caméras IA pour les clubs.",
+    "step4Title": "Support",
+    "step4Desc": "Support dédié continu et maintenance pour assurer des performances optimales.",
+    "videoTitle": "Configuration avec Staydia Sports",
+    "ctaTitle": "Prêt à améliorer votre diffusion sportive ?",
+    "ctaDesc": "Rejoignez les organisations sportives leaders qui utilisent déjà les solutions IA innovantes de Staydia Sports.",
+    "bookDemo": "Réserver une Démo"
+  },
+  "community": {
+    "title": "Rejoignez Notre Communauté",
+    "subtitle": "Connectez-vous avec les fans de sport et restez informé des dernières nouvelles, fonctionnalités et contenus exclusifs.",
+    "visitPage": "Visiter notre Page Communauté"
   }
 }
