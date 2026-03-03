@@ -1,9 +1,33 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Document, Page, pdfjs } from 'react-pdf';
 import { Button } from "@/components/ui/button";
-import { Download, ArrowLeft, FileText } from "lucide-react";
+import { Download, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const TermsAndConditionsEUROv2German = () => {
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [pageWidth, setPageWidth] = useState<number>(600);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const updateWidth = () => {
+      if (window.innerWidth < 640) setPageWidth(window.innerWidth - 32);
+      else if (window.innerWidth < 1024) setPageWidth(600);
+      else setPageWidth(800);
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -11,27 +35,46 @@ const TermsAndConditionsEUROv2German = () => {
         <Button variant="ghost" onClick={() => navigate(-1)} className="mb-4 md:mb-6">
           <ArrowLeft className="mr-2 h-4 w-4" /> Zurück
         </Button>
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Allgemeine Geschäftsbedingungen (EUR) – V2 (Deutsch)
-          </h1>
-          <div className="bg-card rounded-lg shadow-lg p-8 md:p-12 flex flex-col items-center gap-6">
-            <FileText className="h-16 w-16 text-muted-foreground" />
-            <p className="text-muted-foreground text-lg">
-              Klicken Sie auf die Schaltfläche unten, um die Allgemeinen Geschäftsbedingungen herunterzuladen.
-            </p>
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <a
-                href="/documents/terms-and-conditions-euro-v2-german.docx"
-                download="Staydia-AGB-EUR-v2-Deutsch.docx"
-              >
-                <Download className="mr-2 h-5 w-5" /> Dokument herunterladen
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 md:mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+              Allgemeine Geschäftsbedingungen (EUR) – V2 (Deutsch)
+            </h1>
+            <Button asChild className="w-full sm:w-auto">
+              <a href="/documents/terms-and-conditions-euro-v2-german.pdf" download="Staydia-AGB-EUR-v2-Deutsch.pdf">
+                <Download className="mr-2 h-4 w-4" /> PDF herunterladen
               </a>
             </Button>
           </div>
-          <p className="text-xs sm:text-sm text-muted-foreground mt-4">
-            Zuletzt aktualisiert: März 3, 2026
-          </p>
+          <div className="bg-card rounded-lg shadow-lg overflow-hidden p-4 md:p-6">
+            <Document
+              file="/documents/terms-and-conditions-euro-v2-german.pdf"
+              onLoadSuccess={onDocumentLoadSuccess}
+              loading={<div className="flex items-center justify-center h-[400px]"><p className="text-muted-foreground">PDF wird geladen...</p></div>}
+              error={
+                <div className="flex flex-col items-center justify-center h-[400px] gap-4">
+                  <p className="text-destructive">PDF konnte nicht geladen werden</p>
+                  <Button asChild><a href="/documents/terms-and-conditions-euro-v2-german.pdf" download>PDF herunterladen</a></Button>
+                </div>
+              }
+            >
+              <div className="flex justify-center">
+                <Page pageNumber={pageNumber} width={pageWidth} renderTextLayer={false} renderAnnotationLayer={false} />
+              </div>
+            </Document>
+            {numPages > 0 && (
+              <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t">
+                <Button variant="outline" size="sm" onClick={() => setPageNumber(p => Math.max(p - 1, 1))} disabled={pageNumber <= 1}>
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <span className="text-sm text-foreground font-medium">Seite {pageNumber} von {numPages}</span>
+                <Button variant="outline" size="sm" onClick={() => setPageNumber(p => Math.min(p + 1, numPages))} disabled={pageNumber >= numPages}>
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">Zuletzt aktualisiert: 3. März 2026</p>
         </div>
       </div>
     </div>
