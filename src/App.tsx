@@ -33,6 +33,7 @@ import TermsAndConditionsGBP from './pages/TermsAndConditionsGBP';
 import TermsAndConditionsEURO from './pages/TermsAndConditionsEURO';
 import TermsAndConditionsGBPv2 from './pages/TermsAndConditionsGBPv2';
 import TermsAndConditionsEUROv2 from './pages/TermsAndConditionsEUROv2';
+import TermsAndConditionsEUROv2German from './pages/TermsAndConditionsEUROv2German';
 import { isSeoBotUserAgent } from '@/utils/isSeoBot';
 
 function App() {
@@ -104,6 +105,7 @@ function App() {
         <Route path="/termsandconditionseurov1" element={<TermsAndConditionsEURO />} />
         <Route path="/termsandconditionsgbpv2" element={<TermsAndConditionsGBPv2 />} />
         <Route path="/termsandconditionseurov2" element={<TermsAndConditionsEUROv2 />} />
+        <Route path="/termsandconditionseurov2de" element={<TermsAndConditionsEUROv2German />} />
         <Route path="/auth" element={<Auth />} />
         <Route
           path="/contracts"
