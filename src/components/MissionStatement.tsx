@@ -7,7 +7,7 @@ const MissionStatement: React.FC = () => {
         <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-200">
           Grassroots and amateur sport produce millions of important moments, but most of them are{' '}
           <span className="text-staydia-gold font-semibold">never seen</span>,{' '}
-          <span className="text-staydia-gold font-semibold">never monetized</span>, and{' '}
+          <span className="text-staydia-gold font-semibold">never monetised</span>, and{' '}
           <span className="text-staydia-gold font-semibold">never remembered</span> beyond the touchline.
         </p>
         <p className="mt-6 text-lg md:text-xl lg:text-2xl leading-relaxed text-white font-medium">
