@@ -69,6 +69,7 @@ const Index = () => {
       >
         <Header />
         <Hero />
+        <MissionStatement />
         <NewsCarousel />
         <PartnersSlider />
         <Features />
