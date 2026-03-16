@@ -29,7 +29,7 @@ const WhatsAppButton = ({ expanded = false }: WhatsAppButtonProps) => {
   
   if (expanded) {
     return (
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-24 right-6 z-50">
         {/* Pulse animation ring */}
         <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-25"></div>
         
@@ -47,7 +47,7 @@ const WhatsAppButton = ({ expanded = false }: WhatsAppButtonProps) => {
   }
   
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-24 right-6 z-50">
       {/* Pulse animation ring */}
       <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-25"></div>
       
