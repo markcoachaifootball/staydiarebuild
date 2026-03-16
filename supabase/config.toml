@@ -3,3 +3,6 @@ project_id = "xisvzchvmcqeqtkxoecr"
 # Allow public access to generate-sitemap function (no JWT required)
 [functions.generate-sitemap]
 verify_jwt = false
+
+[functions.ai-chat]
+verify_jwt = false
