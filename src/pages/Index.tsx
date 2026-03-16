@@ -24,8 +24,6 @@ const Index = () => {
   const isSeoBot = isSeoBotUserAgent();
   const [showIntro, setShowIntro] = useState(() => !isSeoBot);
   const [isReadyForPrerender, setIsReadyForPrerender] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
-  const [chatInitialQuery, setChatInitialQuery] = useState<string | undefined>();
 
   useScrollToTop();
 
