@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Index from './pages/Index';
 import Sports from './pages/Sports';
@@ -34,10 +34,17 @@ import TermsAndConditionsEURO from './pages/TermsAndConditionsEURO';
 import TermsAndConditionsGBPv2 from './pages/TermsAndConditionsGBPv2';
 import TermsAndConditionsEUROv2 from './pages/TermsAndConditionsEUROv2';
 import TermsAndConditionsEUROv2German from './pages/TermsAndConditionsEUROv2German';
-import { isSeoBotUserAgent } from '@/utils/isSeoBot';
-import { AIChat } from './components/AIChat';
+import { AIStickySearchBar, AIChatPanel } from './components/AIChat';
 
 function App() {
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatInitialQuery, setChatInitialQuery] = useState<string | undefined>();
+
+  const handleOpenChat = (query?: string) => {
+    setChatInitialQuery(query);
+    setChatOpen(true);
+  };
+
   return (
     <Router>
       <Routes>
@@ -66,43 +73,16 @@ function App() {
         <Route path="/termsandconditionseurov2" element={<TermsAndConditionsEUROv2 />} />
         <Route path="/termsandconditionseurov2de" element={<TermsAndConditionsEUROv2German />} />
         <Route path="/auth" element={<Auth />} />
-        <Route
-          path="/contracts"
-          element={
-            <ProtectedRoute>
-              <Contracts />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/contracts/templates"
-          element={
-            <ProtectedRoute>
-              <ContractTemplates />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/contracts/new"
-          element={
-            <ProtectedRoute>
-              <NewContract />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/contracts/:id"
-          element={
-            <ProtectedRoute>
-              <ContractView />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/contracts" element={<ProtectedRoute><Contracts /></ProtectedRoute>} />
+        <Route path="/contracts/templates" element={<ProtectedRoute><ContractTemplates /></ProtectedRoute>} />
+        <Route path="/contracts/new" element={<ProtectedRoute><NewContract /></ProtectedRoute>} />
+        <Route path="/contracts/:id" element={<ProtectedRoute><ContractView /></ProtectedRoute>} />
         <Route path="/sign/:token" element={<SignContract />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
-      <AIChat />
+      {!chatOpen && <AIStickySearchBar onOpen={handleOpenChat} />}
+      <AIChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} initialQuery={chatInitialQuery} />
     </Router>
   );
 }

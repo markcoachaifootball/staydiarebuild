@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Send, X, Bot, User, Search, Sparkles } from 'lucide-react';
+import { Send, X, Bot, User, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Textarea } from './ui/textarea';
@@ -14,9 +14,12 @@ interface Message {
 
 const generateSessionId = () => crypto.randomUUID();
 
-// The search bar component to embed in Hero or anywhere
-export const AISearchBar = ({ onOpen }: { onOpen: (query?: string) => void }) => {
+// Fixed bottom search bar with dismiss
+export const AIStickySearchBar = ({ onOpen }: { onOpen: (query?: string) => void }) => {
   const [query, setQuery] = useState('');
+  const [dismissed, setDismissed] = useState(false);
+
+  if (dismissed) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,24 +32,33 @@ export const AISearchBar = ({ onOpen }: { onOpen: (query?: string) => void }) =>
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto mt-8">
-      <div className="relative flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 hover:bg-white/15 transition-colors focus-within:border-staydia-gold/50 focus-within:bg-white/15">
-        <Sparkles className="h-5 w-5 text-staydia-gold mr-3 flex-shrink-0" />
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask our AI Assistant anything about Staydia..."
-          className="flex-1 bg-transparent text-white placeholder:text-gray-400 text-base outline-none"
-        />
-        <button
-          type="submit"
-          className="ml-3 h-9 w-9 rounded-full bg-staydia-gold flex items-center justify-center hover:bg-staydia-gold/90 transition-colors flex-shrink-0"
-        >
-          <Send className="h-4 w-4 text-staydia-black" />
-        </button>
-      </div>
-    </form>
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 bg-gradient-to-t from-black/90 via-black/70 to-transparent pointer-events-none">
+      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto pointer-events-auto">
+        <div className="relative flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-4 py-2.5 hover:bg-white/15 transition-colors focus-within:border-staydia-gold/50 focus-within:bg-white/15 shadow-2xl">
+          <Sparkles className="h-5 w-5 text-staydia-gold mr-3 flex-shrink-0" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ask our AI Assistant..."
+            className="flex-1 bg-transparent text-white placeholder:text-gray-400 text-sm outline-none"
+          />
+          <button
+            type="submit"
+            className="ml-2 h-8 w-8 rounded-full bg-staydia-gold flex items-center justify-center hover:bg-staydia-gold/90 transition-colors flex-shrink-0"
+          >
+            <Send className="h-3.5 w-3.5 text-staydia-black" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setDismissed(true)}
+            className="ml-2 h-8 w-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors flex-shrink-0"
+          >
+            <X className="h-3.5 w-3.5 text-gray-400" />
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
@@ -74,7 +86,6 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
     }
   }, [messages]);
 
-  // Auto-send initial query when panel opens with a query
   useEffect(() => {
     if (isOpen && initialQuery && !initialQueryProcessed.current) {
       initialQueryProcessed.current = true;
@@ -86,61 +97,36 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
 
       streamChat(newMessages)
         .then(() => {
-          setMessages(prev => {
-            saveConversation(prev);
-            return prev;
-          });
+          setMessages(prev => { saveConversation(prev); return prev; });
         })
         .catch(() => {
-          setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: 'I apologize, but I encountered an error. Please try again.'
-          }]);
+          setMessages(prev => [...prev, { role: 'assistant', content: 'I apologize, but I encountered an error. Please try again.' }]);
         })
         .finally(() => setIsLoading(false));
     }
   }, [isOpen, initialQuery]);
 
-  // Reset when closed
   useEffect(() => {
-    if (!isOpen) {
-      initialQueryProcessed.current = false;
-    }
+    if (!isOpen) initialQueryProcessed.current = false;
   }, [isOpen]);
 
   const saveConversation = useCallback(async (msgs: Message[]) => {
     try {
-      const { error } = await supabase
-        .from('chat_conversations' as any)
-        .upsert({
-          session_id: sessionIdRef.current,
-          messages: msgs,
-          updated_at: new Date().toISOString(),
-        } as any, { onConflict: 'session_id' } as any);
-      if (error) console.error('Save conversation error:', error);
-    } catch (e) {
-      console.error('Save conversation error:', e);
-    }
+      await supabase.from('chat_conversations' as any).upsert({
+        session_id: sessionIdRef.current, messages: msgs, updated_at: new Date().toISOString(),
+      } as any, { onConflict: 'session_id' } as any);
+    } catch (e) { console.error('Save conversation error:', e); }
   }, []);
 
   const emailConversation = useCallback(async (msgs: Message[]) => {
     if (!hasUserMessaged.current) return;
     try {
-      const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/email-chat-conversation`;
-      await fetch(CHAT_URL, {
+      await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/email-chat-conversation`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
-          messages: msgs,
-          sessionId: sessionIdRef.current,
-        }),
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
+        body: JSON.stringify({ messages: msgs, sessionId: sessionIdRef.current }),
       });
-    } catch (e) {
-      console.error('Email conversation error:', e);
-    }
+    } catch (e) { console.error('Email conversation error:', e); }
   }, []);
 
   const handleClose = useCallback(() => {
@@ -149,14 +135,9 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
   }, [messages, emailConversation, onClose]);
 
   const streamChat = async (messages: Message[]) => {
-    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`;
-    
-    const response = await fetch(CHAT_URL, {
+    const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-      },
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
       body: JSON.stringify({ messages }),
     });
 
@@ -168,72 +149,36 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
-    let textBuffer = "";
-    let streamDone = false;
-    let assistantContent = "";
+    let textBuffer = "", streamDone = false, assistantContent = "";
 
     setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
 
     while (!streamDone) {
       const { done, value } = await reader.read();
       if (done) break;
-      
       textBuffer += decoder.decode(value, { stream: true });
 
       let newlineIndex: number;
       while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
         let line = textBuffer.slice(0, newlineIndex);
         textBuffer = textBuffer.slice(newlineIndex + 1);
-
         if (line.endsWith("\r")) line = line.slice(0, -1);
-        if (line.startsWith(":") || line.trim() === "") continue;
-        if (!line.startsWith("data: ")) continue;
-
+        if (line.startsWith(":") || line.trim() === "" || !line.startsWith("data: ")) continue;
         const jsonStr = line.slice(6).trim();
         if (jsonStr === "[DONE]") { streamDone = true; break; }
-
         try {
-          const parsed = JSON.parse(jsonStr);
-          const content = parsed.choices?.[0]?.delta?.content;
+          const content = JSON.parse(jsonStr).choices?.[0]?.delta?.content;
           if (content) {
             assistantContent += content;
-            setMessages(prev => {
-              const newMessages = [...prev];
-              newMessages[newMessages.length - 1] = { role: 'assistant', content: assistantContent };
-              return newMessages;
-            });
+            setMessages(prev => { const n = [...prev]; n[n.length - 1] = { role: 'assistant', content: assistantContent }; return n; });
           }
-        } catch {
-          textBuffer = line + "\n" + textBuffer;
-          break;
-        }
-      }
-    }
-
-    if (textBuffer.trim()) {
-      for (const line of textBuffer.split("\n")) {
-        if (!line.trim() || line.startsWith(":") || !line.startsWith("data: ")) continue;
-        const jsonStr = line.slice(6).trim();
-        if (jsonStr === "[DONE]") continue;
-        try {
-          const parsed = JSON.parse(jsonStr);
-          const content = parsed.choices?.[0]?.delta?.content;
-          if (content) {
-            assistantContent += content;
-            setMessages(prev => {
-              const newMessages = [...prev];
-              newMessages[newMessages.length - 1] = { role: 'assistant', content: assistantContent };
-              return newMessages;
-            });
-          }
-        } catch { /* ignore */ }
+        } catch { textBuffer = line + "\n" + textBuffer; break; }
       }
     }
   };
 
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
-
     const userMessage: Message = { role: 'user', content: input };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
@@ -243,26 +188,14 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
 
     try {
       await streamChat(newMessages);
-      setMessages(prev => {
-        saveConversation(prev);
-        return prev;
-      });
-    } catch (error) {
-      console.error('Chat error:', error);
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: 'I apologize, but I encountered an error. Please try again or contact our support team.'
-      }]);
-    } finally {
-      setIsLoading(false);
-    }
+      setMessages(prev => { saveConversation(prev); return prev; });
+    } catch {
+      setMessages(prev => [...prev, { role: 'assistant', content: 'I apologize, but I encountered an error. Please try again.' }]);
+    } finally { setIsLoading(false); }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   };
 
   if (!isOpen) return null;
@@ -271,49 +204,29 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <Card className="w-full max-w-lg h-[600px] shadow-2xl border-border bg-background">
         <CardContent className="p-0 h-full flex flex-col">
-          {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-lg">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5" />
               <span className="font-semibold">Staydia AI Assistant</span>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleClose}
-              className="text-primary-foreground hover:bg-primary-foreground/20"
-            >
+            <Button variant="ghost" size="sm" onClick={handleClose} className="text-primary-foreground hover:bg-primary-foreground/20">
               <X className="h-4 w-4" />
             </Button>
           </div>
 
-          {/* Messages */}
           <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
             <div className="space-y-4">
               {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
+                <div key={index} className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   {message.role === 'assistant' && (
                     <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                       <Bot className="h-4 w-4 text-primary-foreground" />
                     </div>
                   )}
-                  <div
-                    className={`max-w-[80%] rounded-lg p-3 text-sm ${
-                      message.role === 'user'
-                        ? 'bg-primary text-primary-foreground ml-auto'
-                        : 'bg-muted text-muted-foreground'
-                    }`}
-                  >
+                  <div className={`max-w-[80%] rounded-lg p-3 text-sm ${message.role === 'user' ? 'bg-primary text-primary-foreground ml-auto' : 'bg-muted text-muted-foreground'}`}>
                     {message.role === 'assistant' ? (
-                      <div className="prose prose-sm prose-invert max-w-none">
-                        <ReactMarkdown>{message.content}</ReactMarkdown>
-                      </div>
-                    ) : (
-                      message.content
-                    )}
+                      <div className="prose prose-sm prose-invert max-w-none"><ReactMarkdown>{message.content}</ReactMarkdown></div>
+                    ) : message.content}
                   </div>
                   {message.role === 'user' && (
                     <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
@@ -339,25 +252,10 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
             </div>
           </ScrollArea>
 
-          {/* Input */}
           <div className="p-4 border-t border-border">
             <div className="flex gap-2">
-              <Textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask me about Staydia Sports..."
-                className="resize-none min-h-[44px]"
-                disabled={isLoading}
-              />
-              <Button
-                onClick={sendMessage}
-                disabled={!input.trim() || isLoading}
-                size="sm"
-                className="px-3"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
+              <Textarea value={input} onChange={(e) => setInput(e.target.value)} onKeyPress={handleKeyPress} placeholder="Ask me about Staydia Sports..." className="resize-none min-h-[44px]" disabled={isLoading} />
+              <Button onClick={sendMessage} disabled={!input.trim() || isLoading} size="sm" className="px-3"><Send className="h-4 w-4" /></Button>
             </div>
           </div>
         </CardContent>
@@ -366,7 +264,5 @@ export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean
   );
 };
 
-// Main wrapper that manages state globally
-export const AIChat = () => {
-  return null; // No longer renders a floating button
-};
+// Legacy export — no longer renders anything
+export const AIChat = () => null;
