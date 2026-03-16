@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Send, MessageCircle, X, Bot, User } from 'lucide-react';
+import { Send, X, Bot, User, Search, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Textarea } from './ui/textarea';
 import { ScrollArea } from './ui/scroll-area';
 import { supabase } from '@/integrations/supabase/client';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -13,12 +14,48 @@ interface Message {
 
 const generateSessionId = () => crypto.randomUUID();
 
-export const AIChat = () => {
-  const [isOpen, setIsOpen] = useState(false);
+// The search bar component to embed in Hero or anywhere
+export const AISearchBar = ({ onOpen }: { onOpen: (query?: string) => void }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      onOpen(query.trim());
+      setQuery('');
+    } else {
+      onOpen();
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto mt-8">
+      <div className="relative flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 hover:bg-white/15 transition-colors focus-within:border-staydia-gold/50 focus-within:bg-white/15">
+        <Sparkles className="h-5 w-5 text-staydia-gold mr-3 flex-shrink-0" />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Ask our AI Assistant anything about Staydia..."
+          className="flex-1 bg-transparent text-white placeholder:text-gray-400 text-base outline-none"
+        />
+        <button
+          type="submit"
+          className="ml-3 h-9 w-9 rounded-full bg-staydia-gold flex items-center justify-center hover:bg-staydia-gold/90 transition-colors flex-shrink-0"
+        >
+          <Send className="h-4 w-4 text-staydia-black" />
+        </button>
+      </div>
+    </form>
+  );
+};
+
+// The chat panel (modal overlay)
+export const AIChatPanel = ({ isOpen, onClose, initialQuery }: { isOpen: boolean; onClose: () => void; initialQuery?: string }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hi! I\'m here to help you learn about Staydia Sports\' AI-powered broadcasting solutions. How can I assist you today?'
+      content: "Hi! I'm here to help you learn about Staydia Sports' AI-powered broadcasting solutions. How can I assist you today?"
     }
   ]);
   const [input, setInput] = useState('');
@@ -26,6 +63,7 @@ export const AIChat = () => {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const sessionIdRef = useRef(generateSessionId());
   const hasUserMessaged = useRef(false);
+  const initialQueryProcessed = useRef(false);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -35,6 +73,40 @@ export const AIChat = () => {
       }
     }
   }, [messages]);
+
+  // Auto-send initial query when panel opens with a query
+  useEffect(() => {
+    if (isOpen && initialQuery && !initialQueryProcessed.current) {
+      initialQueryProcessed.current = true;
+      const userMessage: Message = { role: 'user', content: initialQuery };
+      const newMessages = [...messages, userMessage];
+      setMessages(newMessages);
+      hasUserMessaged.current = true;
+      setIsLoading(true);
+
+      streamChat(newMessages)
+        .then(() => {
+          setMessages(prev => {
+            saveConversation(prev);
+            return prev;
+          });
+        })
+        .catch(() => {
+          setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: 'I apologize, but I encountered an error. Please try again.'
+          }]);
+        })
+        .finally(() => setIsLoading(false));
+    }
+  }, [isOpen, initialQuery]);
+
+  // Reset when closed
+  useEffect(() => {
+    if (!isOpen) {
+      initialQueryProcessed.current = false;
+    }
+  }, [isOpen]);
 
   const saveConversation = useCallback(async (msgs: Message[]) => {
     try {
@@ -72,10 +144,9 @@ export const AIChat = () => {
   }, []);
 
   const handleClose = useCallback(() => {
-    setIsOpen(false);
-    // Email the conversation when chat is closed (if there were user messages)
     emailConversation(messages);
-  }, [messages, emailConversation]);
+    onClose();
+  }, [messages, emailConversation, onClose]);
 
   const streamChat = async (messages: Message[]) => {
     const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`;
@@ -90,12 +161,8 @@ export const AIChat = () => {
     });
 
     if (!response.ok || !response.body) {
-      if (response.status === 429) {
-        throw new Error("Rate limit reached. Please try again later.");
-      }
-      if (response.status === 402) {
-        throw new Error("Service temporarily unavailable. Please try again later.");
-      }
+      if (response.status === 429) throw new Error("Rate limit reached.");
+      if (response.status === 402) throw new Error("Service temporarily unavailable.");
       throw new Error("Failed to connect to chat service");
     }
 
@@ -123,10 +190,7 @@ export const AIChat = () => {
         if (!line.startsWith("data: ")) continue;
 
         const jsonStr = line.slice(6).trim();
-        if (jsonStr === "[DONE]") {
-          streamDone = true;
-          break;
-        }
+        if (jsonStr === "[DONE]") { streamDone = true; break; }
 
         try {
           const parsed = JSON.parse(jsonStr);
@@ -135,10 +199,7 @@ export const AIChat = () => {
             assistantContent += content;
             setMessages(prev => {
               const newMessages = [...prev];
-              newMessages[newMessages.length - 1] = {
-                role: 'assistant',
-                content: assistantContent
-              };
+              newMessages[newMessages.length - 1] = { role: 'assistant', content: assistantContent };
               return newMessages;
             });
           }
@@ -150,12 +211,10 @@ export const AIChat = () => {
     }
 
     if (textBuffer.trim()) {
-      const lines = textBuffer.split("\n");
-      for (const line of lines) {
+      for (const line of textBuffer.split("\n")) {
         if (!line.trim() || line.startsWith(":") || !line.startsWith("data: ")) continue;
         const jsonStr = line.slice(6).trim();
         if (jsonStr === "[DONE]") continue;
-        
         try {
           const parsed = JSON.parse(jsonStr);
           const content = parsed.choices?.[0]?.delta?.content;
@@ -163,16 +222,11 @@ export const AIChat = () => {
             assistantContent += content;
             setMessages(prev => {
               const newMessages = [...prev];
-              newMessages[newMessages.length - 1] = {
-                role: 'assistant',
-                content: assistantContent
-              };
+              newMessages[newMessages.length - 1] = { role: 'assistant', content: assistantContent };
               return newMessages;
             });
           }
-        } catch {
-          // Ignore partial leftovers
-        }
+        } catch { /* ignore */ }
       }
     }
   };
@@ -189,7 +243,6 @@ export const AIChat = () => {
 
     try {
       await streamChat(newMessages);
-      // Save conversation after each exchange
       setMessages(prev => {
         saveConversation(prev);
         return prev;
@@ -212,105 +265,108 @@ export const AIChat = () => {
     }
   };
 
-  if (!isOpen) {
-    return (
-      <Button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg"
-        size="lg"
-      >
-        <MessageCircle className="h-6 w-6" />
-      </Button>
-    );
-  }
+  if (!isOpen) return null;
 
   return (
-    <Card className="fixed bottom-6 right-6 z-50 w-96 h-[500px] shadow-xl border-border bg-background">
-      <CardContent className="p-0 h-full flex flex-col">
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-lg">
-          <div className="flex items-center gap-2">
-            <Bot className="h-5 w-5" />
-            <span className="font-semibold">Staydia AI Assistant</span>
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+      <Card className="w-full max-w-lg h-[600px] shadow-2xl border-border bg-background">
+        <CardContent className="p-0 h-full flex flex-col">
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-lg">
+            <div className="flex items-center gap-2">
+              <Bot className="h-5 w-5" />
+              <span className="font-semibold">Staydia AI Assistant</span>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleClose}
+              className="text-primary-foreground hover:bg-primary-foreground/20"
+            >
+              <X className="h-4 w-4" />
+            </Button>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleClose}
-            className="text-primary-foreground hover:bg-primary-foreground/20"
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        </div>
 
-        {/* Messages */}
-        <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
-          <div className="space-y-4">
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                {message.role === 'assistant' && (
+          {/* Messages */}
+          <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+            <div className="space-y-4">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  {message.role === 'assistant' && (
+                    <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                      <Bot className="h-4 w-4 text-primary-foreground" />
+                    </div>
+                  )}
+                  <div
+                    className={`max-w-[80%] rounded-lg p-3 text-sm ${
+                      message.role === 'user'
+                        ? 'bg-primary text-primary-foreground ml-auto'
+                        : 'bg-muted text-muted-foreground'
+                    }`}
+                  >
+                    {message.role === 'assistant' ? (
+                      <div className="prose prose-sm prose-invert max-w-none">
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
+                    ) : (
+                      message.content
+                    )}
+                  </div>
+                  {message.role === 'user' && (
+                    <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+                      <User className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                  )}
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex gap-3">
                   <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                     <Bot className="h-4 w-4 text-primary-foreground" />
                   </div>
-                )}
-                <div
-                  className={`max-w-[80%] rounded-lg p-3 text-sm ${
-                    message.role === 'user'
-                      ? 'bg-primary text-primary-foreground ml-auto'
-                      : 'bg-muted text-muted-foreground'
-                  }`}
-                >
-                  {message.content}
-                </div>
-                {message.role === 'user' && (
-                  <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-                    <User className="h-4 w-4 text-muted-foreground" />
-                  </div>
-                )}
-              </div>
-            ))}
-            {isLoading && (
-              <div className="flex gap-3">
-                <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                  <Bot className="h-4 w-4 text-primary-foreground" />
-                </div>
-                <div className="bg-muted text-muted-foreground rounded-lg p-3 text-sm">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-muted text-muted-foreground rounded-lg p-3 text-sm">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </ScrollArea>
+              )}
+            </div>
+          </ScrollArea>
 
-        {/* Input */}
-        <div className="p-4 border-t border-border">
-          <div className="flex gap-2">
-            <Textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Ask me about Staydia Sports..."
-              className="resize-none min-h-[44px]"
-              disabled={isLoading}
-            />
-            <Button
-              onClick={sendMessage}
-              disabled={!input.trim() || isLoading}
-              size="sm"
-              className="px-3"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
+          {/* Input */}
+          <div className="p-4 border-t border-border">
+            <div className="flex gap-2">
+              <Textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Ask me about Staydia Sports..."
+                className="resize-none min-h-[44px]"
+                disabled={isLoading}
+              />
+              <Button
+                onClick={sendMessage}
+                disabled={!input.trim() || isLoading}
+                size="sm"
+                className="px-3"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
+};
+
+// Main wrapper that manages state globally
+export const AIChat = () => {
+  return null; // No longer renders a floating button
 };
