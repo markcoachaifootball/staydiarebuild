@@ -40,7 +40,7 @@ i18n
     },
     
     detection: {
-      order: ['localStorage', 'geoLocation', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'geoLocation'],
       caches: ['localStorage'],
     },
   });
