@@ -13,7 +13,7 @@ import PartnersSlider from '@/components/PartnersSlider';
 import NewsCarousel from '@/components/NewsCarousel';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import IntroLoader from '@/components/IntroLoader';
-import { AIChatPanel } from '@/components/AIChat';
+
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
