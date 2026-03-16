@@ -63,7 +63,7 @@ const Index = () => {
         className={`min-h-screen bg-staydia-black text-white ${showIntro ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
       >
         <Header />
-        <Hero onOpenChat={handleOpenChat} />
+        <Hero />
         <MissionStatement />
         <NewsCarousel />
         <PartnersSlider />
