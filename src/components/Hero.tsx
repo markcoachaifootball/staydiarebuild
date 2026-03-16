@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import DemoForm from './DemoForm';
-import { AISearchBar } from './AIChat';
+
 
 interface HeroProps {
   onOpenChat?: (query?: string) => void;
