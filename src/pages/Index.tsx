@@ -13,7 +13,7 @@ import PartnersSlider from '@/components/PartnersSlider';
 import NewsCarousel from '@/components/NewsCarousel';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import IntroLoader from '@/components/IntroLoader';
-import { AIChatPanel } from '@/components/AIChat';
+
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
@@ -24,8 +24,6 @@ const Index = () => {
   const isSeoBot = isSeoBotUserAgent();
   const [showIntro, setShowIntro] = useState(() => !isSeoBot);
   const [isReadyForPrerender, setIsReadyForPrerender] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
-  const [chatInitialQuery, setChatInitialQuery] = useState<string | undefined>();
 
   useScrollToTop();
 
@@ -54,10 +52,6 @@ const Index = () => {
     image: 'https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png',
   });
 
-  const handleOpenChat = (query?: string) => {
-    setChatInitialQuery(query);
-    setChatOpen(true);
-  };
 
   return (
     <>
@@ -69,7 +63,7 @@ const Index = () => {
         className={`min-h-screen bg-staydia-black text-white ${showIntro ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
       >
         <Header />
-        <Hero onOpenChat={handleOpenChat} />
+        <Hero />
         <MissionStatement />
         <NewsCarousel />
         <PartnersSlider />
@@ -80,8 +74,6 @@ const Index = () => {
         <Footer />
         <WhatsAppButton />
       </div>
-
-      <AIChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} initialQuery={chatInitialQuery} />
     </>
   );
 };
