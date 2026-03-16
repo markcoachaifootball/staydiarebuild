@@ -74,8 +74,6 @@ const Index = () => {
         <Footer />
         <WhatsAppButton />
       </div>
-
-      <AIChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} initialQuery={chatInitialQuery} />
     </>
   );
 };
