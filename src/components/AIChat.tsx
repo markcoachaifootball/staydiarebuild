@@ -15,14 +15,34 @@ interface Message {
 const generateSessionId = () => crypto.randomUUID();
 
 // Fixed bottom search bar with dismiss
+const suggestedQuestions = [
+  "What does Staydia do?",
+  "How does Staydia make money?",
+  "Is it really free for clubs?",
+  "What sports do you support?",
+];
+
 export const AIStickySearchBar = ({ onOpen }: { onOpen: (query?: string) => void }) => {
   const [query, setQuery] = useState('');
   const [dismissed, setDismissed] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (barRef.current && !barRef.current.contains(e.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   if (dismissed) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setShowSuggestions(false);
     if (query.trim()) {
       onOpen(query.trim());
       setQuery('');
@@ -31,33 +51,54 @@ export const AIStickySearchBar = ({ onOpen }: { onOpen: (query?: string) => void
     }
   };
 
+  const handleSuggestionClick = (q: string) => {
+    setShowSuggestions(false);
+    onOpen(q);
+  };
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 bg-gradient-to-t from-black/90 via-black/70 to-transparent pointer-events-none">
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto pointer-events-auto">
-        <div className="relative flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-4 py-2.5 hover:bg-white/15 transition-colors focus-within:border-staydia-gold/50 focus-within:bg-white/15 shadow-2xl">
-          <Sparkles className="h-5 w-5 text-staydia-gold mr-3 flex-shrink-0" />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask our AI Assistant..."
-            className="flex-1 bg-transparent text-white placeholder:text-gray-400 text-sm outline-none"
-          />
-          <button
-            type="submit"
-            className="ml-2 h-8 w-8 rounded-full bg-staydia-gold flex items-center justify-center hover:bg-staydia-gold/90 transition-colors flex-shrink-0"
-          >
-            <Send className="h-3.5 w-3.5 text-staydia-black" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setDismissed(true)}
-            className="ml-2 h-8 w-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors flex-shrink-0"
-          >
-            <X className="h-3.5 w-3.5 text-gray-400" />
-          </button>
-        </div>
-      </form>
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 bg-gradient-to-t from-black/90 via-black/70 to-transparent pointer-events-none" ref={barRef}>
+      <div className="max-w-2xl mx-auto pointer-events-auto relative">
+        {showSuggestions && (
+          <div className="absolute bottom-full mb-2 left-0 right-0 flex flex-wrap gap-2 justify-center px-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
+            {suggestedQuestions.map((q) => (
+              <button
+                key={q}
+                onClick={() => handleSuggestionClick(q)}
+                className="px-3 py-1.5 text-xs rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-staydia-gold/20 hover:border-staydia-gold/40 transition-colors"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="relative flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-4 py-2.5 hover:bg-white/15 transition-colors focus-within:border-staydia-gold/50 focus-within:bg-white/15 shadow-2xl">
+            <Sparkles className="h-5 w-5 text-staydia-gold mr-3 flex-shrink-0" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onFocus={() => setShowSuggestions(true)}
+              placeholder="Ask our AI Assistant..."
+              className="flex-1 bg-transparent text-white placeholder:text-gray-400 text-sm outline-none"
+            />
+            <button
+              type="submit"
+              className="ml-2 h-8 w-8 rounded-full bg-staydia-gold flex items-center justify-center hover:bg-staydia-gold/90 transition-colors flex-shrink-0"
+            >
+              <Send className="h-3.5 w-3.5 text-staydia-black" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setDismissed(true)}
+              className="ml-2 h-8 w-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors flex-shrink-0"
+            >
+              <X className="h-3.5 w-3.5 text-gray-400" />
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
