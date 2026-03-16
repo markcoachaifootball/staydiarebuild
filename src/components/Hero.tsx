@@ -12,8 +12,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import DemoForm from './DemoForm';
+import { AISearchBar } from './AIChat';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenChat?: (query?: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenChat }) => {
   const { t } = useTranslation();
   const videoRef = useRef<HTMLDivElement | null>(null);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
@@ -131,6 +136,8 @@ const Hero: React.FC = () => {
               {t('hero.watchEvents')}
             </Button>
           </div>
+
+          {onOpenChat && <AISearchBar onOpen={onOpenChat} />}
         </div>
       </div>
     </section>
