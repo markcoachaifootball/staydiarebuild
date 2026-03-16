@@ -1,14 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Send, MessageCircle, X, Bot, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Textarea } from './ui/textarea';
 import { ScrollArea } from './ui/scroll-area';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
 }
+
+const generateSessionId = () => crypto.randomUUID();
 
 export const AIChat = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +24,8 @@ export const AIChat = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const sessionIdRef = useRef(generateSessionId());
+  const hasUserMessaged = useRef(false);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -30,6 +35,47 @@ export const AIChat = () => {
       }
     }
   }, [messages]);
+
+  const saveConversation = useCallback(async (msgs: Message[]) => {
+    try {
+      const { error } = await supabase
+        .from('chat_conversations' as any)
+        .upsert({
+          session_id: sessionIdRef.current,
+          messages: msgs,
+          updated_at: new Date().toISOString(),
+        } as any, { onConflict: 'session_id' } as any);
+      if (error) console.error('Save conversation error:', error);
+    } catch (e) {
+      console.error('Save conversation error:', e);
+    }
+  }, []);
+
+  const emailConversation = useCallback(async (msgs: Message[]) => {
+    if (!hasUserMessaged.current) return;
+    try {
+      const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/email-chat-conversation`;
+      await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({
+          messages: msgs,
+          sessionId: sessionIdRef.current,
+        }),
+      });
+    } catch (e) {
+      console.error('Email conversation error:', e);
+    }
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    // Email the conversation when chat is closed (if there were user messages)
+    emailConversation(messages);
+  }, [messages, emailConversation]);
 
   const streamChat = async (messages: Message[]) => {
     const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`;
@@ -59,7 +105,6 @@ export const AIChat = () => {
     let streamDone = false;
     let assistantContent = "";
 
-    // Add initial assistant message
     setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
 
     while (!streamDone) {
@@ -104,7 +149,6 @@ export const AIChat = () => {
       }
     }
 
-    // Process any remaining buffer
     if (textBuffer.trim()) {
       const lines = textBuffer.split("\n");
       for (const line of lines) {
@@ -141,9 +185,15 @@ export const AIChat = () => {
     setMessages(newMessages);
     setInput('');
     setIsLoading(true);
+    hasUserMessaged.current = true;
 
     try {
       await streamChat(newMessages);
+      // Save conversation after each exchange
+      setMessages(prev => {
+        saveConversation(prev);
+        return prev;
+      });
     } catch (error) {
       console.error('Chat error:', error);
       setMessages(prev => [...prev, {
@@ -186,7 +236,7 @@ export const AIChat = () => {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => setIsOpen(false)}
+            onClick={handleClose}
             className="text-primary-foreground hover:bg-primary-foreground/20"
           >
             <X className="h-4 w-4" />
