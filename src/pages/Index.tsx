@@ -52,10 +52,6 @@ const Index = () => {
     image: 'https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png',
   });
 
-  const handleOpenChat = (query?: string) => {
-    setChatInitialQuery(query);
-    setChatOpen(true);
-  };
 
   return (
     <>
