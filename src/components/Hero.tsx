@@ -14,11 +14,7 @@ import {
 import DemoForm from './DemoForm';
 
 
-interface HeroProps {
-  onOpenChat?: (query?: string) => void;
-}
-
-const Hero: React.FC<HeroProps> = ({ onOpenChat }) => {
+const Hero: React.FC = () => {
   const { t } = useTranslation();
   const videoRef = useRef<HTMLDivElement | null>(null);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
