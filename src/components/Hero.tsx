@@ -132,8 +132,6 @@ const Hero: React.FC = () => {
               {t('hero.watchEvents')}
             </Button>
           </div>
-
-          {onOpenChat && <AISearchBar onOpen={onOpenChat} />}
         </div>
       </div>
     </section>
