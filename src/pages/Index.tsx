@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Technology from '@/components/Technology';
 import HowItWorks from '@/components/HowItWorks';
 import Community from '@/components/Community';
+import MissionStatement from '@/components/MissionStatement';
 
 import PartnersSlider from '@/components/PartnersSlider';
 import NewsCarousel from '@/components/NewsCarousel';
