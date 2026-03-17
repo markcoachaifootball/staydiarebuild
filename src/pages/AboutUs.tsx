@@ -6,25 +6,15 @@ import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useMetaTags } from '@/hooks/useMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { usePrerenderReady } from '@/hooks/usePrerenderReady';
+import { useTranslation } from 'react-i18next';
 
 const AboutUs = () => {
   useScrollToTop();
   usePrerenderReady();
-  useMetaTags({
-    title: 'About Staydia Sports - Our Story & Leadership Team',
-    description: 'Meet the founders and team behind Staydia Sports. Learn how we\'re democratising sports broadcasting with AI-powered technology for clubs worldwide.',
-    url: 'https://about.staydiasports.com/about-us',
-    type: 'website',
-    tags: ['About Us', 'Company Story', 'Sports Technology', 'Leadership Team']
-  });
+  const { t } = useTranslation();
+  useMetaTags({ title: 'About Staydia Sports', description: 'Meet the team behind Staydia Sports.', url: 'https://about.staydiasports.com/about-us', type: 'website', tags: ['About Us'] });
+  useStructuredData({ type: 'Organization', title: 'About Staydia Sports', description: 'AI-powered broadcasting solutions.', url: 'https://about.staydiasports.com/about-us' });
 
-  useStructuredData({
-    type: 'Organization',
-    title: 'About Staydia Sports',
-    description: 'Founded with a mission to democratise sports broadcasting, Staydia Sports provides AI-powered broadcasting solutions for sports clubs worldwide.',
-    url: 'https://about.staydiasports.com/about-us'
-  });
-  
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
@@ -32,82 +22,53 @@ const AboutUs = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div>
-              <h1 className="text-5xl font-bold mb-8">Our Story</h1>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                At Staydia Sports, our passion drives everything we do. We believe every club, no matter its size, deserves professional-quality broadcasting capabilities to showcase their talent and connect with their community.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Founded with a mission to democratise sports broadcasting, we've built a platform that transforms how clubs share their games, engage with fans, and grow their presence.
-              </p>
+              <h1 className="text-5xl font-bold mb-8">{t('about.ourStory')}</h1>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">{t('about.storyDesc1')}</p>
+              <p className="text-gray-300 text-lg leading-relaxed">{t('about.storyDesc2')}</p>
             </div>
             <div className="relative">
               <div className="bg-gradient-to-tr from-staydia-gold/20 to-transparent absolute inset-0 rounded-2xl filter blur-xl"></div>
-              <img 
-                src="/lovable-uploads/1dc0acaf-a439-4151-aa5b-d1c6062e4728.png"
-                alt="Staydia team working"
-                className="relative z-10 rounded-lg w-full shadow-xl"
-                loading="lazy"
-                decoding="async"
-              />
+              <img src="/lovable-uploads/1dc0acaf-a439-4151-aa5b-d1c6062e4728.png" alt="Staydia team working" className="relative z-10 rounded-lg w-full shadow-xl" loading="lazy" decoding="async" />
             </div>
           </div>
 
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">Meet Our Founders</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">{t('about.meetFounders')}</h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="text-staydia-gold h-12 w-12" />
-                </div>
+                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4"><Users className="text-staydia-gold h-12 w-12" /></div>
                 <h3 className="text-xl font-bold mb-2">Steve Silva</h3>
-                <p className="text-staydia-gold font-medium">CEO & Co-founder</p>
+                <p className="text-staydia-gold font-medium">{t('about.ceo')}</p>
               </div>
               <div className="text-center">
-                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="text-staydia-gold h-12 w-12" />
-                </div>
+                <div className="w-24 h-24 bg-staydia-gold/20 rounded-full flex items-center justify-center mx-auto mb-4"><TrendingUp className="text-staydia-gold h-12 w-12" /></div>
                 <h3 className="text-xl font-bold mb-2">Mark McGrory</h3>
-                <p className="text-staydia-gold font-medium">CTO & Co-founder</p>
+                <p className="text-staydia-gold font-medium">{t('about.cto')}</p>
               </div>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             <div className="bg-staydia-darkgray p-8 rounded-lg border border-staydia-lightgray">
-              <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4">
-                <Globe className="text-staydia-gold h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Our Mission</h3>
-              <p className="text-gray-300">
-                To empower sports clubs with accessible, professional-quality broadcasting technology that helps them grow and engage their community.
-              </p>
+              <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4"><Globe className="text-staydia-gold h-6 w-6" /></div>
+              <h3 className="text-xl font-bold mb-4">{t('about.ourMission')}</h3>
+              <p className="text-gray-300">{t('about.missionDesc')}</p>
             </div>
             <div className="bg-staydia-darkgray p-8 rounded-lg border border-staydia-lightgray">
-              <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4">
-                <Users className="text-staydia-gold h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Our Community</h3>
-              <p className="text-gray-300">
-                We're proud to serve a growing network of clubs across Ireland, Wales, and England, helping them share their sporting moments with fans worldwide.
-              </p>
+              <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4"><Users className="text-staydia-gold h-6 w-6" /></div>
+              <h3 className="text-xl font-bold mb-4">{t('about.ourCommunity')}</h3>
+              <p className="text-gray-300">{t('about.communityDesc')}</p>
             </div>
             <div className="bg-staydia-darkgray p-8 rounded-lg border border-staydia-lightgray">
-              <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="text-staydia-gold h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Our Impact</h3>
-              <p className="text-gray-300">
-                Through our AI-powered platform, we're helping clubs increase their visibility, generate revenue, and build stronger connections with their supporters.
-              </p>
+              <div className="w-12 h-12 bg-staydia-gold/20 rounded-lg flex items-center justify-center mb-4"><TrendingUp className="text-staydia-gold h-6 w-6" /></div>
+              <h3 className="text-xl font-bold mb-4">{t('about.ourImpact')}</h3>
+              <p className="text-gray-300">{t('about.impactDesc')}</p>
             </div>
           </div>
 
-
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl font-bold mb-6">Join the Future of Sports Broadcasting</h2>
-            <p className="text-gray-300 text-lg mb-8">
-              Whether you're a small local club or a regional league, our technology is designed to help you reach new heights. Let's grow together.
-            </p>
+            <h2 className="text-3xl font-bold mb-6">{t('about.joinFuture')}</h2>
+            <p className="text-gray-300 text-lg mb-8">{t('about.joinFutureDesc')}</p>
           </div>
         </div>
       </div>
