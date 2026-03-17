@@ -177,5 +177,14 @@
     "title": "Join Our Community",
     "subtitle": "Connect with sports fans and stay updated on the latest news, features, and exclusive content.",
     "visitPage": "Visit our Community Page"
+  },
+  "mission": {
+    "line1": "Grassroots and amateur sport produce millions of important moments, but most of them are",
+    "neverSeen": "never seen",
+    "neverMonetised": "never monetised",
+    "neverRemembered": "never remembered",
+    "beyondTouchline": "beyond the touchline.",
+    "existsToChange": "Staydia exists to change that.",
+    "description": "We use AI-powered broadcasting to make every club visible — and give grassroots and amateur sport the audience, recognition, and revenue infrastructure they have never had."
   }
 }
