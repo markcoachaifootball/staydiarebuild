@@ -10,8 +10,8 @@ const MissionStatement: React.FC = () => {
         <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-200">
           {t('mission.line1')}{' '}
           <span className="text-staydia-gold font-semibold">{t('mission.neverSeen')}</span>,{' '}
-          <span className="text-staydia-gold font-semibold">{t('mission.neverMonetised')}</span>, and{' '}
-          <span className="text-staydia-gold font-semibold">{t('mission.neverRemembered')}</span> {t('mission.beyondTouchline')}
+          <span className="text-staydia-gold font-semibold">{t('mission.neverMonetised')}</span> {t('mission.and')}{' '}
+          <span className="text-staydia-gold font-semibold">{t('mission.neverRemembered')}</span>{t('mission.beyondTouchline') ? ` ${t('mission.beyondTouchline')}` : ''}
         </p>
         <p className="mt-6 text-lg md:text-xl lg:text-2xl leading-relaxed text-white font-medium">
           {t('mission.existsToChange')}
