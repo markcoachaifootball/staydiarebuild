@@ -1,15 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { 
-  Globe, 
-  TrendingUp, 
-  BarChart, 
-  Users, 
-  CheckIcon, 
-  CalendarDays, 
-  Link as LinkIcon 
-} from "lucide-react";
+import { Globe, TrendingUp, BarChart, Users, CalendarDays, Link as LinkIcon } from "lucide-react";
 import HeroSection from '@/components/sports/HeroSection';
 import FeaturesSection from '@/components/sports/FeaturesSection';
 import WhyChooseSection from '@/components/sports/WhyChooseSection';
@@ -17,108 +9,42 @@ import StepsTimelineSection from '@/components/sports/StepsTimelineSection';
 import CallToActionSection from '@/components/sports/CallToActionSection';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { usePrerenderReady } from '@/hooks/usePrerenderReady';
+import { useTranslation } from 'react-i18next';
 
 const ForLeagues: React.FC = () => {
   useScrollToTop();
-  usePrerenderReady(); // Signal prerender ready for static content
+  usePrerenderReady();
+  const { t } = useTranslation();
+
   const features = [
-    {
-      icon: <Globe className="h-8 w-8 text-staydia-gold" />,
-      title: "Centralised Streaming Infrastructure",
-      description: "We provide AI-automated cameras to every club in your league — ensuring consistent coverage of every match, across every level."
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8 text-staydia-gold" />,
-      title: "League-Wide Sponsorship Revenue",
-      description: "Generate new commercial income through dynamic sponsor placements across every livestream. Your league, your sponsors, your revenue."
-    },
-    {
-      icon: <BarChart className="h-8 w-8 text-staydia-gold" />,
-      title: "Scalable & Uniform Broadcasting",
-      description: "No more patchwork livestreams. Staydia delivers a standardised viewing experience for fans, scouts, and media — every game, every week."
-    },
-    {
-      icon: <Users className="h-8 w-8 text-staydia-gold" />,
-      title: "Enhanced Visibility & Engagement",
-      description: "Make your league more visible and valuable. Attract players, retain talent, and showcase your community with every streamed fixture."
-    },
-    {
-      icon: <CalendarDays className="h-8 w-8 text-staydia-gold" />,
-      title: "End-to-End Support",
-      description: "From installation to monitoring and scheduling games — we handle everything. Your clubs don't need tech skills or media teams to go live."
-    },
-    {
-      icon: <LinkIcon className="h-8 w-8 text-staydia-gold" />,
-      title: "Seamless Integration with Existing Deals",
-      description: "If your league has an existing media or streaming partner, Staydia can still enhance access. We can capture and feed content directly — without disrupting commercial contracts."
-    }
+    { icon: <Globe className="h-8 w-8 text-staydia-gold" />, title: t('forLeagues.centralised'), description: t('forLeagues.centralisedDesc') },
+    { icon: <TrendingUp className="h-8 w-8 text-staydia-gold" />, title: t('forLeagues.sponsorship'), description: t('forLeagues.sponsorshipDesc') },
+    { icon: <BarChart className="h-8 w-8 text-staydia-gold" />, title: t('forLeagues.scalable'), description: t('forLeagues.scalableDesc') },
+    { icon: <Users className="h-8 w-8 text-staydia-gold" />, title: t('forLeagues.visibility'), description: t('forLeagues.visibilityDesc') },
+    { icon: <CalendarDays className="h-8 w-8 text-staydia-gold" />, title: t('forLeagues.support'), description: t('forLeagues.supportDesc') },
+    { icon: <LinkIcon className="h-8 w-8 text-staydia-gold" />, title: t('forLeagues.integration'), description: t('forLeagues.integrationDesc') },
   ];
 
   const whyChooseItems = [
-    "No upfront cost for cameras or equipment",
-    "Fan engagement that builds stronger league culture",
-    "Added value for sponsors and local businesses",
-    "A modern tool to support development and retention",
-    "Simple setup and full support",
-    "Increased visibility for the entire league"
+    t('forLeagues.whyItem1'), t('forLeagues.whyItem2'), t('forLeagues.whyItem3'),
+    t('forLeagues.whyItem4'), t('forLeagues.whyItem5'), t('forLeagues.whyItem6'),
   ];
 
   const steps = [
-    {
-      number: 1,
-      title: "We onboard your league & clubs",
-      description: "We work with your organization to understand needs and develop a tailored implementation plan."
-    },
-    {
-      number: 2,
-      title: "Cameras are installed at no cost to clubs",
-      description: "Our team handles all technical aspects of installation across all participating venues."
-    },
-    {
-      number: 3,
-      title: "You gain a fully livestreamed league within weeks",
-      description: "Your entire league benefits from professional quality livestreams, all managed automatically."
-    },
-    {
-      number: 4,
-      title: "Revenue is shared through platform sponsorship and fan subscriptions",
-      description: "Generate new revenue streams through your enhanced digital presence and reach."
-    }
+    { number: 1, title: t('forLeagues.step1'), description: t('forLeagues.step1Desc') },
+    { number: 2, title: t('forLeagues.step2'), description: t('forLeagues.step2Desc') },
+    { number: 3, title: t('forLeagues.step3'), description: t('forLeagues.step3Desc') },
+    { number: 4, title: t('forLeagues.step4'), description: t('forLeagues.step4Desc') },
   ];
 
   return (
     <div className="min-h-screen bg-staydia-black text-white">
       <Header />
-      
-      <HeroSection 
-        title="For Leagues"
-        subtitle="Elevate Your Entire League With AI-Powered Broadcasting"
-        description="Staydia Sports partners with leagues and federations across Ireland and the UK to deliver professional-quality coverage at scale - without the complexity or cost of traditional production."
-      />
-      
-      <WhyChooseSection 
-        title="Why Partner With Staydia?"
-        items={whyChooseItems}
-      />
-      
-      <FeaturesSection 
-        title="League Benefits"
-        features={features}
-      />
-      
-      <StepsTimelineSection 
-        title="How It Works"
-        steps={steps}
-      />
-      
-      <CallToActionSection 
-        title="Ready to Broadcast Every Match in Your League?"
-        subtitle="Let's chat — and bring your league or federation into the future of sports media."
-        primaryButtonText="Schedule a Call"
-        secondaryButtonText="Contact Us"
-        secondaryButtonLink="/contact"
-      />
-      
+      <HeroSection title={t('forLeagues.title')} subtitle={t('forLeagues.subtitle')} description={t('forLeagues.description')} />
+      <WhyChooseSection title={t('forLeagues.whyPartner')} items={whyChooseItems} />
+      <FeaturesSection title={t('forLeagues.benefitsTitle')} features={features} />
+      <StepsTimelineSection title={t('forLeagues.howItWorks')} steps={steps} />
+      <CallToActionSection title={t('forLeagues.ctaTitle')} subtitle={t('forLeagues.ctaSubtitle')} primaryButtonText={t('forLeagues.scheduleCall')} secondaryButtonText={t('forLeagues.contactUs')} secondaryButtonLink="/contact" />
       <Footer />
     </div>
   );
