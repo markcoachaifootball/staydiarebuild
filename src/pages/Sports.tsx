@@ -18,10 +18,12 @@ import { useMetaTags } from '@/hooks/useMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
 import { Link } from 'react-router-dom';
 import { usePrerenderReady } from '@/hooks/usePrerenderReady';
+import { useTranslation } from 'react-i18next';
 
 const Sports = () => {
+  const { t } = useTranslation();
   useScrollToTop();
-  usePrerenderReady(); // Signal prerender ready for static content
+  usePrerenderReady();
   useMetaTags({
     title: 'Sports Broadcasting Solutions - Football, Basketball, Rugby & Hockey',
     description: 'Discover AI-powered broadcasting solutions for football, basketball, rugby, and hockey clubs. Automated cameras, live streaming, and fan engagement tools.',
@@ -49,20 +51,20 @@ const Sports = () => {
         
         <section className="py-16 px-4 md:px-6 lg:px-8">
           <div className="staydia-container text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Club?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('sportsPage.ctaTitle')}</h2>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Join our growing network of clubs and become a showcase partner as Staydia expands
+              {t('sportsPage.ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                   <Button className="bg-staydia-gold text-staydia-black hover:bg-opacity-90 font-medium px-8 py-6 text-lg">
-                    Book a Demo
+                    {t('sportsPage.bookDemo')}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[500px]">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold mb-4">Book a Demo</DialogTitle>
+                    <DialogTitle className="text-2xl font-bold mb-4">{t('sportsPage.bookDemo')}</DialogTitle>
                   </DialogHeader>
                   <DemoForm />
                 </DialogContent>
@@ -73,7 +75,7 @@ const Sports = () => {
                 variant="outline"
                 asChild
               >
-                <Link to="/book-demo">Direct Booking Link</Link>
+                <Link to="/book-demo">{t('sportsPage.directBooking')}</Link>
               </Button>
             </div>
           </div>

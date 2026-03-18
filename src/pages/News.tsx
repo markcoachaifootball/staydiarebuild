@@ -12,8 +12,10 @@ import { Link } from 'react-router-dom';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { generateSlug } from '@/utils/slugify';
 import { usePrerenderReady } from '@/hooks/usePrerenderReady';
+import { useTranslation } from 'react-i18next';
 
 const News: React.FC = () => {
+  const { t, i18n } = useTranslation();
   useScrollToTop();
 
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -24,11 +26,11 @@ const News: React.FC = () => {
     const getArticles = async () => {
       try {
         setIsLoading(true);
-        const newsArticles = await fetchNewsArticles(12); // Get more articles for the full page
+        const newsArticles = await fetchNewsArticles(12);
         setArticles(newsArticles);
         setError(null);
       } catch (err) {
-        setError('Failed to load news articles. Please try again later.');
+        setError(t('newsPage.error'));
         console.error('Error loading news articles:', err);
       } finally {
         setIsLoading(false);
@@ -36,15 +38,13 @@ const News: React.FC = () => {
     };
 
     getArticles();
-  }, []);
+  }, [t]);
 
-  // Prerender should wait for contentful fetch to finish to avoid blank HTML snapshots
   usePrerenderReady(!isLoading);
 
-  // Format the date to standard format
   const formatArticleDate = (dateString: string) => {
     try {
-      return new Date(dateString).toLocaleDateString('en-US', {
+      return new Date(dateString).toLocaleDateString(i18n.language === 'de' ? 'de-DE' : i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'nl' ? 'nl-NL' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -54,7 +54,6 @@ const News: React.FC = () => {
     }
   };
 
-  // Get image URL with fallback
   const getImageUrl = (article: NewsArticle) => {
     try {
       return article.fields.featuredImage?.fields.file?.url
@@ -70,8 +69,8 @@ const News: React.FC = () => {
       <Header />
       <div className="staydia-container py-24">
         <div className="text-center mb-16">
-          <h1 className="section-title">Latest News</h1>
-          <p className="section-subtitle">Stay updated with the latest from Staydia Sports</p>
+          <h1 className="section-title">{t('newsPage.title')}</h1>
+          <p className="section-subtitle">{t('newsPage.subtitle')}</p>
         </div>
 
         {isLoading ? (
@@ -94,7 +93,7 @@ const News: React.FC = () => {
           <div className="text-center py-10 bg-staydia-black border border-staydia-lightgray rounded-xl">
             <p className="text-red-400">{error}</p>
             <Button onClick={() => window.location.reload()} className="mt-4 bg-staydia-gold text-staydia-black hover:bg-opacity-90">
-              Retry
+              {t('newsPage.retry')}
             </Button>
           </div>
         ) : (
@@ -127,7 +126,7 @@ const News: React.FC = () => {
                     </CardContent>
                     <CardFooter>
                       <Button variant="link" className="text-staydia-gold hover:text-white p-0 h-auto">
-                        Read More
+                        {t('newsPage.readMore')}
                       </Button>
                     </CardFooter>
                   </Card>
