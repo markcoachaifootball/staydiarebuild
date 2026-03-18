@@ -2,61 +2,64 @@
 import React from 'react';
 import { Activity, BarChart3, Target } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-
-const sports = [
-  {
-    name: 'Football',
-    icon: Activity,
-    description: 'Staydia Sports for Football',
-    features: [
-      'Automatic video capture',
-      'Live match streaming',
-      'Highlight generation',
-      'Download match footage'
-    ]
-  },
-  {
-    name: 'Rugby',
-    icon: Activity,
-    description: 'Staydia Sports for Rugby',
-    features: [
-      'Wide-angle coverage',
-      'Download game footage',
-      'Simple video review',
-      'Shareable content'
-    ]
-  },
-  {
-    name: 'Hockey',
-    icon: Target,
-    description: 'Staydia Sports for Hockey',
-    features: [
-      'Full match recording',
-      'Download full games',
-      'Simple play review',
-      'Team content sharing'
-    ]
-  },
-  {
-    name: 'Basketball',
-    icon: BarChart3,
-    description: 'Staydia Sports for Basketball',
-    features: [
-      'Complete game recording',
-      'Download match footage',
-      'Game content for sharing',
-      'Highlight clips'
-    ]
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export const SportsGrid = () => {
+  const { t } = useTranslation();
+
+  const sports = [
+    {
+      name: t('sportsPage.football'),
+      icon: Activity,
+      description: t('sportsPage.footballDesc'),
+      features: [
+        t('sportsPage.footballF1'),
+        t('sportsPage.footballF2'),
+        t('sportsPage.footballF3'),
+        t('sportsPage.footballF4'),
+      ]
+    },
+    {
+      name: t('sportsPage.rugby'),
+      icon: Activity,
+      description: t('sportsPage.rugbyDesc'),
+      features: [
+        t('sportsPage.rugbyF1'),
+        t('sportsPage.rugbyF2'),
+        t('sportsPage.rugbyF3'),
+        t('sportsPage.rugbyF4'),
+      ]
+    },
+    {
+      name: t('sportsPage.hockey'),
+      icon: Target,
+      description: t('sportsPage.hockeyDesc'),
+      features: [
+        t('sportsPage.hockeyF1'),
+        t('sportsPage.hockeyF2'),
+        t('sportsPage.hockeyF3'),
+        t('sportsPage.hockeyF4'),
+      ]
+    },
+    {
+      name: t('sportsPage.basketball'),
+      icon: BarChart3,
+      description: t('sportsPage.basketballDesc'),
+      features: [
+        t('sportsPage.basketballF1'),
+        t('sportsPage.basketballF2'),
+        t('sportsPage.basketballF3'),
+        t('sportsPage.basketballF4'),
+      ]
+    },
+  ];
+
   return (
     <section className="py-16 px-4 md:px-6 lg:px-8">
       <div className="staydia-container">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Sports We Work With</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">{t('sportsPage.title')}</h2>
         <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-          Delivering cutting-edge sports technology solutions across multiple disciplines
+          {t('sportsPage.subtitle')}
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
