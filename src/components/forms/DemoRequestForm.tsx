@@ -78,7 +78,7 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
                 <Input 
                   placeholder="Your name" 
                   {...field} 
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
