@@ -29,8 +29,7 @@ const DemoForm = () => {
         Message: ${data.message || 'No additional information provided'}
       `;
 
-      // Update to use info@staydiasports.com as recipient
-      const response = await fetch("https://formsubmit.co/info@staydiasports.com", {
+      const response = await fetch("https://formsubmit.co/ajax/info@staydiasports.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,6 +40,7 @@ const DemoForm = () => {
           email: data.email,
           message: emailBody,
           _subject: `Demo Request from ${data.clubName}`,
+          _captcha: "false",
         }),
       });
       
