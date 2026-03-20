@@ -20,7 +20,7 @@ const formSchema = z.object({
   clubName: z.string().min(2, "Club name must be at least 2 characters"),
   contactName: z.string().min(2, "Contact name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Please enter a valid phone number"),
+  phone: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -60,7 +60,7 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
                 <Input 
                   placeholder="Enter your club or league name" 
                   {...field}
-                  className="text-black placeholder:text-gray-400" 
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300" 
                 />
               </FormControl>
               <FormMessage />
@@ -78,7 +78,7 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
                 <Input 
                   placeholder="Your name" 
                   {...field} 
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
@@ -97,7 +97,7 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
                   placeholder="your@email.com" 
                   type="email" 
                   {...field}
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
@@ -110,13 +110,13 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-gray-700">Phone Number</FormLabel>
+              <FormLabel className="text-gray-700">Phone Number (optional)</FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Your phone number" 
                   type="tel" 
                   {...field}
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
@@ -134,7 +134,7 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
                 <Textarea 
                   placeholder="Tell us more about your club/league..." 
                   {...field}
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
