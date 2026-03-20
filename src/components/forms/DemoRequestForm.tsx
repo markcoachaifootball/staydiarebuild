@@ -110,13 +110,13 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-gray-700">Phone Number</FormLabel>
+              <FormLabel className="text-gray-700">Phone Number (optional)</FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Your phone number" 
                   type="tel" 
                   {...field}
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
