@@ -97,7 +97,7 @@ const DemoRequestForm: React.FC<DemoRequestFormProps> = ({ onSubmit }) => {
                   placeholder="your@email.com" 
                   type="email" 
                   {...field}
-                  className="text-black placeholder:text-gray-400"
+                  className="bg-white text-black placeholder:text-gray-400 border-gray-300"
                 />
               </FormControl>
               <FormMessage />
