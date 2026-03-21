@@ -67,7 +67,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: "Staydia AI Chat <info@staydiasports.com>",
-        to: ["mark@staydiasports.com"],
+        to: ["info@staydiasports.com"],
         subject: `💬 AI Chat: "${firstQuestion}..."`,
         html: htmlBody,
       }),
