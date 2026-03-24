@@ -4,6 +4,455 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staydia Sports | Free AI Camera & Live Streaming for Grassroots Clubs</title>
+    <meta name="description" content="Stream football, basketball, rugby, field hockey & more with Staydia's free AI camera. 100% ad revenue goes to your club. Available across UK, Ireland, Germany, Spain, France, Netherlands, Portugal & Italy." />
+    <meta name="author" content="Staydia Sports" />
+    <meta name="keywords" content="Staydia Sports, Staydia, AI sports broadcasting, sports club streaming, live match streaming, automated sports cameras, fan engagement platform, football broadcasting, rugby broadcasting, basketball broadcasting, hockey broadcasting" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <link rel="canonical" href="https://about.staydiasports.com/" />
+
+    <!-- Hreflang Tags for European Markets -->
+    <link rel="alternate" hreflang="en" href="https://about.staydiasports.com/" />
+    <link rel="alternate" hreflang="en-GB" href="https://about.staydiasports.com/uk" />
+    <link rel="alternate" hreflang="en-IE" href="https://about.staydiasports.com/ireland" />
+    <link rel="alternate" hreflang="de" href="https://about.staydiasports.com/germany" />
+    <link rel="alternate" hreflang="es" href="https://about.staydiasports.com/spain" />
+    <link rel="alternate" hreflang="fr" href="https://about.staydiasports.com/france" />
+    <link rel="alternate" hreflang="nl" href="https://about.staydiasports.com/netherlands" />
+    <link rel="alternate" hreflang="pt" href="https://about.staydiasports.com/portugal" />
+    <link rel="alternate" hreflang="it" href="https://about.staydiasports.com/italy" />
+    <link rel="alternate" hreflang="x-default" href="https://about.staydiasports.com/" />
+
+    <!-- Prerender signal for Netlify Prerender Extension (must be set BEFORE React loads) -->
+    <script>
+      window.prerenderReady = false;
+    </script>
+
+    <!-- Prevent static-fallback flash for real users (keep it for bots/prerender) -->
+    <style>
+      html.no-static-fallback #static-fallback {
+        display: none !important;
+      }
+    </style>
+    <script>
+      (function () {
+        try {
+          var ua = navigator.userAgent || '';
+          var isBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(
+            ua
+          );
+          if (!isBot) document.documentElement.classList.add('no-static-fallback');
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.contentful.com" />
+    <link rel="preconnect" href="https://cdn.chatsimple.ai" />
+    <link rel="dns-prefetch" href="https://cdn.gpteng.co" />
+    <link rel="dns-prefetch" href="https://staydia.com" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Staydia Sports" />
+    <meta property="og:title" content="Staydia Sports | AI-Powered Sports Broadcasting Platform" />
+    <meta property="og:description" content="Staydia Sports is the official AI-powered sports broadcasting platform. Zero-cost cameras, live streaming & fan engagement for sports clubs." />
+    <meta property="og:image" content="https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content="https://about.staydiasports.com/" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@staydiasports" />
+    <meta name="twitter:creator" content="@staydiasports" />
+    <meta name="twitter:title" content="Staydia Sports | AI-Powered Sports Broadcasting Platform" />
+    <meta name="twitter:description" content="Staydia Sports is the official AI-powered sports broadcasting platform. Zero-cost cameras, live streaming & fan engagement for sports clubs." />
+    <meta name="twitter:image" content="https://about.staydiasports.com/lovable-uploads/c8798285-fc56-4f93-bcbd-5f5d7c06190d.png" />
+    <meta name="twitter:image:alt" content="Staydia Sports AI Broadcasting Platform" />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="google-site-verification" content="google43906e706d08592d" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+
+    <!-- JSON-LD Structured Data for Organization (critical for prerendering/AI crawlers) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Staydia Sports",
+        "alternateName": ["Staydia", "StaydiaOnline", "Staydia Broadcasting"],
+        "url": "https://about.staydiasports.com",
+        "logo": "https://about.staydiasports.com/lovable-uploads/70c0f6fc-7382-4387-80d3-bae9fc4609e7.png",
+        "description": "Staydia Sports is the official AI-powered sports broadcasting platform. We provide zero-cost automated cameras, live streaming, and fan engagement tools for football, rugby, basketball, and hockey clubs worldwide.",
+        "sameAs": [
+          "https://twitter.com/staydiasports",
+          "https://www.linkedin.com/company/staydia",
+          "https://staydiasports.com",
+          "https://staydia.com"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "url": "https://about.staydiasports.com/contact"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://about.staydiasports.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <meta name="application-name" content="Staydia Sports" />
+
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      body {
+        background-color: hsl(0 0% 7%);
+        color: white;
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .staydia-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      @media (min-width: 640px) {
+        .staydia-container {
+          padding: 0 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .staydia-container {
+          padding: 0 2rem;
+        }
+      }
+    </style>
+
+    <!-- Performance Optimizations -->
+    <link rel="modulepreload" href="/src/main.tsx" />
+  </head>
+
+  <body>
+    <!-- 
+      Crawler-friendly fallback: This static HTML is visible BEFORE React hydrates.
+      React will hide it via #static-fallback { display: none } once the app loads.
+      This ensures Googlebot/crawlers always see critical links in the initial HTML.
+    -->
+    <div id="static-fallback" style="background:#111;color:#fff;font-family:system-ui,-apple-system,sans-serif;">
+      <!-- Static Header -->
+      <header style="border-bottom:1px solid #333;padding:1rem;">
+        <div class="staydia-container" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+          <a href="/" style="display:flex;align-items:center;text-decoration:none;">
+            <img src="/lovable-uploads/f7690435-d61e-4b90-8008-5e6981cb119d.png" alt="Staydia Sports" width="120" height="40" style="height:40px;width:auto;" />
+          </a>
+          <nav aria-label="Main navigation" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;">
+            <a href="/solutions" style="color:#d1d5db;text-decoration:none;">Solutions</a>
+            <a href="/sports" style="color:#d1d5db;text-decoration:none;">Sports</a>
+            <a href="/for-clubs" style="color:#d1d5db;text-decoration:none;">For Clubs</a>
+            <a href="/for-leagues" style="color:#d1d5db;text-decoration:none;">For Leagues</a>
+            <a href="/revenue-sharing" style="color:#d1d5db;text-decoration:none;">Revenue Sharing</a>
+            <a href="/news" style="color:#d1d5db;text-decoration:none;">News</a>
+            <a href="/about" style="color:#d1d5db;text-decoration:none;">About</a>
+            <a href="/contact" style="color:#d1d5db;text-decoration:none;">Contact</a>
+            <a href="/book-demo" style="background:#DAA520;color:#111;padding:0.5rem 1rem;border-radius:4px;text-decoration:none;font-weight:600;">Book Demo</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Static Hero / News Article Fallback Content -->
+      <main class="staydia-container" style="padding:3rem 1rem;">
+        <!-- Default (homepage) fallback -->
+        <section id="static-home-hero" aria-label="Staydia Sports overview">
+          <h1 style="font-size:2.5rem;margin:0 0 1rem;color:#fff;">AI-Powered Sports Broadcasting</h1>
+          <p style="font-size:1.25rem;color:#9ca3af;max-width:60ch;margin:0 0 2rem;">
+            Staydia Sports provides AI-powered broadcasting solutions for sports clubs. Automated camera systems capture every game, stream live to fans, and generate revenue through our revenue-sharing model.
+          </p>
+          <a href="/book-demo" style="display:inline-block;background:#DAA520;color:#111;padding:0.75rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:600;">Get Started</a>
+        </section>
+
+        <!-- News article fallback (bots/prerender) -->
+        <article id="static-news-article" aria-label="News article" style="display:none;">
+          <header style="margin:0 0 1.5rem;">
+            <p style="color:#9ca3af;margin:0 0 0.75rem;font-size:0.95rem;">Staydia Sports News</p>
+            <h1 id="static-news-title" style="font-size:2.25rem;margin:0;color:#fff;">Loading articleâ¦</h1>
+          </header>
+          <figure id="static-news-figure" style="margin:0 0 1.5rem;display:none;">
+            <img id="static-news-image" src="" alt="" width="1200" height="630" style="width:100%;height:auto;border-radius:12px;" />
+          </figure>
+          <p id="static-news-summary" style="font-size:1.15rem;color:#d1d5db;max-width:75ch;margin:0;">Fetching the latest article detailsâ¦</p>
+        </article>
+      </main>
+
+      <!-- Static Footer -->
+      <footer style="border-top:1px solid #333;padding:2rem 1rem;">
+        <div class="staydia-container">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin-bottom:2rem;">
+            <!-- Company -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Company</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="/about" style="color:#9ca3af;text-decoration:none;">About Us</a>
+                <a href="/testimonials" style="color:#9ca3af;text-decoration:none;">Testimonials</a>
+                <a href="/community" style="color:#9ca3af;text-decoration:none;">Community</a>
+                <a href="/faq" style="color:#9ca3af;text-decoration:none;">FAQ</a>
+              </nav>
+            </div>
+            <!-- Solutions -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Solutions</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="/for-clubs" style="color:#9ca3af;text-decoration:none;">For Clubs</a>
+                <a href="/for-leagues" style="color:#9ca3af;text-decoration:none;">For Leagues</a>
+                <a href="/revenue-sharing" style="color:#9ca3af;text-decoration:none;">Revenue Sharing</a>
+                <a href="/sports" style="color:#9ca3af;text-decoration:none;">Sports We Cover</a>
+              </nav>
+            </div>
+            <!-- Fan Experience -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Fan Experience</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="https://staydiasports.com" style="color:#9ca3af;text-decoration:none;">Watch Live</a>
+                <a href="https://staydiasports.com/videos" style="color:#9ca3af;text-decoration:none;">On-Demand Library</a>
+                <a href="/news" style="color:#9ca3af;text-decoration:none;">News</a>
+              </nav>
+            </div>
+            <!-- Contact -->
+            <div>
+              <h3 style="color:#DAA520;font-size:1rem;margin:0 0 1rem;">Contact</h3>
+              <nav style="display:flex;flex-direction:column;gap:0.5rem;">
+                <a href="/contact" style="color:#9ca3af;text-decoration:none;">Contact Us</a>
+                <a href="/book-demo" style="color:#9ca3af;text-decoration:none;">Book a Demo</a>
+                <a href="/partnerships" style="color:#9ca3af;text-decoration:none;">Partnerships</a>
+              </nav>
+            </div>
+          </div>
+          <div style="border-top:1px solid #333;padding-top:1.5rem;text-align:center;">
+            <p style="color:#6b7280;margin:0;font-size:0.875rem;">Â© 2024 Staydia Sports. All rights reserved. Made in Ireland ð®ðª</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- React app mounts here and hides the static fallback -->
+    <div id="root"></div>
+
+    <!-- Hide/enrich static fallback once React content is ready -->
+    <script>
+      (function() {
+        var fb = document.getElementById('static-fallback');
+        if (!fb) return;
+        var root = document.getElementById('root');
+        if (!root) return;
+
+        var ua = navigator.userAgent || '';
+        var isBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot|facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|TelegramBot|HeadlessChrome|Prerender/i.test(ua);
+
+        function hideFallback() {
+          fb.style.display = 'none';
+        }
+
+        // --- Bot-only: enrich /news/:slug fallback with real article title + image ASAP ---
+        (function enrichNewsFallbackForBots() {
+          try {
+            if (!isBot) return;
+            var path = (location && location.pathname) ? location.pathname : '';
+            if (!path || path.indexOf('/news/') !== 0) return;
+
+            var homeHero = document.getElementById('static-home-hero');
+            var articleEl = document.getElementById('static-news-article');
+            var titleEl = document.getElementById('static-news-title');
+            var summaryEl = document.getElementById('static-news-summary');
+            var figEl = document.getElementById('static-news-figure');
+            var imgEl = document.getElementById('static-news-image');
+
+            if (!articleEl || !titleEl || !summaryEl) return;
+
+            // Switch to article mode
+            if (homeHero) homeHero.style.display = 'none';
+            articleEl.style.display = 'block';
+
+            // IMPORTANT: prevent React from flipping window.prerenderReady early.
+            // Netlify Prerender captures a snapshot as soon as prerenderReady becomes true.
+            // We lock it here and unlock in finishPrerender() after we inject title + image.
+            try { window.__PRERENDER_LOCK__ = true; } catch (e) {}
+            // Extract slug from URL
+            var rawSlug = decodeURIComponent(path.replace(/^\/news\//, '')).replace(/\/+$/, '');
+            var normalizedSlug = rawSlug.toLowerCase();
+
+            // Contentful CDA request (public content only)
+            var SPACE = 'qo4q4xk8vua7';
+            var TOKEN = '9r0ya2DRB2KRdn8Jqr2xQpu8n8mBC56Mz0Dn7Q-1TzU';
+
+            // Build a minimal, fast Contentful request (reduce payload to improve prerender reliability)
+            var url =
+              'https://cdn.contentful.com/spaces/' + encodeURIComponent(SPACE) +
+              '/environments/master/entries' +
+              '?access_token=' + encodeURIComponent(TOKEN) +
+              '&content_type=article' +
+              '&limit=1' +
+              '&include=2' +
+              '&fields.slug[in]=' + encodeURIComponent(rawSlug + ',' + normalizedSlug) +
+              '&select=' + encodeURIComponent('fields.title,fields.summary,fields.slug,fields.featuredImage');
+
+            // Set critical URL-related tags immediately (even if Contentful is slow)
+            try {
+              var canonicalEarly = document.querySelector('link[rel="canonical"]');
+              if (canonicalEarly) canonicalEarly.setAttribute('href', 'https://about.staydiasports.com' + path);
+              var ogUrlEarly = document.querySelector('meta[property="og:url"]');
+              if (ogUrlEarly) ogUrlEarly.setAttribute('content', 'https://about.staydiasports.com' + path);
+              var ogTypeEarly = document.querySelector('meta[property="og:type"]');
+              if (ogTypeEarly) ogTypeEarly.setAttribute('content', 'article');
+            } catch (e) {}
+
+            // Safety: ensure prerender doesn't hang forever, but allow enough time for Contentful to respond.
+            var done = false;
+            function finishPrerender() {
+              if (done) return;
+              done = true;
+              try { window.__PRERENDER_LOCK__ = false; } catch (e) {}
+              try {
+                window.prerenderReady = true;
+                document.documentElement.setAttribute('data-prerender-ready', 'true');
+              } catch (e) {}
+            }
+
+            // Netlify prerender snapshots can capture too early if this is too small.
+            // Give Contentful a bigger window, then fail open.
+            setTimeout(finishPrerender, 15000);
+
+            // Abort the fetch if it stalls (keeps us from waiting forever while still allowing a long safety window).
+            var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+            if (controller) {
+              setTimeout(function() {
+                try { controller.abort(); } catch (e) {}
+              }, 12000);
+            }
+
+            var fetchOpts = controller ? { signal: controller.signal } : undefined;
+
+            fetch(url, fetchOpts)
+              .then(function(r) { return r.json(); })
+              .then(function(json) {
+                var item = json && json.items && json.items[0];
+                if (!item || !item.fields) {
+                  summaryEl.textContent = 'Article not found.';
+                  finishPrerender();
+                  return;
+                }
+
+                var title = item.fields.title || rawSlug;
+                var summary = item.fields.summary || 'Read the latest updates from Staydia Sports.';
+
+                titleEl.textContent = title;
+                summaryEl.textContent = summary;
+
+                // Set basic head tags for bots (helps rendered output)
+                try {
+                  document.title = title + ' | Staydia Sports News';
+                  var canonical = document.querySelector('link[rel="canonical"]');
+                  if (canonical) canonical.setAttribute('href', 'https://about.staydiasports.com' + path);
+                  var ogTitle = document.querySelector('meta[property="og:title"]');
+                  if (ogTitle) ogTitle.setAttribute('content', title);
+                  var ogUrl = document.querySelector('meta[property="og:url"]');
+                  if (ogUrl) ogUrl.setAttribute('content', 'https://about.staydiasports.com' + path);
+                  var ogType = document.querySelector('meta[property="og:type"]');
+                  if (ogType) ogType.setAttribute('content', 'article');
+                  var desc = document.querySelector('meta[name="description"]');
+                  if (desc) desc.setAttribute('content', summary);
+                  var ogDesc = document.querySelector('meta[property="og:description"]');
+                  if (ogDesc) ogDesc.setAttribute('content', summary);
+                  var twDesc = document.querySelector('meta[name="twitter:description"]');
+                  if (twDesc) twDesc.setAttribute('content', summary);
+                } catch (e) {}
+
+                // Resolve featured image via includes.Asset
+                var featured = item.fields.featuredImage;
+                var assetId = featured && featured.sys && featured.sys.id;
+                var assets = json && json.includes && json.includes.Asset ? json.includes.Asset : [];
+                var asset = null;
+                if (assetId && assets && assets.length) {
+                  for (var i = 0; i < assets.length; i++) {
+                    if (assets[i] && assets[i].sys && assets[i].sys.id === assetId) {
+                      asset = assets[i];
+                      break;
+                    }
+                  }
+                }
+
+                if (asset && asset.fields && asset.fields.file && asset.fields.file.url && imgEl && figEl) {
+                  var u = asset.fields.file.url;
+                  var imageUrl = (u.indexOf('http') === 0) ? u : (u.indexOf('//') === 0 ? ('https:' + u) : ('https://' + u.replace(/^\/+/, '')));
+                  if (imageUrl.indexOf('images.ctfassets.net') !== -1) {
+                    imageUrl += (imageUrl.indexOf('?') !== -1 ? '&' : '?') + 'fm=jpg&q=85&w=1200&h=630&fit=fill&f=center';
+                  }
+                  imgEl.src = imageUrl;
+                  imgEl.alt = (asset.fields.title || title || 'Staydia Sports news featured image');
+                  figEl.style.display = 'block';
+
+                  try {
+                    var ogImg = document.querySelector('meta[property="og:image"]');
+                    if (ogImg) ogImg.setAttribute('content', imageUrl);
+                    var twImg = document.querySelector('meta[name="twitter:image"]');
+                    if (twImg) twImg.setAttribute('content', imageUrl);
+                    var twAlt = document.querySelector('meta[name="twitter:image:alt"]');
+                    if (twAlt) twAlt.setAttribute('content', imgEl.alt);
+                  } catch (e) {}
+                }
+
+                finishPrerender();
+              })
+              .catch(function() {
+                summaryEl.textContent = 'Unable to load this article right now.';
+                finishPrerender();
+              });
+          } catch (e) {
+            try { window.prerenderReady = true; } catch (x) {}
+          }
+        })();
+
+        // Keep the static fallback visible for SEO bots.
+        // Reason: many nav links + article hero live in this HTML to guarantee crawlability.
+        // Hiding it after React hydration makes those links disappear in bot renders.
+        if (isBot) {
+          // no-op
+        } else {
+          var observer = new MutationObserver(function() {
+            if (root.children.length > 0) {
+              hideFallback();
+              observer.disconnect();
+            }
+          });
+          observer.observe(root, { childList: true });
+          setTimeout(hideFallback, 5000);
+        }
+      })();
+    </script>
+
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Staydia Sports | AI-Powered Sports Broadcasting Platform</title>
     <meta name="description" content="Staydia Sports is the official AI-powered sports broadcasting platform. Zero-cost cameras, live streaming & fan engagement for football, rugby, basketball & hockey clubs." />
     <meta name="author" content="Staydia Sports" />
