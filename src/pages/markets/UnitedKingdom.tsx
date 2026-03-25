@@ -82,7 +82,7 @@ const UnitedKingdom: React.FC = () => {
           <div className="mt-8 flex items-center justify-center gap-8 text-gray-400 text-sm flex-wrap">
             <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> No upfront costs</span>
             <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> Installation included</span>
-            <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> 100% revenue to your club</span>
+            <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> Earn from sponsorship</span>
           </div>
         </div>
       </section>
