@@ -11,7 +11,7 @@ const Spain: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'C\u00e1mara Deportiva IA y Streaming en Vivo para Clubes en Espa\u00f1a',
-    description: 'Sistemas de c\u00e1mara IA GRATUITOS para clubes de f\u00fatbol base en Espa\u00f1a. Streaming en vivo, genera ingresos de suscripciones de fans a \u20ac6,99/mes. RFEF aprobado. 100% de ingresos para tu club.',
+    description: 'Sistemas de c\u00e1mara IA GRATUITOS para clubes de f\u00fatbol base en Espa\u00f1a. Streaming en vivo, genera ingresos de suscripciones de fans a \u20ac6,99/mes. RFEF aprobado. Ingresos por patrocinio para tu club.',
     keywords: 'streaming deportivo Espa\u00f1a, c\u00e1mara IA f\u00fatbol, streaming f\u00fatbol base Espa\u00f1a, RFEF streaming, liga regional streaming, deporte amateur Espa\u00f1a'
   });
   useStructuredData({ type: 'Organization' });
@@ -25,7 +25,7 @@ const Spain: React.FC = () => {
             C\u00e1mara Deportiva IA para Clubes en <span className="text-staydia-gold">Espa\u00f1a</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia lleva el broadcasting profesional al deporte base espa\u00f1ol. C\u00e1maras IA GRATUITAS. Gana \u20ac6,99/mes por suscripci\u00f3n. 100% de los ingresos van a tu club.
+            Staydia lleva el broadcasting profesional al deporte base espa\u00f1ol. C\u00e1maras IA GRATUITAS. Gana \u20ac6,99/mes por suscripci\u00f3n. 
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Reservar Demo</Link>
@@ -38,7 +38,7 @@ const Spain: React.FC = () => {
           <h2 className="text-3xl font-bold mb-8 text-staydia-gold">Streaming Deportivo Reinventado</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex gap-4"><Camera className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">C\u00e1mara IA Gratuita</h3><p className="text-gray-300">Instalaci\u00f3n, mantenimiento y gesti\u00f3n completa. Sin costes de equipamiento.</p></div></div>
-            <div className="flex gap-4"><Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">100% Ingresos para Tu Club</h3><p className="text-gray-300">Cada \u20ac6,99 de suscripciones mensuales va directamente a tu club.</p></div></div>
+            <div className="flex gap-4"><Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Ingresos por Patrocinio</h3><p className="text-gray-300">Cada \u20ac6,99 de suscripciones mensuales va directamente a tu club.</p></div></div>
             <div className="flex gap-4"><Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">En Vivo y Bajo Demanda</h3><p className="text-gray-300">Partidos en directo y repeticiones disponibles en cualquier momento.</p></div></div>
             <div className="flex gap-4"><Users className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Comunidad y Patrocinadores</h3><p className="text-gray-300">Conecta con fans, atrae patrocinadores locales y haz crecer tu club.</p></div></div>
           </div>

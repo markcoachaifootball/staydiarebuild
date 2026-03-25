@@ -78,7 +78,7 @@ export const useStructuredData = ({
             "Fan engagement platforms",
             "Revenue generation for sports clubs",
             "Automated camera systems",
-            "Sports analytics",
+            "Sports technology",
             "Club administration software"
           ],
           "offers": {

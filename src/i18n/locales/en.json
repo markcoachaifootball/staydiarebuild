@@ -22,7 +22,7 @@
   "hero": {
     "title": "Can't make the game? Stay connected with Staydia Sports",
     "subtitle": "The complete streaming and fan engagement platform for sports clubs and leagues",
-    "description": "Transform how your fans experience live sports with our professional streaming platform, real-time analytics, and revenue-sharing opportunities.",
+    "description": "Transform how your fans experience live sports with our professional streaming platform, real-time engagement tools, and revenue-sharing opportunities.",
     "watchDemo": "Watch Demo",
     "bookDemo": "Book a Demo",
     "heading1": "AI-Automated Sports",
@@ -40,7 +40,7 @@
   },
   "features": {
     "title": "Why Clubs Choose Staydia",
-    "subtitle": "Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you keep 100% of your ad revenue. It's that simple.",
+    "subtitle": "Join many other amateur football, field hockey, rugby, and basketball clubs across the EU & UK partnering with Staydia Sports. We provide the AI camera, the platform, and the expertise – you earn from your ad revenue. It's that simple.",
     "faqButton": "Frequently Asked Questions",
     "becomePartner": "Become A Staydia Partner",
     "zeroInvestment": {
@@ -152,7 +152,7 @@
       "item1": "Automated multi-camera production system",
       "item2": "Broadcast-quality live streaming capabilities",
       "item3": "Customizable branded viewing experience",
-      "item4": "Advanced analytics and engagement metrics",
+      "item4": "Advanced engagement metrics",
       "item5": "Clipping tactical tool",
       "item6": "Clipping tool for Social media Highlights"
     }
@@ -228,7 +228,7 @@
     "partnershipFaqTitle": "How We Partner",
     "partnershipFaqDesc": "We understand you might have questions about how our partnership works. Here are answers to the most common questions we receive from clubs considering Staydia Sports.",
     "faq1q": "What's the catch? How can this be free for our club?",
-    "faq1a": "Staydia Sports invests in your club by providing the AI camera and platform. We generate revenue through affordable subscriptions for fans who want to watch your games live and on-demand. Your club benefits from professional broadcasting at no cost and keeps 100% of any in-game advertising revenue you secure on your streams.",
+    "faq1a": "Staydia Sports invests in your club by providing the AI camera and platform. We generate revenue through affordable subscriptions for fans who want to watch your games live and on-demand. Your club benefits from professional broadcasting at no cost and earns from any in-game advertising you secure on your streams.",
     "faq2q": "Is the long term partnership a concern? What if our needs change?",
     "faq2a": "Our partnership agreement signifies our commitment to a long-term partnership and continuous improvement of the platform. It allows us to make the upfront investment in technology for your club. We aim to grow with you and are always open to discussing evolving needs.",
     "faq3q": "How difficult is the installation and maintenance?",
@@ -365,7 +365,7 @@
     "q2": "Is there any cost for clubs to install the system?",
     "a2": "No, there is zero upfront investment required from clubs. We install and maintain all the necessary equipment at our own cost. Clubs can focus on what they do best while we handle the technology.",
     "q3": "How do clubs make money with Staydia?",
-    "a3": "Clubs can generate revenue through fan subscriptions to watch matches and through in-stream sponsorship opportunities. All advertising revenue secured by the club stays 100% with the club.",
+    "a3": "Clubs can generate revenue through fan subscriptions to watch matches and through in-stream sponsorship opportunities. All advertising revenue secured by the club goes directly to the club.",
     "q4": "What sports does Staydia currently support?",
     "a4": "We currently support football (soccer), rugby, hockey, and basketball, with plans to expand to additional sports in the future.",
     "q5": "How can fans watch the matches?",

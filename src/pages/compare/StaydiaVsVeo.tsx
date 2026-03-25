@@ -10,7 +10,7 @@ const StaydiaVsVeo: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'Staydia vs Veo - AI Sports Camera Comparison 2026',
-    description: 'Compare Staydia vs Veo for grassroots sports streaming. Free AI cameras vs paid alternatives. 100% revenue to clubs. See why clubs choose Staydia over Veo.',
+    description: 'Compare Staydia vs Veo for grassroots sports streaming. Free AI cameras vs paid alternatives. See why clubs choose Staydia over Veo.',
     keywords: 'Staydia vs Veo, Veo alternative, AI sports camera comparison, grassroots streaming, free sports camera'
   });
   useStructuredData({ type: 'Organization' });
@@ -18,7 +18,7 @@ const StaydiaVsVeo: React.FC = () => {
   const features = [
     { feature: 'Camera Cost', staydia: 'FREE', competitor: 'â¬590-â¬999' },
     { feature: 'Installation', staydia: 'FREE professional install', competitor: 'Self-setup required' },
-    { feature: 'Revenue to Club', staydia: '100% of subscriptions', competitor: 'Platform takes percentage' },
+    { feature: 'Revenue to Club', staydia: 'Ad revenue to club', competitor: 'Platform takes percentage' },
     { feature: 'Subscription Price', staydia: 'Â£6.99/â¬6.99 per month', competitor: 'Higher per-match fees' },
     { feature: 'AI Tracking', staydia: 'Yes - included', competitor: 'Yes - basic' },
     { feature: 'Maintenance', staydia: 'Included free', competitor: 'User responsibility' },
@@ -35,7 +35,7 @@ const StaydiaVsVeo: React.FC = () => {
             Staydia vs <span className="text-staydia-gold">Veo</span>: Which Is Better for Your Club?
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Compare Staydia and Veo side by side. See why grassroots clubs across Europe choose Staydia's free AI camera with 100% revenue sharing.
+            Compare Staydia and Veo side by side. See why grassroots clubs across Europe choose Staydia's free AI camera with direct sponsorship revenue.
           </p>
         </div>
       </section>
@@ -53,7 +53,7 @@ const StaydiaVsVeo: React.FC = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-staydia-gold/10 border-t border-b border-staydia-gold/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6 text-staydia-gold">Ready to Switch to Staydia?</h2>
-          <p className="text-xl text-gray-300 mb-8">No upfront costs. No long-term contracts. 100% of revenue to your club.</p>
+          <p className="text-xl text-gray-300 mb-8">No upfront costs. No long-term contracts. Sponsorship revenue goes to your club.</p>
           <Link to="/book-demo" className="inline-block px-10 py-4 bg-staydia-gold text-staydia-black font-bold text-lg rounded-lg hover:bg-yellow-400 transition">Book Free Demo</Link>
         </div>
       </section>

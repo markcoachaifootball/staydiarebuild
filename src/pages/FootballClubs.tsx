@@ -63,7 +63,7 @@ const FootballClubs: React.FC = () => {
       initials: "GU",
       clubName: "Greystones Utd",
       location: "Wicklow, Ireland",
-      quote: "\"Our coaches use the footage and analytics for player development. It's been a game-changer for our training sessions.\""
+      quote: "\"Our coaches use the footage for player development. It's been a game-changer for our training sessions.\""
     }
   ];
 

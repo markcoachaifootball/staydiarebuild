@@ -79,7 +79,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Revenue Sharing</td>
                   <td className="text-center p-4">None (clubs pay only)</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">100% ad revenue to clubs</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">Ad revenue to clubs</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Accessibility</td>
@@ -131,7 +131,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Revenue Sharing Model</h3>
                     <p className="text-gray-300">
-                      Spiideo is a cost centerâclubs pay and receive no revenue return. Staydia flips the model: clubs keep 100% of ad revenue.
+                      Spiideo is a cost centerâclubs pay and receive no revenue return. Staydia flips the model: clubs earn ad revenue directly.
                       This means the more your fan base grows, the more you earn.
                     </p>
                   </div>
@@ -187,7 +187,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Is Staydia as powerful as Spiideo for professional use?</h3>
                 <p className="text-gray-300">
                   Spiideo is engineered for elite-level clubs and professional leagues with complex requirements. Staydia is built for
-                  grassroots and semi-pro clubs focusing on live streaming and fan engagement. If you need enterprise analytics, Spiideo
+                  grassroots and semi-pro clubs focusing on live streaming and fan engagement. If you need enterprise-level tools, Spiideo
                   is built for that. If you want to stream matches affordably, Staydia excels.
                 </p>
               </div>

@@ -69,7 +69,7 @@ const StaydiaVsSportway: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Revenue Model</td>
                   <td className="text-center p-4">Limited revenue share (federation-based)</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">100% ad revenue to clubs</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">Ad revenue goes to clubs</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Matches per Season</td>
@@ -144,8 +144,8 @@ const StaydiaVsSportway: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Direct Revenue Sharing to Your Club</h3>
                     <p className="text-gray-300">
-                      With Sportway, revenue flows through federations. Staydia pays 100% of ad revenue directly to your club. No middlemen,
-                      no revenue loss to gatekeepers. You keep everything you earn.
+                      With Sportway, revenue flows through federations. Staydia pays ad revenue directly to your club. No middlemen,
+                      no revenue loss to gatekeepers. You keep what you earn.
                     </p>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ const StaydiaVsSportway: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">If we're in Scandinavia, should we choose Sportway?</h3>
                 <p className="text-gray-300">
                   If your federation has a Sportway partnership with negotiated rates, it could be worth considering. But even in Scandinavia,
-                  Staydia offers better direct club control, 100% revenue sharing, and no federation gatekeeping. Compare what your federation
+                  Staydia offers better direct club control, direct revenue sharing, and no federation gatekeeping. Compare what your federation
                   offers versus Staydia's independence.
                 </p>
               </div>

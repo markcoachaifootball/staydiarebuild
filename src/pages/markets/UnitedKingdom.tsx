@@ -4,31 +4,30 @@ import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
-import { Camera, Play, TrendingUp, Banknote, Users, Shield, CheckCircle, X, Star, Zap, BarChart3 } from 'lucide-react';
+import { Camera, Play, TrendingUp, Banknote, Users, Shield, CheckCircle, X, Star, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const UnitedKingdom: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'AI Sports Camera & Live Streaming for Grassroots Clubs in the UK',
-    description: "FREE AI camera for grassroots football, rugby and hockey clubs across the UK. Professional live streaming with zero hardware cost. Earn 100% of fan subscriptions at \u00A36.99/month. FA-approved technology.",
+    description: "FREE AI camera for grassroots football, rugby and hockey clubs across the UK. Professional live streaming with zero hardware cost. Fan subscriptions at £6.99/month. FA-approved technology.",
     keywords: 'grassroots sports streaming UK, AI camera football UK, live stream amateur football UK, grassroots club streaming, FA grassroots technology, sports broadcasting UK, amateur sports camera'
   });
   useStructuredData({ type: 'Organization' });
 
   const features = [
     { icon: <Camera className="h-8 w-8" />, title: 'FREE AI Camera', description: 'Professional-grade AI camera installed at your ground at zero cost. We handle installation, maintenance, and upgrades.' },
-    { icon: <Banknote className="h-8 w-8" />, title: '100% Revenue Share', description: "Every \u00A36.99 from fan subscriptions goes directly to your club. No platform fees, no hidden charges, no revenue splits." },
+    { icon: <Banknote className="h-8 w-8" />, title: 'Earn From Sponsorship', description: "In-game sponsorship banners generate revenue directly for your club. No platform fees, no hidden charges." },
     { icon: <Play className="h-8 w-8" />, title: 'Live & On-Demand', description: 'Stream every match live in HD. Fans replay highlights anytime. Coaches access tactical footage for player development.' },
     { icon: <Zap className="h-8 w-8" />, title: 'Automated Production', description: 'AI tracks the ball and players automatically. No camera operator needed. Just turn on and let the AI handle everything.' },
     { icon: <Users className="h-8 w-8" />, title: 'Fan Engagement', description: 'Build your digital community. Connect with supporters near and far. Give sponsors real exposure through your broadcasts.' },
-    { icon: <BarChart3 className="h-8 w-8" />, title: 'Performance Analytics', description: 'Access match footage for tactical review. Track player movement patterns. Improve coaching with data-driven insights.' },
   ];
 
   const comparisonData = [
     { feature: 'Camera Cost', staydia: 'FREE', pixellot: '\u00A32,000\u2013\u00A35,000', veo: '\u00A3800\u2013\u00A31,200', xbotgo: '\u00A3250\u2013\u00A3400' },
     { feature: 'Monthly Fee', staydia: '\u00A36.99/fan', pixellot: '\u00A3500\u2013\u00A32,000', veo: '\u00A3100\u2013\u00A3200', xbotgo: 'None' },
-    { feature: 'Revenue to Club', staydia: '100%', pixellot: '0%', veo: '0%', xbotgo: '0%' },
+    
     { feature: 'Live Streaming', staydia: true, pixellot: true, veo: false, xbotgo: false },
     { feature: 'Installation Included', staydia: true, pixellot: true, veo: false, xbotgo: false },
     { feature: 'Fan Platform', staydia: true, pixellot: false, veo: false, xbotgo: false },
@@ -49,7 +48,7 @@ const UnitedKingdom: React.FC = () => {
       stars: 5,
     },
     {
-      quote: "The AI tracking is incredible. No one needs to operate the camera\u2014it just works. Our coaches use the footage for match analysis every week.",
+      quote: "The AI tracking is incredible. No one needs to operate the camera\u2014it just works. Our coaches use the footage for tactical review every week.",
       name: "David R.",
       role: "Manager, Midlands Hockey Club",
       stars: 5,
@@ -70,7 +69,7 @@ const UnitedKingdom: React.FC = () => {
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
             From the Premier League to your local Sunday league&mdash;every club deserves professional broadcasting.
-            Staydia installs a FREE AI camera at your ground. Fans subscribe at &pound;6.99/month and 100% of ingame sponsorship banners goes to your club.
+            Staydia installs a FREE AI camera at your ground. Fans subscribe at &pound;6.99/month and in-game sponsorship banners earn revenue for your club.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-4 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition text-lg">
@@ -83,7 +82,7 @@ const UnitedKingdom: React.FC = () => {
           <div className="mt-8 flex items-center justify-center gap-8 text-gray-400 text-sm flex-wrap">
             <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> No upfront costs</span>
             <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> Installation included</span>
-            <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> 100% revenue to your club</span>
+            <span className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-staydia-gold" /> Earn from sponsorship</span>
           </div>
         </div>
       </section>
