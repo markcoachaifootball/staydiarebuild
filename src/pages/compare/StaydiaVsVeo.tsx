@@ -18,7 +18,7 @@ const StaydiaVsVeo: React.FC = () => {
   const features = [
     { feature: 'Camera Cost', staydia: 'FREE', competitor: 'â¬590-â¬999' },
     { feature: 'Installation', staydia: 'FREE professional install', competitor: 'Self-setup required' },
-    { feature: 'Revenue to Club', staydia: '100% of subscriptions', competitor: 'Platform takes percentage' },
+    { feature: 'Revenue to Club', staydia: 'Ad revenue to club', competitor: 'Platform takes percentage' },
     { feature: 'Subscription Price', staydia: 'Â£6.99/â¬6.99 per month', competitor: 'Higher per-match fees' },
     { feature: 'AI Tracking', staydia: 'Yes - included', competitor: 'Yes - basic' },
     { feature: 'Maintenance', staydia: 'Included free', competitor: 'User responsibility' },
