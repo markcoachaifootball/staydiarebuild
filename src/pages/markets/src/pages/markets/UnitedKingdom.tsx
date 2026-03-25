@@ -56,7 +56,7 @@ const UnitedKingdom: React.FC = () => {
             <ul className="list-disc list-inside space-y-3 pl-4">
               <li>Automated AI cameras installed FREE of charge</li>
               <li>Live streaming to families, supporters, and scouts</li>
-              <li>100% of subscription revenue returned to your club</li>
+              <li>Sponsorship revenue goes directly to your club</li>
               <li>On-demand match replays for coaching and development</li>
               <li>Highlight clipping tools for social media content</li>
               <li>Zero technical knowledge requiredâwe handle everything</li>
@@ -106,7 +106,7 @@ const UnitedKingdom: React.FC = () => {
             <div className="flex gap-4">
               <Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-lg mb-2">100% Revenue to Your Club</h3>
+                <h3 className="font-bold text-lg mb-2">Earn From Sponsorship</h3>
                 <p className="text-gray-300">Â£6.99/month fan subscriptionsâevery penny goes straight to your club's bank account, no cuts taken.</p>
               </div>
             </div>
@@ -150,14 +150,14 @@ const UnitedKingdom: React.FC = () => {
           </h2>
           <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
             <p>
-              Staydia's revenue sharing model was designed by UK grassroots clubs, for UK grassroots clubs. Unlike traditional broadcasting platforms that take large cuts, we return 100% of subscription revenue to your organization.
+              Staydia's revenue sharing model was designed by UK grassroots clubs, for UK grassroots clubs. Unlike traditional broadcasting platforms that take large cuts, sponsorship revenue goes directly to your organisation.
             </p>
             <div className="bg-staydia-gold/10 border border-staydia-gold/30 p-8 rounded-lg">
               <h3 className="font-bold text-staydia-gold mb-6 text-xl">Monthly Revenue Breakdown</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-4 border-b border-staydia-gold/20">
                   <span>Fan Subscriptions (Â£6.99/month)</span>
-                  <span className="text-staydia-gold font-bold">100% to Your Club</span>
+                  <span className="text-staydia-gold font-bold">To Your Club</span>
                 </div>
                 <div className="flex justify-between items-center pb-4 border-b border-staydia-gold/20">
                   <span>Local Sponsor Placements</span>
@@ -228,7 +228,7 @@ const UnitedKingdom: React.FC = () => {
           <div className="space-y-6">
             <div className="bg-staydia-black/50 p-6 rounded-lg border border-staydia-gold/20">
               <h3 className="font-bold text-staydia-gold mb-3 text-lg">Is there really no cost to install the camera?</h3>
-              <p className="text-gray-300">Absolutely. Staydia covers 100% of equipment, installation, and ongoing maintenance. We believe in the grassroots community and want every club to have access to professional streaming technology.</p>
+              <p className="text-gray-300">Absolutely. Staydia covers all equipment, installation, and ongoing maintenance. We believe in the grassroots community and want every club to have access to professional streaming technology.</p>
             </div>
             <div className="bg-staydia-black/50 p-6 rounded-lg border border-staydia-gold/20">
               <h3 className="font-bold text-staydia-gold mb-3 text-lg">Do we need good internet at our pitch?</h3>
