@@ -11,7 +11,7 @@ const UnitedKingdom: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'AI Sports Camera & Live Streaming for Grassroots Clubs in the UK',
-    description: "FREE AI camera for grassroots football, rugby and hockey clubs across the UK. Professional live streaming with zero hardware cost. Earn 100% of fan subscriptions at \u00A36.99/month. FA-approved technology.",
+    description: "FREE AI camera for grassroots football, rugby and hockey clubs across the UK. Professional live streaming with zero hardware cost. Fan subscriptions at £6.99/month. FA-approved technology.",
     keywords: 'grassroots sports streaming UK, AI camera football UK, live stream amateur football UK, grassroots club streaming, FA grassroots technology, sports broadcasting UK, amateur sports camera'
   });
   useStructuredData({ type: 'Organization' });
