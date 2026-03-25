@@ -187,7 +187,7 @@ const StaydiaVsSportway: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">If we're in Scandinavia, should we choose Sportway?</h3>
                 <p className="text-gray-300">
                   If your federation has a Sportway partnership with negotiated rates, it could be worth considering. But even in Scandinavia,
-                  Staydia offers better direct club control, 100% revenue sharing, and no federation gatekeeping. Compare what your federation
+                  Staydia offers better direct club control, direct revenue sharing, and no federation gatekeeping. Compare what your federation
                   offers versus Staydia's independence.
                 </p>
               </div>

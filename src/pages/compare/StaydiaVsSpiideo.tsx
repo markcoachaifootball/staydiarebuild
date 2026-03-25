@@ -187,7 +187,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Is Staydia as powerful as Spiideo for professional use?</h3>
                 <p className="text-gray-300">
                   Spiideo is engineered for elite-level clubs and professional leagues with complex requirements. Staydia is built for
-                  grassroots and semi-pro clubs focusing on live streaming and fan engagement. If you need enterprise analytics, Spiideo
+                  grassroots and semi-pro clubs focusing on live streaming and fan engagement. If you need enterprise-level tools, Spiideo
                   is built for that. If you want to stream matches affordably, Staydia excels.
                 </p>
               </div>
