@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Linkedin, Youtube, Github, Slack, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Linkedin, Youtube, Facebook, Instagram, Twitter } from 'lucide-react';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { usePrerenderReady } from '@/hooks/usePrerenderReady';
 
@@ -20,18 +20,6 @@ const Community: React.FC = () => {
       url: "https://youtube.com/@staydiasports-uy7rd?feature=shared", 
       icon: <Youtube className="h-6 w-6" />,
       description: "Watch our tutorials, demos and event highlights"
-    },
-    { 
-      name: "GitHub", 
-      url: "https://github.com/staydia", 
-      icon: <Github className="h-6 w-6" />,
-      description: "Explore our open-source projects and contributions"
-    },
-    { 
-      name: "Slack", 
-      url: "https://staydia.slack.com", 
-      icon: <Slack className="h-6 w-6" />,
-      description: "Join our community discussions and support channels"
     },
     { 
       name: "Twitter", 
