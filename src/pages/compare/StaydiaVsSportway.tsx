@@ -69,7 +69,7 @@ const StaydiaVsSportway: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Revenue Model</td>
                   <td className="text-center p-4">Limited revenue share (federation-based)</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">100% ad revenue to clubs</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">Ad revenue goes to clubs</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Matches per Season</td>
