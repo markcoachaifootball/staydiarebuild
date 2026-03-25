@@ -78,7 +78,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Revenue Model</td>
                   <td className="text-center p-4">None (camera only)</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">100% ad revenue to club</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">Ad revenue to club</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Support & Maintenance</td>
