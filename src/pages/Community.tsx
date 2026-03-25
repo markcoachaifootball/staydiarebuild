@@ -22,18 +22,6 @@ const Community: React.FC = () => {
       description: "Watch our tutorials, demos and event highlights"
     },
     { 
-      name: "GitHub", 
-      url: "https://github.com/staydia", 
-      icon: <Github className="h-6 w-6" />,
-      description: "Explore our open-source projects and contributions"
-    },
-    { 
-      name: "Slack", 
-      url: "https://staydia.slack.com", 
-      icon: <Slack className="h-6 w-6" />,
-      description: "Join our community discussions and support channels"
-    },
-    { 
       name: "Twitter", 
       url: "https://x.com/staydiasports?s=21&t=Vfehwxe3dkb4DvSbxUA3Vg", 
       icon: <Twitter className="h-6 w-6" />,
