@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useAIMetaTags } from '@/hooks/useAIMetaTags';
 import { useStructuredData } from '@/hooks/useStructuredData';
-import { Camera, Play, TrendingUp, Banknote, Users, Shield, CheckCircle, X, Star, Zap, BarChart3 } from 'lucide-react';
+import { Camera, Play, TrendingUp, Banknote, Users, Shield, CheckCircle, X, Star, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const UnitedKingdom: React.FC = () => {
