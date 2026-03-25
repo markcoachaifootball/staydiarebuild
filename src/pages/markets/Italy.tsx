@@ -11,7 +11,7 @@ const Italy: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'Telecamera Sportiva IA e Streaming Live per Club in Italia',
-    description: 'Telecamere sportive IA gratuite per club di calcio, rugby e sport in Italia. Streaming professionale in diretta. Guadagna il 100% degli abbonamenti dei fan a â¬6,99/mese. Approvato dalla FIGC.',
+    description: 'Telecamere sportive IA gratuite per club di calcio, rugby e sport in Italia. Streaming professionale in diretta. Guadagna dagli abbonamenti dei fan a â¬6,99/mese. Approvato dalla FIGC.',
     keywords: 'streaming sport amatoriale Italia, telecamera sportiva IA Italia, streaming calcio club Italia, calcio dilettantistico streaming'
   });
   useStructuredData({ type: 'Organization' });
@@ -25,7 +25,7 @@ const Italy: React.FC = () => {
             Telecamera Sportiva IA e Streaming Live per Club in <span className="text-staydia-gold">Italia</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia porta la trasmissione professionale a ogni club italiano. Telecamere IA gratuite, installate da noi. Guadagna â¬6,99/mese per abbonatoâil 100% va al tuo club.
+            Staydia porta la trasmissione professionale a ogni club italiano. Telecamere IA gratuite, installate da noi. Guadagna â¬6,99/mese per abbonatoâla sponsorizzazione va al tuo club.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Prenota Demo</Link>
@@ -51,7 +51,7 @@ const Italy: React.FC = () => {
             </div>
             <div className="flex gap-4">
               <Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
-              <div><h3 className="font-bold text-lg mb-2">100% dei Ricavi per il Tuo Club</h3><p className="text-gray-300">Ogni â¬6,99 di abbonamento va direttamente sul tuo conto.</p></div>
+              <div><h3 className="font-bold text-lg mb-2">Ricavi da Sponsorizzazione</h3><p className="text-gray-300">I banner di sponsorizzazione generano ricavi direttamente per il tuo club.</p></div>
             </div>
             <div className="flex gap-4">
               <Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />

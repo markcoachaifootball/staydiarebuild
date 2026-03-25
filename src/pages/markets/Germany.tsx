@@ -25,7 +25,7 @@ const Germany: React.FC = () => {
             KI-Sportkamera & Live-Streaming f\u00fcr <span className="text-staydia-gold">deutsche Vereine</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia bringt professionelles Broadcasting in den deutschen Breitensport. KOSTENLOSE KI-Kameras f\u00fcr Ihren Verein. Verdienen Sie \u20ac6,99/Monat pro Fan-Abo. 100% der Einnahmen gehen an Ihren Verein.
+            Staydia bringt professionelles Broadcasting in den deutschen Breitensport. KOSTENLOSE KI-Kameras f\u00fcr Ihren Verein. Verdienen Sie \u20ac6,99/Monat pro Fan-Abo. 
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Demo buchen</Link>
@@ -40,7 +40,7 @@ const Germany: React.FC = () => {
             <div className="flex gap-4"><Camera className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Kostenlose KI-Kamera</h3><p className="text-gray-300">Wir installieren, warten und verwalten alles. Keine Ausr\u00fcstungskosten, keine technischen Probleme.</p></div></div>
             <div className="flex gap-4"><Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">100% Einnahmen f\u00fcr Ihren Verein</h3><p className="text-gray-300">Jede \u20ac6,99 aus monatlichen Abonnements geht direkt an Ihren Verein.</p></div></div>
             <div className="flex gap-4"><Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Live & On-Demand</h3><p className="text-gray-300">Spiele live streamen. Fans k\u00f6nnen Spiele jederzeit erneut ansehen.</p></div></div>
-            <div className="flex gap-4"><Users className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Gemeinschaft st\u00e4rken</h3><p className="text-gray-300">Lokale Sponsoren, Fan-Engagement, Trainer-Analysen \u2013 alles in einer Plattform.</p></div></div>
+            <div className="flex gap-4"><Users className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Gemeinschaft st\u00e4rken</h3><p className="text-gray-300">Lokale Sponsoren, Fan-Engagement, Taktik-Auswertung \u2013 alles in einer Plattform.</p></div></div>
           </div>
         </div>
       </section>

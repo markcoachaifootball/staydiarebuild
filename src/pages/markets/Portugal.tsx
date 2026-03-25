@@ -11,7 +11,7 @@ const Portugal: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'CÃ¢mara Desportiva IA e Streaming ao Vivo para Clubes em Portugal',
-    description: 'CÃ¢maras desportivas de IA grÃ¡tis para clubes de futebol, rugby e desportos em Portugal. Streaming profissional em direto. Ganhe 100% dos assinantes de fÃ£s a â¬6,99/mÃªs. Aprovado pela FPF.',
+    description: 'CÃ¢maras desportivas de IA grÃ¡tis para clubes de futebol, rugby e desportos em Portugal. Streaming profissional em direto. Ganhe com assinantes de fãs. Aprovado pela FPF.',
     keywords: 'streaming desporto Portugal, cÃ¢mara desportiva IA Portugal, streaming futebol clubs Portugal, futebol amador streaming'
   });
   useStructuredData({ type: 'Organization' });
@@ -25,7 +25,7 @@ const Portugal: React.FC = () => {
             CÃ¢mara Desportiva IA e Streaming ao Vivo para Clubes em <span className="text-staydia-gold">Portugal</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia leva transmissÃµes profissionais a cada clube portuguÃªs. CÃ¢maras de IA grÃ¡tis, instaladas por nÃ³s. Ganhe â¬6,99/mÃªs por assinanteâ100% para o seu clube.
+            Staydia leva transmissÃµes profissionais a cada clube portuguÃªs. CÃ¢maras de IA grÃ¡tis, instaladas por nÃ³s. Ganhe â¬6,99/mÃªs por assinanteâpatrocínio para o seu clube.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Marcar Demo</Link>
@@ -51,7 +51,7 @@ const Portugal: React.FC = () => {
             </div>
             <div className="flex gap-4">
               <Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
-              <div><h3 className="font-bold text-lg mb-2">100% de Receitas para o Seu Clube</h3><p className="text-gray-300">Cada â¬6,99 de subscriÃ§Ã£o vai diretamente para a sua conta.</p></div>
+              <div><h3 className="font-bold text-lg mb-2">Receitas de Patrocínio</h3><p className="text-gray-300">Os banners de patrocínio geram receitas diretamente para o seu clube.</p></div>
             </div>
             <div className="flex gap-4">
               <Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
