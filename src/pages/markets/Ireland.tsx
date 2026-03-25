@@ -11,7 +11,7 @@ const Ireland: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'AI Sports Camera & Live Streaming for Clubs in Ireland',
-    description: 'Bring your Irish sports club into the digital age with FREE AI camera systems. Stream football, rugby, basketball, and hockey matches live. Earn 100% revenue from fan subscriptions at \u20ac6.99/month. FAI-approved, IRFU-trusted.',
+    description: 'Bring your Irish sports club into the digital age with FREE AI camera systems. Stream football, rugby, basketball, and hockey matches live. Fan subscriptions at \u20ac6.99/month. FAI-approved, IRFU-trusted.',
     keywords: 'sports streaming Ireland, AI camera clubs Ireland, live stream sports Ireland, FAI grassroots, IRFU rugby streaming, Basketball Ireland, Hockey Ireland, grassroots broadcasting Ireland'
   });
   useStructuredData({ type: 'Organization' });
