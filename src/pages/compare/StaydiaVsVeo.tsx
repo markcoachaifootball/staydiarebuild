@@ -35,7 +35,7 @@ const StaydiaVsVeo: React.FC = () => {
             Staydia vs <span className="text-staydia-gold">Veo</span>: Which Is Better for Your Club?
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Compare Staydia and Veo side by side. See why grassroots clubs across Europe choose Staydia's free AI camera with 100% revenue sharing.
+            Compare Staydia and Veo side by side. See why grassroots clubs across Europe choose Staydia's free AI camera with direct sponsorship revenue.
           </p>
         </div>
       </section>
