@@ -36,7 +36,7 @@ const StaydiaVsPixellot: React.FC = () => {
             Staydia vs <span className="text-staydia-gold">Pixellot</span>: Which Is Better for Your Club?
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Pixellot offers professional-grade systems at premium prices. Staydia gives grassroots clubs the same AI technology completely free, with 100% of revenue going to your club.
+            Pixellot offers professional-grade systems at premium prices. Staydia gives grassroots clubs the same AI technology completely free, with sponsorship revenue going directly to your club.
           </p>
         </div>
       </section>
