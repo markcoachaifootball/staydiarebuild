@@ -10,7 +10,7 @@ const StaydiaVsVeo: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'Staydia vs Veo - AI Sports Camera Comparison 2026',
-    description: 'Compare Staydia vs Veo for grassroots sports streaming. Free AI cameras vs paid alternatives. 100% revenue to clubs. See why clubs choose Staydia over Veo.',
+    description: 'Compare Staydia vs Veo for grassroots sports streaming. Free AI cameras vs paid alternatives. See why clubs choose Staydia over Veo.',
     keywords: 'Staydia vs Veo, Veo alternative, AI sports camera comparison, grassroots streaming, free sports camera'
   });
   useStructuredData({ type: 'Organization' });
