@@ -69,7 +69,7 @@ const UnitedKingdom: React.FC = () => {
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
             From the Premier League to your local Sunday league&mdash;every club deserves professional broadcasting.
-            Staydia installs a FREE AI camera at your ground. Fans subscribe at &pound;6.99/month and 100% of ingame sponsorship banners goes to your club.
+            Staydia installs a FREE AI camera at your ground. Fans subscribe at &pound;6.99/month and in-game sponsorship banners earn revenue for your club.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-4 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition text-lg">
