@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-clubs-earn-from-streaming',
     title: 'How Grassroots Clubs Can Earn Revenue from Live Streaming',
-    metaDescription: 'Learn how grassroots clubs generate revenue from live streaming. Explore advertising, sponsorships, subscriptions, and Staydia\\'s 100% revenue sharing model.',
+    metaDescription: "Learn how grassroots clubs generate revenue from live streaming. Explore advertising, sponsorships, subscriptions, and Staydia's 100% revenue sharing model.",
     keywords: 'grassroots sports revenue, live stream monetization, sports sponsorship, club sponsorship deals, sports advertising',
     excerpt: 'Comprehensive guide to generating revenue from grassroots sports streaming. Learn about advertising models, sponsorship deals, subscription revenue, and how to maximize earnings.',
     publishDate: '2026-03-05',
