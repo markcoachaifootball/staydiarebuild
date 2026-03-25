@@ -103,7 +103,7 @@ const UnitedKingdom: React.FC = () => {
               <Banknote className="h-12 w-12 text-staydia-gold mx-auto mb-4" />
               <h3 className="text-3xl font-bold mb-2">&pound;6.99<span className="text-lg font-normal text-gray-400">/mo</span></h3>
               <p className="text-gray-400">Per Fan Subscription</p>
-              <p className="text-sm text-staydia-gold mt-2 font-semibold">100% goes to your club</p>
+              
             </div>
             <div className="bg-staydia-darkgray border border-staydia-lightgray rounded-xl p-8 text-center">
               <TrendingUp className="h-12 w-12 text-staydia-gold mx-auto mb-4" />
