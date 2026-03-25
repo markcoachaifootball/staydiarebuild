@@ -27,7 +27,7 @@ const UnitedKingdom: React.FC = () => {
   const comparisonData = [
     { feature: 'Camera Cost', staydia: 'FREE', pixellot: '\u00A32,000\u2013\u00A35,000', veo: '\u00A3800\u2013\u00A31,200', xbotgo: '\u00A3250\u2013\u00A3400' },
     { feature: 'Monthly Fee', staydia: '\u00A36.99/fan', pixellot: '\u00A3500\u2013\u00A32,000', veo: '\u00A3100\u2013\u00A3200', xbotgo: 'None' },
-    { feature: 'Revenue to Club', staydia: '100%', pixellot: '0%', veo: '0%', xbotgo: '0%' },
+    
     { feature: 'Live Streaming', staydia: true, pixellot: true, veo: false, xbotgo: false },
     { feature: 'Installation Included', staydia: true, pixellot: true, veo: false, xbotgo: false },
     { feature: 'Fan Platform', staydia: true, pixellot: false, veo: false, xbotgo: false },
