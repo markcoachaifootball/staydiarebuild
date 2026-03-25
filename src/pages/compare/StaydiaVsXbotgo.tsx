@@ -105,7 +105,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Complete Platform, Not Just a Camera</h3>
                     <p className="text-gray-300">
                       XbotGo is a hardware device onlyâyou still need to build streaming infrastructure, web hosting, video delivery,
-                      and analytics. Staydia is an end-to-end platform: camera + streaming + engagement + support, all included.
+                      and fan engagement. Staydia is an end-to-end platform: camera + streaming + engagement + support, all included.
                     </p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Zero Hardware Investment</h3>
                     <p className="text-gray-300">
                       XbotGo requires $300-500 upfront hardware cost, plus additional spending on streaming infrastructure. Staydia provides
-                      the camera completely freeâyour only cost is Â£6.99/month, and you keep 100% of ad revenue.
+                      the camera completely freeâyour only cost is Â£6.99/month, and ad revenue goes directly to your club.
                     </p>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Revenue Generation Built-In</h3>
                     <p className="text-gray-300">
-                      XbotGo is a cameraâthere's no revenue model. Staydia includes monetization: you earn 100% of ad revenue from
+                      XbotGo is a cameraâthere's no revenue model. Staydia includes monetization: you earn ad revenue from
                       sponsors interested in reaching your audience. The more fans you attract, the more you earn.
                     </p>
                   </div>

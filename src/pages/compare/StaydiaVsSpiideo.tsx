@@ -131,7 +131,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Revenue Sharing Model</h3>
                     <p className="text-gray-300">
-                      Spiideo is a cost centerâclubs pay and receive no revenue return. Staydia flips the model: clubs keep 100% of ad revenue.
+                      Spiideo is a cost centerâclubs pay and receive no revenue return. Staydia flips the model: clubs earn ad revenue directly.
                       This means the more your fan base grows, the more you earn.
                     </p>
                   </div>
