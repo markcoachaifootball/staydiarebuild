@@ -15,7 +15,7 @@ const Technology = () => {
     description: 'Discover Staydia Sports\' cutting-edge AI technology. Automated camera systems, intelligent tracking, live streaming, and advanced tools for sports clubs.',
     url: 'https://about.staydiasports.com/technology',
     type: 'website',
-    tags: ['AI Technology', 'Automated Cameras', 'Sports Broadcasting', 'Intelligent Tracking', 'Live Streaming', 'Sports Analytics']
+    tags: ['AI Technology', 'Automated Cameras', 'Sports Broadcasting', 'Intelligent Tracking', 'Live Streaming', 'Sports Technology']
   });
 
   useStructuredData({

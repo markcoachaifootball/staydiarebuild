@@ -11,7 +11,7 @@ import { MessageCircle } from "lucide-react";
 const partnerFaqItems = [
   {
     question: "What's the catch? How can this be free for our club?",
-    answer: "Staydia Sports invests in your club by providing the AI camera and platform. We generate revenue through affordable subscriptions for fans who want to watch your games live and on-demand. Your club benefits from professional broadcasting at no cost and keeps 100% of any in-game advertising revenue you secure on your streams."
+    answer: "Staydia Sports invests in your club by providing the AI camera and platform. We generate revenue through affordable subscriptions for fans who want to watch your games live and on-demand. Your club benefits from professional broadcasting at no cost and earns from any in-game advertising you secure on your streams."
   },
   {
     question: "Is the long term partnership a concern? What if our needs change?",

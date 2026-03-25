@@ -123,7 +123,7 @@ const Partnerships = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Tech & Integration Partners</h3>
                 <p className="text-gray-300">
-                  From data analytics to streaming enhancements, we're open to tech collaborations 
+                  From streaming enhancements to integration tools, we're open to tech collaborations 
                   that help enhance club and fan experience.
                 </p>
               </div>
