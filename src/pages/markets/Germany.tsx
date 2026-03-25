@@ -38,7 +38,7 @@ const Germany: React.FC = () => {
           <h2 className="text-3xl font-bold mb-8 text-staydia-gold">Breitensport-Streaming, neu gedacht</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex gap-4"><Camera className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Kostenlose KI-Kamera</h3><p className="text-gray-300">Wir installieren, warten und verwalten alles. Keine Ausr\u00fcstungskosten, keine technischen Probleme.</p></div></div>
-            <div className="flex gap-4"><Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">100% Einnahmen f\u00fcr Ihren Verein</h3><p className="text-gray-300">Jede \u20ac6,99 aus monatlichen Abonnements geht direkt an Ihren Verein.</p></div></div>
+            <div className="flex gap-4"><Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Einnahmen durch Sponsoring</h3><p className="text-gray-300">In-Game Sponsoring-Banner generieren Einnahmen direkt für Ihren Verein.</p></div></div>
             <div className="flex gap-4"><Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Live & On-Demand</h3><p className="text-gray-300">Spiele live streamen. Fans k\u00f6nnen Spiele jederzeit erneut ansehen.</p></div></div>
             <div className="flex gap-4"><Users className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" /><div><h3 className="font-bold text-lg mb-2">Gemeinschaft st\u00e4rken</h3><p className="text-gray-300">Lokale Sponsoren, Fan-Engagement, Taktik-Auswertung \u2013 alles in einer Plattform.</p></div></div>
           </div>

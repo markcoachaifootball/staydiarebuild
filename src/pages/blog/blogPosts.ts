@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
       <h4>1. Staydia - Best for Grassroots Clubs</h4>
       <p><strong>Price:</strong> FREE camera + \u00A36.99/month platform fee</p>
       <p><strong>Target Audience:</strong> Grassroots and semi-professional clubs in Europe</p>
-      <p>Staydia offers a complete platform: free professional AI camera, automatic ball tracking, 4K resolution, integrated streaming platform, 100% ad revenue sharing to clubs, and fan engagement tools. The zero hardware investment and affordable monthly cost make it the best value proposition for clubs with limited budgets.</p>
+      <p>Staydia offers a complete platform: free professional AI camera, automatic ball tracking, 4K resolution, integrated streaming platform, ad revenue sharing to clubs, and fan engagement tools. The zero hardware investment and affordable monthly cost make it the best value proposition for clubs with limited budgets.</p>
       <p><strong>Best For:</strong> Clubs that want professional streaming without the cost, with direct revenue sharing.</p>
 
       <h4>2. Pixellot - Best for Enterprise Clubs</h4>
@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-clubs-earn-from-streaming',
     title: 'How Grassroots Clubs Can Earn Revenue from Live Streaming',
-    metaDescription: "Learn how grassroots clubs generate revenue from live streaming. Explore advertising, sponsorships, subscriptions, and Staydia's 100% revenue sharing model.",
+    metaDescription: "Learn how grassroots clubs generate revenue from live streaming. Explore advertising, sponsorships, subscriptions, and Staydia's revenue sharing model.",
     keywords: 'grassroots sports revenue, live stream monetization, sports sponsorship, club sponsorship deals, sports advertising',
     excerpt: 'Comprehensive guide to generating revenue from grassroots sports streaming. Learn about advertising models, sponsorship deals, subscription revenue, and how to maximize earnings.',
     publishDate: '2026-03-05',
@@ -80,10 +80,10 @@ export const blogPosts: BlogPost[] = [
       <p>For years, grassroots clubs treated streaming as an expense. In 2026, that has fundamentally changed. Live streaming has become a legitimate revenue stream for clubs of all sizes. This guide reveals how to turn your streams into consistent, meaningful income.</p>
 
       <h3>The Shift from Cost Center to Profit Center</h3>
-      <p>Traditional sports streaming models put all revenue on the platform side: YouTube/Facebook keeps 45-50%+ of advertising revenue, paid subscriptions take a 30% cut, and sponsorship integration is difficult to track. Staydia flips this model: clubs keep 100% of advertising revenue.</p>
+      <p>Traditional sports streaming models put all revenue on the platform side: YouTube/Facebook keeps 45-50%+ of advertising revenue, paid subscriptions take a 30% cut, and sponsorship integration is difficult to track. Staydia flips this model: clubs earn advertising revenue directly.</p>
 
       <h3>Revenue Model 1: Advertising & Ad Revenue Sharing</h3>
-      <p>Advertising revenue is the most accessible monetization method. Your streams attract viewers, brands want to reach those viewers, and you earn a cut of the advertising spend. With Staydia's 100% revenue share model, a club with 500 average viewers earning \u00A350/match generates \u00A32,400/season (48 matches).</p>
+      <p>Advertising revenue is the most accessible monetization method. Your streams attract viewers, brands want to reach those viewers, and you earn a cut of the advertising spend. With Staydia's revenue share model, a club with 500 average viewers earning \u00A350/match generates \u00A32,400/season (48 matches).</p>
 
       <h3>Revenue Model 2: Direct Sponsorships & Partnerships</h3>
       <p>Sponsorships are often more lucrative because you deal directly with brands. Match sponsors typically pay \u00A350-200/match, season sponsors \u00A31,000-5,000/season, and broadcast sponsors \u00A3500-2,000/season. Create a media kit documenting your viewership, target local businesses, and offer tiered sponsorship packages.</p>
@@ -94,7 +94,7 @@ export const blogPosts: BlogPost[] = [
       <h3>Revenue Model 4: Merchandise & Shop Integration</h3>
       <p>Sell club merchandise directly during high-engagement moments. Live streams create emotional moments when fans want to buy merch. Print-on-demand allows zero upfront inventory cost with 20-30% margins.</p>
 
-      <h3>Staydia's 100% Revenue Share: The Difference</h3>
+      <h3>Staydia's Revenue Share: The Difference</h3>
       <p>Most platforms take a cut of club revenue. YouTube and Facebook take 45-50%, Twitch takes 50%. Staydia takes 0%. Over a season with average monthly revenue of \u00A3200, that's a \u00A31,200 difference annually\u2014meaningful money for a grassroots club.</p>
 
       <h3>Maximizing Your Revenue Potential</h3>
@@ -119,7 +119,7 @@ export const blogPosts: BlogPost[] = [
       <p>Setting up live streaming for your sports club has never been easier. With AI-powered cameras and integrated platforms like Staydia, you can go from zero to professional streaming in under an hour. This guide walks you through everything you need to know.</p>
 
       <h3>Step 1: Choose Your Platform</h3>
-      <p>The platform you choose determines your streaming quality, audience reach, and revenue potential. Staydia provides a free AI camera with an integrated streaming platform, eliminating the need for separate hardware purchases and streaming software setup. Unlike YouTube or Facebook streaming, Staydia is purpose-built for grassroots sports with 100% ad revenue sharing.</p>
+      <p>The platform you choose determines your streaming quality, audience reach, and revenue potential. Staydia provides a free AI camera with an integrated streaming platform, eliminating the need for separate hardware purchases and streaming software setup. Unlike YouTube or Facebook streaming, Staydia is purpose-built for grassroots sports with ad revenue sharing.</p>
 
       <h3>Step 2: Camera Placement</h3>
       <p>Position your camera at the halfway line, elevated 3-5 metres above pitch level. This gives the AI the best angle for tracking play across the full width of the pitch. Ensure the camera has an unobstructed view of both goals and the full playing area. Most clubs mount their camera on existing floodlight poles or purpose-built masts.</p>
@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
       <p>Streaming is just the start. Real value comes from engagement: enable live chat so fans can interact, share highlights and clips during and after the match, cross-promote on TikTok, Instagram, and YouTube, and build a community around your club's content. The clubs that grow fastest are those that treat streaming as a community-building tool, not just a broadcast.</p>
 
       <h3>Step 7: Monetize Your Streams</h3>
-      <p>Once you're streaming consistently and building an audience, monetization follows naturally. With Staydia, clubs keep 100% of advertising revenue, can add sponsor overlays, and offer premium content. Start with ads, add sponsorships as your audience grows, and explore merchandise and premium tiers as your community matures.</p>
+      <p>Once you're streaming consistently and building an audience, monetization follows naturally. With Staydia, clubs earn advertising revenue directly, can add sponsor overlays, and offer premium content. Start with ads, add sponsorships as your audience grows, and explore merchandise and premium tiers as your community matures.</p>
 
       <p>Ready to get started? With Staydia, you can have professional streaming set up at your ground within days. The free AI camera, integrated platform, and revenue sharing model mean there's no barrier to entry for any grassroots club in Europe.</p>
     `,

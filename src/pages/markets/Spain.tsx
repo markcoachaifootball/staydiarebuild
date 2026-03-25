@@ -11,7 +11,7 @@ const Spain: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'C\u00e1mara Deportiva IA y Streaming en Vivo para Clubes en Espa\u00f1a',
-    description: 'Sistemas de c\u00e1mara IA GRATUITOS para clubes de f\u00fatbol base en Espa\u00f1a. Streaming en vivo, genera ingresos de suscripciones de fans a \u20ac6,99/mes. RFEF aprobado. 100% de ingresos para tu club.',
+    description: 'Sistemas de c\u00e1mara IA GRATUITOS para clubes de f\u00fatbol base en Espa\u00f1a. Streaming en vivo, genera ingresos de suscripciones de fans a \u20ac6,99/mes. RFEF aprobado. Ingresos por patrocinio para tu club.',
     keywords: 'streaming deportivo Espa\u00f1a, c\u00e1mara IA f\u00fatbol, streaming f\u00fatbol base Espa\u00f1a, RFEF streaming, liga regional streaming, deporte amateur Espa\u00f1a'
   });
   useStructuredData({ type: 'Organization' });

@@ -11,7 +11,7 @@ const France: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'Cam\u00e9ra Sportive IA & Streaming en Direct pour Clubs en France',
-    description: 'Syst\u00e8mes de cam\u00e9ra IA GRATUITS pour les clubs de football amateur en France. Streaming en direct, g\u00e9n\u00e9rez des revenus \u00e0 \u20ac6,99/mois. FFF approuv\u00e9. 100% des revenus pour votre club.',
+    description: 'Syst\u00e8mes de cam\u00e9ra IA GRATUITS pour les clubs de football amateur en France. Streaming en direct, g\u00e9n\u00e9rez des revenus \u00e0 \u20ac6,99/mois. FFF approuv\u00e9. Revenus de sponsoring pour votre club.',
     keywords: 'streaming sportif France, cam\u00e9ra IA football, streaming football amateur France, FFF grassroots, ligue r\u00e9gionale streaming, sport amateur France'
   });
   useStructuredData({ type: 'Organization' });
