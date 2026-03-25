@@ -68,7 +68,7 @@ const StaydiaVsPixellot: React.FC = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-staydia-gold/10 border-t border-b border-staydia-gold/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6 text-staydia-gold">Ready to Switch to Staydia?</h2>
-          <p className="text-xl text-gray-300 mb-8">No upfront costs. No long-term contracts. 100% of revenue to your club.</p>
+          <p className="text-xl text-gray-300 mb-8">No upfront costs. No long-term contracts. Sponsorship revenue goes to your club.</p>
           <Link to="/book-demo" className="inline-block px-10 py-4 bg-staydia-gold text-staydia-black font-bold text-lg rounded-lg hover:bg-yellow-400 transition">Book Free Demo</Link>
         </div>
       </section>
