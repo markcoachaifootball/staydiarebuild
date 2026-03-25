@@ -11,7 +11,7 @@ const Netherlands: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'AI Sportcamera & Livestreaming voor Clubs in Nederland',
-    description: 'Gratis AI sportcamera\\'s voor voetbalclubs, rugbyverenigingen en sportorganisaties in Nederland. Professioneel streaming. Verdien 100% van fan-abonnementen op â¬6,99/maand. KNVB-goedgekeurd.',
+    description: "Gratis AI sportcamera's voor voetbalclubs, rugbyverenigingen en sportorganisaties in Nederland. Professioneel streaming. Verdien 100% van fan-abonnementen op \u20AC6,99/maand. KNVB-goedgekeurd.",
     keywords: 'sport streaming Nederland, AI sportcamera Nederland, voetbal livestream clubs Nederland, amateurvoetbal streaming'
   });
   useStructuredData({ type: 'Organization' });
@@ -25,7 +25,7 @@ const Netherlands: React.FC = () => {
             AI Sportcamera & Livestreaming voor Clubs in <span className="text-staydia-gold">Nederland</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia brengt professioneel streaming naar elke Nederlandse voetbalclub. Gratis AI-camera's, geÃ¯nstalleerd door ons. Verdien â¬6,99/maand per fan-abonneeâ100% gaat naar je club.
+            Staydia brengt professioneel streaming naar elke Nederlandse voetbalclub. Gratis AI-camera's, ge&iuml;nstalleerd door ons. Verdien &euro;6,99/maand per fan-abonnee&mdash;100% gaat naar je club.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">
@@ -55,7 +55,7 @@ const Netherlands: React.FC = () => {
             </div>
             <div className="flex gap-4">
               <Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
-              <div><h3 className="font-bold text-lg mb-2">100% Inkomsten voor je Club</h3><p className="text-gray-300">Elke â¬6,99 van abonnementen gaat rechtstreeks naar je clubrekening.</p></div>
+              <div><h3 className="font-bold text-lg mb-2">100% Inkomsten voor je Club</h3><p className="text-gray-300">Elke &euro;6,99 van abonnementen gaat rechtstreeks naar je clubrekening.</p></div>
             </div>
             <div className="flex gap-4">
               <Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
