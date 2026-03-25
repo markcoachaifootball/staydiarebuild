@@ -11,7 +11,7 @@ const StaydiaVsPixellot: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'Staydia vs Pixellot - AI Sports Camera Comparison 2026',
-    description: 'Compare Staydia vs Pixellot for grassroots sports streaming. Free AI cameras vs expensive hardware. 100% revenue to clubs vs platform fees. See why clubs choose Staydia.',
+    description: 'Compare Staydia vs Pixellot for grassroots sports streaming. Free AI cameras vs expensive hardware. See why clubs choose Staydia.',
     keywords: 'Staydia vs Pixellot, Pixellot alternative, AI sports camera comparison, grassroots streaming platform, free sports camera'
   });
   useStructuredData({ type: 'Organization' });
