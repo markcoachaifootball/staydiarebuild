@@ -48,7 +48,7 @@ const UnitedKingdom: React.FC = () => {
       stars: 5,
     },
     {
-      quote: "The AI tracking is incredible. No one needs to operate the camera\u2014it just works. Our coaches use the footage for match analysis every week.",
+      quote: "The AI tracking is incredible. No one needs to operate the camera\u2014it just works. Our coaches use the footage for tactical review every week.",
       name: "David R.",
       role: "Manager, Midlands Hockey Club",
       stars: 5,
