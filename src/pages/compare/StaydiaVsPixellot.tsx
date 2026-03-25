@@ -19,7 +19,7 @@ const StaydiaVsPixellot: React.FC = () => {
   const features = [
     { feature: 'Camera Cost', staydia: 'FREE', competitor: 'Â£2,000-Â£5,000+' },
     { feature: 'Installation', staydia: 'FREE professional install', competitor: 'Self-install or paid' },
-    { feature: 'Revenue to Club', staydia: '100% of subscriptions', competitor: 'Revenue share (platform takes cut)' },
+    { feature: 'Revenue to Club', staydia: 'Ad revenue to club', competitor: 'Revenue share (platform takes cut)' },
     { feature: 'Subscription Price', staydia: 'Â£6.99/â¬6.99 per month', competitor: 'Varies, often higher' },
     { feature: 'AI Tracking', staydia: 'Yes - included', competitor: 'Yes - premium tier' },
     { feature: 'Maintenance', staydia: 'Included free', competitor: 'Club responsibility' },
