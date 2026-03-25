@@ -18,11 +18,10 @@ const UnitedKingdom: React.FC = () => {
 
   const features = [
     { icon: <Camera className="h-8 w-8" />, title: 'FREE AI Camera', description: 'Professional-grade AI camera installed at your ground at zero cost. We handle installation, maintenance, and upgrades.' },
-    { icon: <Banknote className="h-8 w-8" />, title: '100% Revenue Share', description: "Every \u00A36.99 from fan subscriptions goes directly to your club. No platform fees, no hidden charges, no revenue splits." },
+    { icon: <Banknote className="h-8 w-8" />, title: 'Earn From Sponsorship', description: "In-game sponsorship banners generate revenue directly for your club. No platform fees, no hidden charges." },
     { icon: <Play className="h-8 w-8" />, title: 'Live & On-Demand', description: 'Stream every match live in HD. Fans replay highlights anytime. Coaches access tactical footage for player development.' },
     { icon: <Zap className="h-8 w-8" />, title: 'Automated Production', description: 'AI tracks the ball and players automatically. No camera operator needed. Just turn on and let the AI handle everything.' },
     { icon: <Users className="h-8 w-8" />, title: 'Fan Engagement', description: 'Build your digital community. Connect with supporters near and far. Give sponsors real exposure through your broadcasts.' },
-    { icon: <BarChart3 className="h-8 w-8" />, title: 'Performance Analytics', description: 'Access match footage for tactical review. Track player movement patterns. Improve coaching with data-driven insights.' },
   ];
 
   const comparisonData = [
