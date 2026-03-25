@@ -144,8 +144,8 @@ const StaydiaVsSportway: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Direct Revenue Sharing to Your Club</h3>
                     <p className="text-gray-300">
-                      With Sportway, revenue flows through federations. Staydia pays 100% of ad revenue directly to your club. No middlemen,
-                      no revenue loss to gatekeepers. You keep everything you earn.
+                      With Sportway, revenue flows through federations. Staydia pays ad revenue directly to your club. No middlemen,
+                      no revenue loss to gatekeepers. You keep what you earn.
                     </p>
                   </div>
                 </div>
