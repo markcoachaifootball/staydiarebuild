@@ -25,7 +25,7 @@ const Portugal: React.FC = () => {
             Câmara Desportiva IA e Streaming ao Vivo para Clubes em <span className="text-staydia-gold">Portugal</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia leva transmissões profissionais a cada clube português. Câmaras de IA grátis, instaladas por nós. Ganhe â¬6,99/mês por assinante—patrocínio para o seu clube.
+            Staydia leva transmissões profissionais a cada clube português. Câmaras de IA grátis, instaladas por nós. Ganhe €6,99/mês por assinante—patrocínio para o seu clube.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Marcar Demo</Link>
