@@ -66,7 +66,7 @@ const Portugal: React.FC = () => {
       </section>
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-staydia-gold/10 border-t border-b border-staydia-gold/30">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-staydia-gold">Pronto para Levar Seu Clube ao Próximo NÃ­vel?</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-staydia-gold">Pronto para Levar Seu Clube ao Próximo Nível?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Clubes portugueses já estão transmitindo, ganhando e construindo suas comunidades.</p>
           <Link to="/book-demo" className="inline-block px-10 py-4 bg-staydia-gold text-staydia-black font-bold text-lg rounded-lg hover:bg-yellow-400 transition">Marcar Demo Gratuita</Link>
         </div>
