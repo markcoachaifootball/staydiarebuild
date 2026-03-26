@@ -37,7 +37,7 @@ const Portugal: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-staydia-gold">O Futebol Amador Português Merece Visibilidade</h2>
           <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
-            <p>Portugal tem tradiÃ§ão desportiva profunda. Do futebol das distritais aos clubes de formaÃ§ão, cada jogo merece ser visto. Staydia traz transmissão profissional a todos.</p>
+            <p>Portugal tem tradição desportiva profunda. Do futebol das distritais aos clubes de formação, cada jogo merece ser visto. Staydia traz transmissão profissional a todos.</p>
           </div>
         </div>
       </section>
@@ -47,7 +47,7 @@ const Portugal: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex gap-4">
               <Camera className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
-              <div><h3 className="font-bold text-lg mb-2">Câmara de IA Grátis</h3><p className="text-gray-300">Sem custo de equipamento, sem taxas de instalaÃ§ão. Nós cuidamos de tudo.</p></div>
+              <div><h3 className="font-bold text-lg mb-2">Câmara de IA Grátis</h3><p className="text-gray-300">Sem custo de equipamento, sem taxas de instalação. Nós cuidamos de tudo.</p></div>
             </div>
             <div className="flex gap-4">
               <Banknote className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
@@ -55,11 +55,11 @@ const Portugal: React.FC = () => {
             </div>
             <div className="flex gap-4">
               <Play className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
-              <div><h3 className="font-bold text-lg mb-2">Streaming em Direto e Sob Procura</h3><p className="text-gray-300">Os fãs veem em direto. GravaÃ§ões para análise tática.</p></div>
+              <div><h3 className="font-bold text-lg mb-2">Streaming em Direto e Sob Procura</h3><p className="text-gray-300">Os fãs veem em direto. Gravações para análise tática.</p></div>
             </div>
             <div className="flex gap-4">
               <Users className="h-8 w-8 text-staydia-gold flex-shrink-0 mt-1" />
-              <div><h3 className="font-bold text-lg mb-2">Comunidade e MonetizaÃ§ão</h3><p className="text-gray-300">Empresas locais patrocinam suas transmissões. Os fãs apoiam o clube.</p></div>
+              <div><h3 className="font-bold text-lg mb-2">Comunidade e Monetização</h3><p className="text-gray-300">Empresas locais patrocinam suas transmissões. Os fãs apoiam o clube.</p></div>
             </div>
           </div>
         </div>
