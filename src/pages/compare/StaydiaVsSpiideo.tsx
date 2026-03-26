@@ -54,12 +54,12 @@ const StaydiaVsSpiideo: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Pricing Model</td>
                   <td className="text-center p-4">Enterprise (contact sales)</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">Â£6.99/month + free camera</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">£6.99/month + free camera</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Estimated Monthly Cost</td>
                   <td className="text-center p-4">$1,000+</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">Â£6.99</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">£6.99</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Camera Included</td>
@@ -106,7 +106,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Affordable Pricing at Every Scale</h3>
                     <p className="text-gray-300">
                       Spiideo's enterprise pricing ($1,000+/month) makes it accessible only to major professional clubs. Staydia at
-                      Â£6.99/month ensures every grassroots club can afford professional-grade streamingâno matter their budget.
+                      £6.99/month ensures every grassroots club can afford professional-grade streaming—no matter their budget.
                     </p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Revenue Sharing Model</h3>
                     <p className="text-gray-300">
-                      Spiideo is a cost centerâclubs pay and receive no revenue return. Staydia flips the model: clubs earn ad revenue directly.
+                      Spiideo is a cost center—clubs pay and receive no revenue return. Staydia flips the model: clubs earn ad revenue directly.
                       This means the more your fan base grows, the more you earn.
                     </p>
                   </div>
@@ -158,7 +158,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Built for Community, Not Just Coaches</h3>
                     <p className="text-gray-300">
                       Spiideo focuses on elite-level coaching and professional league requirements. Staydia is built specifically for
-                      grassroots clubs, family members, local fans, and community engagementâthe DNA of amateur sports.
+                      grassroots clubs, family members, local fans, and community engagement—the DNA of amateur sports.
                     </p>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">No Enterprise Contracts</h3>
                     <p className="text-gray-300">
                       Spiideo requires lengthy enterprise contracts with dedicated account managers and minimum commitments. Staydia is
-                      self-service with no lock-inâcancel anytime. We earn your business through value, not contracts.
+                      self-service with no lock-in—cancel anytime. We earn your business through value, not contracts.
                     </p>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Can we eventually upgrade to Spiideo from Staydia?</h3>
                 <p className="text-gray-300">
                   Yes. Many clubs start with Staydia to build community and revenue, then add Spiideo later as they scale. But honestly,
-                  most successful grassroots clubs find that Staydia's feature set meets all their needsâstreaming, engagement, and
+                  most successful grassroots clubs find that Staydia's feature set meets all their needs—streaming, engagement, and
                   earning revenue.
                 </p>
               </div>
@@ -205,7 +205,7 @@ const StaydiaVsSpiideo: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Does Staydia offer professional-grade video quality?</h3>
                 <p className="text-gray-300">
                   Absolutely. Staydia uses professional AI cameras with 4K resolution, automatic tracking, and optimized framing for live
-                  streaming. Video quality rivals paid solutionsâthe difference is affordability and community focus.
+                  streaming. Video quality rivals paid solutions—the difference is affordability and community focus.
                 </p>
               </div>
 
@@ -231,7 +231,7 @@ const StaydiaVsSpiideo: React.FC = () => {
           <div className="bg-gradient-to-r from-staydia-gold/20 to-staydia-gold/10 border border-staydia-gold/30 rounded-xl p-12 text-center mb-20">
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Club's Streaming?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              See how Staydia brings professional-grade streaming and fan engagement to grassroots clubsâaffordably.
+              See how Staydia brings professional-grade streaming and fan engagement to grassroots clubs—affordably.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/book-demo">

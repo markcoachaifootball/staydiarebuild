@@ -25,11 +25,11 @@ const Italy: React.FC = () => {
             Telecamera Sportiva IA e Streaming Live per Club in <span className="text-staydia-gold">Italia</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Staydia porta la trasmissione professionale a ogni club italiano. Telecamere IA gratuite, installate da noi. Guadagna â¬6,99/mese per abbonatoâla sponsorizzazione va al tuo club.
+            Staydia porta la trasmissione professionale a ogni club italiano. Telecamere IA gratuite, installate da noi. Guadagna â¬6,99/mese per abbonato—la sponsorizzazione va al tuo club.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Prenota Demo</Link>
-            <Link to="/contact" className="px-8 py-3 border border-staydia-gold text-staydia-gold font-bold rounded-lg hover:bg-staydia-gold/10 transition">Scopri di PiÃ¹</Link>
+            <Link to="/contact" className="px-8 py-3 border border-staydia-gold text-staydia-gold font-bold rounded-lg hover:bg-staydia-gold/10 transition">Scopri di Più</Link>
           </div>
         </div>
       </section>

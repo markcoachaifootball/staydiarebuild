@@ -30,7 +30,7 @@ const StaydiaVsXbotgo: React.FC = () => {
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
               XbotGo offers affordable AI camera hardware at $300-500 with no subscriptions. But it's a camera-only solution requiring
-              DIY setup and external streaming infrastructure. Staydia provides an end-to-end platformâcamera, streaming, engagement, and revenue sharing.
+              DIY setup and external streaming infrastructure. Staydia provides an end-to-end platform—camera, streaming, engagement, and revenue sharing.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Monthly Subscription</td>
                   <td className="text-center p-4">None</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">Â£6.99/month</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">£6.99/month</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Video Resolution</td>
@@ -88,7 +88,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                 <tr>
                   <td className="p-4 font-semibold">Total First-Year Cost</td>
                   <td className="text-center p-4">$300 - $500 + streaming costs</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">Â£83.88</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">£83.88</td>
                 </tr>
               </tbody>
             </table>
@@ -104,7 +104,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Complete Platform, Not Just a Camera</h3>
                     <p className="text-gray-300">
-                      XbotGo is a hardware device onlyâyou still need to build streaming infrastructure, web hosting, video delivery,
+                      XbotGo is a hardware device only—you still need to build streaming infrastructure, web hosting, video delivery,
                       and fan engagement. Staydia is an end-to-end platform: camera + streaming + engagement + support, all included.
                     </p>
                   </div>
@@ -118,7 +118,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Zero Hardware Investment</h3>
                     <p className="text-gray-300">
                       XbotGo requires $300-500 upfront hardware cost, plus additional spending on streaming infrastructure. Staydia provides
-                      the camera completely freeâyour only cost is Â£6.99/month, and ad revenue goes directly to your club.
+                      the camera completely free—your only cost is £6.99/month, and ad revenue goes directly to your club.
                     </p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Professional Streaming Infrastructure</h3>
                     <p className="text-gray-300">
                       XbotGo doesn't include streaming. You're responsible for CDN, hosting, scalability, and uptime. Staydia's platform
-                      handles all of thisâservers, bandwidth, redundancy, and optimizationâso your streams always run smoothly.
+                      handles all of this—servers, bandwidth, redundancy, and optimization—so your streams always run smoothly.
                     </p>
                   </div>
                 </div>
@@ -144,7 +144,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Instant Setup Without Technical Expertise</h3>
                     <p className="text-gray-300">
                       XbotGo requires technical setup: RTMP configuration, stream key management, encoder settings, CDN integration.
-                      Staydia works out-of-the-boxâno technical knowledge needed. Our team handles setup and support.
+                      Staydia works out-of-the-box—no technical knowledge needed. Our team handles setup and support.
                     </p>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Revenue Generation Built-In</h3>
                     <p className="text-gray-300">
-                      XbotGo is a cameraâthere's no revenue model. Staydia includes monetization: you earn ad revenue from
+                      XbotGo is a camera—there's no revenue model. Staydia includes monetization: you earn ad revenue from
                       sponsors interested in reaching your audience. The more fans you attract, the more you earn.
                     </p>
                   </div>
@@ -169,7 +169,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Scalability Without Hidden Costs</h3>
                     <p className="text-gray-300">
-                      With XbotGo, if your viewership grows, you'll need bigger servers, higher bandwidth, better infrastructureâall
+                      With XbotGo, if your viewership grows, you'll need bigger servers, higher bandwidth, better infrastructure—all
                       additional costs. Staydia scales automatically. One price, unlimited growth potential.
                     </p>
                   </div>
@@ -185,7 +185,7 @@ const StaydiaVsXbotgo: React.FC = () => {
               <div className="bg-staydia-darkgray border border-staydia-lightgray rounded-lg p-6">
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Can we use XbotGo with Staydia's platform?</h3>
                 <p className="text-gray-300">
-                  Technically possible, but unnecessary. XbotGo + Staydia would cost $300-500 + Â£6.99/month, plus the complexity of integrating
+                  Technically possible, but unnecessary. XbotGo + Staydia would cost $300-500 + £6.99/month, plus the complexity of integrating
                   external hardware. With just Staydia, you get professional camera + platform, no integration headaches.
                 </p>
               </div>
@@ -210,7 +210,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">What happens if XbotGo adds a platform?</h3>
                 <p className="text-gray-300">
                   XbotGo might evolve, but currently it's hardware-only. Staydia was purpose-built as a complete platform from day one.
-                  We're deeply invested in grassroots streamingâit's our entire business model.
+                  We're deeply invested in grassroots streaming—it's our entire business model.
                 </p>
               </div>
 
@@ -218,7 +218,7 @@ const StaydiaVsXbotgo: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Can we use XbotGo if we want a cheap camera option?</h3>
                 <p className="text-gray-300">
                   If you want a camera for under $500, XbotGo is an option. But you'll still spend money on streaming infrastructure, hosting,
-                  and support. With Staydia's free camera, your total cost is Â£6.99/monthâand you earn revenue. Better value overall.
+                  and support. With Staydia's free camera, your total cost is £6.99/month—and you earn revenue. Better value overall.
                 </p>
               </div>
             </div>
@@ -228,7 +228,7 @@ const StaydiaVsXbotgo: React.FC = () => {
           <div className="bg-gradient-to-r from-staydia-gold/20 to-staydia-gold/10 border border-staydia-gold/30 rounded-xl p-12 text-center mb-20">
             <h2 className="text-4xl font-bold mb-6">Stop Building. Start Streaming.</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              With Staydia, you get everything you need in one platformâno DIY setup, no hidden costs, no complexity.
+              With Staydia, you get everything you need in one platform—no DIY setup, no hidden costs, no complexity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/book-demo">

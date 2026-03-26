@@ -64,7 +64,7 @@ const StaydiaVsSportway: React.FC = () => {
                 <tr className="border-b border-staydia-lightgray bg-staydia-darkgray/30">
                   <td className="p-4 font-semibold">Monthly Cost</td>
                   <td className="text-center p-4">Federation-negotiated</td>
-                  <td className="text-center p-4 text-staydia-gold font-bold">Â£6.99/month</td>
+                  <td className="text-center p-4 text-staydia-gold font-bold">£6.99/month</td>
                 </tr>
                 <tr className="border-b border-staydia-lightgray">
                   <td className="p-4 font-semibold">Revenue Model</td>
@@ -106,7 +106,7 @@ const StaydiaVsSportway: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2">Available in 8+ European Countries</h3>
                     <p className="text-gray-300">
                       Sportway excels in Scandinavia but has limited presence elsewhere in Europe. Staydia operates across the UK, Ireland,
-                      Germany, Spain, France, Netherlands, Portugal, and Italyâand expanding. If your federation isn't Nordic, Staydia reaches you.
+                      Germany, Spain, France, Netherlands, Portugal, and Italy—and expanding. If your federation isn't Nordic, Staydia reaches you.
                     </p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const StaydiaVsSportway: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Club-First, Not Federation-First</h3>
                     <p className="text-gray-300">
-                      Sportway's model prioritizes federations and league partnerships. Staydia puts clubs firstâyour success, your revenue,
+                      Sportway's model prioritizes federations and league partnerships. Staydia puts clubs first—your success, your revenue,
                       your independence. We serve clubs, not leagues. Direct relationship, no middlemen.
                     </p>
                   </div>
@@ -131,7 +131,7 @@ const StaydiaVsSportway: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Transparent, Affordable Pricing</h3>
                     <p className="text-gray-300">
-                      Sportway's pricing is federation-negotiated and opaque to individual clubs. Staydia offers clear, simple pricing: Â£6.99/month.
+                      Sportway's pricing is federation-negotiated and opaque to individual clubs. Staydia offers clear, simple pricing: £6.99/month.
                       No surprises, no hidden fees, no negotiations. Perfect for grassroots clubs.
                     </p>
                   </div>
@@ -157,7 +157,7 @@ const StaydiaVsSportway: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Independence Without Federation Requirements</h3>
                     <p className="text-gray-300">
-                      Sportway requires federation partnerships and membership compliance. Staydia is independentâany club can sign up,
+                      Sportway requires federation partnerships and membership compliance. Staydia is independent—any club can sign up,
                       any sport, any competition level. Stream what you want, when you want, without federation gatekeeping.
                     </p>
                   </div>
@@ -196,14 +196,14 @@ const StaydiaVsSportway: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Does Staydia have federation partnerships?</h3>
                 <p className="text-gray-300">
                   We're in discussions with several European federations, but Staydia's core model is direct club relationships. We don't need
-                  federation gatekeepingâany club can start streaming immediately. We're building from the grassroots up, not from federations down.
+                  federation gatekeeping—any club can start streaming immediately. We're building from the grassroots up, not from federations down.
                 </p>
               </div>
 
               <div className="bg-staydia-darkgray border border-staydia-lightgray rounded-lg p-6">
                 <h3 className="text-xl font-bold mb-3 text-staydia-gold">Can clubs in Sportway regions switch to Staydia?</h3>
                 <p className="text-gray-300">
-                  Absolutely. Many clubs want more independence and better revenue share. Switching is straightforwardâno long-term contracts,
+                  Absolutely. Many clubs want more independence and better revenue share. Switching is straightforward—no long-term contracts,
                   no switching fees. Just sign up and migrate. We've built the transition process to be smooth.
                 </p>
               </div>
