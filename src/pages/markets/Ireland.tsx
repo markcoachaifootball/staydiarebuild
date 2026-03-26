@@ -11,7 +11,7 @@ const Ireland: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'AI Sports Camera & Live Streaming for Clubs in Ireland',
-    description: 'Bring your Irish sports club into the digital age with FREE AI camera systems. Stream football, rugby, basketball, and hockey matches live. Fan subscriptions at \u20ac6.99/month. FAI-approved, IRFU-trusted.',
+    description: 'Bring your Irish sports club into the digital age with FREE AI camera systems. Stream football, rugby, basketball, and hockey matches live. Fan subscriptions at €6.99/month. FAI-approved, IRFU-trusted.',
     keywords: 'sports streaming Ireland, AI camera clubs Ireland, live stream sports Ireland, FAI grassroots, IRFU rugby streaming, Basketball Ireland, Hockey Ireland, grassroots broadcasting Ireland'
   });
   useStructuredData({ type: 'Organization' });
@@ -25,7 +25,7 @@ const Ireland: React.FC = () => {
             AI Sports Camera & Live Streaming for Clubs in <span className="text-staydia-gold">Ireland</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            From Dublin to Cork, Limerick to Galway\u2014Irish sports clubs deserve professional broadcasting. Staydia installs FREE AI cameras at your pitch. Earn \u20ac6.99/month from fan subscriptions, broadcast live, and build your club's identity on a global stage.
+            From Dublin to Cork, Limerick to Galway—Irish sports clubs deserve professional broadcasting. Staydia installs FREE AI cameras at your pitch. Earn €6.99/month from fan subscriptions, broadcast live, and build your club's identity on a global stage.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/book-demo" className="px-8 py-3 bg-staydia-gold text-staydia-black font-bold rounded-lg hover:bg-yellow-400 transition">Book a Demo</Link>

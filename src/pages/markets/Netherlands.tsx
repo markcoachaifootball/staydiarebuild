@@ -11,7 +11,7 @@ const Netherlands: React.FC = () => {
   useScrollToTop();
   useAIMetaTags({
     title: 'AI Sportcamera & Livestreaming voor Clubs in Nederland',
-    description: "Gratis AI sportcamera's voor voetbalclubs, rugbyverenigingen en sportorganisaties in Nederland. Professioneel streaming. Verdien via fan-abonnementen op \u20AC6,99/maand. KNVB-goedgekeurd.",
+    description: "Gratis AI sportcamera's voor voetbalclubs, rugbyverenigingen en sportorganisaties in Nederland. Professioneel streaming. Verdien via fan-abonnementen op €6,99/maand. KNVB-goedgekeurd.",
     keywords: 'sport streaming Nederland, AI sportcamera Nederland, voetbal livestream clubs Nederland, amateurvoetbal streaming'
   });
   useStructuredData({ type: 'Organization' });
