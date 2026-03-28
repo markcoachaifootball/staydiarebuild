@@ -57,7 +57,7 @@ const RugbyClubs: React.FC = () => {
       initials: "BR",
       clubName: "Ballina RFC",
       location: "Mayo, Ireland",
-      quote: "\"Our coaches use the match footage to enhance training sessions and player development. It's been invaluable.\""
+      quote: "\"Our coaches use the match footage to enhance coaching sessions and player development. It's been invaluable.\""
     },
     {
       initials: "CR",

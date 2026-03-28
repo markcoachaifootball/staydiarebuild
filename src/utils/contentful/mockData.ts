@@ -34,7 +34,7 @@ export function getExampleArticles(limit: number): NewsArticle[] {
             title: "AI in Sports"
           }
         },
-        summary: "Artificial intelligence is changing how teams analyze performance, engage fans, and optimize training. Discover how Staydia is leading this revolution.",
+        summary: "Artificial intelligence is changing how teams engage fans and optimise performance. Discover how Staydia is leading this revolution.",
         bodyContent: {}
       }
     },
@@ -102,7 +102,7 @@ export function getExampleArticles(limit: number): NewsArticle[] {
             title: "AI Coaching Tools"
           }
         },
-        summary: "Our new coaching platform uses computer vision and machine learning to provide personalized training insights and development plans for young athletes.",
+        summary: "Our new coaching platform uses computer vision and machine learning to provide personalised development plans for young athletes.",
         bodyContent: {}
       }
     },

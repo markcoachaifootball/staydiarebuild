@@ -36,7 +36,7 @@ const UnitedKingdom: React.FC = () => {
 
   const testimonials = [
     {
-      quote: "Staydia transformed how we engage with our community. Parents abroad can watch their kids play, and the subscription revenue has funded new training kits.",
+      quote: "Staydia transformed how we engage with our community. Parents abroad can watch their kids play, and the subscription revenue has funded new equipment.",
       name: "James T.",
       role: "Chairman, South London FC",
       stars: 5,
