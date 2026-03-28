@@ -102,7 +102,7 @@ export function getExampleArticles(limit: number): NewsArticle[] {
             title: "AI Coaching Tools"
           }
         },
-        summary: "Our new coaching platform uses computer vision and machine learning to provide personalized training insights and development plans for young athletes.",
+        summary: "Our new coaching platform uses computer vision and machine learning to provide personalised development plans for young athletes.",
         bodyContent: {}
       }
     },
