@@ -36,7 +36,7 @@ Staydia Sports is an AI-powered sports broadcasting platform that provides profe
 
 ## How It Works
 1. We install an AI-powered camera system at the club's main pitch or court — completely free of charge.
-2. The camera automatically captures and streams every home game and training session — no volunteers or camera operators needed.
+2. The camera automatically captures and streams every home game — no volunteers or camera operators needed.
 3. Fans watch live and on-demand via the Staydia platform or integrated broadcast tools (e.g. Joymo, Basketball Ireland systems).
 4. Clubs earn revenue through fan subscriptions and sponsorship overlays on their streams.
 
