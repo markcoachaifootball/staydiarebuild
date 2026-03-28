@@ -32,7 +32,7 @@ const HockeyClubs: React.FC = () => {
     {
       icon: <Video className="h-8 w-8 text-staydia-gold" />,
       title: "Access to Full Game Footage",
-      description: "Ideal for training reviews, analysis, and player development. Download, clip, and replay matches with ease."
+      description: "Ideal for tactical review and player development. Download, clip, and replay matches with ease."
     },
     {
       icon: <Users className="h-8 w-8 text-staydia-gold" />,

@@ -33,7 +33,7 @@ const BasketballClubs: React.FC = () => {
     {
       icon: <BarChart3 className="h-8 w-8 text-staydia-gold" />,
       title: "Instant Video Access for Coaches & Players",
-      description: "Download footage, clip highlights, and use it to drive training, performance reviews, and recruitment."
+      description: "Download footage, clip highlights, and use it to support coaching, performance reviews, and recruitment."
     },
     {
       icon: <Users className="h-8 w-8 text-staydia-gold" />,
